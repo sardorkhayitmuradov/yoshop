@@ -1,9 +1,13 @@
-import Head from 'next/head'
-
-export default function Home() {
+function Home() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-     </h1>
+    <main className="grow">
+      <section className="hero">
+        <div className="site-container">
+          <h1>Main</h1>
+        </div>
+      </section>
+    </main>
   )
 }
+
+export default Home;

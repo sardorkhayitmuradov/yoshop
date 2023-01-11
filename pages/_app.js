@@ -2,9 +2,9 @@ import Layout from '../components/layout';
 import '../styles/globals.css'
 
 export default function App({ Component, pageProps }) {
-  return (<div>
+  return (
       <Layout>
         <Component {...pageProps} />
       </Layout>
-  </div>)
+  )
 }
