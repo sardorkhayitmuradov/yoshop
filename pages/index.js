@@ -15,7 +15,17 @@ function Home() {
     <main className="grow">
       <section className="hero">
         <div className="site-container">
-          <h1>Main</h1>
+          <div className="hero-info">
+            <div className="hero-left">
+              <p className="hero-left-title">
+                Multifunctional inventory software that allows you to fully automate the work of the store
+              </p>
+              <h2>
+                Use Your Phone as a POS Terminal
+              </h2>
+              
+            </div>
+          </div>
         </div>
       </section>
     </main>
