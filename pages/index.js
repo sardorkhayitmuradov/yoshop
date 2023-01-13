@@ -1,3 +1,15 @@
+import { getSession , signIn , signOut } from "next-auth/react";
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context)
+
+  return {
+    props: {
+      session
+    },
+  };
+};
+
 function Home() {
   return (
     <main className="grow">

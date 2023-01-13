@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Overpass&family=Poppins:wght@400;600;700&family=Prompt:wght@300;400;500;700&family=Ubuntu:wght@400;500&display=swap');
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -13,6 +15,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   height: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -23,12 +26,13 @@ a {
 
 body {
   display: flex;
-  /* background: #171717; */
+  background: #171717;
+  color: #fff;
   flex-direction: column;
 }
 
 header{
-  border-bottom: 3px solid #DCE3EC;
+  border-bottom: 2px solid #DCE3EC;
 }
 
 .site-container {
@@ -36,5 +40,9 @@ header{
   width: 100%;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+option, select {
+  color: #000;
 }
 
