@@ -3,6 +3,8 @@ import Button from "../components/Button/Button";
 import Arrowleft from "../public/assets/images/left.svg";
 import ArrowRight from "../public/assets/images/right.svg";
 import Image from "next/image";
+// ===================
+
 
 export const getServerSideProps = async (context) => {
   const session = await getSession(context);
@@ -15,7 +17,6 @@ export const getServerSideProps = async (context) => {
 };
 
 function Home() {
- 
   return (
     <main className="grow">
       <section
@@ -60,7 +61,8 @@ function Home() {
           </div>
         </div>
       </section>
-     
+
+
     </main>
   );
 }
