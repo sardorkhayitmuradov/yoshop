@@ -45,3 +45,36 @@ option, select {
   color: #000;
 }
 
+
+/* ///// */
+
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* background: url("../public/assets/images/slider.png"); */
+  cursor: pointer;
+  border: none;
+}
+::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3a7bec;
+  cursor: pointer;
+  border: none;
+}
+
+.prompt-title {
+  font-family: 'Prompt',sans-serif;
+}
+
+.poppins{
+  font-family: 'Poppins',sans-serif;
+}
+
+.overpass {
+  font-family: 'Overpass',sans-serif;
+}

@@ -8,6 +8,7 @@ module.exports = {
     fontFamily: {
       'display': ['Oswald'],
       'body': ['"Open Sans"'],
+      'prompt': ['"Prompt"'],
     },
     extend: {
     },
