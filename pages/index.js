@@ -92,7 +92,6 @@ function Home() {
       }
     })
   };
-  console.log(oneLicence)
   
   return (
     <main className='grow'>
