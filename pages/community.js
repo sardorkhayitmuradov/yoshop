@@ -8,6 +8,7 @@ const Community = () => {
 
   const communityNews = [
     {
+      id: Math.random()*10,
       title: 'Individual entrepreneurs in Kazakhstan: how to withdraw money from the account?',
       date: '15.11.2022',
       description: 'The procedure for withdrawal of funds by individual entrepreneurs from bank accounts in Kazakhstan in the current year',
@@ -15,6 +16,7 @@ const Community = () => {
       image: '/assets/images/communityCard.png',
     },
     {
+      id: Math.random()*10,
       title: 'Individual entrepreneurs in Kazakhstan: how to withdraw money from the account?',
       date: '15.11.2022',
       description: 'The procedure for withdrawal of funds by individual entrepreneurs from bank accounts in Kazakhstan in the current year',
@@ -22,6 +24,7 @@ const Community = () => {
       image: '/assets/images/communityCard.png'
     },
     {
+      id: Math.random()*10,
       title: 'Individual entrepreneurs in Kazakhstan: how to withdraw money from the account?',
       date: '15.11.2022',
       description: 'The procedure for withdrawal of funds by individual entrepreneurs from bank accounts in Kazakhstan in the current year',
@@ -29,6 +32,7 @@ const Community = () => {
       image: '/assets/images/communityCard.png'
     },
     {
+      id: Math.random()*10,
       title: 'Individual entrepreneurs in Kazakhstan: how to withdraw money from the account?',
       date: '15.11.2022',
       description: 'The procedure for withdrawal of funds by individual entrepreneurs from bank accounts in Kazakhstan in the current year',
@@ -36,6 +40,7 @@ const Community = () => {
       image: '/assets/images/communityCard.png'
     },
     {
+      id: Math.random()*10,
       title: 'Individual entrepreneurs in Kazakhstan: how to withdraw money from the account?',
       date: '15.11.2022',
       description: 'The procedure for withdrawal of funds by individual entrepreneurs from bank accounts in Kazakhstan in the current year',
@@ -53,7 +58,7 @@ const Community = () => {
             {
               communityNews ? communityNews.map((el) => {
                 return(
-                  <CommunityCard CommunityCardImage={el.image} title={el.title} date={el.date} description={el.description} link={el.link} />
+                  <CommunityCard key={el.id} CommunityCardImage={el.image} title={el.title} date={el.date} description={el.description} link={el.link} />
                 )
               }) : ''
             }
