@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
         <SessionProvider session={pageProps.session}>
           <NextSeo
               title='YoShop'
-              titleTemplate='YoShop E-commerce-website'
+              titleTemplate='YoShop'
               description='YoShop E-commerce website for Clients products'
           />
           <Layout>

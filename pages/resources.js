@@ -1,4 +1,3 @@
-import React from 'react'
 import Accordion from '../components/Accordion/Accordion'
 import ResourcesCard from '../components/ResourcesCard/ResourcesCard'
 
@@ -98,7 +97,7 @@ const Resources = () => {
   ]
 
   return (
-    <main className=''>
+    <main>
       <section className='py-[50px]'>
         <div className='mx-auto max-w-[1360px]'>
             <h2 className='poppins font-bold text-[44px] leading-[140%] text-[#F9F9FB] text-center mb-[24px]'>Resources</h2>
