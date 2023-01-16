@@ -1,6 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-// import { getSession, signIn, signOut } from 'next-auth/react';
-// import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from 'react';
 import Button from '../components/Button/Button';
 import Image from 'next/image';
@@ -92,7 +89,6 @@ function Home() {
       }
     })
   };
-  console.log(oneLicence)
   
   return (
     <main className='grow'>

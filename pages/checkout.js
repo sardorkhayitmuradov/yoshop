@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Input from "../components/Input/Input";
-
 import checkCircle from "../public/images/check-circle1.png";
 import checkCircle2 from "../public/images/check-circle2.png";
 import cartElipsImg from "../public/images/Ellipse-2Big.png";
@@ -12,6 +11,7 @@ import locationAdressIcon from "../public/images/locationIcon.svg";
 import AdressLocation from "../components/AdressLocation/AdressLocation";
 import { useState, useRef } from "react";
 import InputCheckbox from "../components/InputCheckbox/InputCheckbox";
+
 const Checkout = () => {
   // const [modalManage, setModalManage] = useState(false);
   const modalInfoBg = useRef();

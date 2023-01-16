@@ -29,7 +29,7 @@ const Input = ({
         name={name}
         value={value ? value : ""}
         onChange={onGetValue}
-        placeholder={placeholder ? placeholder : ""}
+        placeholder={placeholder ? placeholder: ""}
       />
     </div>
   );
