@@ -17,7 +17,7 @@ const Footer = () => {
             <Link href={'/'}>
               <Image src={LogoImage} alt="site-logo" width={185} height={65} className="mb-[30px]" />
             </Link>
-              <p className="mb-[21px] font-semibold leading-[180%]">Connect</p>
+              <p className="mb-[21px] font-PoppinsSemibold leading-[180%]">Connect</p>
               <div className="footer-social-lists flex items-center justify-between max-w-[233px] w-full">
                 <Link href={'/'} >
                   <Image src={FacebookIcon} alt="site-social Image" width={24} height={24} />
@@ -40,13 +40,13 @@ const Footer = () => {
               </div>
           </li>
           <li className="footer-items max-w-[112px] w-full flex flex-col">
-            <Link href={'/licenses'} className='font-normal text-base mb-[16px]'>
+            <Link href={'/licenses'} className='font-PoppinsRegular text-base mb-[16px]'>
               Licenses
             </Link>
-            <Link href={'/equipment'} className='font-normal text-base mb-[16px]'>
+            <Link href={'/equipment'} className='font-PoppinsRegular text-base mb-[16px]'>
               Equipment
             </Link>
-            <Link href={'/resources'} className='font-normal text-base mb-[16px]'>
+            <Link href={'/resources'} className='font-PoppinsRegular text-base mb-[16px]'>
               Resources
             </Link>
           </li>
@@ -63,10 +63,10 @@ const Footer = () => {
           </li>
           <li className="footer-items w-full max-w-[273px]">
             <h2 className="mb-[5px] text-xl font-normal">YoShop</h2>
-            <p className="font-semibold text-sm mb-[14px]">© 2022 YoShop, Inc. All rights reserved.</p>
-            <p className="font-semibold text-sm mb-[5px]">8 700 450 11 50</p>
-            <p className="font-semibold text-sm mb-[5px]">Amangeldy street 59A, 7th floor</p>
-            <p className="font-semibold text-sm mb-[5px]">info@finenex.kz</p>
+            <p className="text-sm font-PoppinsSemibold mb-[14px]">© 2022 YoShop, Inc. All rights reserved.</p>
+            <p className="text-sm font-PoppinsSemibold mb-[5px]">8 700 450 11 50</p>
+            <p className="text-sm font-PoppinsSemibold mb-[5px]">Amangeldy street 59A, 7th floor</p>
+            <p className="text-sm font-PoppinsSemibold mb-[5px]">info@finenex.kz</p>
           </li>
         </ul>
       </div>

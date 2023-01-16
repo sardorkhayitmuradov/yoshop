@@ -1,7 +1,93 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Overpass&family=Poppins:wght@400;600;700&family=Prompt:wght@300;400;500;700&family=Ubuntu:wght@400;500&display=swap');
+
+@layer base {
+  @font-face {
+    font-family: "InterMedium";
+    src: url("../public/assets/fonts/Inter/Inter-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "InterRegular";
+    src: url("../public/assets/fonts/Inter/Inter-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "OverpassRegular";
+    src: url("../public/assets/fonts/Overpass/Overpass-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PoppinsRegular";
+    src: url("../public/assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PoppinsSemibold";
+    src: url("../public/assets/fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PoppinsBold";
+    src: url("../public/assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PromtLight";
+    src: url("../public/assets/fonts/Prompt/Prompt-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PromptRegular";
+    src: url("../public/assets/fonts/Prompt/Prompt-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PromptMedium";
+    src: url("../public/assets/fonts/Prompt/Prompt-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PromptBold";
+    src: url("../public/assets/fonts/Prompt/Prompt-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "UbuntuRegular";
+    src: url("../public/assets/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "UbuntuMedium";
+    src: url("../public/assets/fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+}
+
 
 * {
   box-sizing: border-box;
@@ -14,7 +100,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   height: 100%;
-  font-family: 'Poppins', sans-serif;
+  @apply font-PoppinsRegular;
 }
 
 
@@ -54,7 +140,7 @@ option, select {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  /* background: url("../public/assets/images/slider.png"); */
+  background: url("../public/assets/images/slider.png");
   cursor: pointer;
   border: none;
 }
