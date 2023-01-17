@@ -16,11 +16,7 @@ const Header = () => {
                     Licenses
                   </Link>
                 </li>
-                <li className="navbar-item">
-                  <Link href={'/checkout'}>
-                    check
-                  </Link>
-                </li>
+           
                 <li className="navbar-item">
                   <Link href={'/equipment'}>
                     Equipment
@@ -49,7 +45,7 @@ const Header = () => {
               </ul>
             </div>
             <div className="header-right flex items-center pt-[21px] max-w-[314px] w-full justify-between">
-              <select name="cars" id="cars" className="border-none bg-transparent text-white outline-none">
+              <select name="languages" id="languages" className="border-none bg-transparent text-white outline-none">
                 <option value="eng" className="bg-black border-none p-3 m-3 text-white">ENG</option>
                 <option value="kor" className="bg-black border-none p-3 m-3 text-white">KOR</option>
                 <option value="kzt" className="bg-black border-none p-3 m-3 text-white">KZT</option>

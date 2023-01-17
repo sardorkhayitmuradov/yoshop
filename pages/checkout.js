@@ -1,15 +1,15 @@
-import React from "react";
+import React,{ useState, useRef } from "react";
 import Image from "next/image";
 import Input from "../components/Input/Input";
-import checkCircle from "../public/images/check-circle1.png";
-import checkCircle2 from "../public/images/check-circle2.png";
-import cartElipsImg from "../public/images/Ellipse-2Big.png";
-import cartPrImg from "../public/images/checkPageProductsideRotateImg.png";
+import checkCircle from "../public/assets/images/check-circle1.png";
+import checkCircle2 from "../public/assets/images/check-circle2.png";
+import cartElipsImg from "../public/assets/images/Ellipse-2Big.png";
+import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
 import Button from "../components/Button/Button";
-import confrimSuccessImg from "../public/images/modalSuccessInfo.png";
-import locationAdressIcon from "../public/images/locationIcon.svg";
+import confrimSuccessImg from "../public/assets/images/modalSuccessInfo.png";
+import locationAdressIcon from "../public/assets/images/locationIcon.svg";
 import AdressLocation from "../components/AdressLocation/AdressLocation";
-import { useState, useRef } from "react";
+
 import InputCheckbox from "../components/InputCheckbox/InputCheckbox";
 
 const Checkout = () => {
@@ -208,10 +208,12 @@ const Checkout = () => {
 
                   <div className="payCardNumbInfo">
                     <div>
-                    <label htmlFor="cardNumbInfo" className="mb-[5px]">Card Number</label>
+                      <label htmlFor="cardNumbInfo" className="mb-[5px]">
+                        Card Number
+                      </label>
                     </div>
                     <div>
-                      <input type="text" id="cardNumbInfo"/>
+                      <input type="text" id="cardNumbInfo" />
                     </div>
                     {/* <Input
                       inputType={"text"}

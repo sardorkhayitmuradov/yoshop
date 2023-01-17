@@ -6,9 +6,22 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'display': ['Oswald'],
-      'body': ['"Open Sans"'],
-      'prompt': ['"Prompt"'],
+      InterMedium: ["InterMedium"],
+      InterRegular: ["InterRegular"],
+      
+      OverpassRegular: ["OverpassRegular"],
+
+      PoppinsRegular: ["PoppinsRegular"],
+      PoppinsSemibold: ["PoppinsSemibold"],
+      PoppinsBold: ["PoppinsBold"],
+
+      PromtLight: ["PromtLight"],
+      PromptRegular: ["PromptRegular"],
+      PromptMedium: ["PromptMedium"],
+      PromptBold: ["PromptBold"],
+
+      UbuntuRegular: ["UbuntuRegular"],
+      UbuntuMedium: ["UbuntuMedium"],
     },
     extend: {
     },

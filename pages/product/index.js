@@ -1,20 +1,20 @@
+import Link from "next/link";
+// import { useRouter } from "next/router";
 import React, { useRef, useEffect, useState, Fragment } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
 import Image from "next/image";
-import mainPImg from "../public/images/terminalImgProduct.png";
-import sideRotate180Img from "../public/images/terminalProductRotate180.png";
-import sideRotate90Img from "../public/images/terminalProduct90.png";
-import sideRotate100Img from "../public/images/terminalProductRotete100.png";
-import shopIcon from "../public/images/shopIcon.png";
-import scaleProductImg from "../public/images/scalesProductImg.png";
-import checkoutProductImg from "../public/images/checkoutProductImg.png";
-import monitorImg from "../public/images/monitorProductImg.png";
-import mobileLicense from "../public/images/mobileLicenseImg.png";
-import mobileLicense2 from "../public/images/mobileImg2.png";
-import circleIm1 from "../public/images/successIcon.png";
-import circleIm2 from "../public/images/setupIcon.png";
-import circleIm3 from "../public/images/monitorIcon.png";
+import mainPImg from "../../public/assets/images/terminalImgProduct.png";
+import sideRotate180Img from "../../public/assets/images/terminalProductRotate180.png";
+import sideRotate90Img from "../../public/assets/images/terminalProduct90.png";
+import sideRotate100Img from "../../public/assets/images/terminalProductRotete100.png";
+import shopIcon from "../../public/assets/images/shopIcon.png";
+import mobileLicense from "../../public/assets/images/mobileLicenseImg.png";
+import mobileLicense2 from "../../public/assets/images/mobileImg2.png";
+import circleIm1 from "../../public/assets/images/successIcon.png";
+import circleIm2 from "../../public/assets/images/setupIcon.png";
+import circleIm3 from "../../public/assets/images/monitorIcon.png";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import Button from "../../components/Button/Button";
+import { products } from "../../constants/products";
 
 const Product = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -173,8 +173,7 @@ const Product = () => {
                   +
                 </button>
               </span>
-              <span
-                className="addToCartWrapp cursor-pointer text-[#FC7941] font-[700] text-[20px] flex justify-center items-center w-[360px] border-solid border-x border-y border-[#fff] py-[16px] px-[22px] rounded-[10px]"
+              <Button className={'cursor-pointer text-[#FC7941] font-[700] text-[20px] flex justify-center items-center w-[360px] border-solid border-x border-y border-[#fff] py-[16px] px-[22px] rounded-[10px]'} 
                 onClick={() => {
                   if (modalWindowBg.current.classList.contains("hidden")) {
                     modalWindowBg.current.classList.remove("hidden");
@@ -182,11 +181,10 @@ const Product = () => {
                     modalWindowInfo.current.classList.remove("hidden");
                     modalWindowInfo.current.classList.add("block");
                   }
-                }}
-              >
-                Add to cart{" "}
-                <Image src={shopIcon} alt="shop-icon" className="pl-2 " />
-              </span>
+                }}>
+                  Add to cart{" "}
+                  <Image src={shopIcon} alt="shop-icon" className="pl-2 " />
+              </Button>
             </div>
             <h2 className="acardionTitle my-9 font-[700] text-[24px] text-white">
               {" "}
@@ -335,40 +333,16 @@ const Product = () => {
             You may be interested in
           </h2>
 
-          <div className="recomendProductCardWrapp flex justify-between">
-            <div className="recomendCard max-w-[350px]">
-              <div className="recomendCardImgWrapp py-[103px] px-[43px] bg-[#24242C] min-h-[560px] flex justify-center items-center">
-                <Image src={scaleProductImg} alt="card-img" />
-              </div>
-              <p className="cardProductName font-[400] text-[16px] text-[#fff] mt-[20px]">
-                Scale Rongta RLS1100A
-              </p>
-              <p className="cardProductPrice font-[400] text-[14px] text-[#fff] mt-[10px]">
-                ₸ 185,000
-              </p>
-            </div>
-            <div className="recomendCard max-w-[350px]">
-              <div className="recomendCardImgWrapp py-[103px] px-[43px] bg-[#24242C] min-h-[560px] flex justify-center items-center">
-                <Image src={checkoutProductImg} alt="card-img" />
-              </div>
-              <p className="cardProductName font-[400] text-[16px] text-[#fff] mt-[20px]">
-                Cash drawer AT405
-              </p>
-              <p className="cardProductPrice font-[400] text-[14px] text-[#fff] mt-[10px]">
-                ₸ 22,200
-              </p>
-            </div>
-            <div className="recomendCard max-w-[350px]">
-              <div className="recomendCardImgWrapp py-[103px] px-[43px] bg-[#24242C] min-h-[560px] flex justify-center items-center">
-                <Image src={monitorImg} alt="card-img" />
-              </div>
-              <p className="cardProductName font-[400] text-[16px] text-[#fff] mt-[20px]">
-                Touch POS-monoblock T610
-              </p>
-              <p className="cardProductPrice font-[400] text-[14px] text-[#fff] mt-[10px]">
-                ₸ 150,000
-              </p>
-            </div>
+          <div className="flex justify-between flex-wrap gap-[30px]">
+            {
+              products.map(el=> {
+                return(
+                  <Link href={'/product/' + el.id} key={el.id} className="cursor-pointer">
+                    <ProductCard image={el.image} title={el.title} price={el.price} />
+                  </Link>
+                )
+              })
+            }
           </div>
         </div>
       </section>
