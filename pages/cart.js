@@ -1,6 +1,6 @@
 import Button from "../components/Button/Button";
-import cartElipsImg from "../public/images/Ellipse-2Big.png";
-import cartPrImg from "../public/images/checkPageProductsideRotateImg.png";
+import cartElipsImg from "../public/assets/images/Ellipse-2Big.png";
+import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
 import Image from "next/image"
 const Cart = () => {
     return <>

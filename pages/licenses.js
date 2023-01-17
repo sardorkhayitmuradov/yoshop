@@ -10,7 +10,7 @@ import productImg2 from "../public/assets/images/monitorProductImg.png";
 import Button from "../components/Button/Button";
 import EquipmentCard from "../components/EquipmentCard/EquipmentCard";
 import ProductCard from "../components/ProductCard/ProductCard";
-import TabTitle from "../components/TabTitle/TabTitle";
+import TabTitle from "../components/TabTitle/TabTitle"; 
 const Licenses = () => {
   return (
     <section>
