@@ -11,6 +11,7 @@ import DesktopIcon from '../public/assets/images/desktop-computer.svg'
 import { products } from "../constants/products";
 import { productSelectors } from "../constants/productSelectors";
 import { useState } from "react";
+import Link from "next/link";
 
 const Equipment = () => {
   const [town , setTown] = useState('');
@@ -66,7 +67,8 @@ const Equipment = () => {
             {
               products.map(el => {
                 return (
-                  <ProductCard key={el.id} image={el.image} title={el.title} price={el.price}>
+                  <Link key={el.id} href={'/product/' + el.id}>
+                    <ProductCard image={el.image} title={el.title} price={el.price}>
                       <Button className={'cursor-pointer text-[#FC7941] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y border-[#fff] mt-[20px] py-[16px] px-[22px] rounded-[10px]'} 
                         onClick={() => {
                           if (modalWindowBg.current.classList.contains("hidden")) {
@@ -79,7 +81,8 @@ const Equipment = () => {
                           <Image src={shopIcon} alt="shop-icon" className="pr-2" />
                           Add to cart{" "}
                       </Button>
-                  </ProductCard>
+                    </ProductCard>
+                  </Link>
                 )
               })
             }

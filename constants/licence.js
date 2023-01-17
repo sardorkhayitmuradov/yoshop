@@ -8,7 +8,7 @@ export const licence = [
         'the maximum expansion of the range of goods sold',
         'significant savings in time and effort required for the operation of the store',
       ],
-      image: sliderImage
+      image: '/assets/images/slider-image.jpg'
     },
     {
       title: 'Full control business',
@@ -19,7 +19,7 @@ export const licence = [
         'the maximum expansion of the range of goods sold',
         'significant savings in time and effort required for the operation of the store',
       ],
-      image: slider2
+      image: '/assets/images/slider2.jpg'
     },
     {
       title: 'Effective sales management',
@@ -30,7 +30,7 @@ export const licence = [
         'the maximum expansion of the range of goods sold',
         'significant savings in time and effort required for the operation of the store',
       ],
-      image: slider3
+      image: '/assets/images/slider3.jpg'
     },
     {
       title: 'Extracting maximum profit',
@@ -41,7 +41,7 @@ export const licence = [
         'the maximum expansion of the range of goods sold',
         'significant savings in time and effort required for the operation of the store',
       ],
-      image: sliderImage
+      image: '/assets/images/slider-image.jpg'
     },
     {
       title: 'Absolutely safe and legal business',
@@ -52,6 +52,6 @@ export const licence = [
         'the maximum expansion of the range of goods sold',
         'significant savings in time and effort required for the operation of the store',
       ],
-      image: slider2
+      image: '/assets/images/slider2.jpg'
     },
 ];

@@ -1,20 +1,20 @@
+import Link from "next/link";
+// import { useRouter } from "next/router";
 import React, { useRef, useEffect, useState, Fragment } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
 import Image from "next/image";
-import mainPImg from "../public/assets/images/terminalImgProduct.png";
-import sideRotate180Img from "../public/assets/images/terminalProductRotate180.png";
-import sideRotate90Img from "../public/assets/images/terminalProduct90.png";
-import sideRotate100Img from "../public/assets/images/terminalProductRotete100.png";
-import shopIcon from "../public/assets/images/shopIcon.png";
-import mobileLicense from "../public/assets/images/mobileLicenseImg.png";
-import mobileLicense2 from "../public/assets/images/mobileImg2.png";
-import circleIm1 from "../public/assets/images/successIcon.png";
-import circleIm2 from "../public/assets/images/setupIcon.png";
-import circleIm3 from "../public/assets/images/monitorIcon.png";
-import { products } from "../constants/products";
-import ProductCard from "../components/ProductCard/ProductCard";
-import Button from "../components/Button/Button";
+import mainPImg from "../../public/assets/images/terminalImgProduct.png";
+import sideRotate180Img from "../../public/assets/images/terminalProductRotate180.png";
+import sideRotate90Img from "../../public/assets/images/terminalProduct90.png";
+import sideRotate100Img from "../../public/assets/images/terminalProductRotete100.png";
+import shopIcon from "../../public/assets/images/shopIcon.png";
+import mobileLicense from "../../public/assets/images/mobileLicenseImg.png";
+import mobileLicense2 from "../../public/assets/images/mobileImg2.png";
+import circleIm1 from "../../public/assets/images/successIcon.png";
+import circleIm2 from "../../public/assets/images/setupIcon.png";
+import circleIm3 from "../../public/assets/images/monitorIcon.png";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import Button from "../../components/Button/Button";
+import { products } from "../../constants/products";
 
 const Product = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -333,11 +333,13 @@ const Product = () => {
             You may be interested in
           </h2>
 
-          <div className="recomendProductCardWrapp flex justify-between flex-wrap gap-[30px]">
+          <div className="flex justify-between flex-wrap gap-[30px]">
             {
               products.map(el=> {
                 return(
-                  <ProductCard key={el.id} image={el.image} title={el.title} price={el.price} />
+                  <Link href={'/product/' + el.id} key={el.id} className="cursor-pointer">
+                    <ProductCard image={el.image} title={el.title} price={el.price} />
+                  </Link>
                 )
               })
             }
