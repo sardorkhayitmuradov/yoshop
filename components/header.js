@@ -10,12 +10,13 @@ const Header = () => {
               <Link href={'/'} className="pt-[21px]">
                   <Image src={LogoImage} alt="site-logo" width={185} height={65} />   
               </Link>
-              <ul className="header-navbar flex items-center max-w-[600px] w-full justify-between text-sm pt-[31px]">
+              <ul className="header-navbar flex items-center max-w-[600px] name name name name name  w-full justify-between text-sm pt-[31px]">
                 <li className="navbar-item">
                   <Link href={'/licenses'}>
                     Licenses
                   </Link>
                 </li>
+           
                 <li className="navbar-item">
                   <Link href={'/equipment'}>
                     Equipment
