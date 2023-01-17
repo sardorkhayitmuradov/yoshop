@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react'
 
-const EquipmentCard = ({image ,children}) => {
+const EquipmentCard = ({image ,children , wrapperClassName}) => {
   return (
-    <div className='max-w-[280px] w-full py-[20px] pl-[20px] bg-[#23232C] flex items-center'>
+    <div className={`${wrapperClassName} w-full py-[20px] pl-[20px] bg-[#23232C] flex items-center`}>
         <div className='w-[80px] h-[80px] flex items-center bg-[#2B2B32] rounded-full mr-[17px]'>
             <Image src={image} className='mx-auto' width={23} height={23} alt='equipment card image' />
         </div>

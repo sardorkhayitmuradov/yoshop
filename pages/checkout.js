@@ -6,9 +6,7 @@ import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png
 
 const Checkout = () => {
   return (
-   <>
-   
-   <section className="min-h-[90vh]">
+    <section className="min-h-[90vh]">
         <div className="container max-w-7xl mx-auto">
           <h2 className="checkoutPageTitle font-[700] text-[#fff] text-center my-10 text-[32px]">
             Cart
@@ -68,8 +66,7 @@ const Checkout = () => {
           </div>
           </div>
         </div>
-      </section>
-   </>
+    </section>
   )
 }
 
