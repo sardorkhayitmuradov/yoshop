@@ -11,25 +11,15 @@ import circleIm3 from "../../public/assets/images/monitorIcon.png";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Button from "../../components/Button/Button";
 import { products } from "../../constants/products"
-
+ 
   
   
 const Details = () => {
-    const [modalOpen, setModalOpen] = useState(false);
-    // const db = [
-    //   {
-    //     title: "YoShop POS (К9 Centerm)",
-    //     price: "₸ 150,000",
-    //     desc: "Screen diagonal - 5.5 inches Screen resolution - 1280x720 Touch Screen - Yes The type of reader is the imager Decoded 2D codes Android Operating System Processor frequency 1200 MHz The amount of RAM 1024 MB The amount of internal memory is 8 GB microSDHC memory card support Maximum memory card capacity",
-    //     productMAinImg: mainPImg,
-    //     side180Img: sideRotate180Img,
-    //     sideRotete90Img: sideRotate90Img,
-    //     sideRotate100Img: sideRotate100Img,
-    //   },
-    // ];
-
     const router = useRouter();
     const {id} = router.query
+    const [modalOpen, setModalOpen] = useState(false);
+  
+  
 
     const acTabRef = useRef();
     const acContentRef = useRef();
@@ -42,6 +32,14 @@ const Details = () => {
     const acSetting3 = useRef();
     const modalWindowBg = useRef();
     const modalWindowInfo = useRef();
+
+    const goToTop = () => {
+      window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+      });
+    };
+
     return (
       <>
         <div
@@ -86,7 +84,7 @@ const Details = () => {
                 </h2>
               </div>
             </div>
-            <div className="modalLeftInfoWrapp w-[255px]">
+            <div className="w-[255px]">
               <div className="orderModalinfo ">
                 <h3 className="infooTitle text-[16px] font-[700] text-[#fff] ">
                   Order Summary
@@ -137,7 +135,6 @@ const Details = () => {
           {
             products.map(product=> {
               if(product.id == id){
-                console.log(product.id);
                 return(
                   <div key={product.id} className="container max-w-7xl mx-auto bg-[#13131C] flex justify-between">
                     <div className="w-[550px] flex flex-col">
@@ -348,7 +345,7 @@ const Details = () => {
               {
                 products.map(el=> {
                   return(
-                    <Link href={'/product/' + el.id} key={el.id} className="cursor-pointer">
+                    <Link  href={'/equipment/' + el.id} key={el.id} className="cursor-pointer">
                       <ProductCard image={el.image} title={el.title} price={el.price} />
                     </Link>
                   )

@@ -32,12 +32,12 @@ const Checkout = () => {
       modalInfo.current.classList.remove("block");
     }
   }
-  return (
-    <>
-      <section className="min-h-[110vh] relative">
-        <div className="container max-w-7xl mx-auto ">
-          <h2 className="chekoutTitle my-[70px] text-[44px] font-[700] text-center text-[#fff]">
-            Checkout
+  return <>
+   
+   <section className="min-h-[90vh]">
+        <div className="container max-w-7xl mx-auto">
+          <h2 className="checkoutPageTitle font-[700] text-[#fff] text-center my-10 text-[32px]">
+            Cart
           </h2>
           <div className="checkWithInfoWrapp flex justify-between">
             <div className="leftCheckWithInfo w-[590px] pt-[14px]">
@@ -340,7 +340,10 @@ const Checkout = () => {
         </div>
       </section>
     </>
-  );
-};
+
+
+    
+
+}
 
 export default Checkout;

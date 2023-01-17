@@ -1,17 +1,17 @@
-import Input from "../components/Input/Input";
-import ProductCard from "../components/ProductCard/ProductCard";
-import EquipmentCard from "../components/EquipmentCard/EquipmentCard";
-import Button from "../components/Button/Button";
-import Image from "next/image";
-import shopIcon from '../public/assets/images/shopIcon.png'
-import GuaranteeIcon from '../public/assets/images/badge-check.svg'
-import TruckIcon from '../public/assets/images/truck.svg'
-import SaveIcon from '../public/assets/images/save-as.svg'
-import DesktopIcon from '../public/assets/images/desktop-computer.svg'
-import { products } from "../constants/products";
-import { productSelectors } from "../constants/productSelectors";
 import { useState } from "react";
 import Link from "next/link";
+import Input from "../../components/Input/Input";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import EquipmentCard from "../../components/EquipmentCard/EquipmentCard";
+import Button from "../../components/Button/Button";
+import Image from "next/image";
+import shopIcon from '../../public/assets/images/shopIcon.png'
+import GuaranteeIcon from '../../public/assets/images/badge-check.svg'
+import TruckIcon from '../../public/assets/images/truck.svg'
+import SaveIcon from '../../public/assets/images/save-as.svg'
+import DesktopIcon from '../../public/assets/images/desktop-computer.svg'
+import { products } from "../../constants/products";
+import { productSelectors } from "../../constants/productSelectors";
 
 const Equipment = () => {
   const [town , setTown] = useState('');
@@ -36,16 +36,16 @@ const Equipment = () => {
               </div>
               <h3 className="font-PoppinsBold text-[32px] leading-[140%] mb-[40px]">With YoShop you get</h3>
               <div className="flex items-center justify-between w-full">
-                  <EquipmentCard image={GuaranteeIcon} >
+                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={GuaranteeIcon} >
                     Guarantee
                   </EquipmentCard>  
-                  <EquipmentCard image={TruckIcon} >
+                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={TruckIcon} >
                     Delivery
                   </EquipmentCard>  
-                  <EquipmentCard image={SaveIcon} >
+                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={SaveIcon} >
                     Setup 
                   </EquipmentCard>  
-                  <EquipmentCard image={DesktopIcon} >
+                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={DesktopIcon} >
                     Technical Support
                   </EquipmentCard>  
               </div>
@@ -67,7 +67,7 @@ const Equipment = () => {
             {
               products.map(el => {
                 return (
-                  <Link key={el.id} href={'/product/' + el.id}>
+                  <Link key={el.id} href={'/equipment/' + el.id}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>
                       <Button className={'cursor-pointer text-[#FC7941] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y border-[#fff] mt-[20px] py-[16px] px-[22px] rounded-[10px]'} 
                         onClick={() => {
