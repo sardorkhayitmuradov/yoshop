@@ -11,8 +11,6 @@ import circleIm3 from "../../public/assets/images/monitorIcon.png";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Button from "../../components/Button/Button";
 import { products } from "../../constants/products"
- 
-  
   
 const Details = () => {
     const router = useRouter();
