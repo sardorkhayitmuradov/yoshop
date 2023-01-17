@@ -18,65 +18,7 @@ import FullyOrginazeStore from '../public/assets/images/store.png'
 import SecurityIcon from '../public/assets/images/securitysafe.png'
 import Input from '../components/Input/Input';
 import PhoneCall from '../public/assets/images/hero-call.png'
-
-const licence = [
-    {
-      title: 'Store automation',
-      description: [
-        'simple and intuitive interface',
-        'minimizing the amount of "manual" work',
-        'prevention of theft by dishonest employees',
-        'the maximum expansion of the range of goods sold',
-        'significant savings in time and effort required for the operation of the store',
-      ],
-      image: sliderImage
-    },
-    {
-      title: 'Full control business',
-      description: [
-        'simple and intuitive interface',
-        'minimizing the amount of "manual" work',
-        'prevention of theft by dishonest employees',
-        'the maximum expansion of the range of goods sold',
-        'significant savings in time and effort required for the operation of the store',
-      ],
-      image: slider2
-    },
-    {
-      title: 'Effective sales management',
-      description: [
-        'simple and intuitive interface',
-        'minimizing the amount of "manual" work',
-        'prevention of theft by dishonest employees',
-        'the maximum expansion of the range of goods sold',
-        'significant savings in time and effort required for the operation of the store',
-      ],
-      image: slider3
-    },
-    {
-      title: 'Extracting maximum profit',
-      description: [
-        'simple and intuitive interface',
-        'minimizing the amount of "manual" work',
-        'prevention of theft by dishonest employees',
-        'the maximum expansion of the range of goods sold',
-        'significant savings in time and effort required for the operation of the store',
-      ],
-      image: sliderImage
-    },
-    {
-      title: 'Absolutely safe and legal business',
-      description: [
-        'simple and intuitive interface',
-        'minimizing the amount of "manual" work',
-        'prevention of theft by dishonest employees',
-        'the maximum expansion of the range of goods sold',
-        'significant savings in time and effort required for the operation of the store',
-      ],
-      image: slider2
-    },
-];
-
+import { licence } from '../constants/licence';
 
 function Home() {
   const [value, setValue] = useState(0);
