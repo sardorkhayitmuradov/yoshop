@@ -1,14 +1,14 @@
 export const productSelectors = [
     {
-        name: 'All Equipment',
-        value: 'all'
+       "name":"All Equipment",
+       "value":"all"
     },
     {
-        name: 'Devices',
-        value: 'devices'
+       "name":"Devices",
+       "value":"devices"
     },
     {
-        name: 'Gadgets',
-        value: 'gadgets'
+       "name":"Gadgets",
+       "value":"gadgets"
     }
-]
+ ]

@@ -1,12 +1,10 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Button from '../components/Button/Button';
 import Image from 'next/image';
 import Arrowleft from '../public/assets/images/left.svg';
 import ArrowRight from '../public/assets/images/right.svg';
 import ListIcon from '../public/assets/images/listCircle.svg';
-import sliderImage from '../public/assets/images/slider-image.jpg'
-import slider2 from '../public/assets/images/slider2.jpg';
-import slider3 from '../public/assets/images/slider3.jpg'
 import Users  from '../public/assets/images/people.jpg'
 import AppStore from '../public/assets/images/appStore.png'
 import GooglePlay from '../public/assets/images/googlePlay.png'
@@ -21,6 +19,8 @@ import PhoneCall from '../public/assets/images/hero-call.png'
 import { licence } from '../constants/licence';
 
 function Home() {
+  const {locale ,   locales , push} = useRouter()
+  console.log(locale , locales)
   const [value, setValue] = useState(0);
   const [oneLicence, setOneLicene] = useState([licence[0]])
   const handleChange = (event) => {
@@ -96,7 +96,7 @@ function Home() {
           {
             oneLicence.map((licenc)=>{
               return(
-                <div className='w-full' key={licenc.title}>
+                <div className='w-full' key={licenc.id}>
                   <div className='flex max-w-[954px] w-full justify-between'>
                     <ul className='max-w-[175px] w-full text-base leading-[20px] pt-[35px]'>
                       <li className='mb-[30px] font-OverpassRegular'>Store automation</li>
@@ -110,9 +110,9 @@ function Home() {
                         {licenc.title}
                       </li>
                       {
-                        licenc.description.map(el=>{
+                        licenc.description.map((el, index)=>{
                           return (
-                            <li key={el.id} className='mb-[14px] pl-10 font-PromptRegular flex items-center'>
+                            <li key={index} className='mb-[14px] pl-10 font-PromptRegular flex items-center'>
                             <Image
                               src={ListIcon}
                               alt='list circle'
