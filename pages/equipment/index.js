@@ -10,12 +10,14 @@ import GuaranteeIcon from '../../public/assets/images/badge-check.svg'
 import TruckIcon from '../../public/assets/images/truck.svg'
 import SaveIcon from '../../public/assets/images/save-as.svg'
 import DesktopIcon from '../../public/assets/images/desktop-computer.svg'
-import { products } from "../../constants/products";
 import { productSelectors } from "../../constants/productSelectors";
+import {equipments} from '../../constants/equipments'
+// import { useTranslation } from "react-i18next";
 
 const Equipment = () => {
+  // const {t} = useTranslation()
   const [town , setTown] = useState('');
-  const [number, setNumber] = useState();
+  const [number, setNumber] = useState("");
   return (
     <main>
       <section className={`pt-[87px] pb-[150px] bg-[url("../public/assets/images/equpment.png")] bg-no-repeat bg-[right_1rem_top_3rem]`}>
@@ -26,9 +28,9 @@ const Equipment = () => {
               </p>
               <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px]">
   
-                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#98989C] w-full py-[20px] pl-[30px] placeholder:text-[#98989C] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[20px] bg-[#F1F1F1]'} placeholder={'Enter a your Town'} value={town} onGetValue={setTown} />
+                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#98989C] w-full py-[20px] pl-[30px] placeholder:text-[#98989C] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[20px] bg-[#F1F1F1]'} placeholder={'Enter a your Town'} value={town} onGetValue={(value)=> setTown(value)}  />
                   
-                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#98989C] w-full py-[20px] pl-[30px] placeholder:text-[#98989C] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[20px] bg-[#F1F1F1]'} placeholder={'Enter a phone number'} value={number} onGetValue={setNumber} />
+                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#98989C] w-full py-[20px] pl-[30px] placeholder:text-[#98989C] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[20px] bg-[#F1F1F1]'} placeholder={'Enter a phone number'} value={number} onGetValue={(value) => setNumber(value)} />
               
                   <Button className={'max-w-[232px] py-[20px] w-full bg-[#F97316] rounded-[20px] font-bold text-base leading-[140%] poppins'}>
                   Order a call
@@ -65,7 +67,7 @@ const Equipment = () => {
           </select>
           <div className="gap-[30px] flex justify-between flex-wrap mb-[50px]">
             {
-              products.map(el => {
+              equipments.map(el => {
                 return (
                   <Link key={el.id} href={'/equipment/' + el.id}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>

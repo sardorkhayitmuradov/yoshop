@@ -59,4 +59,4 @@ export const licence = [
       ],
       "image": "/assets/images/slider2.jpg"
    }
-];
+]; 
