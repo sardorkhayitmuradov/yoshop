@@ -111,8 +111,8 @@ a {
 
 body {
   display: flex;
-  background: #13131C;
-  color: #fff;
+  background: #fff;
+  color: #000000;
   flex-direction: column;
 }
 
@@ -140,7 +140,7 @@ option, select {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: url("../public/assets/images/slider.png");
+  background: url("../public/assets/images/main-slider.svg");
   cursor: pointer;
   border: none;
 }

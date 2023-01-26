@@ -13,7 +13,7 @@ export const equipments = [
        "id":2,
        "image":"/assets/images/android-pos.png",
        "title":"Android Pos",
-       "description":"Operating system - Android 8.1 or higher; CPU - Allwinner A40i 1.2Hz Quad-core ARM Cortex-A7 MPCore; LCD - 10.1”(1024*600); Touch - Capacitive Touch; Printer - 3’’ Thermal/auto cut/200mm/sec; Serial - *3 Port; USB Host - USB Host 1Port(USB2.0) USB OTG - USB OTG 1Port(USB2.0) HDMI - HDMI 1.4 1080P@60FPS; Cash draw input - 24v TF card - (micro SD card)*1.",
+       "description": "Operating system - Android 8.1 or higher; CPU - Allwinner A40i 1.2Hz Quad-core ARM Cortex-A7 MPCore; LCD - 10.1”(1024*600); Touch - Capacitive Touch; Printer - 3’’ Thermal/auto cut/200mm/sec; Serial - *3 Port; USB Host - USB Host 1Port(USB2.0) USB OTG - USB OTG 1Port(USB2.0) HDMI - HDMI 1.4 1080P@60FPS; Cash draw input - 24v TF card - (micro SD card)*1.",
        "price":170000,
        "leftImage":"/assets/images/terminalProductRotate180.png",
        "topImage":"/assets/images/terminalImgProduct.png",

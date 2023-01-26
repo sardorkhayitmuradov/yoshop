@@ -10,7 +10,7 @@ import WhatsAppIcon from '../public/assets/images/whatsapp.svg';
 
 const Footer = () => {
   return (
-    <footer className="py-[30px] border-t-white border-t-[2px]">
+    <footer className="py-[30px]">
       <div className="site-container">
         <ul className="footer-list flex items-center justify-between">
           <li className="footer-items">
@@ -18,7 +18,7 @@ const Footer = () => {
               <Image src={LogoImage} alt="site-logo" width={185} height={65} className="mb-[30px]" />
             </Link>
               <p className="mb-[21px] font-PoppinsSemibold leading-[180%]">Connect</p>
-              <div className="footer-social-lists flex items-center justify-between max-w-[233px] w-full">
+              <div className="footer-social-lists flex items-center justify-between max-w-[235px] w-full">
                 <Link href={'/'} >
                   <Image src={FacebookIcon} alt="site-social Image" width={24} height={24} />
                 </Link>

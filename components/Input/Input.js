@@ -19,7 +19,7 @@ const Input = ({
         <label htmlFor={name} className={labelClassName}>
           {labelValue}
         </label>
-      ) : (
+      ) : ( 
         ""
       )}
       <input
