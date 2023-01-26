@@ -1,16 +1,16 @@
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import Input from "../../components/Input/Input";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import EquipmentCard from "../../components/EquipmentCard/EquipmentCard";
 import Button from "../../components/Button/Button";
-import Image from "next/image";
-import shopIcon from '../../public/assets/images/shopIcon.png'
+import shopIcon from '../../public/assets/images/bascet.svg'
 import GuaranteeIcon from '../../public/assets/images/badge-check.svg'
 import TruckIcon from '../../public/assets/images/truck.svg'
 import SaveIcon from '../../public/assets/images/save-as.svg'
 import DesktopIcon from '../../public/assets/images/desktop-computer.svg'
-import { productSelectors } from "../../constants/productSelectors";
+// import { productSelectors } from "../../constants/productSelectors";
 import {equipments} from '../../constants/equipments'
 // import { useTranslation } from "react-i18next";
 
@@ -18,9 +18,10 @@ const Equipment = () => {
   // const {t} = useTranslation()
   const [town , setTown] = useState('');
   const [number, setNumber] = useState("");
+  console.log(equipments.category);
   return (
     <main>
-      <section className={`pt-[87px] pb-[150px] bg-[url("../public/assets/images/equpment.png")] bg-no-repeat bg-[right_1rem_top_3rem]`}>
+      <section className={`pt-[150px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-no-repeat bg-[right_0.5rem_bottom_4.5rem] bg-cover`}>
         <div className={`max-w-[1292px] mx-auto w-full`}>
           <div className="max-w-[1204px] mx-auto w-full pt-[34px]">
               <h2 className="font-PoppinsBold text-[44px] leading-[140%] mb-[26px]">Equipments for your shop</h2>
@@ -28,11 +29,11 @@ const Equipment = () => {
               </p>
               <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px]">
   
-                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#98989C] w-full py-[20px] pl-[30px] placeholder:text-[#98989C] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[20px] bg-[#F1F1F1]'} placeholder={'Enter a your Town'} value={town} onGetValue={(value)=> setTown(value)}  />
+                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={'Enter a your Town'} value={town} onGetValue={(value)=> setTown(value)}  />
                   
-                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#98989C] w-full py-[20px] pl-[30px] placeholder:text-[#98989C] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[20px] bg-[#F1F1F1]'} placeholder={'Enter a phone number'} value={number} onGetValue={(value) => setNumber(value)} />
+                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={'Enter a phone number'} value={number} onGetValue={(value) => setNumber(value)} />
               
-                  <Button className={'max-w-[232px] py-[20px] w-full bg-[#F97316] rounded-[20px] font-bold text-base leading-[140%] poppins'}>
+                  <Button className={'max-w-[232px] py-[20px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] poppins'}>
                   Order a call
                   </Button>
               </div>
@@ -56,22 +57,20 @@ const Equipment = () => {
       </section>
       <section>
         <div className="max-w-[1204px] mx-auto pt-[26px] pb-[150px]">
-          <select name="equipment" id="equipment" className="bg-transparent border-[1px] font-PoppinsRegular py-[10px] px-[32px] text-white mb-[70px]">
-            {
-              productSelectors.map(option=>{
-                return (
-                  <option key={option.value} value={option.value} className="bg-black border-none p-3 m-3 text-white">{option.name}</option>
-                )
-              })
-            }
-          </select>
-          <div className="gap-[30px] flex justify-between flex-wrap mb-[50px]">
+          <p className="max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]">
+            All 
+          </p>
+          <p className="max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]">
+            POS 
+          </p>
+
+          <div className="gap-[30px] grid grid-cols-3 mb-[50px]">
             {
               equipments.map(el => {
                 return (
                   <Link key={el.id} href={'/equipment/' + el.id}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>
-                      <Button className={'cursor-pointer text-[#FC7941] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y border-[#fff] mt-[20px] py-[16px] px-[22px] rounded-[10px]'} 
+                      <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[16px] px-[22px] rounded-[10px] text-[#F9F9FB]'} 
                         onClick={() => {
                           if (modalWindowBg.current.classList.contains("hidden")) {
                             modalWindowBg.current.classList.remove("hidden");
@@ -81,7 +80,7 @@ const Equipment = () => {
                           }
                         }}>
                           <Image src={shopIcon} alt="shop-icon" className="pr-2" />
-                          Add to cart{" "}
+                          Add to cart
                       </Button>
                     </ProductCard>
                   </Link>

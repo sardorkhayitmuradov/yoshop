@@ -4,15 +4,15 @@ import Image from 'next/image'
 
 const ProductCard = ({image , title , price ,children}) => {
   return (
-    <div className="max-w-[380px] flex justify-between flex-col">
-        <div className="py-[60px] px-[30px] bg-[#24242C] min-h-[560px] flex justify-center items-center">
+    <div className="max-w-[380px] flex justify-between h-full flex-col text-[#111827]">
+        <div className="py-[60px] px-[30px] bg-[#E2E8F0] min-h-[560px] flex justify-center items-center">
           <Image src={image} alt="card-img" width={300} height={300} objectFit='contain' />
         </div>
         <div>
-          <p className="font-[400] text-[16px] text-[#fff] mt-[20px]">
+          <p className="font-[400] text-[16px] mt-[20px]">
           {title}
           </p>
-          <p className="font-[400] text-[14px] text-[#fff] mt-[10px]">
+          <p className="font-[400] text-[14px] mt-[10px]">
           ₸ {price}
           </p>
         </div>
