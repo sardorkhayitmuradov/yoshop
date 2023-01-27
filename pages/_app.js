@@ -3,6 +3,7 @@ import { SessionProvider } from 'next-auth/react'
 import { useRouter } from 'next/router';
 import { appWithTranslation } from 'next-i18next';
 import Layout from '../components/layout';
+import ModalProvider from "../context/modal";
 import '../styles/globals.css'
 
 function App({ Component, pageProps }) {
@@ -11,7 +12,7 @@ function App({ Component, pageProps }) {
   if(router.pathname === '/404') return <Component {...pageProps} />;
 
   return (
-
+    <ModalProvider>
         <SessionProvider session={pageProps.session}>
           <NextSeo
               title='YoShop'
@@ -22,7 +23,7 @@ function App({ Component, pageProps }) {
             <Component {...pageProps} />
           </Layout>
         </SessionProvider>
-
+      </ModalProvider>
   )
 }
 

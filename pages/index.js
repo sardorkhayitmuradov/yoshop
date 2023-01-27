@@ -18,6 +18,7 @@ import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg'
 import SecurityIcon from '../public/assets/images/securitysafe.svg'
 import PhoneCall from '../public/assets/images/phone.svg'
 import { licence } from '../constants/licence';
+import Modal from '../components/Modal';
 
 function Home() {
   // const router = useRouter();
@@ -40,6 +41,7 @@ function Home() {
   
   return (
     <main className='grow'>
+      <Modal />
       <section>
         <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
           <div className='flex justify-between items-center mb-[200px]'>

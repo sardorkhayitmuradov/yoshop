@@ -1,44 +1,52 @@
 import Image from "next/image"
-import LogoImage from '../public/assets/images/logo.svg';
 import Link from "next/link";
+import {useState , useContext } from "react";
+import { ModalContext } from "../context/modal";
+import LogoImage from '../public/assets/images/logo.svg';
 
 const Header = () => {
+  const { setVisible } = useContext(ModalContext);
+  const [selected, setSelected] = useState(0);
+  const handleClick = (linkNumber) => () => {
+    setSelected(linkNumber);
+  };
+
     return (
       <header className="py-3">      
         <div className="site-container flex items-center justify-between">
             
               <Link href={'/'}>
-                  <Image src={LogoImage} alt="site-logo" width={185} height={65} />   
+                  <Image src={LogoImage} alt="site-logo" width={185} height={65} onClick={handleClick(0)} />   
               </Link>
               <ul className="flex items-center max-w-[600px] w-full justify-between text-[14px] leading-[25px]">
                 <li>
-                  <Link href={'/licenses'}>
+                  <Link href={'/licenses'} onClick={handleClick(1)} className={`${selected == 1 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A]"}`}>
                     Licenses
                   </Link>
                 </li>
            
                 <li>
-                  <Link href={'/equipment'}>
+                  <Link href={'/equipment'} onClick={handleClick(2)} className={`${selected == 2 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
                     Equipment
                   </Link>
                 </li>
                 <li>
-                  <Link href={'/resources'}>
+                  <Link href={'/resources'} onClick={handleClick(3)} className={`${selected == 3 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
                     Resources
                   </Link>
                 </li>
                 <li>
-                  <Link href={'/company'}>
+                  <Link href={'/company'} onClick={handleClick(4)} className={`${selected == 4 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
                     Company
                   </Link>
                 </li>
                 <li>
-                  <Link href={'/community'}>
+                  <Link href={'/community'} onClick={handleClick(5)} className={`${selected == 5 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
                     Community
                   </Link>
                 </li>
                 <li>
-                  <Link href={'/contact'}>
+                  <Link href={'/contact'} onClick={handleClick(6)} className={`${selected == 6 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
                     Contact Us
                   </Link>
                 </li>
@@ -55,7 +63,8 @@ const Header = () => {
                 Login
               </Link>
               <button className="px-[20px] py-[8px] bg-[#7D66BB] text-white rounded-md">Sign Up</button>
-              <p className="header-cart">
+              <p className="cursor-pointer relative" onClick={()=> setVisible(true)}>
+                <span className="absolute -top-2 -right-4 bg-[#FF588A] text-[8px] leading-[16px] text-white rounded-[10px] w-[12px] h-[12px] flex items-center justify-center p-2">0</span>
                 Cart
               </p>
             </div>
