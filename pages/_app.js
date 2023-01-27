@@ -1,8 +1,8 @@
-import Layout from '../components/layout';
 import { NextSeo } from 'next-seo';
 import { SessionProvider } from 'next-auth/react'
 import { useRouter } from 'next/router';
 import { appWithTranslation } from 'next-i18next';
+import Layout from '../components/layout';
 import '../styles/globals.css'
 
 function App({ Component, pageProps }) {
