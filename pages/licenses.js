@@ -1,56 +1,75 @@
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 import Button from "../components/Button/Button";
 import TabTitle from "../components/TabTitle/TabTitle";
-import Input from "../components/Input/Input";
-import Modal from "../components/Modal";
-import ModalCancelIcon from '../public/assets/images/modalCancel.svg';
-// TABS
-import { YoShopMobileLicense, YoShopPOSLicense, AndroidPOSLicense, PC, POSMonoblock } from "../components/LicenceTabs";
+import EquipmentCard from "../components/EquipmentCard/EquipmentCard";
+// import Input from "../components/Input/Input";
+// import Modal from "../components/Modal";
+// import ModalCancelIcon from '../public/assets/images/modalCancel.svg';
+import GuaranteeIcon from '../public/assets/images/badge-check.svg';
+import SaveIcon from '../public/assets/images/save-as.svg';
+import DesktopIcon from '../public/assets/images/desktop-computer.svg';
+import shopIcon from "../public/assets/images/bascet.svg";
 
 const Licenses = () => {
   const [activeTab, setActiveTab] = useState("1");
   return (
     <section>
-      <Modal modalClassName={'pt-[50px] pb-[75px] px-[50px]'} modalWrapperClassName={'hidden'}>
-        <div className="max-w-[760px] w-full ml-auto flex items-center justify-between mb-[75px]">
-          <h2 className="font-PoppinsBold text-[40px] leading-[140%] corder-[#fff] text-[#0F172A]">
-            Get 30-day free trial
-          </h2>
-          <Image src={ModalCancelIcon} width={50} height={50} alt="modal cancel icon" />
-        </div>
-        <div className="mx-auto max-w-[428px] w-full">
-          <Input inputType={'text'} wrapperClassName={'w-full mb-[44px]'} inputClassName={'text-[#94A3B8] w-full py-[20px] pl-[16px] placeholder:text-[#94A3B8] placeholder:font-PoppinsRegular placeholder:text-[14px] placeholder:leading-[180%] outline-none border-solid border border-[#94A3B8] rounded-[8px] bg-[#fff]'} placeholder={'Enter a name'} />
-          <Input inputType={'tel'} wrapperClassName={'w-full mb-[44px]'} inputClassName={'text-[#94A3B8] w-full py-[20px] pl-[16px] placeholder:text-[#94A3B8] placeholder:font-PoppinsRegular placeholder:text-[14px] placeholder:leading-[180%] outline-none border-solid border border-[#94A3B8] rounded-[8px] bg-[#fff]'} placeholder={'Enter a phone number'} />
-          <Button className={'py-[16px] w-full bg-[#FC7941] rounded-[10px] font-bold text-xl leading-[140%] poppins'}>
-            Request access
+      <div className="site-container !pt-[70px]">
+        <h2 className="text-[44px] leading-[140%] text-[#0F172A] font-PoppinsBold mb-[30px]">Licenses and tariffs</h2>
+
+        <div className="flex items-center mb-[30px]">
+          <p className="font-PoppinsBold text-[#F36784] text-[32px] leading-[140%] mr-[25px]">Choose your license package or</p>
+          <Button className={'bg-[#7D66BB] border border-solid border-[#94A3B8] rounded-[10px] p-4 max-w-[361px] w-full font-PoppinsBold text-white text-[20px] leading-[140%]'}>
+            Get a free version
           </Button>
         </div>
-      </Modal>
-      <div className="site-container">
-        <h2 className="text-[32px] text-[#fff] font-[700] mt-[100px] mb-[40px]">Yoshop Licenses</h2>
 
-        <div className="tabTitleWrapp flex justify-center">
-          <TabTitle onClick={()=> setActiveTab("1")} titleWrappClassName={`w-[210px] py-[13px] px-[12px] ${activeTab == "1" ? "bg-[#FC7941]": "bg-[#2c2c2c]"} rounded-t-[10px] text-center cursor-pointer`}>
-            YoShop Mobile License
+        <div className="tabTitleWrapp flex justify-center mb-[25px]">
+          <TabTitle onClick={() => setActiveTab("1")} titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] ${activeTab == "1" ? "bg-[#FF588A] text-white" : "bg-[#D1D5DB] text-[#4B5563]"} rounded-t-[6px] text-center cursor-pointer`}>
+            Monthly
           </TabTitle>
-          <TabTitle onClick={()=> setActiveTab("2")} titleWrappClassName={`w-[210px] py-[13px] px-[12px] ${activeTab == "2" ? "bg-[#FC7941]": "bg-[#2c2c2c]"} rounded-t-[10px] text-center cursor-pointer`}>
-            YoShop POS License
+          <TabTitle onClick={() => setActiveTab("2")} titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] ${activeTab == "2" ? "bg-[#FF588A] text-white" : "bg-[#D1D5DB] text-[#4B5563]"} rounded-t-[6px] text-center cursor-pointer`}>
+            Semi-annual
           </TabTitle>
-          <TabTitle onClick={()=> setActiveTab("3")} titleWrappClassName={`w-[210px] py-[13px] px-[12px] ${activeTab == "3" ? "bg-[#FC7941]": "bg-[#2c2c2c]"} rounded-t-[10px] text-center cursor-pointer`}>
-            Android POS License
-          </TabTitle>
-          <TabTitle onClick={()=> setActiveTab("4")} titleWrappClassName={`w-[210px] py-[13px] px-[12px] ${activeTab == "4" ? "bg-[#FC7941]": "bg-[#2c2c2c]"} rounded-t-[10px] text-center cursor-pointer`}>
-            POS Monoblock
-          </TabTitle>
-          <TabTitle onClick={()=> setActiveTab("5")} titleWrappClassName={`w-[210px] py-[13px] px-[12px] ${activeTab == "5" ? "bg-[#FC7941]": "bg-[#2c2c2c]"} rounded-t-[10px] text-center cursor-pointer`}>
-            PC
+          <TabTitle onClick={() => setActiveTab("3")} titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] ${activeTab == "3" ? "bg-[#FF588A] text-white" : "bg-[#D1D5DB] text-[#4B5563]"} rounded-t-[6px] text-center cursor-pointer`}>
+            Annual
           </TabTitle>
         </div>
-
-        {
+        <div className="mb-24">
+          tabs outlet
+          {/* {
             activeTab == "2" && <YoShopPOSLicense /> || activeTab == "3" && <AndroidPOSLicense /> || activeTab == "4" && <POSMonoblock /> || activeTab == "1" && <YoShopMobileLicense /> || activeTab == "5" && <PC />
-        }
+        } */}
+        </div>
+
+        <h2 className="font-PoppinsBold text-[32px] text-[#111827] leading-[140%] mb-[40px]">The license price includes:</h2>
+
+        <div className="flex items-center justify-between w-full mb-20">
+          <EquipmentCard wrapperClassName={'max-w-[380px]'} image={GuaranteeIcon} >
+            Software warranty
+          </EquipmentCard>
+          <EquipmentCard wrapperClassName={'max-w-[380px]'} image={SaveIcon} >
+            Setup
+          </EquipmentCard>
+          <EquipmentCard wrapperClassName={'max-w-[380px]'} image={DesktopIcon} >
+            Remote technical support
+          </EquipmentCard>
+        </div>
+        
+          <div className="flex items-center justify-end">
+            <p className="mr-[30px] font-PoppinsBold text-[32px] leading-[140%] text-[#0F172A]">
+              TOTAL: ₸
+              <span>
+                0
+              </span>
+            </p>
+            <Button className={'cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'}
+            >
+              <Image src={shopIcon} alt="shop-icon" className="pr-2" width={35} height={35} />
+              Add to cart
+            </Button>
+          </div>
       </div>
     </section>
   );

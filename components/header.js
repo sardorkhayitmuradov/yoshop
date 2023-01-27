@@ -3,18 +3,20 @@ import Link from "next/link";
 import {useState , useContext } from "react";
 import { ModalContext } from "../context/modal";
 import LogoImage from '../public/assets/images/logo.svg';
+import Modal from "./Modal";
 
 const Header = () => {
-  const { setVisible } = useContext(ModalContext);
+  const { visible,setVisible } = useContext(ModalContext);
   const [selected, setSelected] = useState(0);
   const handleClick = (linkNumber) => () => {
     setSelected(linkNumber);
   };
 
     return (
-      <header className="py-3">      
+      <>
+      <Modal />
+        <header className="py-3">      
         <div className="site-container flex items-center justify-between">
-            
               <Link href={'/'}>
                   <Image src={LogoImage} alt="site-logo" width={185} height={65} onClick={handleClick(0)} />   
               </Link>
@@ -63,13 +65,14 @@ const Header = () => {
                 Login
               </Link>
               <button className="px-[20px] py-[8px] bg-[#7D66BB] text-white rounded-md">Sign Up</button>
-              <p className="cursor-pointer relative" onClick={()=> setVisible(true)}>
+              <p className="cursor-pointer relative" onClick={()=> setVisible(!visible)}>
                 <span className="absolute -top-2 -right-4 bg-[#FF588A] text-[8px] leading-[16px] text-white rounded-[10px] w-[12px] h-[12px] flex items-center justify-center p-2">0</span>
                 Cart
               </p>
             </div>
         </div>
-      </header>
+        </header>
+      </>
     )
 }
   

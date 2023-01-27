@@ -3,7 +3,7 @@ import React from 'react'
 
 const EquipmentCard = ({image ,children , wrapperClassName}) => {
   return (
-    <div className={`${wrapperClassName} w-full py-[20px] rounded-[10px] pl-[20px] bg-[#eeeff0] flex items-center`}>
+    <div className={`${wrapperClassName} w-full py-[20px] rounded-[10px] pl-[24px] bg-[#eeeff0] flex items-center`}>
         <div className='w-[80px] h-[80px] flex items-center bg-[#d8d9dc] rounded-full mr-[17px]'>
             <Image src={image} className='mx-auto' width={50} height={50} alt='equipment card image' />
         </div>

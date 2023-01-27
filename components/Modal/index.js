@@ -3,12 +3,10 @@ import Image from 'next/image';
 import { ModalContext } from '../../context/modal';
 import modalStickIcon from '../../public/assets/images/modalStick.svg'
 
-const Modal = ({ modalClassName, modalWrapperClassName, children }) => {
+const Modal = () => {
   const { visible, setVisible } = useContext(ModalContext);
   const modal = () => {
     setVisible(false)
-    console.log(visible);
-    console.log('modal clicked')
   }
 
   return (

@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import shopIcon from "../../public/assets/images/bascet.svg";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Button from "../../components/Button/Button";
 import { equipments } from '../../constants/equipments'
 import AccordionWrapper from "../../components/Accordion/Accordion";
 import Modal from "../../components/Modal";
+import shopIcon from "../../public/assets/images/bascet.svg";
   
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
