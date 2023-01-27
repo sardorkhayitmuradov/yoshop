@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Input from "../../components/Input/Input";
 import ProductCard from "../../components/ProductCard/ProductCard";
@@ -18,7 +18,45 @@ const Equipment = () => {
   // const {t} = useTranslation()
   const [town , setTown] = useState('');
   const [number, setNumber] = useState("");
-  console.log(equipments.category);
+  const [currentTab, setCurrentTab] = useState('all')
+  const [filteredProduct, setFilterProduct] = useState([])
+  const [category, setCategory] = useState([])
+
+  const filterCategories = () => {
+    let categories = ['all']
+    equipments.forEach((product) => {
+      categories.push(product.category.trim().toLowerCase())
+    });
+  // console.log(categories);
+    let uniqueCategories = [...new Set(categories)];
+    setCategory(uniqueCategories)
+  }
+
+  const handleUploadMore = () => {
+    setCurrentTab('all')
+    // window.scrollTo(0, 0);
+  }
+
+  const handleTab = (e) => {
+    let filteredProducts = []
+    equipments.forEach(pr => {
+      if(pr.category.trim().toLowerCase() == e.target.outerText.trim().toLowerCase()){
+        filteredProducts.push(pr)
+      }
+    })
+    setFilterProduct(filteredProducts)
+    setCurrentTab(e.target.outerText.trim().toLowerCase())
+  }
+
+  useEffect(() => {
+    return () => {
+      // window.scrollTo(0, 0)
+      filterCategories()
+      // filterProductsByCategories(currentTab)
+    };
+  }, [currentTab]);
+  
+
   return (
     <main>
       <section className={`pt-[150px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-no-repeat bg-[right_0.5rem_bottom_4.5rem] bg-cover`}>
@@ -33,7 +71,7 @@ const Equipment = () => {
                   
                   <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={'Enter a phone number'} value={number} onGetValue={(value) => setNumber(value)} />
               
-                  <Button className={'max-w-[232px] py-[20px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] poppins'}>
+                  <Button className={'max-w-[232px] py-[20px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] font-PromptBold'}>
                   Order a call
                   </Button>
               </div>
@@ -57,16 +95,46 @@ const Equipment = () => {
       </section>
       <section>
         <div className="max-w-[1204px] mx-auto pt-[26px] pb-[150px]">
-          <p className="max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]">
+          {/* <p className="max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]">
             All 
-          </p>
-          <p className="max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]">
-            POS 
-          </p>
+          </p> */}
+          <div className="flex items-center justify-between flex-wrap mb-16">
+            {
+              category.map((ct,i) => {
+                return(
+                  <p key={i} onClick={handleTab} className={ct == currentTab ? `max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]`:`max-w-[139px] cursor-pointer w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border capitalize leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]`}>
+                    {
+                      ct
+                    } 
+                  </p>
+
+                )
+              })
+            }
+          </div>
 
           <div className="gap-[30px] grid grid-cols-3 mb-[50px]">
             {
-              equipments.map(el => {
+              currentTab == 'all' ? equipments.map(el => {
+                return (
+                  <Link key={el.id} href={'/equipment/' + el.id}>
+                    <ProductCard image={el.image} title={el.title} price={el.price}>
+                      <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[16px] px-[22px] rounded-[10px] text-[#F9F9FB]'} 
+                        onClick={() => {
+                          if (modalWindowBg.current.classList.contains("hidden")) {
+                            modalWindowBg.current.classList.remove("hidden");
+                            modalWindowBg.current.classList.add("block");
+                            modalWindowInfo.current.classList.remove("hidden");
+                            modalWindowInfo.current.classList.add("block");
+                          }
+                        }}>
+                          <Image src={shopIcon} alt="shop-icon" className="pr-2" />
+                          Add to cart
+                      </Button>
+                    </ProductCard>
+                  </Link>
+                )
+              }) : filteredProduct.map(el => {
                 return (
                   <Link key={el.id} href={'/equipment/' + el.id}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>
@@ -88,7 +156,9 @@ const Equipment = () => {
               })
             }
           </div>
-          <p className="text-center border-b-[1px] w-[246px] mx-auto pb-[3px] cursor-pointer">upload more</p>
+          {
+            currentTab !== 'all' ? <p className="text-center text-[#FF588A] border-[#FF588A] border-b-[1px] w-[246px] mx-auto pb-[3px] cursor-pointer" onClick={handleUploadMore}>upload more</p> : ""
+          }
         </div>
       </section>
     </main>

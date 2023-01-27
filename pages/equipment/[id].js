@@ -1,42 +1,46 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router"
-import React, { useRef, useEffect, useState, Fragment } from "react";
-import Image from "next/image";
-import shopIcon from "../../public/assets/images/shopIcon.png";
+import React, { useRef, useState } from "react";
+import shopIcon from "../../public/assets/images/bascet.svg";
 import mobileLicense from "../../public/assets/images/mobileLicenseImg.png";
 import mobileLicense2 from "../../public/assets/images/mobileImg2.png";
-import circleIm1 from "../../public/assets/images/successIcon.png";
-import circleIm2 from "../../public/assets/images/setupIcon.png";
-import circleIm3 from "../../public/assets/images/monitorIcon.png";
+// import circleIm1 from "../../public/assets/images/successIcon.png";
+// import circleIm2 from "../../public/assets/images/setupIcon.png";
+// import circleIm3 from "../../public/assets/images/monitorIcon.png";
+// import { products } from "../../constants/products"
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Button from "../../components/Button/Button";
-import { products } from "../../constants/products"
+import { equipments } from '../../constants/equipments'
+import AccordionWrapper from "../../components/Accordion/Accordion";
   
 const Details = () => {
     const router = useRouter();
     const {id} = router.query
-    const [modalOpen, setModalOpen] = useState(false);
+    // const [modalOpen, setModalOpen] = useState(false);
   
   
 
-    const acTabRef = useRef();
-    const acContentRef = useRef();
-    const acTabRef2 = useRef();
-    const acContentRef2 = useRef();
-    const acTabRef3 = useRef();
-    const acContentRef3 = useRef();
-    const acSetting = useRef();
-    const acSetting2 = useRef();
-    const acSetting3 = useRef();
+    // const acTabRef = useRef();
+    // const acContentRef = useRef();
+    // const acTabRef2 = useRef();
+    // const acContentRef2 = useRef();
+    // const acTabRef3 = useRef();
+    // const acContentRef3 = useRef();
+    // const acSetting = useRef();
+    // const acSetting2 = useRef();
+    // const acSetting3 = useRef();
     const modalWindowBg = useRef();
     const modalWindowInfo = useRef();
 
-    const goToTop = () => {
-      window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-      });
-    };
+
+    // const goToTop = () => {
+    //   window.scrollTo({
+    //       top: 0,
+    //       behavior: "smooth",
+    //   });
+    // };
+    let emtyString = ""
 
     return (
       <>
@@ -45,7 +49,7 @@ const Details = () => {
           ref={modalWindowBg}
         ></div>
         <div
-          className="buyProductModalInfo ease-linear  duration-[300ms] hidden shadow-[0px_4px_4px_rgba(0, 0, 0, 0.25)] fixed z-20 bg-[#13131C] py-[50px] pb-[138px] px-[40px] min-h-[300px] w-[728px] right-0 top-[130px] rounded-[10px] border-y border-x border-solid border-[#fff]"
+          className="ease-linear  duration-[300ms] hidden shadow-[0px_4px_4px_rgba(0, 0, 0, 0.25)] fixed z-20 bg-[#13131C] py-[50px] pb-[138px] px-[40px] min-h-[300px] w-[728px] right-0 top-[130px] rounded-[10px] border-y border-x border-solid border-[#fff]"
           ref={modalWindowInfo}
         >
           <div className="modalInfoWrapp relative flex  justify-between">
@@ -131,51 +135,50 @@ const Details = () => {
         </div>
         <section className="pt-[87px]">       
           {
-            products.map(product=> {
+            equipments.map(product=> {
               if(product.id == id){
                 return(
-                  <div key={product.id} className="container max-w-7xl mx-auto bg-[#13131C] flex justify-between">
-                    <div className="w-[550px] flex flex-col">
-                      <div className="mainImgProducts max-w-[100%] h-[592px] border-solid border-x border-y  border-[#5E5E5E] flex justify-center items-center ">
+                  <div key={product.id} className="container max-w-7xl mx-auto text-black flex justify-between">
+                    <div className="w-[551px] flex flex-col">
+                      <div className="max-w-[100%] h-[532px] flex justify-center items-center mb-[70px]">
                         <div className="mainImgProductWrapp ">
-                          <Image src={product.topImage} alt="product-terminal" width={300} height={300} />
-                        </div>
-                      </div>
-          
-                      <div className="productSideImgWrapp flex justify-between  my-[20px]">
-                        <div className="leftSideImgWrapp w-[270px] py-[70px] border-solid border-x border-y  border-[#5E5E5E] flex justify-center item-center">
-                          <Image src={product.leftImage} alt="product-img" width={200} height={200} />
-                        </div>
-                        <div className="rightSideImgWrapp w-[270px] py-[70px] border-solid  border-x border-y  border-[#5E5E5E] flex justify-center item-center">
-                          <Image src={product.rightImage} alt="product-img" width={200} height={200} />
-                        </div>
-                      </div>
-                      <div className="mainImgProducts max-w-[100%] h-[592px] border-solid border-x border-y  border-[#5E5E5E] flex justify-center items-center ">
-                        <div className="rotate100ImgProductWrapp ">
                           <Image src={product.image} alt="product-terminal" width={300} height={300} />
                         </div>
                       </div>
+          
+                      <ul className="w-full flex items-stretch justify-between">
+                        <li className="border border-solid border-[#606060] w-full flex items-center justify-center rounded-[10px] max-w-[175px]">
+                          <Image src={product.leftImage} alt="product-terminal" width={150} height={146} />
+                        </li>
+                        <li className="border border-solid border-[#606060] w-full flex items-center justify-center rounded-[10px] max-w-[175px]">
+                          <Image src={product.centerImage} alt="product-terminal" width={150} height={146} />
+                        </li>
+                        <li className="border border-solid border-[#606060] w-full flex items-center justify-center rounded-[10px] max-w-[175px]">
+                          <Image src={product.rightImage} alt="product-terminal" width={150} height={146} />
+                        </li>
+                      </ul>
+                      
                     </div>
   
-                    <div className="w-[550px]">
-                      <h2 className="productTitle text-white text-[40px] font-[700] leading-[140%]">
+                    <div className="w-[550px] font-PoppinsRegular">
+                      <h2 className="text-[40px] font-PoppinsBold leading-[140%] mb-[20px]">
                         {product.title}
                       </h2>
-                      <p className="productPrice mb-[54px]">₸ {product.price}</p>
+                      <p className="mb-[30px] text-[32px] leading-[140%]">₸ {product.price}</p>
           
-                      <div className="orderWrapp flex items-center justify-between">
-                        <span className="sizeWrapp bg-[#fff] flex justify-between max-w-[152px] items-center rounded-[10px]">
-                          <button className="decr py-[16px] px-[22px] text-[26px] text-[#4F46E5] font-[700] rounded-[10px]">
+                      <div className="flex items-center justify-between">
+                        <span className="flex justify-between max-w-[152px] items-center rounded-[10px] border border-solid border-[#7D66BB]">
+                          <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]">
                             -
                           </button>
-                          <span className="resultSize py-[16px] px-[14px] text-[16px] font-[400]  text-[#262626]">
+                          <span className="py-[10px] px-[14px] text-[16px] text-[#262626]">
                             1
                           </span>
-                          <button className="incr py-[16px] px-[22px] text-[26px] text-[#4F46E5] font-[700] rounded-[10px]">
+                          <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]">
                             +
                           </button>
                         </span>
-                        <Button className={'cursor-pointer text-[#FC7941] font-[700] text-[20px] flex justify-center items-center w-[360px] border-solid border-x border-y border-[#fff] py-[16px] px-[22px] rounded-[10px]'} 
+                        <Button className={'cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[16px] px-[22px] rounded-[10px]'} 
                           onClick={() => {
                             if (modalWindowBg.current.classList.contains("hidden")) {
                               modalWindowBg.current.classList.remove("hidden");
@@ -184,17 +187,38 @@ const Details = () => {
                               modalWindowInfo.current.classList.add("block");
                             }
                           }}>
-                            Add to cart{" "}
-                            <Image src={shopIcon} alt="shop-icon" className="pl-2 " />
+                            <Image src={shopIcon} alt="shop-icon" className="pr-2" width={40} height={40} />
+                            Add to cart
                         </Button>
                       </div>
-                      <h2 className="acardionTitle my-9 font-[700] text-[24px] text-white">
-                        {" "}
+                      <h2 className="my-9 font-PoppinsBold text-[24px] leading-[140%]">
                         Product information
                       </h2>
           
                       {/* acardion */}
-                      <div className="acardion_wrapp mt-6 text-white">
+                      <AccordionWrapper title={'Main Specifications'} content={product.mainSpecification} />
+                      {
+                        product.addInfo ? 
+                        <>
+                          <AccordionWrapper title={'02 Additional information'} content={product.addInfo} /> 
+                          <AccordionWrapper title={'03 Fiscalization of monetary transactions:'} content={product.transactions} /> 
+                        </> : emtyString
+                      }
+                      {
+                        product.description ? 
+                        <>
+                        <AccordionWrapper title={'Description'} content={product.description} /> 
+                        <AccordionWrapper title={'Network'} content={product.network} /> 
+                        </> : emtyString
+                      }
+                      {
+                        product.features ? <AccordionWrapper title={'Features'} content={product.features} /> : emtyString
+                      }
+                      {
+                        product.dimensions ? 
+                        <AccordionWrapper title={'Dimensions'} content={product.dimensions} /> : emtyString
+                      }
+                      {/* <div className="acardion_wrapp mt-6">
                         <div className="accardionItem border-y border-solid border-[#5E5E5E]">
                           <div
                             className="acardion_tab cursor-pointer py-[26px] font-[700] text-[20px] flex justify-between"
@@ -211,7 +235,7 @@ const Details = () => {
                               }
                             }}
                           >
-                            <h2 className="acItemTitle">Main Specifications</h2>
+                            <h2 className="font-PoppinsBold text-[20px] leading-[140%]">Main Specifications</h2>
                             <span
                               className="acSetting ease-linear  duration-[300ms]"
                               ref={acSetting}
@@ -223,7 +247,7 @@ const Details = () => {
                             className="ac_content max-h-[290px] overflow-hidden ease-linear  duration-[300ms]"
                             ref={acContentRef}
                           >
-                            <p className="max-w-[240px] text-[#fff] pb-3 font-[400] text-[16px] leading-[25px]">
+                            <p className="max-w-[240px] pb-3 font-[400] text-[16px] leading-[25px]">
                               {product.description}
                             </p>
                           </div>
@@ -244,7 +268,7 @@ const Details = () => {
                             }}
                             ref={acTabRef2}
                           >
-                            <h2 className="acItemTitle"> 02 Additional information</h2>
+                            <h2 className="font-PoppinsBold text-[20px] leading-[140%]"> 02 Additional information</h2>
                             <span
                               className="acSetting ease-linear  duration-[300ms]"
                               ref={acSetting2}
@@ -277,7 +301,7 @@ const Details = () => {
                             }}
                             ref={acTabRef3}
                           >
-                            <h2 className=" 02 Additional information">
+                            <h2 className="font-PoppinsBold text-[20px] leading-[140%]">
                               03 Fiscalization of monetary transactions:
                             </h2>
                             <span
@@ -296,35 +320,7 @@ const Details = () => {
                             </p>
                           </div>
                         </div>
-                      </div>
-                      <div className="moreOptWrapp flex flex-col mt-[70px]">
-                        <div className="mordeOptCard rounded-[5px] w-[280px] mb-[39px] h-[120px] pl-[20px] bg-[#ffffff06] flex items-center justify-between">
-                          <div className="circleImg w-[80px] h-[80px] rounded-[50%] bg-[#ffffff08]  flex items-center justify-center">
-                            <Image src={circleIm1} alt="img" />
-                          </div>
-                          <h2 className="circleCardTitle w-[160px] font-[700] text-[18px] text-[#ffffff25]">
-                            гарантия на оборудование 12 месяцев
-                          </h2>
-                        </div>
-          
-                        <div className="mordeOptCard rounded-[5px] mb-[19px] w-[280px] h-[120px] pl-[20px] bg-[#ffffff06] flex items-center justify-between">
-                          <div className="circleImg w-[80px] h-[80px] rounded-[50%] bg-[#ffffff08]  flex items-center justify-center">
-                            <Image src={circleIm2} alt="img" />
-                          </div>
-                          <h2 className="circleCardTitle w-[160px] font-[700] text-[18px] text-[#ffffff25]">
-                            Setup
-                          </h2>
-                        </div>
-          
-                        <div className="mordeOptCard rounded-[5px] w-[280px] h-[120px] pl-[20px] bg-[#ffffff06] flex items-center justify-between">
-                          <div className="circleImg w-[80px] h-[80px] rounded-[50%] bg-[#ffffff08]  flex items-center justify-center">
-                            <Image src={circleIm3} alt="img" />
-                          </div>
-                          <h2 className="circleCardTitle w-[160px] font-[700] text-[18px] text-[#ffffff25]">
-                            Удаленная тех поддержка
-                          </h2>
-                        </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 )
@@ -335,15 +331,15 @@ const Details = () => {
   
         <section className="pt-[150px] pb-[230px]">
           <div className="container max-w-7xl mx-auto min-h-[100vh]">
-            <h2 className="recomendProductTitle mt-9 mb-[40px] font-[700] text-[32px] text-white">
+            <h2 className="recomendProductTitle mt-9 mb-[40px] font-[700] text-[32px]">
               You may be interested in
             </h2>
   
             <div className="flex justify-between flex-wrap gap-[30px]">
               {
-                products.map(el=> {
+                equipments.map(el=> {
                   return(
-                    <Link  href={'/equipment/' + el.id} key={el.id} className="cursor-pointer">
+                    <Link href={'/equipment/' + el.id} key={el.id} className="cursor-pointer">
                       <ProductCard image={el.image} title={el.title} price={el.price} />
                     </Link>
                   )

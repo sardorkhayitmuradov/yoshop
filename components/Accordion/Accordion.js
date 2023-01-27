@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
-import PlusIcon from '../../public/assets/images/plus.svg'
-import CancelIcon from '../../public/assets/images/cancel.svg'
+import React from 'react';
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-headless-accordion";
+// import Image from 'next/image';
+// import PlusIcon from '../../public/assets/images/plus.svg'
+// import CancelIcon from '../../public/assets/images/cancel.svg'
 
-const Accordion = ({ title, content }) => {
-    const [expanded, setExpanded] = useState(false);
-    const toggleExpanded = () => setExpanded((current) => !current);
+const AccordionWrapper = ({ title, content }) => {
+
   return (
-    <div className="mb-[26px] py-[23px] pl-[42px] shadow-sm cursor-pointer bg-[#24242C] border-[1px] rounded-[10px] border-[#94A3B8] text-black" onClick={toggleExpanded}>
-      <div className="text-left items-center select-none flex justify-between">
-        <div className="mr-[208px]">{expanded ? <Image src={CancelIcon} width={20} height={20} alt='Cancel Icon' /> : <Image src={PlusIcon} width={20} height={20} alt='Plus Icon' />}</div>
-        <h5 className="poppins text-[20px] leading-[180%] text-[#F9F9FB] flex-1">
-          {title}
-        </h5>
-      </div>
-      <div className={`ml-[230px] overflow-hidden max-w-[582px] w-full transition-[max-height] duration-200 ease-in ${expanded ? "h-full" : "h-0"}`}>
-        <p className="text-start mb-[43px] poppins text-[18px] leading-[180%] text-[#F9F9FB]">
-          {content}
-        </p>
-      </div>
-    </div>
-  )
-}
+    <Accordion transition={{ duration: "300ms", timingFunction: "cubic-bezier(0, 0, 0.2, 1)" }} className='mb-[30px]'>
+      <AccordionItem>
+        {({ open }) => (
+          <>
+            <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+            <AccordionHeader className="w-full flex justify-between items-center text-gray-600 mb-[26px]">
+              <span className='font-PoppinsBold text-[20px] leading-[140%] text-[#111827]'>{title}</span>
+              <svg className={`w-6 h-6 ${!open ? '' : 'rotate-90'}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
+            </AccordionHeader>
 
-export default Accordion
+            <AccordionBody>
+              <div className="font-light text-left max-w-[314px] w-full">
+                {
+                  content
+                }
+              </div>
+            </AccordionBody>
+          </>
+        )}
+      </AccordionItem>
+    </Accordion>
+  );
+};
+
+export default AccordionWrapper;
