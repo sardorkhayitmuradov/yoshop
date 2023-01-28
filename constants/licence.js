@@ -9,7 +9,7 @@ export const licence = [
          "the maximum expansion of the range of goods sold",
          "significant savings in time and effort required for the operation of the store"
       ],
-      "image": "/assets/images/slider-image.jpg"
+      "image": "/assets/images/storeAutomation.jpg"
    },
    {
       "id": 1,
@@ -21,7 +21,7 @@ export const licence = [
          "the maximum expansion of the range of goods sold",
          "significant savings in time and effort required for the operation of the store"
       ],
-      "image": "/assets/images/slider2.jpg"
+      "image": "/assets/images/fullControlBusiness.jpg"
    },
    {
       "id": 1,
@@ -33,7 +33,7 @@ export const licence = [
          "the maximum expansion of the range of goods sold",
          "significant savings in time and effort required for the operation of the store"
       ],
-      "image": "/assets/images/slider3.jpg"
+      "image": "/assets/images/effectiveSalesManagement.jpg"
    },
    {
       "id": 1,
@@ -45,7 +45,7 @@ export const licence = [
          "the maximum expansion of the range of goods sold",
          "significant savings in time and effort required for the operation of the store"
       ],
-      "image": "/assets/images/slider-image.jpg"
+      "image": "/assets/images/extractingMaximumProfit.jpg"
    },
    {
       "id": 1,
@@ -57,6 +57,6 @@ export const licence = [
          "the maximum expansion of the range of goods sold",
          "significant savings in time and effort required for the operation of the store"
       ],
-      "image": "/assets/images/slider2.jpg"
+      "image": "/assets/images/absoluteSafeLegalBusiness.jpg"
    }
 ]; 

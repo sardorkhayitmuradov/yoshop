@@ -1,10 +1,11 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import Accordion from '../../Accordion/Accordion'
 import TickIcon from '../../../public/assets/images/tick.svg'
 import { CalculatorProduct } from '../../CalculatorProduct'
 
 export const Monthly = () => {
+    const [addItem , setAddItem] = useState(0);
   return (
     <>
         <Accordion title={

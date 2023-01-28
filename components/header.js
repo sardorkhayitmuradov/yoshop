@@ -13,12 +13,12 @@ const Header = () => {
   const handleClick = (linkNumber) => () => {
     setSelected(linkNumber);
   };
-  console.log(router.pathname)
+  
 
     return (
       <>
         <Modal />
-        <header className="py-3">      
+        <header className="py-3" id="#top">      
         <div className="site-container flex items-center justify-between">
               <Link href={'/'}>
                   <Image src={LogoImage} alt="site-logo" width={185} height={65} onClick={handleClick(0)} />   

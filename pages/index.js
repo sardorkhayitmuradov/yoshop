@@ -37,7 +37,7 @@ function Home() {
   };
 
   const [name , setName] = useState('');
-  const [number, setNumber] = useState()
+  const [number, setNumber] = useState();
   
   return (
     <main className='grow'>

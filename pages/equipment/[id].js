@@ -15,9 +15,6 @@ const Details = () => {
   const { id } = router.query;
   let emtyString = "";
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   // const goToTop = () => {
   //   window.scrollTo({
   //       top: 0,

@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+// import { useEffect, useCallback } from 'react';
 import { SessionProvider } from 'next-auth/react'
 import { useRouter } from 'next/router';
 import { appWithTranslation } from 'next-i18next';
