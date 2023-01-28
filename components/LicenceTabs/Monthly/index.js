@@ -22,7 +22,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Trading place</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 4 500</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'></span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -30,7 +30,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Admin</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 4 500</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'></span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -38,7 +38,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Cash zone</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 21 000 per additional</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 2 000 per additional</span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -46,7 +46,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Cashier</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 11 000 per additional</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 1 000 per additional</span>
                     </li>
                 </ul>
             </div>
@@ -67,7 +67,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Trading place</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 4 500</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'></span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -75,7 +75,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Admin</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 4 500</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'></span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -83,7 +83,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Cash zone</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 21 000 per additional</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 2 000 per additional</span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -91,7 +91,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Cashier</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 11 000 per additional</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 1 000 per additional</span>
                     </li>
                 </ul>
             </div>
@@ -112,7 +112,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Trading place</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 4 500</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'></span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -120,7 +120,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Admin</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 4 500</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'></span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -128,7 +128,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Cash zone</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 21 000 per additional</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 2 000 per additional</span>
                     </li>
                     <li className='flex items-center mb-[15px]'>
                         <div className='flex items-center max-w-[215px] w-full mr-[110px]'>
@@ -136,7 +136,7 @@ export const Monthly = () => {
                             <p className='font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]'>Cashier</p>
                         </div>
                         <CalculatorProduct/>
-                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 11 000 per additional</span>
+                        <span className='max-w-[201px] w-full ml-[95px] text-[16px] leading-[25px] font-PoppinsRegular'>₸ 1 000 per additional</span>
                     </li>
                 </ul>
             </div>
