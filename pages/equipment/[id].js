@@ -92,35 +92,62 @@ const Details = () => {
                     <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
 
                     {/* acardion */}
-                    <AccordionWrapper title={'Main Specifications'} content={product.mainSpecification} />
+                    <AccordionWrapper title={'Main Specifications'}>
+                      {product.mainSpecification}
+                    </AccordionWrapper>
                     {
                       product.addInfo ?
                         <>
-                          <AccordionWrapper title={'02 Additional information'} content={product.addInfo} />
                           <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                          <AccordionWrapper title={'03 Fiscalization of monetary transactions:'} content={product.transactions} />
+                          <AccordionWrapper title={'02 Additional information'}>
+                            {
+                              product.addInfo 
+                            }
+                          </AccordionWrapper>
+                          <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+                          <AccordionWrapper title={'03 Fiscalization of monetary transactions:'} >
+                            {
+                              product.transactions
+                            }
+                          </AccordionWrapper>
                         </> : emtyString
                     }
                     {
                       product.description ?
                         <>
                           <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                          <AccordionWrapper title={'Description'} content={product.description} />
+                          <AccordionWrapper title={'Description'} >
+                            {
+                              product.description
+                            }
+                          </AccordionWrapper>
                           <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                          <AccordionWrapper title={'Network'} content={product.network} />
+                          <AccordionWrapper title={'Network'}>
+                            {
+                              product.network
+                            }
+                          </AccordionWrapper>
                         </> : emtyString
                     }
                     {
                       product.features ? <>
                         <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                        <AccordionWrapper title={'Features'} content={product.features} />
+                        <AccordionWrapper title={'Features'} >
+                          {
+                            product.features
+                          }
+                        </AccordionWrapper>
                       </> : emtyString
                     }
                     {
                       product.dimensions ?
                         <>
                           <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                          <AccordionWrapper title={'Dimensions'} content={product.dimensions} />
+                          <AccordionWrapper title={'Dimensions'} >
+                            {
+                              product.dimensions
+                            }
+                          </AccordionWrapper>
                         </> : emtyString
                     }
                   </div>
