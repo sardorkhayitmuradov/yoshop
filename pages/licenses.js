@@ -16,7 +16,7 @@ const Licenses = () => {
   const [activeTab, setActiveTab] = useState("1");
   return (
     <section>
-      <div className="site-container !pt-[70px]">
+      <div className="site-container !pt-[70px] !pb-[150px]">
         <h2 className="text-[44px] leading-[140%] text-[#0F172A] font-PoppinsBold mb-[30px]">Licenses and tariffs</h2>
 
         <div className="flex items-center mb-[30px]">

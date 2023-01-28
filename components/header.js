@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Image from "next/image"
 import Link from "next/link";
 import {useState , useContext } from "react";
@@ -7,10 +8,12 @@ import Modal from "./Modal";
 
 const Header = () => {
   const { visible,setVisible } = useContext(ModalContext);
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState("/");
+  const router = useRouter()
   const handleClick = (linkNumber) => () => {
     setSelected(linkNumber);
   };
+  console.log(router.pathname)
 
     return (
       <>
@@ -22,33 +25,33 @@ const Header = () => {
               </Link>
               <ul className="flex items-center max-w-[600px] w-full justify-between text-[14px] leading-[25px]">
                 <li>
-                  <Link href={'/licenses'} onClick={handleClick(1)} className={`${selected == 1 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A]"}`}>
+                  <Link href={'/licenses'} onClick={handleClick("/licenses")} className={`${router.pathname == "/licenses" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2"}`}>
                     Licenses
                   </Link>
                 </li>
            
                 <li>
-                  <Link href={'/equipment'} onClick={handleClick(2)} className={`${selected == 2 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
+                  <Link href={'/equipment'} onClick={handleClick("/equipment")} className={`${router.pathname == "/equipment" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                     Equipment
                   </Link>
                 </li>
                 <li>
-                  <Link href={'/resources'} onClick={handleClick(3)} className={`${selected == 3 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
+                  <Link href={'/resources'} onClick={handleClick("/resources")} className={`${router.pathname == "/resources" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                     Resources
                   </Link>
                 </li>
                 <li>
-                  <Link href={'/company'} onClick={handleClick(4)} className={`${selected == 4 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
+                  <Link href={'/company'} onClick={handleClick("/company")} className={`${router.pathname == "/company" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                     Company
                   </Link>
                 </li>
                 <li>
-                  <Link href={'/community'} onClick={handleClick(5)} className={`${selected == 5 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
+                  <Link href={'/community'} onClick={handleClick("/community")} className={`${router.pathname == "/community" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                     Community
                   </Link>
                 </li>
                 <li>
-                  <Link href={'/contact'} onClick={handleClick(6)} className={`${selected == 6 ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 active:border-b-[2px] active:border-[#FF588A] hover:text-[#FF588A]"}`}>
+                  <Link href={'/contact'} onClick={handleClick("/contact")} className={`${router.pathname == "/contact" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                     Contact Us
                   </Link>
                 </li>
