@@ -10,6 +10,7 @@ import GuaranteeIcon from '../public/assets/images/badge-check.svg';
 import SaveIcon from '../public/assets/images/save-as.svg';
 import DesktopIcon from '../public/assets/images/desktop-computer.svg';
 import shopIcon from "../public/assets/images/bascet.svg";
+import { Monthly, Annual , SemiAnnual } from "../components/LicenceTabs";
 
 const Licenses = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -37,10 +38,9 @@ const Licenses = () => {
           </TabTitle>
         </div>
         <div className="mb-24">
-          tabs outlet
-          {/* {
-            activeTab == "2" && <YoShopPOSLicense /> || activeTab == "3" && <AndroidPOSLicense /> || activeTab == "4" && <POSMonoblock /> || activeTab == "1" && <YoShopMobileLicense /> || activeTab == "5" && <PC />
-        } */}
+          {
+            activeTab == "1" && <Monthly /> || activeTab == "2" && <SemiAnnual /> || activeTab == "3" && <Annual /> 
+          }
         </div>
 
         <h2 className="font-PoppinsBold text-[32px] text-[#111827] leading-[140%] mb-[40px]">The license price includes:</h2>

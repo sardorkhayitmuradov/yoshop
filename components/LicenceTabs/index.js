@@ -1,7 +1,5 @@
-import AndroidPOSLicense from "./AndroidPOSLicense";
-import PC from './PC'
-import POSMonoblock from "./POSMonoblock";
-import YoShopMobileLicense from "./YoShopMobileLicense";
-import YoShopPOSLicense from "./YoShopPOSLicense";
+import { Monthly } from "./Monthly";
+import { SemiAnnual } from "./SemiAnnual";
+import { Annual } from "./Annual";
 
-export {AndroidPOSLicense , PC, POSMonoblock, YoShopMobileLicense , YoShopPOSLicense};
+export {Monthly , SemiAnnual, Annual };

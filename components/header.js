@@ -14,7 +14,7 @@ const Header = () => {
 
     return (
       <>
-      <Modal />
+        <Modal />
         <header className="py-3">      
         <div className="site-container flex items-center justify-between">
               <Link href={'/'}>
