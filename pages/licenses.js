@@ -11,6 +11,15 @@ import SaveIcon from '../public/assets/images/save-as.svg';
 import DesktopIcon from '../public/assets/images/desktop-computer.svg';
 import shopIcon from "../public/assets/images/bascet.svg";
 import { Monthly, Annual , SemiAnnual } from "../components/LicenceTabs";
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps({locale}){
+  return{
+    props: {
+      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+    }
+  }
+}
 
 const Licenses = () => {
   const [activeTab, setActiveTab] = useState("1");

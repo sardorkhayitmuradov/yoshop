@@ -11,6 +11,15 @@ import locationAdressIcon from "../public/assets/images/locationIcon.svg";
 import AdressLocation from "../components/AdressLocation/AdressLocation";
 
 import InputCheckbox from "../components/InputCheckbox/InputCheckbox";
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps({locale}){
+  return{
+    props: {
+      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+    }
+  }
+}
 
 const Checkout = () => {
   // const [modalManage, setModalManage] = useState(false);

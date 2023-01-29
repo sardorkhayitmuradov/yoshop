@@ -2,6 +2,15 @@ import Accordion from '../components/Accordion/Accordion'
 import ResourcesCard from '../components/ResourcesCard/ResourcesCard'
 import { resourcesVideos } from '../constants/resourcesVideo'
 import { accordionData } from '../constants/resourcesAccordionData'
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps({locale}){
+  return{
+    props: {
+      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+    }
+  }
+}
 
 const Resources = () => {
   return (

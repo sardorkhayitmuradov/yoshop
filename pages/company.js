@@ -2,6 +2,15 @@ import React from 'react'
 import CompanyCard from '../components/CompanyCard/CompanyCard'
 import CompanyFinnexPurpose from '../public/assets/images/FinenexsPurpose.jpg'
 import IbexlabsVision from '../public/assets/images/IbexlabsVision.jpg'
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps({locale}){
+  return{
+    props: {
+      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+    }
+  }
+}
 
 const Company = () => {
   return (

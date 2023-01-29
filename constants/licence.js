@@ -12,7 +12,7 @@ export const licence = [
       "image": "/assets/images/storeAutomation.jpg"
    },
    {
-      "id": 1,
+      "id": 2,
       "title": "Full control business",
       "description": [
          "simple and intuitive interface",
@@ -24,7 +24,7 @@ export const licence = [
       "image": "/assets/images/fullControlBusiness.jpg"
    },
    {
-      "id": 1,
+      "id": 3,
       "title": "Effective sales management",
       "description": [
          "simple and intuitive interface",
@@ -36,7 +36,7 @@ export const licence = [
       "image": "/assets/images/effectiveSalesManagement.jpg"
    },
    {
-      "id": 1,
+      "id": 4,
       "title": "Extracting maximum profit",
       "description": [
          "simple and intuitive interface",
@@ -48,7 +48,7 @@ export const licence = [
       "image": "/assets/images/extractingMaximumProfit.jpg"
    },
    {
-      "id": 1,
+      "id": 5,
       "title": "Absolutely safe and legal business",
       "description": [
          "simple and intuitive interface",

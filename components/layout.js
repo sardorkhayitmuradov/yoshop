@@ -1,12 +1,13 @@
 import Header from './header'
 import Footer from './footer'
 
-const Layout = ({children}) => {
+const Layout = ({children , header , footer}) => {
+    // console.log(header)
     return (
         <>
-            <Header />
+            <Header headerLang={header} />
             {children}
-            <Footer />
+            <Footer footerLang={footer} headerLang={header} />
         </>
     )
   }

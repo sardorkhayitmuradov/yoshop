@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import Button from "../components/Button/Button";
 import NotFoundNavbarImage from '../public/assets/images/notfoundNavbar.svg';
 import NotFoundImage from '../public/assets/images/notFoundImage.png'
 import NotFoundUserImage from '../public/assets/images/notFoundUser.png'
+import Button from "../components/Button/Button";
 
 const NotFound = () => {
   return (
@@ -17,7 +17,7 @@ const NotFound = () => {
                   height={32}
               />
             </Link> 
-            <p className="poppins font-bold text-[56px] leading-[140%] text-[ #F9F9FB]">
+            <p className="poppins font-bold text-[56px] leading-[140%]">
                 404
             </p>
         </div>
@@ -38,13 +38,13 @@ const NotFound = () => {
               className="mb-5"
             />
             <div className="-ml-2">
-              <p className="poppins font-bold text-[56px] leading-[140%] text-[ #F9F9FB] mb-[41px]">
+              <p className="poppins font-bold text-[56px] leading-[140%] mb-[41px]">
                 404
               </p>
-              <p className="poppins font-bold text-[32px] leading-[140%] text-[ #F9F9FB] mb-[23px]">
+              <p className="poppins font-bold text-[32px] leading-[140%] mb-[23px]">
                 Oh No! Something went wrong
               </p>
-              <p className="poppins font-bold text-[24px] leading-[140%] text-[ #F9F9FB]">
+              <p className="poppins font-bold text-[24px] leading-[140%]">
                 Please try again later !
               </p>
             </div>

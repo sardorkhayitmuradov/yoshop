@@ -8,6 +8,15 @@ import { equipments } from '../../constants/equipments';
 import AccordionWrapper from "../../components/Accordion/Accordion";
 import Modal from "../../components/Modal";
 import shopIcon from "../../public/assets/images/bascet.svg";
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps({locale}){
+  return{
+    props: {
+      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+    }
+  }
+}
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);

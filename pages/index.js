@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
 // import { useRouter } from 'next/router';
-// import { UseTranslation } from 'next-i18next';
 import Button from '../components/Button/Button';
 import Input from '../components/Input/Input';
 import Arrowleft from '../public/assets/images/left.svg';
@@ -18,12 +17,21 @@ import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg'
 import SecurityIcon from '../public/assets/images/securitysafe.svg'
 import PhoneCall from '../public/assets/images/phone.svg'
 import { licence } from '../constants/licence';
-import Modal from '../components/Modal';
+import { useTranslation } from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps({locale}){
+  return{
+    props: {
+      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+    }
+  }
+}
 
 function Home() {
   // const router = useRouter();
-  // const { t } = useTranslation("");
   // const {locale ,   locales , push} = useRouter()
+  const { t } = useTranslation();
   const [value, setValue] = useState(0);
   const [oneLicence, setOneLicene] = useState([licence[0]])
   const handleChange = (event) => {
@@ -46,12 +54,10 @@ function Home() {
           <div className='flex justify-between items-center mb-[200px]'>
             <div className='max-w-[567px] w-full'>
               <p className='mb-[25px] max-w-[399px] w-full text-[18px] leading-[180%] font-PoppinsRegular'>
-                Multifunctional inventory software that allows you to fully
-                automate the work of the store
+                {t("home:mult_int_title")}
               </p>
-
               <h2 className='mb-[40px] text-[56px] text-[#FF588A] font-PoppinsBold leading-[120%]'>
-                Use Your Phone as a POS Terminal
+                {t("home:use_tech")}
               </h2>
 
               <Button
@@ -59,7 +65,7 @@ function Home() {
                   'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-PoppinsBold text-white'
                 }
               >
-                Try for free
+                {t("home:try_free")}
               </Button>
             </div>
           </div>

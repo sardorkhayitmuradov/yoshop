@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
 import Input from '../components/Input/Input';
 import Button from '../components/Button/Button';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps({locale}){
+  return{
+    props: {
+      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+    }
+  }
+}
 
 const Contact = () => {
   const [userName, setUserName] = useState('');
