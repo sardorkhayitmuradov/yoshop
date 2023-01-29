@@ -8,13 +8,6 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import Layout from '../components/layout';
 import ModalProvider from "../context/modal";
 import '../styles/globals.css'
-import { Inter } from '@next/font/google'
-
-const inter = Inter({
-  weight: ['400', '500'],
-  style: 'normal',
-  subsets: ['cyrillic'],
-})
 
 export async function getStaticProps({locale}){
   return{
