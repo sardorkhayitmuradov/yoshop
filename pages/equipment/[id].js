@@ -9,16 +9,6 @@ import AccordionWrapper from "../../components/Accordion/Accordion";
 import shopIcon from "../../public/assets/images/bascet.svg";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 
-// export async function getStaticPaths() {
-//   const paths = equipments.map((pr) => ({
-//     params: { id: `${pr.id }`},
-//   }))
-//   return {
-//     paths, 
-//     fallback: true
-//   }
-// }
-
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
