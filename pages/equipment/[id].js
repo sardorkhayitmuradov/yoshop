@@ -1,22 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Button from "../../components/Button/Button";
 import { equipments } from '../../constants/equipments';
 import AccordionWrapper from "../../components/Accordion/Accordion";
-import Modal from "../../components/Modal";
 import shopIcon from "../../public/assets/images/bascet.svg";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 
-export async function getStaticProps({locale}){
-  return{
-    props: {
-      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
-    }
-  }
-}
+// export async function getStaticPaths() {
+//   const paths = equipments.map((pr) => ({
+//     params: { id: `${pr.id }`},
+//   }))
+//   return {
+//     paths, 
+//     fallback: true
+//   }
+// }
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
@@ -188,3 +189,17 @@ const Details = () => {
 };
 
 export default Details;
+
+export async function getStaticProps({locale}){
+  return{
+    props: {
+      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+    }
+  }
+}
+export const getStaticPaths = () => {
+  return {
+      paths: [], //indicates that no page needs be created at build time
+      fallback: true //indicates the type of fallback
+  }
+}
