@@ -15,7 +15,7 @@ const Contact = () => {
   const [userName, setUserName] = useState('');
   return (
     <main>
-      <section className='pt-[87px] pb-[75px]'>
+      <section className='pt-[100px] pb-[75px]'>
         <div className="site-container">
           <h1 className='text-center poppins font-bold text-[44px] leading-[140%] mb-[44px]'>Contact</h1>
           <div className='flex items-center justify-between'>

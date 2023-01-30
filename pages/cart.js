@@ -12,8 +12,7 @@ export async function getStaticProps({locale}){
   }
 }
 const Cart = () => {
-    return <>
-    
+    return <> 
     <section className="min-h-[90vh]">
         <div className="container max-w-7xl mx-auto">
           <h2 className="checkoutPageTitle font-[700] text-[#fff] text-center my-10 text-[32px]">
@@ -75,13 +74,6 @@ const Cart = () => {
           </div>
         </div>
       </section>
-    
-    
-    
-    
-    
-    
-    
     </>;
   };
 

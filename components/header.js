@@ -1,21 +1,28 @@
 import Image from "next/image"
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { useTranslation } from 'next-i18next';
 import { LanguageSwitcher } from "./Language-switcher";
-import {useState , useContext } from "react";
 import { ModalContext } from "../context/modal";
 import Modal from "./Modal";
 import LogoImage from '../public/assets/images/logo.svg';
 
-const Header = ({headerLang}) => {
+const Header = () => {
   const { visible,setVisible } = useContext(ModalContext);
-  const router = useRouter()
-  let {licenses, equipment, resources, company, cummunity ,contact , login ,signup , cart} = headerLang
-  
+  const router = useRouter();
+  const { t } = useTranslation();
+
+  // const { pathname, asPath, query } = router
+
+  // const handleLang = (e) => {
+  //   console.log({ pathname, query }, asPath, { locale: nextLocale });
+  // }
+
     return (
       <>
         <Modal />
-        <header className="py-3" id="#top">      
+        <header className="py-3 fixed top-0 w-full left-0 bg-white" id="#top">      
         <div className="site-container flex items-center justify-between">
               <Link href={'/'}>
                   <Image src={LogoImage} alt="site-logo" width={185} height={65}/>   
@@ -24,7 +31,7 @@ const Header = ({headerLang}) => {
                 <li>
                   <Link href={'/licenses'} className={`${router.pathname == "/licenses" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2"}`}>
                    {
-                    licenses
+                    t("header:licenses")
                    }
                   </Link>
                 </li>
@@ -32,35 +39,36 @@ const Header = ({headerLang}) => {
                 <li>
                   <Link href={'/equipment'} className={`${router.pathname == "/equipment" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                    {
-                    equipment
+                    t("header:equipment")
                    }
                   </Link>
                 </li>
                 <li>
                   <Link href={'/resources'} className={`${router.pathname == "/resources" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                    {
-                    resources
+                    t("header:resources")
                    }
                   </Link>
                 </li>
                 <li>
                   <Link href={'/company'}  className={`${router.pathname == "/company" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                    {
-                    company
+                    t("header:company")
+                    // 
                    }
                   </Link>
                 </li>
                 <li>
                   <Link href={'/community'} className={`${router.pathname == "/community" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                    {
-                    cummunity
+                    t("header:community")
                    }
                   </Link>
                 </li>
                 <li>
                   <Link href={'/contact'} className={`${router.pathname == "/contact" ? "p-2 border-b-[2px] border-[#FF588A]": "p-2 hover:text-[#FF588A]"}`}>
                    {
-                    contact
+                    t("header:contact")
                    }
                   </Link>
                 </li>
@@ -70,18 +78,18 @@ const Header = ({headerLang}) => {
               <LanguageSwitcher />
               <Link href={'/'}>
                 {
-                  login
+                    t("header:login")
                 }
               </Link>
               <button className="px-[20px] py-[8px] bg-[#7D66BB] text-white rounded-md">
                 {
-                  signup
+                    t("header:signup")
                 }
               </button>
               <p className="cursor-pointer relative" onClick={()=> setVisible(!visible)}>
                 <span className="absolute -top-2 -right-4 bg-[#FF588A] text-[8px] leading-[16px] text-white rounded-[10px] w-[12px] h-[12px] flex items-center justify-center p-2">0</span>
                   {
-                    cart
+                    t("header:cart")
                    }
               </p>
             </div>

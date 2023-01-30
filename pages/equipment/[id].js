@@ -15,6 +15,10 @@ const Details = () => {
   const { id } = router.query;
   let emtyString = "";
 
+  // // const {t} = useTranslation()
+  // const {pathname, asPath,route} = router
+  // console.log(router)
+
   // const goToTop = () => {
   //   window.scrollTo({
   //       top: 0,
@@ -24,7 +28,8 @@ const Details = () => {
 
   return (
     <>
-      <section className="pt-[87px]">
+      <div id="equipment"></div>
+      <section className="pt-[130px]">
         {
           equipments.map(product => {
             if (product.id == id) {
@@ -165,7 +170,7 @@ const Details = () => {
             {
               equipments.map(el => {
                 return (
-                  <Link href={'/equipment/' + el.id} key={el.id} className="cursor-pointer">
+                  <Link href={'/equipment/' + el.id+"#equipment"} key={el.id} className="cursor-pointer">
                     <ProductCard image={el.image} title={el.title} price={el.price} />
                   </Link>
                 );

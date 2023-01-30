@@ -14,7 +14,7 @@ export async function getStaticProps({locale}){
 
 const Company = () => {
   return (
-    <main>
+    <main className='pt-[100px]'>
       <section className='bg-[url("../public/assets/images/FinenexLTD.jpg")] bg-no-repeat bg-cover company-hero'>
         <div className='h-[824px] max-w-[1200px] mx-auto flex flex-col justify-end'>
           <h2 className='poppins font-bold text-[56px] leading-[120%] text-[#F9F9FB] mb-[40px]'>Finenex LTD</h2>

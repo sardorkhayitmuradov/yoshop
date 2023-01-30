@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 // import { useRouter } from 'next/router';
 import Button from '../components/Button/Button';
 import Input from '../components/Input/Input';
@@ -17,10 +17,11 @@ import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg'
 import SecurityIcon from '../public/assets/images/securitysafe.svg'
 import PhoneCall from '../public/assets/images/phone.svg'
 import { licence } from '../constants/licence';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next'
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router';
 
-export async function getStaticProps({locale}){
+export async function getServerSideProps({locale}){
   return{
     props: {
       ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
@@ -29,8 +30,9 @@ export async function getStaticProps({locale}){
 }
 
 function Home() {
-  // const router = useRouter();
-  // const {locale ,   locales , push} = useRouter()
+  const [name , setName] = useState('');
+  const [number, setNumber] = useState();
+  const router = useRouter()
   const { t } = useTranslation();
   const [value, setValue] = useState(0);
   const [oneLicence, setOneLicene] = useState([licence[0]])
@@ -43,12 +45,9 @@ function Home() {
       }
     })
   };
-
-  const [name , setName] = useState('');
-  const [number, setNumber] = useState();
   
   return (
-    <main className='grow'>
+    <main className='pt-[100px]'>
       <section>
         <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
           <div className='flex justify-between items-center mb-[200px]'>

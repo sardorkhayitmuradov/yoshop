@@ -18,7 +18,7 @@ const Community = () => {
 
   return (
     <main>
-      <section className='pt-[87px] pb-[250px]'>
+      <section className='pt-[100px] pb-[250px]'>
         <div className="site-container">
           <h2 className='poppins font-bold text-[44px] leading-[140%] text-[#F9F9FB] text-center mb-[71px]'>Сommunity on trade management in Kazakhstan</h2>
           <div className='flex flex-col gap-[80px]'>

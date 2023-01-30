@@ -14,7 +14,7 @@ export async function getStaticProps({locale}){
 
 const Resources = () => {
   return (
-    <main>
+    <main className='pt-[100px]'>
       <section className='py-[50px]'>
         <div className='mx-auto max-w-[1360px]'>
             <h2 className='poppins font-bold text-[44px] leading-[140%] text-[#F9F9FB] text-center mb-[24px]'>Resources</h2>
@@ -36,9 +36,11 @@ const Resources = () => {
         <h1 className='poppins font-bold text-[32px] leading-[140%] text-[#F9F9FB] text-center mb-[44px]'>FAQ</h1>
         <div className='max-w-[1152px] w-full mx-auto'>
           {
-            accordionData.map(accordion => {
+            accordionData.map((accordion, index) => {
                 return (
-                  <Accordion key={accordion.id} title={accordion.title} content={accordion.description} />
+                  <Accordion key={index} title={accordion.title}>
+                    {accordion.description}
+                  </Accordion>
                 )
             })
           }

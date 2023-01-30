@@ -7,10 +7,10 @@ import GithubIcon from '../public/assets/images/github.svg';
 import InboxIcon from '../public/assets/images/Inbox.svg';
 import TelegramIcon from '../public/assets/images/telegram.svg';
 import WhatsAppIcon from '../public/assets/images/whatsapp.svg';
+import { useTranslation } from "next-i18next";
 
-const Footer = ({ footerLang, headerLang }) => {
-  let { cummunity, company, contact, equipment, licenses, resources } = headerLang;
-  let {address ,connect ,rights_reserved } = footerLang
+const Footer = () => {
+  const {t} = useTranslation()
   return (
     <footer className="py-[30px]">
       <div className="site-container">
@@ -19,7 +19,7 @@ const Footer = ({ footerLang, headerLang }) => {
             <Link href={'/'}>
               <Image src={LogoImage} alt="site-logo" width={185} height={65} className="mb-[30px]" />
             </Link>
-            <p className="mb-[21px] font-PoppinsSemibold leading-[180%]">{connect}</p>
+            {/* <p className="mb-[21px] font-PoppinsSemibold leading-[180%]">{connect}</p> */}
             <div className="footer-social-lists flex items-center justify-between max-w-[235px] w-full">
               <Link href={'/'} >
                 <Image src={FacebookIcon} alt="site-social Image" width={24} height={24} />
@@ -43,31 +43,31 @@ const Footer = ({ footerLang, headerLang }) => {
           </li>
           <li className="footer-items max-w-[112px] w-full flex flex-col">
             <Link href={'/licenses'} className='font-PoppinsRegular text-base mb-[16px]'>
-              {licenses}
+              {t('header:licenses')}
             </Link>
             <Link href={'/equipment'} className='font-PoppinsRegular text-base mb-[16px]'>
-              {equipment}
+              {t('header:equipment')}
             </Link>
             <Link href={'/resources'} className='font-PoppinsRegular text-base mb-[16px]'>
-              {resources}
+            {t('header:resources')}
             </Link>
           </li>
           <li className="footer-items max-w-[112px] w-full flex flex-col">
             <Link href={'/company'} className='font-normal text-base mb-[16px]'>
-              {company}
+            {t('header:company')}
             </Link>
             <Link href={'/community'} className='font-normal text-base mb-[16px]'>
-              {cummunity}
+            {t('header:community')}
             </Link>
             <Link href={'/contact'} className='font-normal text-base mb-[16px]'>
-              {contact}
+            {t('header:contact')}
             </Link>
           </li>
           <li className="footer-items w-full max-w-[273px]">
             <h2 className="mb-[5px] text-xl font-normal">YoShop</h2>
-            <p className="text-sm font-PoppinsSemibold mb-[14px]">{rights_reserved}</p>
+            <p className="text-sm font-PoppinsSemibold mb-[14px]">{t("header:rights_reserved")}</p>
             <p className="text-sm font-PoppinsSemibold mb-[5px]">8 700 450 11 50</p>
-            <p className="text-sm font-PoppinsSemibold mb-[5px]">{address}</p>
+            <p className="text-sm font-PoppinsSemibold mb-[5px]">{t("header:address")}</p>
             <p className="text-sm font-PoppinsSemibold mb-[5px]">info@finenex.kz</p>
           </li>
         </ul>
