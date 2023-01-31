@@ -10,12 +10,11 @@ import shopIcon from "../../public/assets/images/bascet.svg";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 
 const Details = () => {
-  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { id } = router.query;
   let emtyString = "";
 
-  // // const {t} = useTranslation()
+  // const {t} = useTranslation()
   // const {pathname, asPath,route} = router
   // console.log(router)
 

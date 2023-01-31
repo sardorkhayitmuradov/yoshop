@@ -3,9 +3,9 @@ import Image from "next/image";
 import Input from "../components/Input/Input";
 import checkCircle from "../public/assets/images/check-circle1.png";
 import checkCircle2 from "../public/assets/images/check-circle2.png";
-import cartElipsImg from "../public/assets/images/Ellipse-2Big.png";
+// import cartElipsImg from "../public/assets/images/Ellipse-2Big.png";
 import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
-import Button from "../components/Button/Button";
+// import Button from "../components/Button/Button";
 import confrimSuccessImg from "../public/assets/images/modalSuccessInfo.png";
 import locationAdressIcon from "../public/assets/images/locationIcon.svg";
 import AdressLocation from "../components/AdressLocation/AdressLocation";
@@ -257,7 +257,7 @@ const Checkout = () => {
 
               <div className="flex justify-between items-center mt-[20px]">
                 <div className="cartPageImg relative flex items-center w-[60px] h-[60px]">
-                  <Image src={cartElipsImg} alt="elips" className="elipsImg" />
+                  {/* <Image src={cartElipsImg} alt="elips" className="elipsImg" /> */}
                   <Image
                     src={cartPrImg}
                     alt="product-Img"
