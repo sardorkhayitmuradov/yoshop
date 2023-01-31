@@ -1,5 +1,5 @@
 import Button from "../components/Button/Button";
-// import cartElipsImg from "../public/assets/images/Ellipse-2Big.png";
+// import cartElipsImg from "../public/assets/images/Ellipse-2Big.png"; 
 import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
 import Image from "next/image"
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'

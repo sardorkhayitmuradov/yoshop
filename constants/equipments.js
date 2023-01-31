@@ -1,4 +1,4 @@
-export const equipments = [
+export let equipments = [
     {
        "id": 1,
        "image": "/assets/images/centrem.png",
