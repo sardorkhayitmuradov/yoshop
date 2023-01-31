@@ -12,8 +12,8 @@ import DesktopIcon from '../public/assets/images/desktop-computer.svg';
 import shopIcon from "../public/assets/images/bascet.svg";
 import { Monthly, Annual , SemiAnnual } from "../components/LicenceTabs";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
-import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
+// import { useTranslation } from "next-i18next";
+// import { useRouter } from "next/router";
 
 export async function getStaticProps({locale}){
   return{
@@ -25,10 +25,10 @@ export async function getStaticProps({locale}){
 
 const Licenses = () => {
   const [activeTab, setActiveTab] = useState("1");
-  const router = useRouter()
+  // const router = useRouter()
   // const {t} = useTranslation()
-  const {pathname, asPath,route} = router
-  console.log(router)
+  // const {pathname, asPath,route} = router
+  // console.log(router)
   return (
     <section>
       <div className="site-container !pt-[120px] !pb-[150px]">

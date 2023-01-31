@@ -144,7 +144,7 @@ const Equipment = () => {
                 )
               }) : filteredProduct.map(el => {
                 return (
-                  <Link key={el.id} href={'/equipment/' + el.id}>
+                  <Link key={el.id} href={'/equipment/' + el.id+"#equipment"}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>
                       <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[16px] px-[22px] rounded-[10px] text-[#F9F9FB]'} 
                         onClick={() => {

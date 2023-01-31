@@ -41,7 +41,7 @@ const Cart = () => {
             </div>
             <div className="cartPageProductTitle">
               <h2 className="font-[700] text-[20px] text-[#fff] mt-7 ml-[40px]">
-                YoShop POS (К9 Centerm)
+                YoShop POS (K9 Centerm)
               </h2>
             </div>
         </div>

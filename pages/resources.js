@@ -17,8 +17,8 @@ const Resources = () => {
     <main className='pt-[100px]'>
       <section className='py-[50px]'>
         <div className='mx-auto max-w-[1360px]'>
-            <h2 className='poppins font-bold text-[44px] leading-[140%] text-[#F9F9FB] text-center mb-[24px]'>Resources</h2>
-            <p className='poppins text-[18px] leading-[180%] text-[#F9F9FB] text-center mb-[50px]'>
+            <h2 className='poppins font-bold text-[44px] leading-[140%] text-[#111827] text-center mb-[24px]'>Resources</h2>
+            <p className='poppins text-[18px] leading-[180%] text-[#111827] text-center mb-[50px]'>
               On this section you can find the questions you are interested in and instructional videos
             </p>
             <ul className='flex items-center justify-between flex-wrap gap-[40px]'>
@@ -33,7 +33,7 @@ const Resources = () => {
         </div>
       </section>
       <section className="py-[82px]">
-        <h1 className='poppins font-bold text-[32px] leading-[140%] text-[#F9F9FB] text-center mb-[44px]'>FAQ</h1>
+        <h1 className='poppins font-bold text-[32px] leading-[140%] text-[#111827] text-center mb-[44px]'>FAQ</h1>
         <div className='max-w-[1152px] w-full mx-auto'>
           {
             accordionData.map((accordion, index) => {
