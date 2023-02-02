@@ -24,15 +24,15 @@ import { useRouter } from 'next/router';
 export async function getServerSideProps({locale}){
   return{
     props: {
-      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+      ...(await serverSideTranslations(locale , ['common', 'header', 'footer'])),
     }
   }
-}
+};
 
 function Home() {
   const [name , setName] = useState('');
   const [number, setNumber] = useState();
-  const router = useRouter()
+  const router = useRouter();
   const { t } = useTranslation();
   const [value, setValue] = useState(0);
   const [oneLicence, setOneLicene] = useState([licence[0]])
@@ -53,10 +53,10 @@ function Home() {
           <div className='flex justify-between items-center mb-[200px]'>
             <div className='max-w-[567px] w-full'>
               <p className='mb-[25px] max-w-[399px] w-full text-[18px] leading-[180%] font-PoppinsRegular'>
-                {t("home:mult_int_title")}
+                {t("common:mult_int_title")}
               </p>
               <h2 className='mb-[40px] text-[56px] text-[#FF588A] font-PoppinsBold leading-[120%]'>
-                {t("home:use_tech")}
+                {t("common:use_tech")}
               </h2>
 
               <Button
@@ -64,7 +64,7 @@ function Home() {
                   'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-PoppinsBold text-white'
                 }
               >
-                {t("home:try_free")}
+                {t("common:try_free")}
               </Button>
             </div>
           </div>
@@ -94,10 +94,10 @@ function Home() {
       >
         <div className='mx-auto max-w-[1230px] w-full h-[750px] bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
           <h2 className='text-[38px] font-PromtLight leading-[57px] mb-[6px]'>
-            With a Yoshop license
+            {t('common:yoshop_licence')}
           </h2>
           <p className='text-base font-PromptRegular leading-[32px] uppercase opacity-60 mb-[100px]'>
-            you can use the phone as a pos terminal
+            {t('common:phone_terminal')}
           </p>
           {
             oneLicence.map((licenc)=>{
@@ -105,11 +105,12 @@ function Home() {
                 <div className='w-full' key={licenc.id}>
                   <div className='flex max-w-[960px] w-full justify-between'>
                     <ul className='max-w-[175px] w-full text-base leading-[20px] pt-[35px]'>
-                      <li className='mb-[30px] font-OverpassRegular'>Store automation</li>
-                      <li className='mb-[30px] font-OverpassRegular'>Full control business</li>
-                      <li className='mb-[30px] font-OverpassRegular'>Effective sales management</li>
-                      <li className='mb-[30px] font-OverpassRegular'>Extracting maximum profit</li>
-                      <li className="font-OverpassRegular">Absolutely safe and legal business</li>
+                      <li className='mb-[30px] font-OverpassRegular'>{t("common:store_automation")}</li>
+                      <li className='mb-[30px] font-OverpassRegular'>{t("common:full_control_business")}</li>
+                      <li className='mb-[30px] font-OverpassRegular'>{t("common:effective_sales_management")}</li>
+                      <li className='mb-[30px] font-OverpassRegular'>{t("common:sextract_min_profit")}</li>
+                      <li className="font-OverpassRegular">
+                      {t("common:absolute_safe_business")}</li>
                     </ul>
                     <ul>
                       <li className='text-5xl leading-[73px] mb-[10px] font-PromptBold'>
@@ -165,11 +166,12 @@ function Home() {
         <div className="mx-auto max-w-[1230px] w-full bg-[#EFF1FE] h-[352px] rounded-[20px] pt-[55px] pb-[30px] pl-[60px] pr-[56px] flex items-center justify-between">
           <div>
             <h2 className='text-[#0F172A] max-w-[521px] w-full font-PoppinsBold text-[40px] leading-[140%] mb-[30px]'>
-              <span className='bg-[#FF588A] rounded-md text-white'>Download</span> the mobile app and get <span className='bg-[#FF588A] rounded-md text-white'>1 month free,</span> then ₸ 3000 for month
+            {t("common:download_info")}
+            {/* <span className='bg-[#FF588A] rounded-md text-white'>Download</span> the mobile app and get <span className='bg-[#FF588A] rounded-md text-white'>1 month free,</span> then ₸ 3000 for month */}
             </h2>
             <div className='flex items-center justify-start'>
               <Image src={Users} className='mr-3' width={230} height={70} alt='people Image' />
-              <p className='text-[#000] font-normal text-xl font-PoppinsRegular'>Download by - 93K</p>
+              <p className='text-[#000] font-normal text-xl font-PoppinsRegular'>{t("common:download_users")}</p>
             </div>
           </div>
           <div className='flex flex-col text-white'>
@@ -187,7 +189,7 @@ function Home() {
       <section className='py-[75px]'>
           <div className="mx-auto max-w-[1200px] w-full poppins">
             <h2 className='text-[#111827] font-PoppinsBold text-[44px] leading-[140%] mb-[60px]'>
-              Yoshop will help you to improve your business
+            {t("common:improve_business")}
             </h2>
             <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px]">
               <li className='max-w-[300px] w-full py-[64px] px-[78px]'>
@@ -195,16 +197,26 @@ function Home() {
                   <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
                 </div>
                 <p className='max-w-[145px] w-full font-PoppinsBold text-2xl text-[#656974] leading-[140%]'>
-                  All types of payment
+                  {t("common:types_of_payment")}
                 </p>
               </li>
               <li className='max-w-[300px] w-full py-[64px] pl-[34px]'>
                 <ul className='text-[#0F172A] text-base font-PoppinsRegular gap-4 flex flex-col list-disc'>
-                  <li>Cards of all banks</li>
-                  <li>QR</li>
-                  <li>Apple Pay</li>
-                  <li>Samsung Pay</li>
-                  <li>Google Pay</li>
+                  <li>
+                  {t("common:bank_cards")}
+                  </li>
+                  <li>
+                  {t("common:qr")}
+                  </li>
+                  <li>
+                  {t("common:apple_pay")}
+                  </li>
+                  <li>
+                  {t("common:samsung_pay")}
+                  </li>
+                  <li>
+                  {t("common:google_pay")}
+                  </li>
                 </ul>
               </li>
               <li className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[28px] bg-[#FBF1F1]'>
@@ -212,7 +224,9 @@ function Home() {
                   <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
                 </div>
                 <p className='max-w-[198px] w-full font-PoppinsBold text-2xl text-[#656974] leading-[140%]'>
-                  Simple intuitive interface 
+                  {
+                    t('common:simple_int_interface')
+                  }
                 </p>
               </li>
               <li className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
@@ -220,7 +234,9 @@ function Home() {
                   <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
                 </div>
                 <p className='max-w-[168px] w-full font-PoppinsBold text-2xl text-[#656974] leading-[140%]'>
-                  Full store Report 
+                  {
+                    t('common:store_report')
+                  }
                 </p>
               </li>
             </ul>
@@ -230,13 +246,13 @@ function Home() {
                   <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
                 </div>
                 <p className='max-w-[145px] w-full font-PoppinsBold text-2xl text-[#656974] leading-[140%]'>
-                  Fiscalization
+                  {t('common:fiscalazition')}
                 </p>
               </li>
               <li className='max-w-[300px] w-full py-[64px] pl-[34px]'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc font-PoppinsRegular'>
-                  <li>Automatic issuance of a fiscal receipt</li>
-                  <li>Simple tax reporting</li>
+                  <li>{t('common:issuance')}</li>
+                  <li>{t('common:simple_tac_reporting')}</li>
                 </ul>
               </li>
               <li className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[50px] bg-[#FBF1F1]'>
@@ -244,7 +260,7 @@ function Home() {
                   <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
                 </div>
                 <p className='max-w-[173px] w-full font-PoppinsBold text-2xl text-[#656974] leading-[140%]'>
-                  Fully organize your store
+                {t('common:orginize_store')}
                 </p>
               </li>
               <li className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
@@ -252,7 +268,7 @@ function Home() {
                   <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
                 </div>
                 <p className='max-w-[173px] w-full font-PoppinsBold text-2xl text-[#656974] leading-[140%]'>
-                  Elimination of theft
+                {t('common:elimination_theft')}
                 </p>
               </li>
             </ul>
@@ -260,19 +276,21 @@ function Home() {
       </section>
       <section className={`bg-[url("../public/assets/images/makeBusinessWithYoshop.png")] h-[861px] bg-no-repeat w-full bg-top my-[70px] bg-cover`}>
         <div className='site-container'>
-          <h1 className='font-PoppinsBold text-[44px] text-[#111827] text-center leading-[140%] max-w-[801px] mx-auto'>Make your business comfortoble with YoShop</h1>
+          <h1 className='font-PoppinsBold text-[44px] text-[#111827] text-center leading-[140%] max-w-[801px] mx-auto'>{t("common:make_business")}</h1>
         </div>
       </section>
       <section className="py-[70px]">
           <div className='mx-auto max-w-[1200px] bg-[url("../public/assets/images/question-bg.png")] w-full bg-[#fff] pl-[44px] pt-[21px] rounded-[20px] pb-[33px] bg-no-repeat my-[70px] bg-cover'>
             <h3 className='font-PoppinsBold text-[32px] text-[#0F172A] text-center leading-[140%] mb-[40px] max-w-[460px] w-full'>
-               Do you have any questions? 
+            {t("common:questions")}
             </h3>
-            <Input inputType={'text'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:font-PoppinsRegular placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={'Enter a name'} value={name} onGetValue={setName} />
+            <Input inputType={'text'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:font-PoppinsRegular placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder=
+            {t("common:name")}
+             value={name} onGetValue={setName} />
 
-            <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:font-PoppinsRegular placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={'Enter a phone number'} value={number} onGetValue={setNumber} />
+            <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:font-PoppinsRegular placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={t('common:number')} value={number} onGetValue={setNumber} />
 
-            <Button className={'max-w-[500px] py-[20px] w-full bg-[#ff588a] text-white rounded-[10px] font-bold text-base leading-[140%] font-PoppinsBold'}>Order a call</Button>
+            <Button className={'max-w-[500px] py-[20px] w-full bg-[#ff588a] text-white rounded-[10px] font-bold text-base leading-[140%] font-PoppinsBold'}>{t('common:order_call')}</Button>
           </div>
       </section>
     </main>

@@ -1,22 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { equipments } from "../../constants/equipments";
+import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    products: equipments.map((product) => {
-        return {
-            ...product,
-            quantity: 1,
-            discount: 0
-        }
-    })
-};
-
+    cart: [],
+}
 
 export const CounterProductSlice = createSlice({
-    name: "productCounter",
+    name: "cart",
     initialState,
     reducers: {
-        incrementQuantity(state, action) {
+        addCart(state, action) {
             state.products = state.products.map(product => {
                 if (product.id === action.payload) {
                     product.quantity += 1;
@@ -24,7 +16,7 @@ export const CounterProductSlice = createSlice({
                 return product;
             });
         },
-        decrementQuantity(state, action) {
+        removeCart(state, action) {
             state.products = state.products.map(product => {
                 if (product.id === action.payload) {
                     product.quantity -= 1;

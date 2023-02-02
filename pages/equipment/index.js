@@ -12,19 +12,19 @@ import SaveIcon from '../../public/assets/images/save-as.svg'
 import DesktopIcon from '../../public/assets/images/desktop-computer.svg'
 // import { productSelectors } from "../../constants/productSelectors";
 import {equipments} from '../../constants/equipments'
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 
 export async function getStaticProps({locale}){
   return{
     props: {
-      ...(await serverSideTranslations(locale , ['home', 'header', 'footer'])),
+      ...(await serverSideTranslations(locale , ['common', 'header', 'footer'])),
     }
   }
 }
 
 const Equipment = () => {
-  // const {t} = useTranslation()
+  const {t} = useTranslation()
   const [town , setTown] = useState('');
   const [number, setNumber] = useState("");
   const [currentTab, setCurrentTab] = useState('all')
@@ -36,14 +36,13 @@ const Equipment = () => {
     equipments.forEach((product) => {
       categories.push(product.category.trim().toLowerCase())
     });
-  // console.log(categories);
     let uniqueCategories = [...new Set(categories)];
     setCategory(uniqueCategories)
+    console.log(uniqueCategories);
   }
 
   const handleUploadMore = () => {
     setCurrentTab('all')
-    // window.scrollTo(0, 0);
   }
 
   const handleTab = (e) => {
@@ -70,32 +69,32 @@ const Equipment = () => {
       <section className={`pt-[150px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-no-repeat bg-[right_0.5rem_bottom_4.5rem] bg-cover`}>
         <div className={`max-w-[1292px] mx-auto w-full`}>
           <div className="max-w-[1204px] mx-auto w-full pt-[34px]">
-              <h2 className="font-PoppinsBold text-[44px] leading-[140%] mb-[26px]">Equipments for your shop</h2>
-              <p className="font-PoppinsRegular text-[18px] leading-[180%] mb-[26px]">We will assemble a set of our license and equipment for them.
+              <h2 className="font-PoppinsBold text-[44px] leading-[140%] mb-[26px]">{t("common:equipment_shop")}</h2>
+              <p className="font-PoppinsRegular text-[18px] leading-[180%] mb-[26px]">{t("common:set")}
               </p>
               <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px]">
   
-                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={'Enter a your Town'} value={town} onGetValue={(value)=> setTown(value)}  />
+                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:town")} value={town} onGetValue={(value)=> setTown(value)}  />
                   
-                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={'Enter a phone number'} value={number} onGetValue={(value) => setNumber(value)} />
+                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:number")} value={number} onGetValue={(value) => setNumber(value)} />
               
                   <Button className={'max-w-[232px] py-[20px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] font-PromptBold'}>
-                  Order a call
+                  {t("common:order_call")}
                   </Button>
               </div>
-              <h3 className="font-PoppinsBold text-[32px] leading-[140%] mb-[40px]">With YoShop you get</h3>
+              <h3 className="font-PoppinsBold text-[32px] leading-[140%] mb-[40px]">{t("common:you_get")}</h3>
               <div className="flex items-center justify-between w-full">
                   <EquipmentCard wrapperClassName={'max-w-[280px]'} image={GuaranteeIcon} >
-                    Guarantee
+                  {t("common:guarantee")}
                   </EquipmentCard>  
                   <EquipmentCard wrapperClassName={'max-w-[280px]'} image={TruckIcon} >
-                    Delivery
+                  {t("common:delivery")}
                   </EquipmentCard>  
                   <EquipmentCard wrapperClassName={'max-w-[280px]'} image={SaveIcon} >
-                    Setup 
+                  {t("common:setup")}
                   </EquipmentCard>  
                   <EquipmentCard wrapperClassName={'max-w-[280px]'} image={DesktopIcon} >
-                    Technical Support
+                  {t("common:support")}
                   </EquipmentCard>  
               </div>
           </div>
@@ -103,9 +102,6 @@ const Equipment = () => {
       </section>
       <section>
         <div className="max-w-[1204px] mx-auto pt-[26px] pb-[150px]">
-          {/* <p className="max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]">
-            All 
-          </p> */}
           <div className="flex items-center justify-between flex-wrap mb-16">
             {
               category.map((ct,i) => {
@@ -137,7 +133,7 @@ const Equipment = () => {
                           }
                         }}>
                           <Image src={shopIcon} alt="shop-icon" className="pr-2" />
-                          Add to cart
+                          {t("common:add_cart")}
                       </Button>
                     </ProductCard>
                   </Link>
@@ -156,7 +152,7 @@ const Equipment = () => {
                           }
                         }}>
                           <Image src={shopIcon} alt="shop-icon" className="pr-2" />
-                          Add to cart
+                          {t("common:add_cart")}
                       </Button>
                     </ProductCard>
                   </Link>
@@ -165,7 +161,7 @@ const Equipment = () => {
             }
           </div>
           {
-            currentTab !== 'all' ? <p className="text-center text-[#FF588A] border-[#FF588A] border-b-[1px] w-[246px] mx-auto pb-[3px] cursor-pointer" onClick={handleUploadMore}>upload more</p> : ""
+            currentTab !== 'all' ? <p className="text-center text-[#FF588A] border-[#FF588A] border-b-[1px] w-[246px] mx-auto pb-[3px] cursor-pointer" onClick={handleUploadMore}>{t('common:load')}</p> : ""
           }
         </div>
       </section>
