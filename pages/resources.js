@@ -39,12 +39,32 @@ const Resources = () => {
         <h1 className='poppins font-bold text-[32px] leading-[140%] text-[#111827] text-center mb-[44px]'>{t("common:faq")}</h1>
         <div className='max-w-[1152px] w-full mx-auto'>
           {
-            accordionData.map((accordion, index) => {
-                return (
-                  <Accordion key={index} title={t("common:ques_inventory")}>
-                    {accordion.description}
-                  </Accordion>
+            accordionData.map((accordion) => {
+                if(accordion.id == 1){
+                  return (
+                    <Accordion key={accordion.id} title={t("common:ques_inventory")}>
+                      {accordion.description}
+                    </Accordion>
                 )
+                }else if(accordion.id == 2){
+                  return (
+                    <Accordion key={accordion.id} title={t("common:ques_payment")}>
+                      {accordion.description}
+                    </Accordion>
+                  )
+                }else if(accordion.id == 3){
+                  return (
+                    <Accordion key={accordion.id} title={t("common:ques_work")}>
+                      {accordion.description}
+                    </Accordion>
+                  )
+                }else if(accordion.id == 4){
+                  return (
+                    <Accordion key={accordion.id} title={t("common:ques_fees")}>
+                      {accordion.description}
+                    </Accordion>
+                  )
+                }
             })
           }
         </div>

@@ -11,7 +11,7 @@ export const accordionData = [
   },
   {
      id: 3,
-     title:"Does YoShop know how to work with labeled goods??",
+     title:"Does YoShop know how to work with labeled goods?",
      description:"We have a very favorable interest rate: from 1.9% for bank cards; 0.9% for Halyk QR; 0.95% for Kaspi QR."
   },
   {

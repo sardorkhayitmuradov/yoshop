@@ -12,7 +12,7 @@ const Modal = () => {
   return (
     <>
       <div
-        className={`${visible ? "z-10 fixed top-[-50px] w-full h-[120vh] bg-[#000000] opacity-60": "hidden" }`}
+        className={`${visible ? "z-10 fixed top-[-50px] w-full h-[120vh] opacity-60 bg-[#D9D9D9]": "hidden" }`}
         onClick={modal}
       ></div>
       <div
