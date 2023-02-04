@@ -8,10 +8,11 @@ import AccordionWrapper from "../../components/Accordion/Accordion";
 import shopIcon from "../../public/assets/images/bascet.svg";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import { useSelector , useDispatch } from "react-redux";
-import { incrementQuantity , decrementQuantity } from "../../redux/features/Products";
+import { addProducts , removeProducts } from "../../redux/features/carts";
 
 const Details = () => {
   const productsCounter = useSelector((store) => store.productCounter.products);
+  const products = useSelector((store) => store.carts.products);
   const dispatch = useDispatch();
   const router = useRouter();
   const { id } = router.query;
@@ -41,7 +42,7 @@ const Details = () => {
       <section className="pt-[130px]">
         {
           card?.map(product => {
-            const {id} = product
+            const foundProd = products.find((item) => item.id === product.id);
             return (
               <div key={product.id} className="container max-w-7xl mx-auto text-black flex justify-between">
                 <div className="w-[551px] flex flex-col">
@@ -69,27 +70,19 @@ const Details = () => {
                   <h2 className="text-[40px] font-PoppinsBold leading-[140%] mb-[20px]">
                     {product.title}
                   </h2>
-                  <p className="mb-[30px] text-[32px] leading-[140%]">₸ {product.price}</p>
+                  <p className="mb-[30px] text-[32px] leading-[140%]">₸ {foundProd?.price || 0}</p>
 
                   <div className="flex items-center justify-between">
                     <span className="flex justify-between max-w-[152px] items-center rounded-[10px] border border-solid border-[#7D66BB]">
-                      <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> dispatch(decrementQuantity(id))}>
+                      <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> dispatch(removeProducts(product))}>
                         -
                       </button>
-                        <p className="w-[20px]">{product.quantity}</p>
-                      <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> dispatch(incrementQuantity(id))}>
+                        <p className="w-[20px]">{foundProd?.qty || 0}</p>
+                      <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> dispatch(addProducts(product))}>
                         +
                       </button>
                     </span>
                     <Button className={'cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[16px] px-[22px] rounded-[10px]'}
-                    // onClick={() => {
-                    //   if (modalWindowBg.current.classList.contains("hidden")) {
-                    //     modalWindowBg.current.classList.remove("hidden");
-                    //     modalWindowBg.current.classList.add("block");
-                    //     modalWindowInfo.current.classList.remove("hidden");
-                    //     modalWindowInfo.current.classList.add("block");
-                    //   }
-                    // }}
                     >
                       <Image src={shopIcon} alt="shop-icon" className="pr-2" width={40} height={40} />
                       Add to cart

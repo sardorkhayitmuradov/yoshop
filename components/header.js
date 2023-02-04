@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { useTranslation } from 'next-i18next';
+import { useSelector } from "react-redux";
 import { LanguageSwitcher } from "./Language-switcher";
 import { ModalContext } from "../context/modal";
 import Modal from "./Modal";
@@ -12,6 +13,7 @@ const Header = () => {
   const { visible,setVisible } = useContext(ModalContext);
   const router = useRouter();
   const { t } = useTranslation();
+  const quantity = useSelector((store) => store.carts.quantity);
   // let arr =[]
   // let result = cartLicence.reduce((acc, item) => {
   //   acc[item.id] = item
@@ -23,7 +25,7 @@ const Header = () => {
     return (
       <>
         <Modal />
-        <header className="py-3 fixed z-50 top-0 w-full left-0 bg-white" id="#top">      
+        <header className="py-3 fixed top-0 w-full left-0 bg-white" id="#top">      
         <div className="site-container flex items-center justify-between">
               <Link href={'/'}>
                   <Image src={LogoImage} alt="site-logo" width={185} height={65}/>   
@@ -75,7 +77,7 @@ const Header = () => {
                 </li>
               </ul>
         
-            <div className="header-right flex items-center max-w-[340px] w-full justify-between text-[14px] leading-[25px]">
+            <div className="header-right flex items-center max-w-[380px] w-full justify-between text-[14px] leading-[25px]">
               <LanguageSwitcher />
               <Link href={'/'}>
                 {
@@ -88,7 +90,7 @@ const Header = () => {
                 }
               </button>
               <p className="cursor-pointer relative" onClick={()=> setVisible(!visible)}>
-                <span className="absolute -top-2 -right-4 bg-[#FF588A] text-[8px] leading-[16px] text-white rounded-[10px] w-[12px] h-[12px] flex items-center justify-center p-2">0</span>
+                <span className="absolute -top-2 -right-4 bg-[#FF588A] text-[8px] leading-[16px] text-white rounded-[10px] w-[12px] h-[12px] flex items-center justify-center p-2">{quantity}</span>
                   {
                     t("header:cart")
                    }

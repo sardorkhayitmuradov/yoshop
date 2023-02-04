@@ -5,11 +5,11 @@ const initialState = {
     products: equipments.map((product) => {
         return {
             ...product,
-            quantity: 1,
             discount: 0
         }
     })
 };
+// console.log(initialState.products)
 
 
 export const ProductsSlice = createSlice({

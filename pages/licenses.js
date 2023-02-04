@@ -3,9 +3,6 @@ import { useState } from "react";
 import Button from "../components/Button/Button";
 import TabTitle from "../components/TabTitle/TabTitle";
 import EquipmentCard from "../components/EquipmentCard/EquipmentCard";
-// import Input from "../components/Input/Input";
-// import Modal from "../components/Modal";
-// import ModalCancelIcon from '../public/assets/images/modalCancel.svg';
 import GuaranteeIcon from '../public/assets/images/badge-check.svg';
 import SaveIcon from '../public/assets/images/save-as.svg';
 import DesktopIcon from '../public/assets/images/desktop-computer.svg';
@@ -13,7 +10,7 @@ import shopIcon from "../public/assets/images/bascet.svg";
 import { Monthly, Annual , SemiAnnual } from "../components/LicenceTabs";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import { useTranslation } from "next-i18next";
-// import { useRouter } from "next/router";
+import { useSelector  } from "react-redux";
 
 export async function getStaticProps({locale}){
   return{
@@ -25,10 +22,18 @@ export async function getStaticProps({locale}){
 
 const Licenses = () => {
   const [activeTab, setActiveTab] = useState("1");
-  // const router = useRouter()
   const {t} = useTranslation()
-  // const {pathname, asPath,route} = router
-  // console.log(router)
+
+  const carts = useSelector((store) => store.carts.licences);
+  
+  let priceTotal = carts.reduce(function(prev, cur) {
+    return prev + cur.price;
+  }, 0);
+
+  // const addToCart = () =>{
+
+  // }
+
   return (
     <section>
       <div className="site-container !pt-[120px] !pb-[150px]">
@@ -75,11 +80,11 @@ const Licenses = () => {
           <div className="flex items-center justify-end">
             <p className="mr-[30px] font-PoppinsBold text-[32px] leading-[140%] text-[#0F172A]">
             {t("common:total")}: ₸
-              <span>
-                0
+              <span className="ml-[10px]">
+                {priceTotal}
               </span>
             </p>
-            <Button className={'cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'}
+            <Button onClick={() => addToCart} className={'cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'}
             >
               <Image src={shopIcon} alt="shop-icon" className="pr-2" width={35} height={35} />
               {t("common:add_cart")}
