@@ -7,68 +7,86 @@ const initialState = {
                 id: 1,
                 name: "Yoshop Retail for Yoshop POS",
                 quantity: 0,
-                monthly_price: 4500,
-                discount: 0
+                price: 4500,
+                all_price: 0,
+                discount: 0,
+                monthly: "Monthly"
             },
             {
                 id: 2,
                 name: "Yoshop retail for mobile",
                 quantity: 0,
                 price: 4500,
-                discount: 0
+                all_price: 0,
+                discount: 0,
+                monthly: "Monthly"
             },
             {
                 id: 3,
                 name: "Yoshop retail for Android POS",
                 quantity: 0,
-                price: 4500,
-                discount: 0
+                price: 0,
+                all_price: 0,
+                discount: 0,
+                monthly: "Monthly"
             }
         ],
         semi_annual: [
             {
-                id: 1,
+                id: 4,
                 name: "Yoshop Retail for Yoshop POS",
                 quantity: 0,
-                monthly_price: 4500,
-                discount: 0
+                price: 25000,
+                all_price: 0,
+                discount: 0,
+                monthly: "Semi-annual"
             },
             {
-                id: 2,
+                id: 5,
                 name: "Yoshop retail for mobile",
                 quantity: 0,
-                price: 4500,
-                discount: 0
+                price: 20000,
+                all_price: 0,
+                discount: 0,
+                monthly: "Semi-annual"
             },
             {
-                id: 3,
+                id: 6,
                 name: "Yoshop retail for Android POS",
                 quantity: 0,
-                price: 4500,
-                discount: 0
+                price: 0,
+                all_price: 0,
+                discount: 0,
+                monthly: "Semi-annual"
             }
         ],
         annual: [
             {
-                id: 1,
+                id: 7,
                 name: "Yoshop Retail for Yoshop POS",
                 quantity: 0,
-                monthly_price: 4500,
-                discount: 0
+                price: 45000,
+                all_price: 0,
+                discount: 0,
+                monthly: "Annual"
             },
             {
-                id: 2,
+                id: 8,
                 name: "Yoshop retail for mobile",
                 quantity: 0,
-                price: 4500,
-                discount: 0
+                price: 30000,
+                all_price: 0,
+                discount: 0,
+                monthly: "Annual"
             },
             {
-                id: 3,
+                id: 9,
                 name: "Yoshop retail for Android POS",
                 quantity: 0,
-                price: 4500,
-                discount: 0
+                price: 0,
+                all_price: 0,
+                discount: 0,
+                monthly: "Annual"
             }
         ],
     }
@@ -82,6 +100,7 @@ export const LicencesSlice = createSlice({
             state.licences.monthly = state.licences.monthly.map(licence => {
                 if (licence.id === action.payload) {
                     licence.quantity += 1;
+                    licence.all_price = licence.quantity * licence.price;
                 }
                 return licence;
             });
@@ -90,14 +109,20 @@ export const LicencesSlice = createSlice({
             state.licences.monthly = state.licences.monthly.map(licence => {
                 if (licence.id === action.payload) {
                     licence.quantity -= 1;
+                    licence.all_price = licence.all_price - licence.price;
+                    if(licence.quantity <= 0){
+                        licence.quantity = 0;
+                        licence.price = 0;
+                    }
                 }
                 return licence;
-            }).filter(licence => licence.quantity !== 0);
+            });
         },
         incrementQuantityBySemiannual(state, action) {
             state.licences.semi_annual = state.licences.semi_annual.map(licence => {
                 if (licence.id === action.payload) {
                     licence.quantity += 1;
+                    licence.all_price = licence.quantity * licence.price;
                 }
                 return licence;
             });
@@ -106,14 +131,20 @@ export const LicencesSlice = createSlice({
             state.licences.semi_annual = state.licences.semi_annual.map(licence => {
                 if (licence.id === action.payload) {
                     licence.quantity -= 1;
+                    licence.all_price = licence.all_price - licence.price;
+                    if(licence.quantity <= 0){
+                        licence.quantity = 0;
+                        licence.price = 0;
+                    }
                 }
                 return licence;
-            }).filter(licence => licence.quantity !== 0);
+            });
         },
         incrementQuantityByAnnual(state, action) {
             state.licences.annual = state.licences.annual.map(licence => {
                 if (licence.id === action.payload) {
                     licence.quantity += 1;
+                    licence.all_price = licence.quantity * licence.price;
                 }
                 return licence;
             });
@@ -122,9 +153,14 @@ export const LicencesSlice = createSlice({
             state.licences.annual = state.licences.annual.map(licence => {
                 if (licence.id === action.payload) {
                     licence.quantity -= 1;
+                    licence.all_price = licence.all_price - licence.price;
+                    if(licence.quantity <= 0){
+                        licence.quantity = 0;
+                        licence.price = 0;
+                    }
                 }
                 return licence;
-            }).filter(licence => licence.quantity !== 0);
+            });
         }      
     }
 

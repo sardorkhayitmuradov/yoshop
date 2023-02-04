@@ -12,12 +12,13 @@ const Header = () => {
   const { visible,setVisible } = useContext(ModalContext);
   const router = useRouter();
   const { t } = useTranslation();
-
-  // const { pathname, asPath, query } = router
-
-  // const handleLang = (e) => {
-  //   console.log({ pathname, query }, asPath, { locale: nextLocale });
-  // }
+  // let arr =[]
+  // let result = cartLicence.reduce((acc, item) => {
+  //   acc[item.id] = item
+  //   arr.push(acc)
+  //   return acc
+  // }, {})
+  
 
     return (
       <>
