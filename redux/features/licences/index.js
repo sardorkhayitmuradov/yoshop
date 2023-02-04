@@ -19,7 +19,7 @@ const initialState = {
     {
       id: 3,
       name: "Yoshop retail for Android POS",
-      price: 0,
+      price: 4500,
       discount: 0,
       period: "Monthly",
     },
@@ -41,7 +41,7 @@ const initialState = {
     {
       id: 6,
       name: "Yoshop retail for Android POS",
-      price: 0,
+      price: 20000,
       discount: 0,
       period: "Semi-annual",
     },
@@ -63,7 +63,7 @@ const initialState = {
     {
       id: 9,
       name: "Yoshop retail for Android POS",
-      price: 0,
+      price: 30000,
       discount: 0,
       period: "Annual",
     },
