@@ -8,7 +8,7 @@ import AccordionWrapper from "../../components/Accordion/Accordion";
 import shopIcon from "../../public/assets/images/bascet.svg";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import { useSelector , useDispatch } from "react-redux";
-import { incrementQuantity , decrementQuantity } from "../../redux/ProductCounterSlice";
+import { incrementQuantity , decrementQuantity } from "../../redux/features/Products";
 
 const Details = () => {
   const productsCounter = useSelector((store) => store.productCounter.products);
@@ -76,9 +76,7 @@ const Details = () => {
                       <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> dispatch(decrementQuantity(id))}>
                         -
                       </button>
-                      {   
-                        product.quantity
-                      }
+                        <p className="w-[20px]">{product.quantity}</p>
                       <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> dispatch(incrementQuantity(id))}>
                         +
                       </button>
