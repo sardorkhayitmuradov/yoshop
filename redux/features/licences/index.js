@@ -8,6 +8,14 @@ const initialState = {
       price: 4500,
       discount: 0,
       period: "Monthly",
+      products: [
+        {
+          id: 10,
+          image: "/assets/images/centrem.png",
+          name: 'YoShop POS',
+          price: 160000
+        }
+      ]
     },
     {
       id: 2,
@@ -30,6 +38,14 @@ const initialState = {
       price: 25000,
       discount: 0,
       period: "Semi-annual",
+      products: [
+        {
+          id: 10,
+          image: "/assets/images/centrem.png",
+          name: 'YoShop POS',
+          price: 160000
+        }
+      ]
     },
     {
       id: 5,
@@ -37,6 +53,7 @@ const initialState = {
       price: 20000,
       discount: 0,
       period: "Semi-annual",
+
     },
     {
       id: 6,
@@ -52,6 +69,14 @@ const initialState = {
       price: 45000,
       discount: 0,
       period: "Annual",
+      products: [
+        {
+          id: 10,
+          image: "/assets/images/centrem.png",
+          name: 'YoShop POS',
+          price: 160000
+        }
+      ]
     },
     {
       id: 8,

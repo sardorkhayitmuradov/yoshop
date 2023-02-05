@@ -9,8 +9,6 @@ const initialState = {
         }
     })
 };
-// console.log(initialState.products)
-
 
 export const ProductsSlice = createSlice({
     name: "productCounter",

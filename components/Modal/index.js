@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { ModalContext } from '../../context/modal';
 import modalStickIcon from '../../public/assets/images/modalStick.svg';
 import Button from '../Button/Button';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Modal = () => {
   let cart = useSelector((store) => store.carts);

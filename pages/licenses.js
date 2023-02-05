@@ -46,7 +46,7 @@ const Licenses = () => {
           </Button>
         </div>
 
-        <div className="tabTitleWrapp flex justify-center mb-[25px]">
+        <div className="flex justify-center mb-[25px]">
           <TabTitle onClick={() => setActiveTab("1")} titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] ${activeTab == "1" ? "bg-[#FF588A] text-white" : "bg-[#D1D5DB] text-[#4B5563]"} rounded-t-[6px] text-center cursor-pointer`}>
           {t("common:monthly")}
           </TabTitle>
@@ -84,7 +84,7 @@ const Licenses = () => {
                 {priceTotal}
               </span>
             </p>
-            <Button onClick={() => addToCart} className={'cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'}
+            <Button className={'cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'}
             >
               <Image src={shopIcon} alt="shop-icon" className="pr-2" width={35} height={35} />
               {t("common:add_cart")}
