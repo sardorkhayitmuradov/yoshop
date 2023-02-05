@@ -29,8 +29,7 @@ export const Monthly = () => {
                                     <CalculatorProduct incrementItem={() => {
                                         elFound ? "" : dispatch(addLicences(el));
                                     }} quantity={foundProd?.qty || 0} decrementItem={() => {
-                                        dispatch(removeLicences(el));
-                                        elFound ? "" : dispatch(addLicences(el));
+                                        elFound ? "" : dispatch(removeLicences(el));
                                     }} />
                                     <span className='text-[16px] leading-[25px] font-PoppinsRegular'>₸ {foundProd?.price || 4500}</span>
                                 </div>
