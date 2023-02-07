@@ -6,6 +6,7 @@ import ModalProvider from "../context/modal";
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import '../styles/globals.css'
+import '../components/Checkbox/check.css'
 
 function App({ Component, pageProps }) {
   const router = useRouter();
