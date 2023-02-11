@@ -6,6 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CancelButton from '../public/assets/images/cart-cancel.svg';
 import { CalculatorProduct } from "../components/CalculatorProduct";
 import Checkbox from "../components/Checkbox";
+import Input from "../components/Input/Input";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -16,9 +17,9 @@ export async function getStaticProps({ locale }) {
 }
 const Cart = () => {
   const onChecked = (e) => {
-    const {value , checked} = e.target;
-    console.log(value, checked)
-  } 
+    const { value, checked } = e.target;
+    console.log(value, checked);
+  };
 
   return <>
     <section className="min-h-[90vh] pt-[170px] mb-[250px] font-PoppinsBold text-[#111827]">
@@ -35,9 +36,9 @@ const Cart = () => {
         </div>
         <p className="text-[#FF588A] mb-5 leading-[180%] cursor-pointer">Select All</p>
 
-        <ul>
+        <ul className="mb-16">
           <li className="py-5 border-b borderb-[#cbd5e1]">
-            <Checkbox id={1} value={'mobile'} onGetValue={onChecked}/>
+            <Checkbox id={1} value={'mobile'} onGetValue={onChecked} />
             <div className="flex justify-between items-center mb-6">
               <div className="max-w-[590px] w-full flex justify-between items-center">
                 <div className="py-[5px] pl-[47px] flex items-center justify-between">
@@ -57,7 +58,7 @@ const Cart = () => {
             <p className="text-right text-[20px] leading-[140%]">Subtotal: <span className="ml-[30px]">₸ 4 500</span></p>
           </li>
           <li className="py-5 border-b borderb-[#cbd5e1]">
-            <Checkbox id={2} value={'pos'} onGetValue={onChecked}/>
+            <Checkbox id={2} value={'pos'} onGetValue={onChecked} />
             <div className="flex justify-between items-center mb-6">
               <div className="max-w-[590px] w-full flex justify-between items-center">
                 <div className="py-[5px] pl-[47px] flex items-center justify-between">
@@ -72,10 +73,10 @@ const Cart = () => {
                   <p>Period</p>
                   <p>monthly</p>
                 </div>
-             
+
                 <div className="flex items-center justify-between w-full mb-5">
                   <p>Users:</p>
-                  
+
                   <div className="flex items-center justify-between w-full max-w-[200px]">
                     <p>+1</p>
                     <p>₸ 1 000</p>
@@ -95,14 +96,14 @@ const Cart = () => {
                       <p>₸ 160 000</p>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
             <p className="text-right text-[20px] leading-[140%]">Subtotal: <span className="ml-[30px]">₸ 161 000</span></p>
           </li>
           <li className="py-5 border-b borderb-[#cbd5e1]">
-            <Checkbox id={1} value={'pos'} onGetValue={onChecked}/>
+            <Checkbox id={1} value={'pos'} onGetValue={onChecked} />
             <div className="flex justify-between items-center mb-6">
               <div className="max-w-[590px] w-full flex justify-between items-center">
                 <div className="py-[5px] pl-[47px] flex items-center justify-between">
@@ -121,6 +122,39 @@ const Cart = () => {
             <p className="text-right text-[20px] leading-[140%]">Subtotal: <span className="ml-[30px]">₸ 4 500</span></p>
           </li>
         </ul>
+
+        <div className="w-full flex items-center text-[20px] leading-[180%] justify-end">
+          <div className="w-full max-w-[510px]">
+            <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center">
+                <p>Discount</p>
+                <p className="text-[12px] font-PoppinsRegular text-[#FF588A] ml-3">(Your promo code applied)</p>
+              </div>
+              <p className="text-[#ff588a]">₸  1000</p>
+            </div>
+
+            <p className="mb-3">Please enter your Promo Code</p>
+
+            <div className="flex items-center justify-between mb-10">
+              <Input inputType={'text'} wrapperClassName={'max-w-[307px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[11px] pl-[14px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] outline-none rounded-[6px] border-[#94A3B8] border border-solid'} placeholder={"TALGATXOXO"} value={"TALGATXOXO"} onGetValue={(value)=> setTown(value)}  />
+              
+              <Button className={'cursor-pointer font-PoppinsBold max-w-[185px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] py-[12px] px-[22px] rounded-[10px]'}
+              >
+              Apply
+              </Button>
+            </div>
+
+            <div className="flex items-center justify-between mb-5 text-[32px]">
+              <p>TOTAL</p>
+              <p>₸ 193 000</p>
+            </div>
+
+            <Button className={'cursor-pointer font-PoppinsBold w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] py-[12px] px-[22px] rounded-[10px]'}
+              >
+              Checkout
+            </Button>
+          </div>
+        </div>
 
         <div className="max-w-[510px] w-full mx-auto mt-[250px]">
           <p className="font-bold leading-[140%] text-[44px] text-center text-[#E5E7EB] mb-[21px]">your cart is empty</p>

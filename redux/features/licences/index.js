@@ -1,90 +1,91 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  annual:[
+  annual: [
     {
-      id: 7,
+      id: 21,
       name: "Yoshop Retail for Yoshop POS",
       price: 45000,
-      discount: 0,
-      products: [
+      discount: 1000,
+      product: [
         {
-          id: 10,
+          id: 99,
           image: "/assets/images/centrem.png",
-          name: 'YoShop POS',
-          price: 160000
-        }
-      ]
+          name: "YoShop POS",
+          price: 160000,
+        },
+      ],
+      products: [],
     },
     {
-      id: 8,
+      id: 22,
       name: "Yoshop retail for mobile",
       price: 30000,
-      discount: 0,
+      discount: 1000,
     },
     {
-      id: 9,
+      id: 23,
       name: "Yoshop retail for Android POS",
       price: 30000,
-      discount: 0,
+      discount: 1000,
     },
   ],
   semiAnnual: [
     {
-      id: 4,
+      id: 24,
       name: "Yoshop Retail for Yoshop POS",
       price: 25000,
-      discount: 0,
-      products: [
+      discount: 5000,
+      product: [
         {
-          id: 10,
+          id: 99,
           image: "/assets/images/centrem.png",
-          name: 'YoShop POS',
-          price: 160000
-        }
-      ]
+          name: "YoShop POS",
+          price: 160000,
+        },
+      ],
+      products: [],
     },
     {
-      id: 5,
+      id: 25,
       name: "Yoshop retail for mobile",
       price: 20000,
-      discount: 0,
-
+      discount: 5000,
     },
     {
-      id: 6,
+      id: 26,
       name: "Yoshop retail for Android POS",
       price: 20000,
-      discount: 0,
+      discount: 5000,
     },
   ],
   monthly: [
     {
-      id: 1,
+      id: 27,
       name: "Yoshop Retail for Yoshop POS",
       price: 4500,
-      discount: 0,
-      hardwares: [
+      discount: 1000,
+      product: [
         {
-          id: 10,
+          id: 99,
           image: "/assets/images/centrem.png",
-          name: 'YoShop POS',
-          price: 160000
-        }
+          name: "YoShop POS",
+          price: 160000,
+        },
       ],
-      products: []
+      products: [],
     },
     {
-      id: 2,
+      id: 28,
       name: "Yoshop retail for mobile",
       price: 4500,
-      discount: 0,
+      discount: 1000,
     },
     {
-      id: 3,
+      id: 29,
       name: "Yoshop retail for Android POS",
       price: 4500,
-      discount: 0,
+      discount: 1000,
     },
   ],
 };

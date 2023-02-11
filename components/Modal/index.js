@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import { useSelector } from "react-redux";
 
 const Modal = () => {
-  let cart = useSelector((store) => store.carts);
+  let cart = useSelector((store) => store.carts.cart);
   const { visible, setVisible } = useContext(ModalContext);
   const modal = () => {
     setVisible(false);
@@ -94,8 +94,8 @@ const Modal = () => {
               </div>
             )}
 
-            {cart.licences.length > 0 ? (
-              cart.licences.map((cart) => {
+            {cart.licenses.length > 0 ? (
+              cart.licenses.map((cart) => {
                 return (
                   <div
                     key={cart.id}
