@@ -39,7 +39,7 @@ export const Monthly = () => {
                     }}
                   />
                   <span className="text-[16px] leading-[25px] font-PoppinsRegular">
-                    ₸ {foundProd?.price || 4500}
+                    ₸ {foundProd?.price || el.price}
                   </span>
                 </div>
               }

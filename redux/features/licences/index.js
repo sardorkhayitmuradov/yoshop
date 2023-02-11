@@ -45,6 +45,7 @@ const initialState = {
         },
       ],
       products: [],
+      
     },
     {
       id: 25,

@@ -10,6 +10,7 @@ const initialState = {
     
   ],
   totalPrice: 0,
+  quantity: 0
 };
 
 
@@ -90,37 +91,41 @@ export const CartSlice = createSlice({
 
     addLicences(state, action) {
       const { el:{id, price, name} ,period  } = action.payload;
-      const existingLicenseIndex = state.licenses.findIndex(
-        (licence) => licence.id === id
-      );
-
-      const licence =
-        existingLicenseIndex !== -1
-          ? state.licenses[existingLicenseIndex]
-          : null;
-
-      if (licence) {
-        licence.cashier.qty += 2;
-        licence.qty += 1;
-        licence.price += price;
-        licence.subTotal += price;
-        state.totalPrice += price;
-        state.quantity += 1;
-      } else {
-        state.licenses.push({
-          id: id,
-          period: period,
-          qty: 1,
-          name: name,
-          price: price,
-          products: [],
-          cashier: {
-            qty: 2,
-            additionalPrice: 0,
-          },
-          subTotal: price,
-        });
-        state.totalPrice += price;
+      switch (period){
+        case 'monthly': {
+          const existingLicenseIndex = state.licenses.findIndex(
+            (licence) => licence.id === id
+          );
+    
+          const licence =
+            existingLicenseIndex !== -1
+              ? state.licenses[existingLicenseIndex]
+              : null;
+    
+          if (licence) {
+            licence.cashier.qty += 2;
+            licence.qty += 1;
+            licence.price += price;
+            licence.subTotal += price;
+            state.totalPrice += price;
+            state.quantity += 1;
+          } else {
+            state.licenses.push({
+              id: id,
+              period: period,
+              qty: 1,
+              name: name,
+              price: price,
+              products: [],
+              cashier: {
+                qty: 2,
+              },
+              subTotal: price,
+            });
+            state.totalPrice += price;
+            state.quantity += 1
+          }
+        }  
       }
     },
 
@@ -147,7 +152,6 @@ export const CartSlice = createSlice({
           state.licenses.splice(existingLicenseIndex, 1);
         }
     },
-
 
     addProducts(state, action) {
       const { id, price, title, image } = action.payload;
