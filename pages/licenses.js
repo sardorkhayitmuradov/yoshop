@@ -27,13 +27,8 @@ const Licenses = () => {
   const dispatch = useDispatch();
 
   const carts = useSelector((store) => store.carts);
-  console.log(carts)
 
   let priceTotal = carts.totalPrice
-
-  // const addToCart = () =>{
-
-  // }
 
   return (
     <section>

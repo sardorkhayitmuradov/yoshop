@@ -6,7 +6,16 @@ const initialState = {
       id: 21,
       name: "Yoshop Retail for Yoshop POS",
       price: 45000,
-      discount: 1000,
+      discounts: [
+        {
+          from: 2,
+          price: 35000,
+        },
+        {
+          from: 3,
+          price: 40000,
+        },
+      ],
       product: [
         {
           id: 99,
@@ -21,7 +30,16 @@ const initialState = {
       id: 22,
       name: "Yoshop retail for mobile",
       price: 30000,
-      discount: 1000,
+      discounts: [
+        {
+          from: 2,
+          price: 15000,
+        },
+        {
+          from: 3,
+          price: 35000,
+        },
+      ],
     },
     {
       id: 23,
@@ -35,7 +53,12 @@ const initialState = {
       id: 24,
       name: "Yoshop Retail for Yoshop POS",
       price: 25000,
-      discount: 5000,
+      discounts: [
+        {
+          from: 2,
+          price: 20000,
+        },
+      ],
       product: [
         {
           id: 99,
@@ -45,13 +68,21 @@ const initialState = {
         },
       ],
       products: [],
-      
     },
     {
       id: 25,
       name: "Yoshop retail for mobile",
       price: 20000,
-      discount: 5000,
+      discounts: [
+        {
+          from: 2,
+          price: 10000,
+        },
+        {
+          from: 3,
+          price: 15000,
+        },
+      ],
     },
     {
       id: 26,
@@ -65,7 +96,16 @@ const initialState = {
       id: 27,
       name: "Yoshop Retail for Yoshop POS",
       price: 4500,
-      discount: 1000,
+      discounts: [
+        {
+          from: 2,
+          price: 3500,
+        },
+        {
+          from: 3,
+          price: 4000,
+        },
+      ],
       product: [
         {
           id: 99,
@@ -80,7 +120,16 @@ const initialState = {
       id: 28,
       name: "Yoshop retail for mobile",
       price: 4500,
-      discount: 1000,
+      discounts: [
+        {
+          from: 2,
+          price: 2500,
+        },
+        {
+          from: 3,
+          price: 4000,
+        },
+      ],
     },
     {
       id: 29,
@@ -95,81 +144,7 @@ export const LicencesSlice = createSlice({
   name: "licences",
   initialState,
   reducers: {
-    // incrementQuantityByMonthly(state, action) {
-    //     state.licences.monthly = state.licences.monthly.map(licence => {
-    //         if (licence.id === action.payload) {
-    //             licence.quantity += 1;
-    //             licence.all_price = licence.quantity * licence.price;
-    //         }
-    //         return licence;
-    //     });
-    // },
-    // decrementQuantityByMonthly(state, action) {
-    //     state.licences.monthly = state.licences.monthly.map(licence => {
-    //         if (licence.id === action.payload) {
-    //             licence.quantity -= 1;
-    //             licence.all_price = licence.all_price - licence.price;
-    //             if(licence.quantity <= 0){
-    //                 licence.quantity = 0;
-    //                 licence.price = 0;
-    //             }
-    //         }
-    //         return licence;
-    //     });
-    // },
-    // incrementQuantityBySemiannual(state, action) {
-    //     state.licences.semi_annual = state.licences.semi_annual.map(licence => {
-    //         if (licence.id === action.payload) {
-    //             licence.quantity += 1;
-    //             licence.all_price = licence.quantity * licence.price;
-    //         }
-    //         return licence;
-    //     });
-    // },
-    // decrementQuantityBySemiannual(state, action) {
-    //     state.licences.semi_annual = state.licences.semi_annual.map(licence => {
-    //         if (licence.id === action.payload) {
-    //             licence.quantity -= 1;
-    //             licence.all_price = licence.all_price - licence.price;
-    //             if(licence.quantity <= 0){
-    //                 licence.quantity = 0;
-    //                 licence.price = 0;
-    //             }
-    //         }
-    //         return licence;
-    //     });
-    // },
-    // incrementQuantityByAnnual(state, action) {
-    //     state.licences.annual = state.licences.annual.map(licence => {
-    //         if (licence.id === action.payload) {
-    //             licence.quantity += 1;
-    //             licence.all_price = licence.quantity * licence.price;
-    //         }
-    //         return licence;
-    //     });
-    // },
-    // decrementQuantityByAnnual(state, action) {
-    //     state.licences.annual = state.licences.annual.map(licence => {
-    //         if (licence.id === action.payload) {
-    //             licence.quantity -= 1;
-    //             licence.all_price = licence.all_price - licence.price;
-    //             if(licence.quantity <= 0){
-    //                 licence.quantity = 0;
-    //                 licence.price = 0;
-    //             }
-    //         }
-    //         return licence;
-    //     });
-    // }
   },
 });
 
-export const {
-  incrementQuantityByMonthly,
-  decrementQuantityByMonthly,
-  incrementQuantityBySemiannual,
-  decrementQuantityBySemiannual,
-  incrementQuantityByAnnual,
-  decrementQuantityByAnnual,
-} = LicencesSlice.actions;
 export default LicencesSlice.reducer;

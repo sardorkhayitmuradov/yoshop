@@ -117,21 +117,13 @@ const Equipment = () => {
             }
           </div>
 
-          <div className="gap-[30px] grid grid-cols-3 mb-[50px]">
+          <div className="gap-[26px] grid grid-cols-4 mb-[50px]">
             {
               currentTab == 'all' ? equipments.map(el => {
                 return (
                   <Link key={el.id} href={'/equipment/' + el.id+"#equipment"} scroll={true}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>
-                      <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[16px] px-[22px] rounded-[10px] text-[#F9F9FB]'} 
-                        onClick={() => {
-                          if (modalWindowBg.current.classList.contains("hidden")) {
-                            modalWindowBg.current.classList.remove("hidden");
-                            modalWindowBg.current.classList.add("block");
-                            modalWindowInfo.current.classList.remove("hidden");
-                            modalWindowInfo.current.classList.add("block");
-                          }
-                        }}>
+                      <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[10px] text-[#F9F9FB]'} >
                           <Image src={shopIcon} alt="shop-icon" className="pr-2" />
                           {t("common:add_cart")}
                       </Button>

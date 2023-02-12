@@ -1,4 +1,4 @@
-import Accordion from '../components/Accordion/Accordion'
+import NewAccordion from '../components/NewAccordion'
 import ResourcesCard from '../components/ResourcesCard/ResourcesCard'
 import { resourcesVideos } from '../constants/resourcesVideo'
 import { accordionData } from '../constants/resourcesAccordionData'
@@ -42,27 +42,27 @@ const Resources = () => {
             accordionData.map((accordion) => {
                 if(accordion.id == 1){
                   return (
-                    <Accordion key={accordion.id} title={t("common:ques_inventory")}>
+                    <NewAccordion key={accordion.id} title={t("common:ques_inventory")}  accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
                       {accordion.description}
-                    </Accordion>
+                    </NewAccordion>
                 )
                 }else if(accordion.id == 2){
                   return (
-                    <Accordion key={accordion.id} title={t("common:ques_payment")}>
+                    <NewAccordion key={accordion.id} title={t("common:ques_payment")}  accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
                       {accordion.description}
-                    </Accordion>
+                    </NewAccordion>
                   )
                 }else if(accordion.id == 3){
                   return (
-                    <Accordion key={accordion.id} title={t("common:ques_work")}>
+                    <NewAccordion key={accordion.id} title={t("common:ques_work")}  accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
                       {accordion.description}
-                    </Accordion>
+                    </NewAccordion>
                   )
                 }else if(accordion.id == 4){
                   return (
-                    <Accordion key={accordion.id} title={t("common:ques_fees")}>
+                    <NewAccordion key={accordion.id} title={t("common:ques_fees")}  accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
                       {accordion.description}
-                    </Accordion>
+                    </NewAccordion>
                   )
                 }
             })

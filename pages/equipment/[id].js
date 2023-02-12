@@ -8,7 +8,8 @@ import AccordionWrapper from "../../components/Accordion/Accordion";
 import shopIcon from "../../public/assets/images/bascet.svg";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import { useSelector , useDispatch } from "react-redux";
-import { addProducts , removeProducts } from "../../redux/features/carts";
+import { addProducts , addToCart, removeProducts } from "../../redux/features/carts";
+import NewAccordion from "../../components/NewAccordion";
 
 const Details = () => {
   const productsCounter = useSelector((store) => store.productCounter.products);
@@ -74,7 +75,7 @@ const Details = () => {
 
                   <div className="flex items-center justify-between">
                     <span className="flex justify-between max-w-[152px] items-center rounded-[10px] border border-solid border-[#7D66BB]">
-                      <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> dispatch(removeProducts(product))}>
+                      <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> foundProd?.qty > 0 ? dispatch(removeProducts(product)) : ""}>
                         -
                       </button>
                         <p className="w-[20px]">{foundProd?.qty || 0}</p>
@@ -83,6 +84,7 @@ const Details = () => {
                       </button>
                     </span>
                     <Button className={'cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[16px] px-[22px] rounded-[10px]'}
+                    onClick={() => dispatch(addToCart())}
                     >
                       <Image src={shopIcon} alt="shop-icon" className="pr-2" width={40} height={40} />
                       Add to cart
@@ -94,62 +96,62 @@ const Details = () => {
                   <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
 
                   {/* acardion */}
-                  <AccordionWrapper title={'Main Specifications'}>
+                  <NewAccordion title={'Main Specifications'}>
                     {product.mainSpecification}
-                  </AccordionWrapper>
+                  </NewAccordion>
                   {
                     product.addInfo ?
                       <>
                         <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                        <AccordionWrapper title={'02 Additional information'}>
+                        <NewAccordion title={'02 Additional information'}>
                           {
                             product.addInfo 
                           }
-                        </AccordionWrapper>
+                        </NewAccordion>
                         <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                        <AccordionWrapper title={'03 Fiscalization of monetary transactions:'} >
+                        <NewAccordion title={'03 Fiscalization of monetary transactions:'} >
                           {
                             product.transactions
                           }
-                        </AccordionWrapper>
+                        </NewAccordion>
                       </> : emtyString
                   }
                   {
                     product.description ?
                       <>
                         <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                        <AccordionWrapper title={'Description'} >
+                        <NewAccordion title={'Description'} >
                           {
                             product.description
                           }
-                        </AccordionWrapper>
+                        </NewAccordion>
                         <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                        <AccordionWrapper title={'Network'}>
+                        <NewAccordion title={'Network'}>
                           {
                             product.network
                           }
-                        </AccordionWrapper>
+                        </NewAccordion>
                       </> : emtyString
                   }
                   {
                     product.features ? <>
                       <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                      <AccordionWrapper title={'Features'} >
+                      <NewAccordion title={'Features'} >
                         {
                           product.features
                         }
-                      </AccordionWrapper>
+                      </NewAccordion>
                     </> : emtyString
                   }
                   {
                     product.dimensions ?
                       <>
                         <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
-                        <AccordionWrapper title={'Dimensions'} >
+                        <NewAccordion title={'Dimensions'} >
                           {
                             product.dimensions
                           }
-                        </AccordionWrapper>
+                        </NewAccordion>
                       </> : emtyString
                   }
                 </div>
@@ -165,11 +167,11 @@ const Details = () => {
             You may be interested in
           </h2>
 
-          <div className="flex justify-between flex-wrap gap-[30px]">
+          <div className="flex justify-between flex-wrap gap-[26px]">
             {
               productsCounter?.map(el => {
                 return (
-                  <Link href={'/equipment/' + el.id+"#equipment"} key={el.id} className="cursor-pointer">
+                  <Link href={'/equipment/' + el.id+"#equipment"}  key={el.id} className="cursor-pointer">
                     <ProductCard image={el.image} title={el.title} price={el.price} />
                   </Link>
                 );
