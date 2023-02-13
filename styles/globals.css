@@ -154,3 +154,8 @@ header{
   cursor: pointer;
   border: none;
 }
+
+
+.cart::-webkit-scrollbar {
+  display: none;
+}

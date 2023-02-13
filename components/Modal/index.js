@@ -22,16 +22,16 @@ const Modal = () => {
         onClick={modal}
       ></div>
       <div
-        className={`${visible ? "ease-linear  duration-[300ms] font-PoppinsRegular shadow-[0px_4px_4px_rgba(0, 0, 0, 0.25)] fixed z-20 bg-[#fff] py-[40px] pb-[40px] px-[40px] min-h-[300px] w-[728px] right-36 text-[#111827] top-[100px] rounded-[10px] border border-solid border-[#F9F9FB]" : "hidden"}`}
+        className={`${visible ? "ease-linear  duration-[300ms] font-PoppinsRegular shadow-[0px_4px_4px_rgba(0, 0, 0, 0.25)] fixed z-20 bg-[#fff] py-[40px] pb-[40px] px-[40px] min-h-[300px] w-[728px] right-36 text-[#111827] top-[90px] rounded-[10px] border border-solid border-[#F9F9FB]" : "hidden"}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative flex justify-between">
+        <div className="relative flex justify-between overflow-y-scroll h-[500px] cart">
           <Image
             src={modalStickIcon}
             alt='modal-stick'
             width={40}
             height={40}
-            className='absolute right-0 -top'
+            className='absolute right-0 top-[-70px]'
           />
           <div className="w-full">
             <h3 className="text-[32px] font-PoppinsBold leading-[140%] mb-[5px]">
@@ -74,7 +74,7 @@ const Modal = () => {
                           + {cart.cashier.qty >= cart.qty *2 ? (cart.cashier.qty - (cart.qty * 2)) : cart.cashier.qty}
                         </p>
                         <p className="text-[14px] leading-[140%]">
-                          {cart.cashier.price}
+                        ₸ {cart.cashier.price}
                         </p>
                       </div>
 
@@ -98,7 +98,7 @@ const Modal = () => {
                                       + {p.qty}
                                     </p>
                                     <p className="text-[14px] leading-[140%]">
-                                      {p.price}
+                                    ₸ {p.price}
                                     </p>
                                   </div>
                                 </>
