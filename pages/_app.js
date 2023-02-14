@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import '../styles/globals.css'
 import '../components/Checkbox/check.css'
+import '../components/SaveCheckbox/SaveCheckbox.css'
 
 function App({ Component, pageProps }) {
   const router = useRouter();

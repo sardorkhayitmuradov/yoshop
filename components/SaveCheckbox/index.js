@@ -1,6 +1,6 @@
-export default function Checkbox({id , value , onGetValue , checkboxClass}) {
+export default function SaveCheckbox({id , value , onGetValue}) {
   return (
-    <div className="checkbox">
+    <div className="save">
       <input type="checkbox" id={id} value={value} onChange={(e) => onGetValue(e)} />
       <label htmlFor={id}><span></span></label>
     </div>

@@ -25,7 +25,7 @@ const Header = () => {
     return (
       <>
         <Modal />
-        <header className="py-3 fixed top-0 w-full left-0 bg-white" id="#top">      
+        <header className="py-3 fixed top-0 w-full left-0 bg-white z-20" id="#top">      
         <div className="site-container flex items-center justify-between">
               <Link href={'/'}>
                   <Image src={LogoImage} alt="site-logo" width={185} height={65}/>   

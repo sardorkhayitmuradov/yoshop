@@ -50,7 +50,7 @@ const Cart = () => {
                 cart.licenses.map(license => {
                   return (
                     <li className="py-5 border-b borderb-[#cbd5e1]" key={license.id}>
-                      <Checkbox id={2} value={'pos'} onGetValue={onChecked} />
+                      <Checkbox id={2} value={'pos'} onGetValue={onChecked} checkboxClass={"checkbox"} />
                       <div className="flex justify-between items-center mb-6">
                         <div className="max-w-[600px] w-full flex justify-between items-center">
                           <div className="py-[5px] pl-[47px] flex items-center justify-between">
@@ -113,7 +113,7 @@ const Cart = () => {
                 cart.products.map(product => {
                   return (
                     <li className="py-5 border-b borderb-[#cbd5e1]" key={product.id}>
-                      <Checkbox id={1} value={'pos'} onGetValue={onChecked} />
+                      <Checkbox id={1} value={'pos'} onGetValue={onChecked} checkboxClass={"checkbox"} />
                       <div className="flex justify-between items-center mb-6">
                         <div className="max-w-[800px] w-full flex justify-between items-center">
                           <div className="py-[5px] pl-[47px] flex items-center justify-between">

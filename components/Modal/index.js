@@ -18,11 +18,11 @@ const Modal = () => {
   return (
     <>
       <div
-        className={`${visible ? "z-10 fixed top-[-50px] w-full h-[120vh] opacity-60 bg-[#D9D9D9]" : "hidden"}`}
+        className={`${visible ? "z-30 fixed top-[-50px] w-full h-[120vh] opacity-60 bg-[#D9D9D9]" : "hidden"}`}
         onClick={modal}
       ></div>
       <div
-        className={`${visible ? "ease-linear  duration-[300ms] font-PoppinsRegular shadow-[0px_4px_4px_rgba(0, 0, 0, 0.25)] fixed z-20 bg-[#fff] py-[40px] pb-[40px] px-[40px] min-h-[300px] w-[728px] right-36 text-[#111827] top-[90px] rounded-[10px] border border-solid border-[#F9F9FB]" : "hidden"}`}
+        className={`${visible ? "ease-linear  duration-[300ms] font-PoppinsRegular shadow-[0px_4px_4px_rgba(0, 0, 0, 0.25)] fixed z-[31] bg-[#fff] py-[40px] pb-[40px] px-[40px] min-h-[300px] w-[728px] right-36 text-[#111827] top-[90px] rounded-[10px] border border-solid border-[#F9F9FB]" : "hidden"}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative flex justify-between overflow-y-scroll h-[500px] cart">
@@ -31,7 +31,7 @@ const Modal = () => {
             alt='modal-stick'
             width={40}
             height={40}
-            className='absolute right-0 top-[-70px]'
+            className='absolute right-0 top-[-70px] z-[31]'
           />
           <div className="w-full">
             <h3 className="text-[32px] font-PoppinsBold leading-[140%] mb-[5px]">
