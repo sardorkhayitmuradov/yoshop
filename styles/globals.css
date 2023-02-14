@@ -159,3 +159,17 @@ header{
 .cart::-webkit-scrollbar {
   display: none;
 }
+
+
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 1 !important;
+  background: #EBEAFA !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #7d66bb !important;
+  width: 32px !important;
+  border-radius: 10px !important;
+}

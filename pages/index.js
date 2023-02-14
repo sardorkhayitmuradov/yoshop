@@ -1,94 +1,193 @@
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useState, useContext } from 'react';
-// import { useRouter } from 'next/router';
 import Button from '../components/Button/Button';
 import Input from '../components/Input/Input';
 import Arrowleft from '../public/assets/images/left.svg';
 import ArrowRight from '../public/assets/images/right.svg';
 import ListIcon from '../public/assets/images/listCircle.svg';
-import Users  from '../public/assets/images/people.png'
-import AppStore from '../public/assets/images/appStore.png'
-import GooglePlay from '../public/assets/images/googlePlay.png'
-import PaymentIcon from '../public/assets/images/typesOfPayment.svg'
-import InterfaceIcon from '../public/assets/images/simpleInterface.svg'
-import StoreReport from '../public/assets/images/fullStoreReport.svg'
-import FiscalizationIcon from '../public/assets/images/fiscalization.svg'
-import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg'
-import SecurityIcon from '../public/assets/images/securitysafe.svg'
-import PhoneCall from '../public/assets/images/phone.svg'
+import Users from '../public/assets/images/people.png';
+import AppStore from '../public/assets/images/appStore.png';
+import GooglePlay from '../public/assets/images/googlePlay.png';
+import PaymentIcon from '../public/assets/images/typesOfPayment.svg';
+import InterfaceIcon from '../public/assets/images/simpleInterface.svg';
+import StoreReport from '../public/assets/images/fullStoreReport.svg';
+import FiscalizationIcon from '../public/assets/images/fiscalization.svg';
+import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg';
+import SecurityIcon from '../public/assets/images/securitysafe.svg';
+import PhoneCall from '../public/assets/images/phone.svg';
 import { licence } from '../constants/licence';
-import { useTranslation } from 'next-i18next'
-import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
-import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { Swiper, SwiperSlide } from "swiper/react";
 
-export async function getServerSideProps({locale}){
-  return{
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay, Pagination, Navigation } from 'swiper';
+// import "../styles/globals.css";
+
+export async function getServerSideProps({ locale }) {
+  return {
     props: {
-      ...(await serverSideTranslations(locale , ['common', 'header', 'footer'])),
+      ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
     }
-  }
+  };
 };
 
 function Home() {
-  const [name , setName] = useState('');
+  const [name, setName] = useState('');
   const [number, setNumber] = useState();
   const router = useRouter();
   const { t } = useTranslation();
   const [value, setValue] = useState(0);
-  const [oneLicence, setOneLicene] = useState([licence[0]])
+  const [oneLicence, setOneLicene] = useState([licence[0]]);
   const handleChange = (event) => {
-    let val = event.target.value
+    let val = event.target.value;
     setValue(val);
-    licence.map((el,index)=>{
-      if(val == index){
-        setOneLicene([el])
+    licence.map((el, index) => {
+      if (val == index) {
+        setOneLicene([el]);
       }
-    })
+    });
   };
-  
+
   return (
     <main className='pt-[100px]'>
       <section>
-        <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
-          <div className='flex justify-between items-center mb-[200px]'>
-            <div className='max-w-[567px] w-full'>
-              <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
-                {t("common:mult_int_title")}
-              </p>
-              <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
-                {t("common:use_tech")}
-              </h2>
 
-              <Button
-                className={
-                  'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
-                }
-              >
-                {t("common:try_free")}
-              </Button>
+        <Swiper
+          pagination={{
+            dynamicBullets: true,
+          }}
+          modules={[Autoplay, Pagination, Navigation]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+        >
+          <SwiperSlide>
+            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
+              <div className='flex justify-between items-center mb-[200px]'>
+                <div className='max-w-[567px] w-full'>
+                  <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
+                    {t("common:mult_int_title")}
+                  </p>
+                  <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
+                    {t("common:use_tech")}
+                  </h2>
+
+                  <Button
+                    className={
+                      'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
+                    }
+                  >
+                    {t("common:try_free")}
+                  </Button>
+                </div>
+              </div>
+
+              <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
+                <Image
+                  src={Arrowleft}
+                  alt='site-logo'
+                  width={20}
+                  height={20}
+                  className='mb-[30px]'
+                />
+                <Image
+                  src={ArrowRight}
+                  alt='site-logo'
+                  width={20}
+                  height={20}
+                  className='mb-[30px]'
+                />
+              </div>
             </div>
-          </div>
-          <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
-            <Image
-              src={Arrowleft}
-              alt='site-logo'
-              width={20}
-              height={20}
-              className='mb-[30px]'
-            />
-            <Image
-              src={ArrowRight}
-              alt='site-logo'
-              width={20}
-              height={20}
-              className='mb-[30px]'
-            />
-          </div>
-        </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
+              <div className='flex justify-between items-center mb-[200px]'>
+                <div className='max-w-[567px] w-full'>
+                  <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
+                    {t("common:mult_int_title")}
+                  </p>
+                  <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
+                    {t("common:use_tech")}
+                  </h2>
+
+                  <Button
+                    className={
+                      'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
+                    }
+                  >
+                    {t("common:try_free")}
+                  </Button>
+                </div>
+              </div>
+
+              <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
+                <Image
+                  src={Arrowleft}
+                  alt='site-logo'
+                  width={20}
+                  height={20}
+                  className='mb-[30px]'
+                />
+                <Image
+                  src={ArrowRight}
+                  alt='site-logo'
+                  width={20}
+                  height={20}
+                  className='mb-[30px]'
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
+              <div className='flex justify-between items-center mb-[200px]'>
+                <div className='max-w-[567px] w-full'>
+                  <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
+                    {t("common:mult_int_title")}
+                  </p>
+                  <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
+                    {t("common:use_tech")}
+                  </h2>
+
+                  <Button
+                    className={
+                      'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
+                    }
+                  >
+                    {t("common:try_free")}
+                  </Button>
+                </div>
+              </div>
+
+              <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
+                <Image
+                  src={Arrowleft}
+                  alt='site-logo'
+                  width={20}
+                  height={20}
+                  className='mb-[30px]'
+                />
+                <Image
+                  src={ArrowRight}
+                  alt='site-logo'
+                  width={20}
+                  height={20}
+                  className='mb-[30px]'
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+
       </section>
-        <div className='sticky w-[81px] h-[81px] right-0 left-[1290px] top-16 z-10'>
-          <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
-        </div>
+      <div className='sticky w-[81px] h-[81px] right-0 left-[1290px] top-16 z-10'>
+        <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
+      </div>
       <section
         className={`pt-[150px] pb-[75px]`}
       >
@@ -100,8 +199,8 @@ function Home() {
             {t('common:phone_terminal')}
           </p>
           {
-            oneLicence.map((licenc)=>{
-              return(
+            oneLicence.map((licenc) => {
+              return (
                 <div className='w-full' key={licenc.id}>
                   <div className='flex max-w-[960px] w-full justify-between'>
                     <ul className='max-w-[175px] w-full text-base leading-[20px] pt-[35px]'>
@@ -110,43 +209,43 @@ function Home() {
                       <li className='mb-[30px] '>{t("common:effective_sales_management")}</li>
                       <li className='mb-[30px] '>{t("common:extract_min_profit")}</li>
                       <li>
-                      {t("common:absolute_safe_business")}</li>
+                        {t("common:absolute_safe_business")}</li>
                     </ul>
                     <ul>
                       <li className='text-5xl leading-[73px] mb-[10px] font-PromptBold'>
                         {licenc.title}
                       </li>
                       {
-                        licenc.description.map((el, index)=>{
+                        licenc.description.map((el, index) => {
                           return (
                             <li key={index} className='mb-[14px] pl-10 font-PromptRegular flex items-center'>
-                            <Image
-                              src={ListIcon}
-                              alt='list circle'
-                              width={6}
-                              height={6}
-                              className='mr mr-2'
-                            />
-                            {el}
-                          </li>
-                          )
+                              <Image
+                                src={ListIcon}
+                                alt='list circle'
+                                width={6}
+                                height={6}
+                                className='mr mr-2'
+                              />
+                              {el}
+                            </li>
+                          );
                         })
                       }
-                      
+
                     </ul>
                   </div>
                   <div className='absolute h-[750px] top-1/4 right-28 -z-[1]'>
-                      <Image
-                        src={licenc.image}
-                        alt='slider image'
-                        width={550}
-                        height={300}
-                        className='rounded-md'
-                      />
+                    <Image
+                      src={licenc.image}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className='rounded-md'
+                    />
                   </div>
                 </div>
-              )
-              
+              );
+
             })
           }
           <div className='absolute -right-44 bottom-2/4 rotate-90'>
@@ -166,8 +265,8 @@ function Home() {
         <div className="mx-auto max-w-[1230px] w-full bg-[#EFF1FE] h-[352px] rounded-[20px] pt-[55px] pb-[30px] pl-[60px] pr-[56px] flex items-center justify-between">
           <div>
             <h2 className='text-[#0F172A] max-w-[521px] w-full font-bold text-[40px] leading-[140%] mb-[30px]'>
-            {t("common:download_info")}
-            {/* <span className='bg-[#FF588A] rounded-md text-white'>Download</span> the mobile app and get <span className='bg-[#FF588A] rounded-md text-white'>1 month free,</span> then ₸ 3000 for month */}
+              {t("common:download_info")}
+              {/* <span className='bg-[#FF588A] rounded-md text-white'>Download</span> the mobile app and get <span className='bg-[#FF588A] rounded-md text-white'>1 month free,</span> then ₸ 3000 for month */}
             </h2>
             <div className='flex items-center justify-start'>
               <Image src={Users} className='mr-3' width={230} height={70} alt='people Image' />
@@ -187,92 +286,92 @@ function Home() {
         </div>
       </section>
       <section className='py-[75px]'>
-          <div className="mx-auto max-w-[1200px] w-full poppins">
-            <h2 className='text-[#111827] font-bold text-[44px] leading-[140%] mb-[60px]'>
+        <div className="mx-auto max-w-[1200px] w-full poppins">
+          <h2 className='text-[#111827] font-bold text-[44px] leading-[140%] mb-[60px]'>
             {t("common:improve_business")}
-            </h2>
-            <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px]">
-              <li className='max-w-[300px] w-full py-[64px] px-[78px]'>
-                <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                  <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
-                </div>
-                <p className='max-w-[145px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                  {t("common:types_of_payment")}
-                </p>
-              </li>
-              <li className='max-w-[300px] w-full py-[64px] pl-[34px]'>
-                <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                  <li>
+          </h2>
+          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px]">
+            <li className='max-w-[300px] w-full py-[64px] px-[78px]'>
+              <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
+              </div>
+              <p className='max-w-[145px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                {t("common:types_of_payment")}
+              </p>
+            </li>
+            <li className='max-w-[300px] w-full py-[64px] pl-[34px]'>
+              <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                <li>
                   {t("common:bank_cards")}
-                  </li>
-                  <li>
+                </li>
+                <li>
                   {t("common:qr")}
-                  </li>
-                  <li>
+                </li>
+                <li>
                   {t("common:apple_pay")}
-                  </li>
-                  <li>
+                </li>
+                <li>
                   {t("common:samsung_pay")}
-                  </li>
-                  <li>
+                </li>
+                <li>
                   {t("common:google_pay")}
-                  </li>
-                </ul>
-              </li>
-              <li className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[28px] bg-[#FBF1F1]'>
-                <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                  <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
-                </div>
-                <p className='max-w-[198px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                  {
-                    t('common:simple_int_interface')
-                  }
-                </p>
-              </li>
-              <li className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
-                <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                  <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
-                </div>
-                <p className='max-w-[168px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                  {
-                    t('common:store_report')
-                  }
-                </p>
-              </li>
-            </ul>
-            <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px]">
-              <li className='max-w-[300px] w-full py-[64px] px-[78px]'>
-                <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                  <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
-                </div>
-                <p className='max-w-[145px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                  {t('common:fiscalazition')}
-                </p>
-              </li>
-              <li className='max-w-[300px] w-full py-[64px] pl-[34px]'>
-                <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                  <li>{t('common:issuance')}</li>
-                  <li>{t('common:simple_tac_reporting')}</li>
-                </ul>
-              </li>
-              <li className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[50px] bg-[#FBF1F1]'>
-                <div className='bg-[#fbe2e7]   max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                  <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
-                </div>
-                <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                </li>
+              </ul>
+            </li>
+            <li className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[28px] bg-[#FBF1F1]'>
+              <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
+              </div>
+              <p className='max-w-[198px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                {
+                  t('common:simple_int_interface')
+                }
+              </p>
+            </li>
+            <li className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
+              <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
+              </div>
+              <p className='max-w-[168px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                {
+                  t('common:store_report')
+                }
+              </p>
+            </li>
+          </ul>
+          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px]">
+            <li className='max-w-[300px] w-full py-[64px] px-[78px]'>
+              <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
+              </div>
+              <p className='max-w-[145px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                {t('common:fiscalazition')}
+              </p>
+            </li>
+            <li className='max-w-[300px] w-full py-[64px] pl-[34px]'>
+              <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                <li>{t('common:issuance')}</li>
+                <li>{t('common:simple_tac_reporting')}</li>
+              </ul>
+            </li>
+            <li className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[50px] bg-[#FBF1F1]'>
+              <div className='bg-[#fbe2e7]   max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
+              </div>
+              <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
                 {t('common:orginize_store')}
-                </p>
-              </li>
-              <li className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
-                <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                  <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
-                </div>
-                <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+              </p>
+            </li>
+            <li className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
+              <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
+              </div>
+              <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
                 {t('common:elimination_theft')}
-                </p>
-              </li>
-            </ul>
-          </div>
+              </p>
+            </li>
+          </ul>
+        </div>
       </section>
       <section className={`bg-[url("../public/assets/images/makeBusinessWithYoshop.png")] h-[861px] bg-no-repeat w-full bg-top my-[70px] bg-cover`}>
         <div className='site-container'>
@@ -280,18 +379,18 @@ function Home() {
         </div>
       </section>
       <section className="py-[70px]">
-          <div className='mx-auto max-w-[1200px] bg-[url("../public/assets/images/question-bg.png")] w-full bg-[#fff] pl-[44px] pt-[21px] rounded-[20px] pb-[33px] bg-no-repeat my-[70px] bg-cover'>
-            <h3 className='font-bold text-[32px] text-[#0F172A] text-center leading-[140%] mb-[40px] max-w-[460px] w-full'>
+        <div className='mx-auto max-w-[1200px] bg-[url("../public/assets/images/question-bg.png")] w-full bg-[#fff] pl-[44px] pt-[21px] rounded-[20px] pb-[33px] bg-no-repeat my-[70px] bg-cover'>
+          <h3 className='font-bold text-[32px] text-[#0F172A] text-center leading-[140%] mb-[40px] max-w-[460px] w-full'>
             {t("common:questions")}
-            </h3>
-            <Input inputType={'text'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder=
+          </h3>
+          <Input inputType={'text'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder=
             {t("common:name")}
-             value={name} onGetValue={setName} />
+            value={name} onGetValue={setName} />
 
-            <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={t('common:number')} value={number} onGetValue={setNumber} />
+          <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={t('common:number')} value={number} onGetValue={setNumber} />
 
-            <Button className={'max-w-[500px] py-[20px] w-full bg-[#ff588a] text-white rounded-[10px] font-bold text-base leading-[140%]'}>{t('common:order_call')}</Button>
-          </div>
+          <Button className={'max-w-[500px] py-[20px] w-full bg-[#ff588a] text-white rounded-[10px] font-bold text-base leading-[140%]'}>{t('common:order_call')}</Button>
+        </div>
       </section>
     </main>
   );
