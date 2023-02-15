@@ -78,7 +78,7 @@ function Home() {
 
                   <Button
                     className={
-                      'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
+                      'py-[11px] px-[74.5px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
                     }
                   >
                     {t("common:try_free")}
@@ -105,80 +105,84 @@ function Home() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
-              <div className='flex justify-between items-center mb-[200px]'>
-                <div className='max-w-[567px] w-full'>
-                  <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
-                    {t("common:mult_int_title")}
-                  </p>
-                  <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
-                    {t("common:use_tech")}
-                  </h2>
+            <div className='bg-[url("../public/assets/images/banner2.jpg")] hero bg-no-repeat bg-cover'>
+              <div className='site-container flex flex-col !pt-[179px] pb-[50px] justify-center'>
+                <div className='flex justify-between items-center mb-[200px]'>
+                  <div className='max-w-[567px] w-full'>
+                    <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
+                      {t("common:mult_int_title")}
+                    </p>
+                    <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
+                      {t("common:use_tech")}
+                    </h2>
 
-                  <Button
-                    className={
-                      'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
-                    }
-                  >
-                    {t("common:try_free")}
-                  </Button>
+                    <Button
+                      className={
+                        'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
+                      }
+                    >
+                      {t("common:try_free")}
+                    </Button>
+                  </div>
                 </div>
-              </div>
 
-              <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
-                <Image
-                  src={Arrowleft}
-                  alt='site-logo'
-                  width={20}
-                  height={20}
-                  className='mb-[30px]'
-                />
-                <Image
-                  src={ArrowRight}
-                  alt='site-logo'
-                  width={20}
-                  height={20}
-                  className='mb-[30px]'
-                />
+                <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
+                  <Image
+                    src={Arrowleft}
+                    alt='site-logo'
+                    width={20}
+                    height={20}
+                    className='mb-[30px]'
+                  />
+                  <Image
+                    src={ArrowRight}
+                    alt='site-logo'
+                    width={20}
+                    height={20}
+                    className='mb-[30px]'
+                  />
+                </div>
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
-              <div className='flex justify-between items-center mb-[200px]'>
-                <div className='max-w-[567px] w-full'>
-                  <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
-                    {t("common:mult_int_title")}
-                  </p>
-                  <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
-                    {t("common:use_tech")}
-                  </h2>
+            <div className='bg-[url("../public/assets/images/banner3.jpg")] hero bg-no-repeat bg-cover'>
+              <div className='site-container flex flex-col !pt-[179px] pb-[50px] justify-center'>
+                <div className='flex justify-between items-center mb-[200px]'>
+                  <div className='max-w-[567px] w-full'>
+                    <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
+                      {t("common:mult_int_title")}
+                    </p>
+                    <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
+                      {t("common:use_tech")}
+                    </h2>
 
-                  <Button
-                    className={
-                      'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
-                    }
-                  >
-                    {t("common:try_free")}
-                  </Button>
+                    <Button
+                      className={
+                        'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
+                      }
+                    >
+                      {t("common:try_free")}
+                    </Button>
+                  </div>
                 </div>
-              </div>
 
-              <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
-                <Image
-                  src={Arrowleft}
-                  alt='site-logo'
-                  width={20}
-                  height={20}
-                  className='mb-[30px]'
-                />
-                <Image
-                  src={ArrowRight}
-                  alt='site-logo'
-                  width={20}
-                  height={20}
-                  className='mb-[30px]'
-                />
+                <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
+                  <Image
+                    src={Arrowleft}
+                    alt='site-logo'
+                    width={20}
+                    height={20}
+                    className='mb-[30px]'
+                  />
+                  <Image
+                    src={ArrowRight}
+                    alt='site-logo'
+                    width={20}
+                    height={20}
+                    className='mb-[30px]'
+                  />
+                </div>
               </div>
             </div>
           </SwiperSlide>
@@ -189,10 +193,10 @@ function Home() {
         className={`pt-[150px] pb-[75px] relative`}
 
       >
-        <div className='fixed w-[81px] h-[81px] left-[1350px]  top-96 z-10'>
-          <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
-        </div>
         <div className='mx-auto max-w-[1230px] w-full h-[750px] bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
+          <div className='fixed w-[81px] h-[81px] right-20  bottom-14 z-10'>
+            <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
+          </div>
           <h2 className='text-[38px] font-PromtLight leading-[57px] mb-[6px]'>
             {t('common:yoshop_licence')}
           </h2>
