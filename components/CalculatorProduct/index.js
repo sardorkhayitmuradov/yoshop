@@ -15,7 +15,8 @@ export const CalculatorProduct = ({
 }) => {
   return (
     <div
-      className={`flex items-center justify-between max-w-[157px] w-full ${wrapClass}`}
+      className={`flex items-center justify-between max-w-[157px] mx-auto w-full ${wrapClass}`}
+      onClick={(e) => console.log(e.stopPropagation())}
     >
       <Image
         src={opacity ? MinusIcon : quantity == 0 ? MinusIcon : MinusBlack}

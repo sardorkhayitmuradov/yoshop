@@ -33,33 +33,32 @@ export const SemiAnnual = () => {
             <Accordion
               subTotal={foundProd?.subTotal || 0}
               elId={el.id}
-              title={
-                <div className="flex items-center justify-between max-w-[700px] w-full">
-                  <h2 className="max-w-[300px] w-full">{el.name}</h2>
-                  <CalculatorProduct
-                    incrementItem={() => {
-                      elFound
-                        ? ""
-                        : dispatch(addLicences({ el, period: "semi-annual" }));
-                    }}
-                    quantity={foundProd?.qty || 0}
-                    decrementItem={() => {
-                      elFound ? "" : dispatch(removeLicences(el));
-                    }}
-                  />
-                  <span className={`text-[16px] ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] font-PoppinsRegular`}>
-                    ₸ {foundProd?.price || el.price}
-                    {foundProd?.qty > 1 && `(-₸ ${(el.price * foundProd.qty) - foundProd.price})`}
-                  </span>
-                </div>
-              }
               accordionClassName={`mb-[11px] ${elFound ? "opacity-40" : ""}`}
               products={filtered}
               foundLicense={foundProd}
               accordionBodyClassname={"py-[20px]"}
               accordionHeaderClassName={"py-[10px] px-[34px]"}
               imgColor={"#FF588A"}
-            >
+              title={
+                <div className="flex items-center max-w-[830px]">
+                  <h2 className="max-w-[300px] w-full">{el.name}</h2>
+                  <CalculatorProduct
+                    incrementItem={(e) => {
+                      elFound
+                        ? ""
+                        : dispatch(addLicences({ el, period: "monthly" }));
+                    }}
+                    quantity={foundProd?.qty || 0}
+                    decrementItem={() => {
+                      elFound ? "" : dispatch(removeLicences(el));
+                    }}
+                  />
+                  <span className={`text-[16px] max-w-[190px] w-full ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] font-PoppinsRegular`}>
+                    ₸ {foundProd?.price || el.price}
+                    {foundProd?.qty > 1 && `(-₸ ${(el.price * foundProd.qty) - foundProd.price})`}
+                  </span>
+                </div>
+              } >
               <div className="flex w-full">
                 <ul className="flex flex-col w-full">
                   <li className="flex items-center mb-[15px] justify-between max-w-[700px] pl-[100px] w-full">
@@ -118,14 +117,14 @@ export const SemiAnnual = () => {
                         <CalculatorProduct
                           quantity={foundProd?.cashier.qty || 0}
                           incrementItem={(e) => {
-                            dispatch(addUsers({ elId: el.id, price: 5000 }));
+                            dispatch(addUsers({ elId: el.id, price: 1000 }));
                           }}
                           decrementItem={(e) => {
-                            dispatch(removeUsers({ elId: el.id, price: 5000 }));
+                            dispatch(removeUsers({ elId: el.id, price: 1000 }));
                           }}
                         />
                         <span className="max-w-[190px] w-full text-[16px] leading-[25px] font-PoppinsRegular ml-5">
-                          ₸ 5 000 per additional
+                          ₸ 1 000 per additional
                         </span>
                       </> : <>
                         <CalculatorProduct
