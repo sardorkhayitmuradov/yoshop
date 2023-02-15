@@ -52,7 +52,7 @@ function Home() {
   };
 
   return (
-    <main className='pt-[100px]'>
+    <main className='pt-[100px] w-full'>
       <section>
 
         <Swiper
@@ -185,12 +185,13 @@ function Home() {
         </Swiper>
 
       </section>
-      <div className='sticky w-[81px] h-[81px] right-0 left-[1290px] top-16 z-10'>
-        <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
-      </div>
       <section
-        className={`pt-[150px] pb-[75px]`}
+        className={`pt-[150px] pb-[75px] relative`}
+
       >
+        <div className='fixed w-[81px] h-[81px] left-[1350px]  top-96 z-10'>
+          <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
+        </div>
         <div className='mx-auto max-w-[1230px] w-full h-[750px] bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
           <h2 className='text-[38px] font-PromtLight leading-[57px] mb-[6px]'>
             {t('common:yoshop_licence')}
