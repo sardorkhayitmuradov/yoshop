@@ -6,6 +6,7 @@ module.exports  = {
   reactStrictMode: true,
   i18n,
   localePath: path.resolve('./public/locales'),
+  localeStructure: '{{lng}}/{{ns}}',
   webpack: (config, options) =>
   {
       config.module.rules.push({
