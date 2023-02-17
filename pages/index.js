@@ -17,7 +17,6 @@ import FiscalizationIcon from '../public/assets/images/fiscalization.svg';
 import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg';
 import SecurityIcon from '../public/assets/images/securitysafe.svg';
 import PhoneCall from '../public/assets/images/phone.svg';
-import { licence } from '../constants/licence';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Swiper, SwiperSlide } from "swiper/react";

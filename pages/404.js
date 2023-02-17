@@ -3,7 +3,8 @@ import Link from "next/link";
 import NotFoundNavbarImage from '../public/assets/images/notfoundNavbar.svg';
 import NotFoundImage from '../public/assets/images/notFoundImage.png'
 import NotFoundUserImage from '../public/assets/images/notFoundUser.png'
-import Button from "../components/Button/Button";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 export async function getStaticProps({ locale }) {
   return {
