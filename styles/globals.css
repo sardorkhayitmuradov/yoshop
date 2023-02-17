@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "InterMedium";
+    src: url("../public/assets/fonts/Inter/Inter-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "InterRegular";
+    src: url("../public/assets/fonts/Inter/Inter-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "OverpassRegular";
+    src: url("../public/assets/fonts/Overpass/Overpass-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PoppinsRegular";
+    src: url("../public/assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PoppinsSemibold";
+    src: url("../public/assets/fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PoppinsBold";
+    src: url("../public/assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PromtLight";
+    src: url("../public/assets/fonts/Prompt/Prompt-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PromptRegular";
+    src: url("../public/assets/fonts/Prompt/Prompt-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PromptMedium";
+    src: url("../public/assets/fonts/Prompt/Prompt-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PromptBold";
+    src: url("../public/assets/fonts/Prompt/Prompt-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "UbuntuRegular";
+    src: url("../public/assets/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "UbuntuMedium";
+    src: url("../public/assets/fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+  font-language-override: 'RUS'!important;
+  font-family: 'Poppins', sans-serif;
+  /* @apply font-PoppinsRegular; */
+}
+
+footer{
+  font-family: sans-serif;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  background: #fff;
+  color: #000000;
+  flex-direction: column;
+}
+
+header{
+  border-bottom: 2px solid #DCE3EC;
+}
+
+.site-container {
+  max-width: 1230px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ///// */
+
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: url("../public/assets/images/main-slider.svg");
+  cursor: pointer;
+  border: none;
+}
+::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #3a7bec;
+  cursor: pointer;
+  border: none;
+}
+
+
+.cart::-webkit-scrollbar {
+  display: none;
+}
+
+
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 1 !important;
+  background: #EBEAFA !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #7d66bb !important;
+  width: 32px !important;
+  border-radius: 10px !important;
+}
+
+.pdf-container {
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+.controls {
+  margin: 20px;
+}
+
+.annotationLayer {
+  height: 0 !important;
+}
+
+@media print {
+  .pdf-container {
+    display: none;
+  }
+}
