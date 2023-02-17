@@ -5,6 +5,7 @@ const path = require('path');
 module.exports  = {
   reactStrictMode: true,
   i18n,
+  localePath: path.resolve('./public/locales'),
   webpack: (config, options) =>
   {
       config.module.rules.push({
