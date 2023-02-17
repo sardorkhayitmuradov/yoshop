@@ -17,7 +17,6 @@ import FiscalizationIcon from '../public/assets/images/fiscalization.svg';
 import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg';
 import SecurityIcon from '../public/assets/images/securitysafe.svg';
 import PhoneCall from '../public/assets/images/phone.svg';
-import { licence } from '../constants/licence';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,23 +26,19 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation, Mousewheel , FreeMode, Thumbs } from 'swiper';
 // import "../styles/globals.css";
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
-    }
+      ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
+    },
   };
-};
+}
 
 function Home() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState();
   const { t } = useTranslation();
   const [active, setActive] = useState(0);
-  // const [thumbsSwiper, setThumbsSwiper] = useState("1");
-  // console.log(active)
-  // const router = useRouter();
-  // const [oneLicence, setOneLicene] = useState([licence[0]]);
   const handleChange = (event) => {
     let val = event.target.value;
     setActive(Number(val));
