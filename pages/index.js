@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useState, useContext } from 'react';
@@ -23,7 +24,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Autoplay, Pagination, Navigation, Mousewheel , FreeMode, Thumbs } from 'swiper';
 // import "../styles/globals.css";
 
 export async function getServerSideProps({ locale }) {
@@ -37,19 +38,22 @@ export async function getServerSideProps({ locale }) {
 function Home() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState();
-  const router = useRouter();
   const { t } = useTranslation();
-  const [value, setValue] = useState(0);
-  const [oneLicence, setOneLicene] = useState([licence[0]]);
+  const [active, setActive] = useState(0);
+  // const [thumbsSwiper, setThumbsSwiper] = useState("1");
+  // console.log(active)
+  // const router = useRouter();
+  // const [oneLicence, setOneLicene] = useState([licence[0]]);
   const handleChange = (event) => {
     let val = event.target.value;
-    setValue(val);
-    licence.map((el, index) => {
-      if (val == index) {
-        setOneLicene([el]);
-      }
-    });
+    setActive(Number(val));
+    // licence.map((el, index) => {
+    //   if (val == index) {
+    //     setOneLicene([el]);
+    //   }
+    // });
   };
+
 
   return (
     <main className='pt-[100px] w-full'>
@@ -85,23 +89,6 @@ function Home() {
                   </Button>
                 </div>
               </div>
-
-              <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
-                <Image
-                  src={Arrowleft}
-                  alt='site-logo'
-                  width={20}
-                  height={20}
-                  className='mb-[30px]'
-                />
-                <Image
-                  src={ArrowRight}
-                  alt='site-logo'
-                  width={20}
-                  height={20}
-                  className='mb-[30px]'
-                />
-              </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
@@ -124,23 +111,6 @@ function Home() {
                       {t("common:try_free")}
                     </Button>
                   </div>
-                </div>
-
-                <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
-                  <Image
-                    src={Arrowleft}
-                    alt='site-logo'
-                    width={20}
-                    height={20}
-                    className='mb-[30px]'
-                  />
-                  <Image
-                    src={ArrowRight}
-                    alt='site-logo'
-                    width={20}
-                    height={20}
-                    className='mb-[30px]'
-                  />
                 </div>
               </div>
             </div>
@@ -166,23 +136,6 @@ function Home() {
                     </Button>
                   </div>
                 </div>
-
-                <div className='flex items-center max-w-[60px] w-full justify-between self-center justify-self-end'>
-                  <Image
-                    src={Arrowleft}
-                    alt='site-logo'
-                    width={20}
-                    height={20}
-                    className='mb-[30px]'
-                  />
-                  <Image
-                    src={ArrowRight}
-                    alt='site-logo'
-                    width={20}
-                    height={20}
-                    className='mb-[30px]'
-                  />
-                </div>
               </div>
             </div>
           </SwiperSlide>
@@ -197,69 +150,325 @@ function Home() {
           <div className='fixed w-[81px] h-[81px] right-20  bottom-14 z-10'>
             <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
           </div>
-          <h2 className='text-[38px] font-PromtLight leading-[57px] mb-[6px]'>
+          <h2 className='text-[38px] font-light leading-[57px] mb-[6px]'>
             {t('common:yoshop_licence')}
           </h2>
-          <p className='text-base font-PromptRegular leading-[32px] uppercase opacity-60 mb-[100px]'>
+          <p className='text-base leading-[32px] uppercase opacity-60 mb-[100px]'>
             {t('common:phone_terminal')}
           </p>
-          {
-            oneLicence.map((licenc) => {
-              return (
-                <div className='w-full' key={licenc.id}>
-                  <div className='flex max-w-[960px] w-full justify-between'>
-                    <ul className='max-w-[175px] w-full text-base leading-[20px] pt-[35px]'>
-                      <li className='mb-[30px] '>{t("common:store_automation")}</li>
-                      <li className='mb-[30px] '>{t("common:full_control_business")}</li>
-                      <li className='mb-[30px] '>{t("common:effective_sales_management")}</li>
-                      <li className='mb-[30px] '>{t("common:extract_min_profit")}</li>
-                      <li>
-                        {t("common:absolute_safe_business")}</li>
-                    </ul>
-                    <ul>
-                      <li className='text-5xl leading-[73px] mb-[10px] font-PromptBold'>
-                        {licenc.title}
-                      </li>
-                      {
-                        licenc.description.map((el, index) => {
-                          return (
-                            <li key={index} className='mb-[14px] pl-10 font-PromptRegular flex items-center'>
-                              <Image
-                                src={ListIcon}
-                                alt='list circle'
-                                width={6}
-                                height={6}
-                                className='mr mr-2'
-                              />
-                              {el}
-                            </li>
-                          );
-                        })
-                      }
 
-                    </ul>
-                  </div>
-                  <div className='absolute h-[750px] top-1/4 right-28 -z-[1]'>
+          <div className='w-full'>
+            <div className='flex w-full justify-between h-[702px]'>
+              <ul className='max-w-[175px] w-full pt-[35px]'>
+                <li className='mb-[30px] relative'>{active === 0 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:store_automation")}</p></li>
+                <li className='mb-[30px] relative'>{active === 1 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:full_control_business")}</p></li>
+                <li className='mb-[30px] relative'>{active === 2 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:effective_sales_management")}</p></li>
+                <li className='mb-[30px] relative'>{active === 3 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:extract_min_profit")}</p></li>
+                <li className='mb-[30px] relative'>
+                  {active === 4 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}
+                  <p className='z-10 relative text-base leading-[20px]'>{t("common:absolute_safe_business")}</p>
+                </li>
+              </ul>
+              <Swiper
+                direction={"vertical"}
+                slidesPerView={1}
+                onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
+                spaceBetween={0}
+                mousewheel={true}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[Mousewheel , FreeMode, Thumbs]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  <ul>
+                    <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
+                      {t("common:store_automation")}
+                    </li>
+
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      simple and intuitive interface
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      minimizing the amount of "manual" work
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      the maximum expansion of the range of goods sold
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      significant savings in time and effort required for the operation of the store
+                    </li>
+                  </ul>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <ul>
+                    <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
+                      {t("common:full_control_business")}
+                    </li>
+
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      write-off of goods;
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      remote control "from home" for employees and the store.
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      search for reliable suppliers and distributors/coming soon
+                    </li>
+                  </ul>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <ul>
+                    <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
+                      {t("common:effective_sales_management")}
+                    </li>
+
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      simple and convenient sale of goods;
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      simplified procedure and automatic accounting of returns;
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      No queues at the checkout
+                    </li>
+                  </ul>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <ul>
+                    <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
+                      {t("common:extract_min_profit")}
+                    </li>
+
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      acceptance of all possible types of payments (cash and non-cash);
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      Increasing store throughput
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      prevention of theft by unscrupulous employees
+                    </li>
+                  </ul>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <ul>
+                    <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
+                      {t("common:absolute_safe_business")}
+                    </li>
+
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      secure "cloud" data storage;
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      issuance of fiscal receipts "in one click";
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      secure storage of data on all payments;
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      access to fiscal history - for any period of time;
+                    </li>
+                    <li className='mb-[14px] pl-10 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      complete confidentiality of all information.
+                    </li>
+                  </ul>
+                </SwiperSlide>
+              </Swiper>
+              <div className='absolute h-[750px] top-1/4 right-28 -z-[1]'>
+                {/* <Swiper
+                  spaceBetween={10}
+                  _swiper={(e) => console.log(e)}
+                  slidesPerView={1}
+                  freeMode={true}
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Thumbs]}
+                  className="mySwiper"
+                >
+                  <SwiperSlide>
                     <Image
-                      src={licenc.image}
+                      src={'/assets/images/storeAutomation.jpg'}
                       alt='slider image'
                       width={550}
                       height={300}
                       className='rounded-md'
                     />
-                  </div>
-                </div>
-              );
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      src={'/assets/images/storeAutomation.jpg'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className='rounded-md'
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      src={'/assets/images/storeAutomation.jpg'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className='rounded-md'
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      src={'/assets/images/storeAutomation.jpg'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className='rounded-md'
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      src={'/assets/images/storeAutomation.jpg'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className='rounded-md'
+                    />
+                  </SwiperSlide>
+                </Swiper> */}
+              </div>
+            </div>
+          </div>
 
-            })
-          }
           <div className='absolute -right-44 bottom-2/4 rotate-90'>
             <input
               type='range'
-              defaultValue={value}
+              defaultValue={active}
               onChange={handleChange}
               min={0}
-              max={5}
+              max={4}
               step={1}
               className='appearance-none w-[440px] h-[0.5px] rounded bg-[#e1e5e9] outline-none '
             />
@@ -402,3 +611,69 @@ function Home() {
 }
 
 export default Home;
+
+// import React, { useRef, useState } from "react";
+// // Import Swiper React components
+// import { Swiper, SwiperSlide } from "swiper/react";
+
+// // Import Swiper styles
+// import "swiper/css";
+// import "swiper/css/effect-coverflow";
+// import "swiper/css/pagination";
+
+// import "./styles.css";
+
+// import required modules
+// import { EffectCoverflow, Pagination } from "swiper";
+
+// export default function App() {
+//   return (
+//     <>
+//       <Swiper
+//         effect={"coverflow"}
+//         grabCursor={true}
+//         centeredSlides={true}
+//         slidesPerView={"auto"}
+//         coverflowEffect={{
+//           rotate: 50,
+//           stretch: 0,
+//           depth: 100,
+//           modifier: 1,
+//           slideShadows: true,
+//         }}
+//         pagination={true}
+//         modules={[EffectCoverflow, Pagination]}
+//         className="mySwiper"
+//       >
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+//         </SwiperSlide>
+//       </Swiper>
+//     </>
+//   );
+// }
+

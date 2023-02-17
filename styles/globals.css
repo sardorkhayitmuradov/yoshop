@@ -173,3 +173,23 @@ header{
   width: 32px !important;
   border-radius: 10px !important;
 }
+
+.pdf-container {
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+.controls {
+  margin: 20px;
+}
+
+.annotationLayer {
+  height: 0 !important;
+}
+
+@media print {
+  .pdf-container {
+    display: none;
+  }
+}
