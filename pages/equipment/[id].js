@@ -13,13 +13,13 @@ import { useSelector , useDispatch } from "react-redux";
 import { addProducts , addToCart, removeProducts } from "../../redux/features/carts";
 import NewAccordion from "../../components/NewAccordion";
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
-    }
+      ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
+    },
   };
-};
+}
 
 const Details = () => {
   const productsCounter = useSelector((store) => store.productCounter.products);

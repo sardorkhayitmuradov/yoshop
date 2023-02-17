@@ -5,10 +5,10 @@ import { Document, Page, pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 import  {CalculatorProduct}  from "../components/CalculatorProduct";
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
+      ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
     },
   };
 }

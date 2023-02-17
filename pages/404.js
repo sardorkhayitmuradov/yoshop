@@ -5,6 +5,14 @@ import NotFoundImage from '../public/assets/images/notFoundImage.png'
 import NotFoundUserImage from '../public/assets/images/notFoundUser.png'
 import Button from "../components/Button/Button";
 
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
+    },
+  };
+}
+
 const NotFound = () => {
   return (
     <div className="mx-auto max-w-[1230px] w-full pt-[95px] pb-[254px]">

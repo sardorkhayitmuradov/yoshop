@@ -27,13 +27,13 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation, Mousewheel , FreeMode, Thumbs } from 'swiper';
 // import "../styles/globals.css";
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
-    }
+      ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
+    },
   };
-};
+}
 
 function Home() {
   const [name, setName] = useState('');
