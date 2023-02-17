@@ -95,12 +95,12 @@ const Licenses = () => {
           </div>
         </Link>
 
-        <Link href={'/assets/files/manual.pdf'}>
+        {/* <Link href={'/assets/files/manual.pdf'}>
           <div className="flex items-center mb-14">
             <Image src={UserGuide} width={30} height={30} alt="user guide" />
             <p className="ml-3 mb-0 text-[18px] leading-[180%] text-[#F36784]">User guide</p>
           </div>
-        </Link>
+        </Link> */}
 
         <h2 className="font-PoppinsBold text-[32px] text-[#111827] leading-[140%] mb-[40px]">
           {t("common:price_includes")}:
