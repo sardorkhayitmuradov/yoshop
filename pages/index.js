@@ -23,7 +23,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { Autoplay, Pagination, Navigation, Mousewheel , FreeMode, Thumbs } from 'swiper';
+import { Autoplay, Pagination, Navigation, Mousewheel, FreeMode, Thumbs } from 'swiper';
 // import "../styles/globals.css";
 
 export async function getStaticProps({ locale }) {
@@ -95,19 +95,20 @@ function Home() {
               <div className='site-container flex flex-col !pt-[179px] pb-[50px] justify-center'>
                 <div className='flex justify-between items-center mb-[200px]'>
                   <div className='max-w-[567px] w-full'>
-                    <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
-                      {t("common:mult_int_title")}
-                    </p>
-                    <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
-                      {t("common:use_tech")}
-                    </h2>
+                    <div className='mb-[67px] text-[40px] font-bold leading-[120%]'>
+                      <div>
+                        <h2 className='bg-[#FF588A] text-[#fff] rounded inline-block'>{t("common:buy_title")}</h2>
+                      </div>
+                      <h2 className='text-[#fff] inline'>{t("common:buy_retail")}</h2>
+                      <h2 className='bg-[#FF588A] text-[#fff] rounded inline'>{t("common:buy_free")}</h2>
+                    </div>
 
                     <Button
                       className={
-                        'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
+                        'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
                       }
                     >
-                      {t("common:try_free")}
+                      {t("common:buy_now")}
                     </Button>
                   </div>
                 </div>
@@ -119,20 +120,25 @@ function Home() {
               <div className='site-container flex flex-col !pt-[179px] pb-[50px] justify-center'>
                 <div className='flex justify-between items-center mb-[200px]'>
                   <div className='max-w-[567px] w-full'>
-                    <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
-                      {t("common:mult_int_title")}
-                    </p>
-                    <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
-                      {t("common:use_tech")}
-                    </h2>
-
-                    <Button
-                      className={
-                        'pt-[16px] pb-[16px] px-[123px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
-                      }
-                    >
-                      {t("common:try_free")}
-                    </Button>
+                    <div>
+                      <div className='max-w-[560px] w-full font-bold text-[40px] leading-[154%] mb-[40px]'>
+                        {/* {t("common:download")} */}
+                        <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download")}</span>
+                        {t("common:download_mobile")}
+                        <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>
+                        <h2>{t("common:download_month")}</h2>
+                      </div>
+                    </div>
+                    <div className='flex text-white items-center justify-between'>
+                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
+                        <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
+                        Appstore
+                      </Button>
+                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
+                        <Image className='mr-[10px]' src={GooglePlay} width={40} height={40} alt='google play Image' />
+                        Google play
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -177,7 +183,7 @@ function Home() {
                 pagination={{
                   clickable: true,
                 }}
-                modules={[Mousewheel , FreeMode, Thumbs]}
+                modules={[Mousewheel, FreeMode, Thumbs]}
                 className="mySwiper"
               >
                 <SwiperSlide>
@@ -477,21 +483,20 @@ function Home() {
       <section className='py-[75px]'>
         <div className="mx-auto max-w-[1230px] w-full bg-[#EFF1FE] h-[352px] rounded-[20px] pt-[55px] pb-[30px] pl-[60px] pr-[56px] flex items-center justify-between">
           <div>
-            <h2 className='text-[#0F172A] max-w-[521px] w-full font-bold text-[40px] leading-[140%] mb-[30px]'>
-              {t("common:download_info")}
-              {/* <span className='bg-[#FF588A] rounded-md text-white'>Download</span> the mobile app and get <span className='bg-[#FF588A] rounded-md text-white'>1 month free,</span> then ₸ 3000 for month */}
-            </h2>
-            <div className='flex items-center justify-start'>
-              <Image src={Users} className='mr-3' width={230} height={70} alt='people Image' />
-              <p className='text-[#000] font-normal text-xl'>{t("common:download_users")}</p>
+            <div className='text-[#0F172A] max-w-[560px] w-full font-bold text-[40px] leading-[140%] mb-[30px]'>
+              {/* {t("common:download")} */}
+              <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download")}</span>
+              {t("common:download_mobile")}
+              <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>
+              <h2>{t("common:download_month")}</h2>
             </div>
           </div>
           <div className='flex flex-col text-white'>
-            <Button className={'py-[18px] px-[50px] mb-[15px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
+            <Button className={'py-[17px] px-[50px] mb-[15px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
               <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
               Appstore
             </Button>
-            <Button className={'py-[18px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
+            <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
               <Image className='mr-[10px]' src={GooglePlay} width={40} height={40} alt='google play Image' />
               Google play
             </Button>
@@ -503,7 +508,7 @@ function Home() {
           <h2 className='text-[#111827] font-bold text-[44px] leading-[140%] mb-[60px]'>
             {t("common:improve_business")}
           </h2>
-          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px]">
+          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] wrapper">
             <li className='max-w-[300px] w-full py-[64px] px-[78px]'>
               <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                 <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
@@ -512,7 +517,7 @@ function Home() {
                 {t("common:types_of_payment")}
               </p>
             </li>
-            <li className='max-w-[300px] w-full py-[64px] pl-[34px]'>
+            <li className='max-w-[300px] w-full py-[64px] pl-[34px] info'>
               <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                 <li>
                   {t("common:bank_cards")}
@@ -531,7 +536,7 @@ function Home() {
                 </li>
               </ul>
             </li>
-            <li className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[28px] bg-[#FBF1F1]'>
+            <li className='max-w-[300px] w-full py-[64px] pl-[78px] interface pr-[28px] bg-[#FBF1F1]'>
               <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                 <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
               </div>
@@ -541,7 +546,7 @@ function Home() {
                 }
               </p>
             </li>
-            <li className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
+            <li className='max-w-[300px] w-full py-[64px] px-[78px] report bg-[#FFE6E6]'>
               <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                 <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
               </div>

@@ -188,6 +188,12 @@ header{
   height: 0 !important;
 }
 
+.interface:hover {
+  max-width: 600px;
+  width: 100%;
+}
+
+
 @media print {
   .pdf-container {
     display: none;
