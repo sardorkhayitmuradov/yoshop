@@ -5,20 +5,29 @@ import React, { useState , useEffect } from "react";
 import  {CalculatorProduct}  from "../../components/CalculatorProduct";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Button from "../../components/Button/Button";
-import { useTranslation } from "next-i18next";
 import shopIcon from "../../public/assets/images/bascet.svg";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+import { useTranslation } from "next-i18next";
 import { useSelector , useDispatch } from "react-redux";
 import { addProducts , addToCart, removeProducts } from "../../redux/features/carts";
 import NewAccordion from "../../components/NewAccordion";
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
+      fallback: true,
+      paths: ["/common/id", { params: { id: "" } }],
       ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
     },
   };
-}
+};
+
+export const getStaticPaths = async () => {
+  return {
+    paths: ["/equipment/id"],
+    fallback: true,
+  };
+};
 
 const Details = (props) => {
   const productsCounter = useSelector((store) => store.productCounter.products);
@@ -28,7 +37,6 @@ const Details = (props) => {
   const { id } = router.query;
   let emtyString = "";
   const [card , setCard] = useState();
-  console.log(props)
 
   const filterCard = () => {
     let filteredProduct =  productsCounter.filter(pr => {
@@ -44,7 +52,6 @@ const Details = (props) => {
    }, [productsCounter, id]);
 
   const {t} = useTranslation()
-  // const {pathname, asPath,route} = router
   
   return (
     <>
