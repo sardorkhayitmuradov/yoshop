@@ -1,13 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { useState, useContext } from 'react';
+import { useState, useRef } from 'react';
 import Button from '../components/Button/Button';
 import Input from '../components/Input/Input';
-import Arrowleft from '../public/assets/images/left.svg';
-import ArrowRight from '../public/assets/images/right.svg';
 import ListIcon from '../public/assets/images/listCircle.svg';
-import Users from '../public/assets/images/people.png';
 import AppStore from '../public/assets/images/appStore.png';
 import GooglePlay from '../public/assets/images/googlePlay.png';
 import PaymentIcon from '../public/assets/images/typesOfPayment.svg';
@@ -20,12 +16,10 @@ import PhoneCall from '../public/assets/images/phone.svg';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import { Autoplay, Pagination, Navigation, EffectCoverflow, Mousewheel, FreeMode, Thumbs } from 'swiper';
-// import "../styles/globals.css";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -40,25 +34,20 @@ function Home() {
   const [number, setNumber] = useState();
   const { t } = useTranslation();
   const [active, setActive] = useState(0);
-  // const [thumbsSwiper, setThumbsSwiper] = useState("1");
-  // console.log(active)
-  // const router = useRouter();
-  // const [oneLicence, setOneLicene] = useState([licence[0]]);
+  const swiperRef = useRef()
   const handleChange = (event) => {
     let val = event.target.value;
     setActive(Number(val));
-    // licence.map((el, index) => {
-    //   if (val == index) {
-    //     setOneLicene([el]);
-    //   }
-    // });
+    swiperRef.current.swiper.slideTo(Number(val))
   };
+
+  const slideFirstCard = useRef()
+  const slideSecondCard = useRef()
 
 
   return (
     <main className='pt-[100px] w-full'>
       <section>
-
         <Swiper
           pagination={{
             dynamicBullets: true,
@@ -73,13 +62,12 @@ function Home() {
             <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
               <div className='flex justify-between items-center mb-[200px]'>
                 <div className='max-w-[567px] w-full'>
-                  <p className='mb-[25px] max-w-[399px] w-full text-[20px] leading-[180%]'>
+                  <p className='mb-[25px] max-w-[490px] w-full text-[18px] leading-[180%]'>
                     {t("common:mult_int_title")}
                   </p>
-                  <h2 className='mb-[40px] text-[62px] text-[#FF588A] font-bold leading-[120%]'>
+                  <h2 className='mb-[40px] text-[56px] text-[#FF588A] font-bold leading-[120%]'>
                     {t("common:use_tech")}
                   </h2>
-
                   <Button
                     className={
                       'py-[11px] px-[74.5px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
@@ -123,8 +111,7 @@ function Home() {
                   <div className='max-w-[567px] w-full'>
                     <div>
                       <div className='max-w-[560px] w-full font-bold text-[40px] leading-[154%] mb-[40px]'>
-                        {/* {t("common:download")} */}
-                        <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download")}</span>
+                        <span className='bg-[#FF588A] pt-1 px-1 rounded-md text-white'>{t("common:download")}</span>
                         {t("common:download_mobile")}
                         <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>
                         <h2>{t("common:download_month")}</h2>
@@ -133,11 +120,11 @@ function Home() {
                     <div className='flex text-white items-center justify-between'>
                       <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
                         <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
-                        Appstore
+                        App Store
                       </Button>
                       <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
                         <Image className='mr-[10px]' src={GooglePlay} width={40} height={40} alt='google play Image' />
-                        Google play
+                        Google Play
                       </Button>
                     </div>
                   </div>
@@ -146,7 +133,6 @@ function Home() {
             </div>
           </SwiperSlide>
         </Swiper>
-
       </section>
       <section
         className={`pt-[150px] pb-[75px] relative`}
@@ -176,6 +162,7 @@ function Home() {
                 </li>
               </ul>
               <Swiper
+                ref={swiperRef}
                 direction={"vertical"}
                 onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
                 mousewheel={true}
@@ -213,7 +200,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      simple and intuitive interface
+                      {t("common:simple_interface")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -223,7 +210,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      minimizing the amount of "manual" work
+                      {t("common:manual_work")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -233,7 +220,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      the maximum expansion of the range of goods sold
+                      {t("common:goods_sold")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -243,7 +230,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      significant savings in time and effort required for the operation of the store
+                      {t("common:significant_savings")}
                     </li>
                   </ul>
 
@@ -272,7 +259,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      write-off of goods;
+                      {t("common:write_off_goods")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -282,7 +269,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      remote control "from home" for employees and the store.
+                      {t("common:control_remote_workers")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -292,7 +279,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      search for reliable suppliers and distributors/coming soon
+                      {t("common:search_clients")}
                     </li>
                   </ul>
 
@@ -321,7 +308,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      simple and convenient sale of goods;
+                      {t("common:simple_goods")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -331,7 +318,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      simplified procedure and automatic accounting of returns;
+                      {t("common:returns")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -341,7 +328,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      No queues at the checkout
+                      {t("common:no_queues_checkout")}
                     </li>
                   </ul>
 
@@ -370,7 +357,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      acceptance of all possible types of payments (cash and non-cash);
+                      {t("common:all_types_payment")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -380,7 +367,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      Increasing store throughput
+                      {t("common:increasing_throughtput")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -390,7 +377,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      prevention of theft by unscrupulous employees
+                      {t("common:prevention_theft")}
                     </li>
                   </ul>
 
@@ -419,7 +406,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      secure "cloud" data storage;
+                      {t("common:data_storage")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -429,7 +416,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      issuance of fiscal receipts "in one click";
+                      {t("common:one_click")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -439,7 +426,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      secure storage of data on all payments;
+                      {t("common:secure_data_payment")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -449,7 +436,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      access to fiscal history - for any period of time;
+                      {t("common:access_history")}
                     </li>
                     <li className='mb-[14px] pl-10 flex items-center'>
                       <Image
@@ -459,7 +446,7 @@ function Home() {
                         height={6}
                         className='mr mr-2'
                       />
-                      complete confidentiality of all information.
+                      {t("common:complete_info")}
                     </li>
                   </ul>
 
@@ -474,85 +461,13 @@ function Home() {
                   </div>
                 </SwiperSlide>
               </Swiper>
-              {/* <div className='absolute h-[750px] top-1/4 right-28 -z-[1]'>
-                <Swiper
-                  spaceBetween={10}
-                  freeMode={true}
-                  watchSlidesProgress={true}
-                  direction={"vertical"}
-                  // slidesPerView={1}
-                  onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
-                  mousewheel={true}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  effect={"coverflow"}
-                  grabCursor={true}
-                  slidesPerView={"auto"}
-                  coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                  }}
-                  modules={[Mousewheel, EffectCoverflow, FreeMode, Thumbs]}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <Image
-                      src={'/assets/images/storeAutomation.jpg'}
-                      alt='slider image'
-                      width={550}
-                      height={300}
-                      className='rounded-md'
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      src={'/assets/images/storeAutomation.jpg'}
-                      alt='slider image'
-                      width={550}
-                      height={300}
-                      className='rounded-md'
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      src={'/assets/images/storeAutomation.jpg'}
-                      alt='slider image'
-                      width={550}
-                      height={300}
-                      className='rounded-md'
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      src={'/assets/images/storeAutomation.jpg'}
-                      alt='slider image'
-                      width={550}
-                      height={300}
-                      className='rounded-md'
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      src={'/assets/images/storeAutomation.jpg'}
-                      alt='slider image'
-                      width={550}
-                      height={300}
-                      className='rounded-md'
-                    />
-                  </SwiperSlide>
-                </Swiper>
-              </div> */}
             </div>
           </div>
 
           <div className='absolute -right-44 bottom-2/4 rotate-90'>
             <input
               type='range'
-              defaultValue={active}
+              value={active}
               onChange={handleChange}
               min={0}
               max={4}
@@ -575,7 +490,7 @@ function Home() {
           <div className='flex flex-col text-white'>
             <Button className={'py-[17px] px-[50px] mb-[15px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
               <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
-              Appstore
+              App Store
             </Button>
             <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
               <Image className='mr-[10px]' src={GooglePlay} width={40} height={40} alt='google play Image' />
@@ -589,7 +504,7 @@ function Home() {
           <h2 className='text-[#111827] font-bold text-[44px] leading-[140%] mb-[60px]'>
             {t("common:improve_business")}
           </h2>
-          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] slideCardWrapper">
+          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] rounded-tr-[20px] rounded-br-[20px] overflow-hidden">
             <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__one'>
               <div className='max-w-[300px] w-full py-[64px] px-[78px]'>
                 <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
@@ -619,8 +534,8 @@ function Home() {
                 </ul>
               </div>
             </li>
-            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__two'> 
-              <div className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[28px] bg-[#FBF1F1]'>
+            <li ref={slideFirstCard} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__two'> 
+              <div className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[28px] bg-[#FBF1F1] h-full'>
                 <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                   <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
                 </div>
@@ -630,7 +545,7 @@ function Home() {
                   }
                 </p>
               </div>
-              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FBF1F1]'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FBF1F1] h-full'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                   <li className='max-w-[202px] w-full'>
                     {t("common:bank_cards")}
@@ -650,8 +565,8 @@ function Home() {
                 </ul>
               </div>
             </li>
-            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__three'>
-              <div className='max-w-[300px] w-full py-[64px] px-[78px] report bg-[#FFE6E6]'>
+            <li onMouseOut={() =>  slideFirstCard.current.classList.remove('-translate-x-[50%]')} onMouseOver={() => slideFirstCard.current.classList.add('-translate-x-[50%]')} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__three'>
+              <div className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6] h-full'>
                 <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                   <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
                 </div>
@@ -661,7 +576,7 @@ function Home() {
                   }
                 </p>
               </div>
-              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FFE6E6]'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FFE6E6] h-full'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                   <li className='max-w-[202px] w-full'>
                     {t("common:bank_cards")}
@@ -682,7 +597,7 @@ function Home() {
               </div>
             </li>
           </ul>
-          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px]">
+          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] rounded-tr-[20px] rounded-br-[20px] overflow-hidden">
             <li className="max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__one">
               <div className='max-w-[300px] w-full py-[64px] px-[78px]'>
                 <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
@@ -699,7 +614,7 @@ function Home() {
                 </ul>
               </div>
             </li>
-            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__two'>
+            <li ref={slideSecondCard} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__two'>
               <div className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[50px] bg-[#FBF1F1] h-full'>
                 <div className='bg-[#fbe2e7]   max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                   <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
@@ -715,7 +630,7 @@ function Home() {
                 </ul>
               </div>
             </li>
-            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__three'>
+            <li onMouseOut={() =>  slideSecondCard.current.classList.remove('-translate-x-[50%]')} onMouseOver={() => slideSecondCard.current.classList.add('-translate-x-[50%]')} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__three'>
             <div className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
               <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                 <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />

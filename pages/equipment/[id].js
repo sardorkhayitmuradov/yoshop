@@ -12,7 +12,7 @@ import { useSelector , useDispatch } from "react-redux";
 import { addProducts , addToCart, removeProducts } from "../../redux/features/carts";
 import NewAccordion from "../../components/NewAccordion";
 
-export async function getStaticProps({ locale }) {
+export async function getServerProps({ locale }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
