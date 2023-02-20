@@ -16,7 +16,6 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       fallback: true,
-      paths: ["/common/id", { params: { id: "" } }],
       ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
     },
   };
