@@ -53,11 +53,11 @@ export default function Guide() {
           Page {currentPage} of {numPages}
         </span>
         <button onClick={handleNextPage} className='border border-solid border-pink-600 text-pink-600 p-1 rounded-md'>Next</button>
-        <div>
+        <div> 
         <CalculatorProduct
                     decrementItem={handleScaleDecrement}
                     wrapClass={"!mx-4"}
-                    quantity={Math.round(scale*100)}
+                    quantity={`${Math.round(scale*100)}%`}
                     incrementItem={handleScaleIncrement}
                   />
         </div>

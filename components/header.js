@@ -77,9 +77,10 @@ const Header = () => {
                 </li>
               </ul>
         
-            <div className="header-right flex items-center max-w-[380px] w-full justify-between text-[14px] leading-[25px]">
+            <div className="header-right flex items-center max-w-[380px] w-full space-x-8 text-[14px] leading-[25px]"> 
+            {/* Added space-x-8, removed justift-between */}
               <LanguageSwitcher />
-              <Link href={'/'}>
+              {/* <Link href={'/'}>
                 {
                     t("header:login")
                 }
@@ -88,7 +89,7 @@ const Header = () => {
                 {
                     t("header:signup")
                 }
-              </button>
+              </button> */}
               <p className="cursor-pointer relative" onClick={()=> setVisible(!visible)}>
                 <span className="absolute -top-2 -right-4 bg-[#FF588A] text-[8px] leading-[16px] text-white rounded-[10px] w-[12px] h-[12px] flex items-center justify-center p-2">{quantity}</span>
                   {
