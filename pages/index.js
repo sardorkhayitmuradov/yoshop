@@ -631,7 +631,7 @@ function Home() {
               </div>
             </li>
             <li onMouseOut={() =>  slideSecondCard.current.classList.remove('-translate-x-[50%]')} onMouseOver={() => slideSecondCard.current.classList.add('-translate-x-[50%]')} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__three'>
-            <div className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
+            <div className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6] h-full'>
               <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                 <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
               </div>
@@ -649,9 +649,12 @@ function Home() {
           </ul>
         </div>
       </section>
-      <section className={`bg-[url("../public/assets/images/makeBusinessWithYoshop.png")] h-[861px] bg-no-repeat w-full bg-top my-[70px] bg-cover`}>
-        <div className='site-container'>
-          <h1 className='font-bold text-[44px] text-[#111827] text-center leading-[140%] max-w-[801px] mx-auto'>{t("common:make_business")}</h1>
+      <section className={`h-[861px] bg-no-repeat w-full bg-center my-[70px] bg-cover`}>
+        <h1 className='font-bold text-[44px] mb-10 text-[#111827] text-center leading-[140%] max-w-[801px] mx-auto'>{t("common:make_business")}</h1>
+        <div className='flex items-center justify-center'>
+          <video autoplay loop poster="/assets/images/makeBusinessWithYoshop.png" className='w-full h-[600px]' controls>
+              <source src={'/assets/videos/advertisement.mp4'} type="video/mp4" />
+          </video>
         </div>
       </section>
       <section className="py-[70px]">
