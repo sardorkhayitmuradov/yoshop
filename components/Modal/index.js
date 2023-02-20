@@ -160,9 +160,9 @@ const Modal = () => {
                 ₸ {carts.totalPrice}
               </p>
             </div>
-            <Link href={'/cart'} className={'cursor-pointer ml-auto font-PoppinsBold max-w-[230px] w-full text-white text-[14px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[7px] px-[22px] rounded-[10px]'} onClick={modal}>
+            {/* <Link href={'/cart'} className={'cursor-pointer ml-auto font-PoppinsBold max-w-[230px] w-full text-white text-[14px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[7px] px-[22px] rounded-[10px]'} onClick={modal}>
               Checkout
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
