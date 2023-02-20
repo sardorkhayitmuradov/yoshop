@@ -112,7 +112,6 @@ const Equipment = () => {
                       ct
                     } 
                   </p>
-
                 )
               })
             }
