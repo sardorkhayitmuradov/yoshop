@@ -30,6 +30,7 @@ const Equipment = () => {
   const [currentTab, setCurrentTab] = useState('all')
   const [filteredProduct, setFilterProduct] = useState([])
   const [category, setCategory] = useState([])
+  console.log(category)
 
   const filterCategories = () => {
     let categories = ['all']

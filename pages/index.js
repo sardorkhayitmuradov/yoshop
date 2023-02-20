@@ -599,7 +599,7 @@ function Home() {
                   {t("common:types_of_payment")}
                 </p>
               </div>
-              <div className='max-w-[300px] w-full py-[64px] pl-[34px] info'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px]'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                   <li className='max-w-[202px] w-full'>
                     {t("common:bank_cards")}
@@ -630,7 +630,7 @@ function Home() {
                   }
                 </p>
               </div>
-              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FBF1F1] h-full'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FBF1F1]'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                   <li className='max-w-[202px] w-full'>
                     {t("common:bank_cards")}
@@ -661,7 +661,7 @@ function Home() {
                   }
                 </p>
               </div>
-              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FFE6E6] h-full'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FFE6E6]'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                   <li className='max-w-[202px] w-full'>
                     {t("common:bank_cards")}
