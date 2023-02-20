@@ -6,22 +6,21 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      InterMedium: ["InterMedium"],
-      InterRegular: ["InterRegular"],
+      // InterMedium: ["InterMedium"],
+      // InterRegular: ["InterRegular"],
       
-      OverpassRegular: ["OverpassRegular"],
-
+      // OverpassRegular: ["OverpassRegular"],
       PoppinsRegular: ["PoppinsRegular"],
       PoppinsSemibold: ["PoppinsSemibold"],
       PoppinsBold: ["PoppinsBold"],
 
-      PromtLight: ["PromtLight"],
-      PromptRegular: ["PromptRegular"],
-      PromptMedium: ["PromptMedium"],
-      PromptBold: ["PromptBold"],
+      // PromtLight: ["PromtLight"],
+      // PromptRegular: ["PromptRegular"],
+      // PromptMedium: ["PromptMedium"],
+      // PromptBold: ["PromptBold"],
 
-      UbuntuRegular: ["UbuntuRegular"],
-      UbuntuMedium: ["UbuntuMedium"],
+      // UbuntuRegular: ["UbuntuRegular"],
+      // UbuntuMedium: ["UbuntuMedium"],
     },
     extend: {
     },

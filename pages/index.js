@@ -23,7 +23,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import { Autoplay, Pagination, Navigation, Mousewheel, FreeMode, Thumbs } from 'swiper';
+import "swiper/css/effect-coverflow";
+import { Autoplay, Pagination, Navigation, EffectCoverflow, Mousewheel, FreeMode, Thumbs } from 'swiper';
 // import "../styles/globals.css";
 
 export async function getStaticProps({ locale }) {
@@ -151,19 +152,19 @@ function Home() {
         className={`pt-[150px] pb-[75px] relative`}
 
       >
-        <div className='mx-auto max-w-[1230px] w-full h-[750px] bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
+        <div className='mx-auto max-w-[1230px] w-full h-[750px] overflow-hidden bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
           <div className='fixed w-[81px] h-[81px] right-20  bottom-14 z-10'>
             <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
           </div>
           <h2 className='text-[38px] font-light leading-[57px] mb-[6px]'>
             {t('common:yoshop_licence')}
           </h2>
-          <p className='text-base leading-[32px] uppercase opacity-60 mb-[100px]'>
+          <p className='text-base leading-[32px] uppercase opacity-60 mb-[70px]'>
             {t('common:phone_terminal')}
           </p>
 
           <div className='w-full'>
-            <div className='flex w-full justify-between h-[702px]'>
+            <div className='flex w-full justify-between h-[340px] items-center'>
               <ul className='max-w-[175px] w-full pt-[35px]'>
                 <li className='mb-[30px] relative'>{active === 0 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:store_automation")}</p></li>
                 <li className='mb-[30px] relative'>{active === 1 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:full_control_business")}</p></li>
@@ -176,18 +177,30 @@ function Home() {
               </ul>
               <Swiper
                 direction={"vertical"}
-                slidesPerView={1}
                 onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
-                spaceBetween={0}
                 mousewheel={true}
-                pagination={{
-                  clickable: true,
+                spaceBetween={200}
+                effect={"coverflow"}
+                grabCursor={true}
+                slidesPerView={'auto'}
+                centeredSlides={true}
+                autoplay={{
+                  delay: 2000,
+                  disableOnInteraction: false,
                 }}
-                modules={[Mousewheel, FreeMode, Thumbs]}
+                coverflowEffect={{
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 0.5,
+                  slideShadows: false,
+                }}
+                modules={[Mousewheel, EffectCoverflow, FreeMode, Thumbs, Autoplay]}
                 className="mySwiper"
               >
                 <SwiperSlide>
-                  <ul>
+
+                  <ul className={`${active == 0 ? "" : "opacity-0"}`}>
                     <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
                       {t("common:store_automation")}
                     </li>
@@ -233,9 +246,20 @@ function Home() {
                       significant savings in time and effort required for the operation of the store
                     </li>
                   </ul>
+
+                  <div className={`absolute h-[340px] -top-8 right-0 -z-[1] ${active == 0 ? 'opacity-20' : ""}`}>
+                    <Image
+                      src={'/assets/images/store.png'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className={`rounded-md`}
+                    />
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ul>
+
+                  <ul className={`${active == 1 ? "" : "opacity-0"}`}>
                     <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
                       {t("common:full_control_business")}
                     </li>
@@ -271,9 +295,20 @@ function Home() {
                       search for reliable suppliers and distributors/coming soon
                     </li>
                   </ul>
+
+                  <div className={`absolute h-[340px] -top-8 right-0 -z-[1] ${active == 1 ? 'opacity-40' : ""}`}>
+                    <Image
+                      src={'/assets/images/control.png'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className={`rounded-md`}
+                    />
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ul>
+
+                  <ul className={`${active == 2 ? "" : "opacity-0"}`}>
                     <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
                       {t("common:effective_sales_management")}
                     </li>
@@ -309,9 +344,20 @@ function Home() {
                       No queues at the checkout
                     </li>
                   </ul>
+
+                  <div className={`absolute h-[340px] -top-8 right-0 -z-[1] ${active == 2 ? 'opacity-40' : ""}`}>
+                    <Image
+                      src={'/assets/images/effective.png'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className={`rounded-md`}
+                    />
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ul>
+
+                  <ul className={`${active == 3 ? "" : "opacity-0"}`}>
                     <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
                       {t("common:extract_min_profit")}
                     </li>
@@ -347,9 +393,20 @@ function Home() {
                       prevention of theft by unscrupulous employees
                     </li>
                   </ul>
+
+                  <div className={`absolute h-[340px] -top-8 right-0 -z-[1] ${active == 3 ? 'opacity-40' : ""}`}>
+                    <Image
+                      src={'/assets/images/extract.png'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className={`rounded-md`}
+                    />
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <ul>
+
+                  <ul className={`${active == 4 ? "" : "opacity-0"}`}>
                     <li className='text-5xl leading-[73px] mb-[10px] font-bold'>
                       {t("common:absolute_safe_business")}
                     </li>
@@ -405,16 +462,41 @@ function Home() {
                       complete confidentiality of all information.
                     </li>
                   </ul>
+
+                  <div className={`absolute h-[340px] -top-8 right-0 -z-[1] ${active == 4 ? 'opacity-40' : ""}`}>
+                    <Image
+                      src={'/assets/images/absolutely.png'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className={`rounded-md`}
+                    />
+                  </div>
                 </SwiperSlide>
               </Swiper>
-              <div className='absolute h-[750px] top-1/4 right-28 -z-[1]'>
-                {/* <Swiper
+              {/* <div className='absolute h-[750px] top-1/4 right-28 -z-[1]'>
+                <Swiper
                   spaceBetween={10}
-                  _swiper={(e) => console.log(e)}
-                  slidesPerView={1}
                   freeMode={true}
                   watchSlidesProgress={true}
-                  modules={[FreeMode, Thumbs]}
+                  direction={"vertical"}
+                  // slidesPerView={1}
+                  onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
+                  mousewheel={true}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  effect={"coverflow"}
+                  grabCursor={true}
+                  slidesPerView={"auto"}
+                  coverflowEffect={{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                  }}
+                  modules={[Mousewheel, EffectCoverflow, FreeMode, Thumbs]}
                   className="mySwiper"
                 >
                   <SwiperSlide>
@@ -462,8 +544,8 @@ function Home() {
                       className='rounded-md'
                     />
                   </SwiperSlide>
-                </Swiper> */}
-              </div>
+                </Swiper>
+              </div> */}
             </div>
           </div>
 
@@ -484,7 +566,6 @@ function Home() {
         <div className="mx-auto max-w-[1230px] w-full bg-[#EFF1FE] h-[352px] rounded-[20px] pt-[55px] pb-[30px] pl-[60px] pr-[56px] flex items-center justify-between">
           <div>
             <div className='text-[#0F172A] max-w-[560px] w-full font-bold text-[40px] leading-[140%] mb-[30px]'>
-              {/* {t("common:download")} */}
               <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download")}</span>
               {t("common:download_mobile")}
               <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>
@@ -504,89 +585,151 @@ function Home() {
         </div>
       </section>
       <section className='py-[75px]'>
-        <div className="mx-auto max-w-[1200px] w-full poppins">
+        <div className="mx-auto max-w-[1200px] w-full overflow-hidden">
           <h2 className='text-[#111827] font-bold text-[44px] leading-[140%] mb-[60px]'>
             {t("common:improve_business")}
           </h2>
-          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] wrapper">
-            <li className='max-w-[300px] w-full py-[64px] px-[78px]'>
-              <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
+          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] slideCardWrapper">
+            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__one'>
+              <div className='max-w-[300px] w-full py-[64px] px-[78px]'>
+                <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                  <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
+                </div>
+                <p className='max-w-[145px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                  {t("common:types_of_payment")}
+                </p>
               </div>
-              <p className='max-w-[145px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                {t("common:types_of_payment")}
-              </p>
-            </li>
-            <li className='max-w-[300px] w-full py-[64px] pl-[34px] info'>
-              <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                <li>
-                  {t("common:bank_cards")}
-                </li>
-                <li>
-                  {t("common:qr")}
-                </li>
-                <li>
-                  {t("common:apple_pay")}
-                </li>
-                <li>
-                  {t("common:samsung_pay")}
-                </li>
-                <li>
-                  {t("common:google_pay")}
-                </li>
-              </ul>
-            </li>
-            <li className='max-w-[300px] w-full py-[64px] pl-[78px] interface pr-[28px] bg-[#FBF1F1]'>
-              <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px] info'>
+                <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:bank_cards")}
+                  </li>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:qr")}
+                  </li>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:apple_pay")}
+                  </li>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:samsung_pay")}
+                  </li>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:google_pay")}
+                  </li>
+                </ul>
               </div>
-              <p className='max-w-[198px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                {
-                  t('common:simple_int_interface')
-                }
-              </p>
             </li>
-            <li className='max-w-[300px] w-full py-[64px] px-[78px] report bg-[#FFE6E6]'>
-              <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
+            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__two'> 
+              <div className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[28px] bg-[#FBF1F1]'>
+                <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                  <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
+                </div>
+                <p className='max-w-[198px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                  {
+                    t('common:simple_int_interface')
+                  }
+                </p>
               </div>
-              <p className='max-w-[168px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                {
-                  t('common:store_report')
-                }
-              </p>
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FBF1F1] h-full'>
+                <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:bank_cards")}
+                  </li>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:qr")}
+                  </li>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:apple_pay")}
+                  </li>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:samsung_pay")}
+                  </li>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:google_pay")}
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__three'>
+              <div className='max-w-[300px] w-full py-[64px] px-[78px] report bg-[#FFE6E6]'>
+                <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                  <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
+                </div>
+                <p className='max-w-[168px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                  {
+                    t('common:store_report')
+                  }
+                </p>
+              </div>
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FFE6E6] h-full'>
+                <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                  <li className='max-w-[202px] w-full'>
+                    {t("common:bank_cards")}
+                  </li>
+                  <li className='max-w-[196px] w-full'>
+                    {t("common:qr")}
+                  </li>
+                  <li className='max-w-[196px] w-full'>
+                    {t("common:apple_pay")}
+                  </li>
+                  <li className='max-w-[196px] w-full'>
+                    {t("common:samsung_pay")}
+                  </li>
+                  <li className='max-w-[196px] w-full'>
+                    {t("common:google_pay")}
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
           <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px]">
-            <li className='max-w-[300px] w-full py-[64px] px-[78px]'>
-              <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
+            <li className="max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__one">
+              <div className='max-w-[300px] w-full py-[64px] px-[78px]'>
+                <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                  <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
+                </div>
+                <p className='max-w-[145px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                  {t('common:fiscalazition')}
+                </p>
               </div>
-              <p className='max-w-[145px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                {t('common:fiscalazition')}
-              </p>
-            </li>
-            <li className='max-w-[300px] w-full py-[64px] pl-[34px]'>
-              <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                <li>{t('common:issuance')}</li>
-                <li>{t('common:simple_tac_reporting')}</li>
-              </ul>
-            </li>
-            <li className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[50px] bg-[#FBF1F1]'>
-              <div className='bg-[#fbe2e7]   max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px]'>
+                <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                  <li className='max-w-[188px] w-full'>{t('common:issuance')}</li>
+                  <li className='max-w-[188px] w-full'>{t('common:simple_tac_reporting')}</li>
+                </ul>
               </div>
-              <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                {t('common:orginize_store')}
-              </p>
             </li>
-            <li className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
+            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__two'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[50px] bg-[#FBF1F1] h-full'>
+                <div className='bg-[#fbe2e7]   max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                  <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
+                </div>
+                <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                  {t('common:orginize_store')}
+                </p>
+              </div>
+              <div className='max-w-[300px] w-full py-[64px] pl-[34px] h-full bg-[#FBF1F1]'>
+                <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                  <li className='max-w-[221px] w-full'>{t('common:issuance')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:simple_tac_reporting')}</li>
+                </ul>
+              </div>
+            </li>
+            <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__three'>
+            <div className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6]'>
               <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                 <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
               </div>
               <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
                 {t('common:elimination_theft')}
               </p>
+            </div>
+            <div className='max-w-[300px] w-full py-[64px] pl-[34px] h-full bg-[#FFE6E6]'>
+                <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                  <li className='max-w-[221px] w-full'>{t('common:issuance')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:simple_tac_reporting')}</li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
