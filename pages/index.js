@@ -29,9 +29,8 @@ export async function getStaticProps({ locale }) {
   };
 }
 
-function Home(props) {
-  console.log(props)
-  const [name, setName] = useState('');
+function Home() {
+  const [name, setName] = useState();
   const [number, setNumber] = useState();
   const { t } = useTranslation();
   const [active, setActive] = useState(0);
@@ -536,7 +535,7 @@ function Home(props) {
               </div>
             </li>
             <li ref={slideFirstCard} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__two'> 
-              <div className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[28px] bg-[#FBF1F1] h-full'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[78px] bg-[#FBF1F1] h-full'>
                 <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                   <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
                 </div>
@@ -549,25 +548,19 @@ function Home(props) {
               <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FBF1F1] h-full'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                   <li className='max-w-[202px] w-full'>
-                    {t("common:bank_cards")}
+                    {t("common:simplifies")}
                   </li>
                   <li className='max-w-[202px] w-full'>
-                    {t("common:qr")}
+                    {t("common:reduces")}
                   </li>
                   <li className='max-w-[202px] w-full'>
-                    {t("common:apple_pay")}
-                  </li>
-                  <li className='max-w-[202px] w-full'>
-                    {t("common:samsung_pay")}
-                  </li>
-                  <li className='max-w-[202px] w-full'>
-                    {t("common:google_pay")}
+                    {t("common:simpliest_way")}
                   </li>
                 </ul>
               </div>
             </li>
             <li onMouseOut={() =>  slideFirstCard.current.classList.remove('-translate-x-[50%]')} onMouseOver={() => slideFirstCard.current.classList.add('-translate-x-[50%]')} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__three'>
-              <div className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6] h-full'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[78px] bg-[#FFE6E6] h-full'>
                 <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                   <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
                 </div>
@@ -580,19 +573,16 @@ function Home(props) {
               <div className='max-w-[300px] w-full py-[64px] pl-[34px] bg-[#FFE6E6] h-full'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                   <li className='max-w-[202px] w-full'>
-                    {t("common:bank_cards")}
+                    {t("common:items_report")}
                   </li>
                   <li className='max-w-[196px] w-full'>
-                    {t("common:qr")}
+                    {t("common:items_shifts")}
                   </li>
                   <li className='max-w-[196px] w-full'>
-                    {t("common:apple_pay")}
+                    {t("common:items_returns")}
                   </li>
                   <li className='max-w-[196px] w-full'>
-                    {t("common:samsung_pay")}
-                  </li>
-                  <li className='max-w-[196px] w-full'>
-                    {t("common:google_pay")}
+                    {t("common:items_entry")}
                   </li>
                 </ul>
               </div>
@@ -616,7 +606,7 @@ function Home(props) {
               </div>
             </li>
             <li ref={slideSecondCard} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__two'>
-              <div className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[50px] bg-[#FBF1F1] h-full'>
+              <div className='max-w-[300px] w-full py-[64px] pl-[78px] pr-[50px] bg-[#FBF1F1]'>
                 <div className='bg-[#fbe2e7]   max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                   <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
                 </div>
@@ -624,10 +614,12 @@ function Home(props) {
                   {t('common:orginize_store')}
                 </p>
               </div>
-              <div className='max-w-[300px] w-full py-[64px] pl-[34px] h-full bg-[#FBF1F1]'>
+              <div className='max-w-[300px] w-full h-full flex flex-col justify-center pl-[34px] bg-[#FBF1F1]'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                  <li className='max-w-[221px] w-full'>{t('common:issuance')}</li>
-                  <li className='max-w-[221px] w-full'>{t('common:simple_tac_reporting')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:organize_sales')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:fast_service')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:goods_stock')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:convinient_analystics')}</li>
                 </ul>
               </div>
             </li>
@@ -640,10 +632,11 @@ function Home(props) {
                 {t('common:elimination_theft')}
               </p>
             </div>
-            <div className='max-w-[300px] w-full py-[64px] pl-[34px] h-full bg-[#FFE6E6]'>
+            <div className='max-w-[300px] w-full flex flex-col justify-center pl-[34px] h-full bg-[#FFE6E6]'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                  <li className='max-w-[221px] w-full'>{t('common:issuance')}</li>
-                  <li className='max-w-[221px] w-full'>{t('common:simple_tac_reporting')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:exlusion_items')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:prevention_cashier')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:closing_store')}</li>
                 </ul>
               </div>
             </li>
@@ -652,8 +645,8 @@ function Home(props) {
       </section>
       <section className={`h-[861px] bg-no-repeat w-full bg-center my-[70px] bg-cover`}>
         <h1 className='font-bold text-[44px] mb-10 text-[#111827] text-center leading-[140%] max-w-[801px] mx-auto'>{t("common:make_business")}</h1>
-        <div className='flex items-center justify-center'>
-          <video autoplay loop poster="/assets/images/makeBusinessWithYoshop.png" className='w-full h-[600px]' controls>
+        <div className='flex items-center justify-center cursor-pointer'>
+          <video autoPlay loop poster="/assets/images/makeBusinessWithYoshop.png" className='w-full h-[600px]' controls>
               <source src={'/assets/videos/advertisement.mp4'} type="video/mp4" />
           </video>
         </div>
@@ -665,9 +658,9 @@ function Home(props) {
           </h3>
           <Input inputType={'text'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder=
             {t("common:name")}
-            value={name} onGetValue={setName} />
+            value={name} onChange={(value)=> setName(value)} />
 
-          <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={t('common:number')} value={number} onGetValue={setNumber} />
+          <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={t('common:number')} value={number} onChange={(value) => setNumber(value)} />
 
           <Button className={'max-w-[500px] py-[20px] w-full bg-[#ff588a] text-white rounded-[10px] font-bold text-base leading-[140%]'}>{t('common:order_call')}</Button>
         </div>

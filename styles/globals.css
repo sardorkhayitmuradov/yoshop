@@ -49,57 +49,8 @@
     font-weight: 700;
     font-style: normal;
   }
-
-  /* @font-face {
-    font-family: 'PromtLight';
-    src: url('../public/assets/fonts/Prompt/Prompt-Light.ttf')
-      format('truetype');
-    font-weight: 300;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'PromptRegular';
-    src: url('../public/assets/fonts/Prompt/Prompt-Regular.ttf')
-      format('truetype');
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'PromptMedium';
-    src: url('../public/assets/fonts/Prompt/Prompt-Medium.ttf')
-      format('truetype');
-    font-weight: 500;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'PromptBold';
-    src: url('../public/assets/fonts/Prompt/Prompt-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'UbuntuRegular';
-    src: url('../public/assets/fonts/Ubuntu/Ubuntu-Regular.ttf')
-      format('truetype');
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'UbuntuMedium';
-    src: url('../public/assets/fonts/Ubuntu/Ubuntu-Medium.ttf')
-      format('truetype');
-    font-weight: 500;
-    font-style: normal;
-  } */
+ 
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
 
 * {
   box-sizing: border-box;
@@ -202,7 +153,7 @@ header {
 }
 
 .slideCard {
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .slideCard__three {

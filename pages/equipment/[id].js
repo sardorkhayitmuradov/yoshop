@@ -20,7 +20,7 @@ export async function getStaticProps({ locale }) {
     },
   };
 };
-
+  
 export const getStaticPaths = async () => {
   return {
     paths: ["/equipment/id"],

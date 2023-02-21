@@ -13,14 +13,7 @@ const Header = () => {
   const { visible,setVisible } = useContext(ModalContext);
   const router = useRouter();
   const { t } = useTranslation();
-  const quantity = useSelector((store) => store.carts.cart.quantity);
-  // let arr =[]
-  // let result = cartLicence.reduce((acc, item) => {
-  //   acc[item.id] = item
-  //   arr.push(acc)
-  //   return acc
-  // }, {})
-  
+  const quantity = useSelector((store) => store.carts.cart.quantity);  
 
     return (
       <>
