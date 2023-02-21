@@ -28,7 +28,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-const Details = (props) => {
+const Details = () => {
   const productsCounter = useSelector((store) => store.productCounter.products);
   const products = useSelector((store) => store.carts.products);
   const dispatch = useDispatch();

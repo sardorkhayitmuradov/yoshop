@@ -17,6 +17,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, EffectCoverflow, Mousewheel, FreeMode, Thumbs } from 'swiper';
+import i18nConfig from '../next-i18next.config';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
@@ -24,7 +25,7 @@ import "swiper/css/effect-coverflow";
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
+      ...(await serverSideTranslations(locale ?? 'ru', ["common", "header", "footer"], i18nConfig)),
     },
   };
 }
@@ -646,7 +647,7 @@ function Home() {
       <section className={`h-[861px] bg-no-repeat w-full bg-center my-[70px] bg-cover`}>
         <h1 className='font-bold text-[44px] mb-10 text-[#111827] text-center leading-[140%] max-w-[801px] mx-auto'>{t("common:make_business")}</h1>
         <div className='flex items-center justify-center cursor-pointer'>
-          <video autoPlay loop poster="/assets/images/makeBusinessWithYoshop.png" className='w-full h-[600px]' controls>
+          <video loop poster="/assets/images/makeBusinessWithYoshop.png" className='w-full h-[600px]' controls>
               <source src={'/assets/videos/advertisement.mp4'} type="video/mp4" />
           </video>
         </div>
