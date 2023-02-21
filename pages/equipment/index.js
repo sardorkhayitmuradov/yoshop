@@ -11,10 +11,10 @@ import TruckIcon from '../../public/assets/images/truck.svg'
 import SaveIcon from '../../public/assets/images/save-as.svg'
 import DesktopIcon from '../../public/assets/images/desktop-computer.svg'
 import {equipments} from '../../constants/equipments'
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 
-export async function getStaticProps({locale}){
+export async function getServerSideProps({locale}){
   return{
     props: {
       ...(await serverSideTranslations(locale , ['common', 'header', 'footer'])),
@@ -23,7 +23,7 @@ export async function getStaticProps({locale}){
 }
 
 const Equipment = () => {
-  const {t} = useTranslation("common")
+  const {t} = useTranslation()
   const [town , setTown] = useState('');
   const [number, setNumber] = useState("");
   const [currentTab, setCurrentTab] = useState('all')
@@ -38,7 +38,6 @@ const Equipment = () => {
     });
     let uniqueCategories = [...new Set(categories)];
     setCategory(uniqueCategories)
-    console.log(uniqueCategories);
   }
 
   const handleUploadMore = () => {
