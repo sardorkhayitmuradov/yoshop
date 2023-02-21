@@ -89,15 +89,6 @@ const Details = () => {
                   <p className="mb-[30px] text-[32px] leading-[140%]">₸ {foundProd?.price || product?.price}</p>
 
                   <div className="flex items-center justify-between">
-                    {/* <span className="flex justify-between max-w-[152px] items-center">
-                      <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> foundProd?.qty > 0 ? dispatch(removeProducts(product)) : ""}>
-                        -
-                      </button>
-                        <p className="w-[20px]">{foundProd?.qty || 0}</p>
-                      <button className="py-[10px] px-[22px] text-[26px] text-[#111827] font-[700] rounded-[10px]" onClick={()=> dispatch(addProducts(product))}>
-                        +
-                      </button>
-                    </span> */}
                     <CalculatorProduct
                     decrementItem={()=> foundProd?.qty > 0 ? dispatch(removeProducts(product)) : ""}
                     wrapClass={"!mx-0"}
