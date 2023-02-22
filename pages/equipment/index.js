@@ -69,7 +69,7 @@ const Equipment = () => {
 
   return (
     <main>
-      <section className={`pt-[158px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-[length:453px_176px] bg-no-repeat bg-[right_7rem_top_12.7rem]`}>
+      <section className={`relative pt-[158px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-[length:453px_176px] bg-no-repeat bg-[right_7rem_top_12.7rem]`}>
         <div className="equipment-bg-red w-[600px] h-[485px]"></div>
         <div className="equipment-bg-blue w-[207px] h-[223px]"></div>
         <div className={`max-w-[1292px] mx-auto w-full`}>
