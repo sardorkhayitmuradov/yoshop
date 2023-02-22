@@ -62,7 +62,6 @@ const Equipment = () => {
   useEffect(() => {
     return () => {
       filterCategories()
-      // filterProductsByCategories(currentTab)
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -70,19 +69,21 @@ const Equipment = () => {
 
   return (
     <main>
-      <section className={`pt-[150px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-no-repeat bg-[right_0.5rem_bottom_4.5rem] bg-cover`}>
+      <section className={`pt-[158px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-[length:453px_176px] bg-no-repeat bg-[right_7rem_top_12.7rem]`}>
+        <div className="equipment-bg-red w-[600px] h-[485px]"></div>
+        <div className="equipment-bg-blue w-[207px] h-[223px]"></div>
         <div className={`max-w-[1292px] mx-auto w-full`}>
           <div className="max-w-[1204px] mx-auto w-full pt-[34px]">
-              <h2 className="font-bold text-[44px] leading-[140%] mb-[26px]">{t("common:equipment_shop")}</h2>
+              <h2 className="font-bold text-[32px] leading-[140%] mb-[26px]">{t("common:equipment_shop")}</h2>
               <p className="text-[18px] leading-[180%] mb-[26px]">{t("common:set")}
               </p>
               <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px]">
   
-                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:town")} value={town} onChange={(value)=> setTown(value)}  />
+                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[13px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:town")} value={town} onChange={(value)=> setTown(value)}  />
                   
-                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} />
+                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[13px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} />
               
-                  <Button className={'max-w-[232px] py-[20px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%]'}>
+                  <Button className={'max-w-[232px] py-[13px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%]'}>
                   {t("common:order_call")}
                   </Button>
               </div>
