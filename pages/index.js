@@ -54,13 +54,13 @@ function Home() {
             dynamicBullets: true,
           }}
           modules={[Autoplay, Pagination, Navigation]}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 3000,
+          //   disableOnInteraction: false,
+          // }}
         >
           <SwiperSlide>
-            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] hero pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
+            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
               <div className='flex justify-between items-center mb-[200px]'>
                 <div className='max-w-[567px] w-full'>
                   <p className='mb-[25px] max-w-[490px] w-full text-[18px] leading-[180%]'>
@@ -111,7 +111,7 @@ function Home() {
                 <div className='flex justify-between items-center mb-[200px]'>
                   <div className='max-w-[567px] w-full'>
                     <div>
-                      <div className='max-w-[560px] w-full font-bold text-[40px] leading-[154%] mb-[40px]'>
+                      <div className='max-w-[560px] w-full font-bold text-[40px] leading-[134%] mb-[40px]'>
                         <span className='bg-[#FF588A] pt-1 px-1 rounded-md text-white'>{t("common:download")}</span>
                         {t("common:download_mobile")}
                         <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>

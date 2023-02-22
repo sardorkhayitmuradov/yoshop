@@ -10,7 +10,8 @@ import GuaranteeIcon from '../../public/assets/images/badge-check.svg'
 import TruckIcon from '../../public/assets/images/truck.svg'
 import SaveIcon from '../../public/assets/images/save-as.svg'
 import DesktopIcon from '../../public/assets/images/desktop-computer.svg'
-import {equipments} from '../../constants/equipments'
+// import {equipments} from '../../constants/equipments'
+import { useSelector } from "react-redux";
 import { useTranslation } from "next-i18next";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 
@@ -29,10 +30,12 @@ const Equipment = () => {
   const [currentTab, setCurrentTab] = useState('all')
   const [filteredProduct, setFilterProduct] = useState([])
   const [category, setCategory] = useState([])
+  const productsCounter = useSelector((store) => store.productCounter.products);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const filterCategories = () => {
     let categories = ['all']
-    equipments.forEach((product) => {
+    productsCounter.forEach((product) => {
       categories.push(product.category.trim().toLowerCase())
     });
     let uniqueCategories = [...new Set(categories)];
@@ -45,7 +48,7 @@ const Equipment = () => {
 
   const handleTab = (e) => {
     let filteredProducts = []
-    equipments.forEach(pr => {
+    productsCounter.forEach(pr => {
       if(pr.category.trim().toLowerCase() == e.target.outerText.trim().toLowerCase()){
         filteredProducts.push(pr)
       }
@@ -59,7 +62,7 @@ const Equipment = () => {
       filterCategories()
       // filterProductsByCategories(currentTab)
     };
-  }, [currentTab]);
+  }, [currentTab, filterCategories]);
   
 
   return (
@@ -116,7 +119,7 @@ const Equipment = () => {
 
           <div className="gap-[26px] grid grid-cols-4 mb-[50px]">
             {
-              currentTab == 'all' ? equipments.map(el => {
+              currentTab == 'all' ? productsCounter.map(el => {
                 return (
                   <Link key={el.id} href={'/equipment/' + el.id+"#equipment"} scroll={true}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>

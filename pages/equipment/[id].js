@@ -41,7 +41,6 @@ const Details = () => {
     let filteredProduct =  productsCounter.filter(pr => {
       return pr.id == id
     })
-
     setCard(filteredProduct)
   }
 

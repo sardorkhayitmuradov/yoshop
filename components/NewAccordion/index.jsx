@@ -1,14 +1,11 @@
-import Image from "next/image";
-import React from "react";
+import React from 'react';
 import {
   Accordion,
   AccordionBody,
   AccordionHeader,
   AccordionItem,
-} from "react-headless-accordion";
+} from 'react-headless-accordion';
 // import Button from "../Button/Button";
-// import PlusWhite from "../../public/assets/images/plusWhite.svg";
-// import Cancel from "../../public/assets/images/cancel.svg";
 // import { CalculatorProduct } from "../CalculatorProduct";
 // import { addEquipments, removeEquipments } from "../../redux/features/carts";
 // import { useSelector, useDispatch } from "react-redux";
@@ -25,35 +22,51 @@ const NewAccordion = ({
       <Accordion
         alwaysOpen={true}
         transition={{
-          duration: "300ms",
-          timingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+          duration: '300ms',
+          timingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
         }}
-        className={`mb-[40px] ${accordionClassName ? accordionClassName : ""}`}
+        className={`mb-[40px] ${accordionClassName ? accordionClassName : ''}`}
       >
         <AccordionItem>
           {({ open }) => (
             <>
-
-                <AccordionHeader
-                  as={"div"}
-                  className={`w-full flex justify-between items-center text-gray-600 z-10 ${accordionHeaderClassName ? accordionHeaderClassName : ""
-                    }`}
+              <AccordionHeader
+                as={'div'}
+                className={`w-full flex justify-between items-center text-gray-600 z-10 ${
+                  accordionHeaderClassName ? accordionHeaderClassName : ''
+                }`}
+              >
+                <svg
+                  width='32'
+                  height='32'
+                  viewBox='0 0 48 48'
+                  className={`${!open ? '' : 'rotate-45'}`}
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
                 >
-                  <div className="font-PoppinsBold text-left text-[20px] leading-[140%] w-full text-[#111827]">
-                    {title}
-                  </div>
-                  <svg class={`w-6 h-6 ${!open ? '' : 'rotate-90'}`} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
-                </AccordionHeader>
+                  <path
+                    d='M24 8V24M24 24V40M24 24H40M24 24H8'
+                    stroke='#111827'
+                    strokeWidth='3'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                  />
+                </svg>
 
-                <AccordionBody>
-                  <div
-                    className={`font-light text-left w-full py-[20px] ${accordionBodyClassname ? accordionBodyClassname : ""
-                      }`}
-                  >
-                    {children}
-                  </div>
-                </AccordionBody>
+                <div className='font-bold text-left text-[20px] leading-[140%] max-w-[80%] w-full text-[#111827]'>
+                  {title}
+                </div>
+              </AccordionHeader>
 
+              <AccordionBody>
+                <div
+                  className={`font-light text-left py-[20px] ml-auto max-w-[80%] w-full ${
+                    accordionBodyClassname ? accordionBodyClassname : ''
+                  }`}
+                >
+                  {children}
+                </div>
+              </AccordionBody>
             </>
           )}
         </AccordionItem>
