@@ -33,7 +33,7 @@ const AccordionWrapper = ({
                 }`}>
                 <div className="font-PoppinsBold text-left text-[20px] leading-[140%] w-full text-[#111827]">{title}</div>
                 <svg
-                  className={`w-6 h-6 ${!isActive ? "" : "rotate-90"}`}
+                  className={`w-6 h-6 ${!isActive || elId === 23 || elId === 26 || elId === 29 ? "" : "rotate-90"}`}
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const AccordionWrapper = ({
               </div>
             </div>
             {
-              elId === 23 || 26 || 29 ? "" : isActive && <div
+              elId === 23 || elId === 26 || elId === 29 ? "" : isActive && <div
                 className={`font-light text-left w-full py-[20px] ${accordionBodyClassname ? accordionBodyClassname : ""
                   }`}
               >
@@ -56,7 +56,7 @@ const AccordionWrapper = ({
               </div> } 
           </div>
         </div>
-        { elId === 23 || 26 || 29 ? "" : isActive &&
+        { elId === 23 || elId === 26 || elId === 29 ? "" : isActive &&
           <div
             className={`mb-[70px] px-[20px] ${open ? "block" : "hidden"
               } mt-[40px]`}
