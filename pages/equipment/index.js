@@ -7,15 +7,16 @@ import EquipmentCard from "../../components/EquipmentCard/EquipmentCard";
 import Button from "../../components/Button/Button";
 import shopIcon from '../../public/assets/images/bascet.svg'
 import GuaranteeIcon from '../../public/assets/images/badge-check.svg'
-import TruckIcon from '../../public/assets/images/truck.svg'
+import LearnIcon from '../../public/assets/images/learn.svg'
 import SaveIcon from '../../public/assets/images/save-as.svg'
 import DesktopIcon from '../../public/assets/images/desktop-computer.svg'
 // import {equipments} from '../../constants/equipments'
 import { useSelector } from "react-redux";
 import { useTranslation } from "next-i18next";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
+import { useRouter } from "next/router";
 
-export async function getStaticProps({locale}){
+export async function getServerSideProps({locale}){
   return{
     props: {
       ...(await serverSideTranslations(locale , ['common', 'header', 'footer'])),
@@ -25,6 +26,7 @@ export async function getStaticProps({locale}){
 
 const Equipment = () => {
   const {t} = useTranslation()
+  const {locale} = useRouter()
   const [town , setTown] = useState('');
   const [number, setNumber] = useState("");
   const [currentTab, setCurrentTab] = useState('all')
@@ -62,7 +64,8 @@ const Equipment = () => {
       filterCategories()
       // filterProductsByCategories(currentTab)
     };
-  }, [currentTab, filterCategories]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   
 
   return (
@@ -85,17 +88,17 @@ const Equipment = () => {
               </div>
               <h3 className="font-bold text-[32px] leading-[140%] mb-[40px]">{t("common:you_get")}</h3>
               <div className="flex items-center justify-between w-full">
-                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={GuaranteeIcon} >
+                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={GuaranteeIcon} titleClass={"max-w-[106px] w-full]"} >
                   {t("common:guarantee")}
                   </EquipmentCard>  
-                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={TruckIcon} >
-                  {t("common:delivery")}
+                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={LearnIcon} titleClass={"max-w-[106px] w-full]"} >
+                  {t("common:training")}
                   </EquipmentCard>  
-                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={SaveIcon} >
+                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={SaveIcon} titleClass={"max-w-[106px] w-full]"} >
                   {t("common:setup")}
                   </EquipmentCard>  
-                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={DesktopIcon} >
-                  {t("common:support")}
+                  <EquipmentCard wrapperClassName={'max-w-[280px]'} image={DesktopIcon} titleClass={"max-w-[106px] w-full]"} >
+                  {t("common:tech_support")}
                   </EquipmentCard>  
               </div>
           </div>

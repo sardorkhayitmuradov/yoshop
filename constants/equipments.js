@@ -146,15 +146,5 @@ export let equipments = [
       "centerImage" : "/assets/images/xp-c58-lan-printer-center.png",
       "rightImage" : "/assets/images/xp-c58-lan-printer-right.png"
    },
-   // {
-   //    "id" : 13,
-   //    "image" : "/assets/images/wireless-usb-adapter.png",
-   //    "title" : "TP-Link TL-WN823N Wireless USB Adapter(EN)",
-   //    "category" : "Accessories",
-   //    "mainSpecification": "Housing material: Plastic Type of: USB adapter Model: TL-WN823N, TL-WN823N, TL-WN823N Working temperature: 0 - 40 Fastening: Missing Antenna type: Fixed network standard: 802.11b, 802.11g, 802.11n Max. transmission speed, Mbps: 300 Transmitter power, dBM: twenty Wireless frequency: 2.4 ",
-   //    "price" : 7000,
-   //    "leftImage" : "/assets/images/wireless-usb-adapter-left.png",
-   //    "centerImage" : "/assets/images/wireless-usb-adapter-center.png",
-   //    "rightImage" : "/assets/images/wireless-usb-adapter-right.png"
-   // }
+   
  ]
