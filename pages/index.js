@@ -54,10 +54,10 @@ function Home() {
             dynamicBullets: true,
           }}
           modules={[Autoplay, Pagination, Navigation]}
-          // autoplay={{
-          //   delay: 3000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
         >
           <SwiperSlide>
             <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
