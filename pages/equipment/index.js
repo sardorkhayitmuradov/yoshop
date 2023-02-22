@@ -14,7 +14,7 @@ import {equipments} from '../../constants/equipments'
 import { useTranslation } from "next-i18next";
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 
-export async function getServerSideProps({locale}){
+export async function getStaticProps({locale}){
   return{
     props: {
       ...(await serverSideTranslations(locale , ['common', 'header', 'footer'])),
@@ -29,7 +29,6 @@ const Equipment = () => {
   const [currentTab, setCurrentTab] = useState('all')
   const [filteredProduct, setFilterProduct] = useState([])
   const [category, setCategory] = useState([])
-  console.log(category)
 
   const filterCategories = () => {
     let categories = ['all']
@@ -73,9 +72,9 @@ const Equipment = () => {
               </p>
               <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px]">
   
-                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:town")} value={town} onGetValue={(value)=> setTown(value)}  />
+                  <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:town")} value={town} onChange={(value)=> setTown(value)}  />
                   
-                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:number")} value={number} onGetValue={(value) => setNumber(value)} />
+                  <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} />
               
                   <Button className={'max-w-[232px] py-[20px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] font-PromptBold'}>
                   {t("common:order_call")}
