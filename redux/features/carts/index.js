@@ -22,6 +22,10 @@ export const CartSlice = createSlice({
       state.cart.quantity = state.quantity
     },
 
+    addProductToCard(state, action) {
+
+    },
+
     addUsers(state, action) {
       const { elId, price } = action.payload;
       const existingLicenseIndex = state.licenses.findIndex(

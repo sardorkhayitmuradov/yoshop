@@ -1,16 +1,13 @@
 import Image from "next/image"
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext } from "react";
 import { useTranslation } from 'next-i18next';
 import { useSelector } from "react-redux";
 import { LanguageSwitcher } from "./Language-switcher";
-import { ModalContext } from "../context/modal";
 import Modal from "./Modal";
 import LogoImage from '../public/assets/images/logo.svg';
 
 const Header = () => {
-  const { visible,setVisible } = useContext(ModalContext);
   const router = useRouter();
   const { t } = useTranslation();
   const quantity = useSelector((store) => store.carts.cart.quantity);  
@@ -83,12 +80,12 @@ const Header = () => {
                     t("header:signup")
                 }
               </button>
-              <p className="cursor-pointer relative" onClick={()=> setVisible(!visible)}>
+              <Link href={'/cart'} className="cursor-pointer relative" >
                 <span className="absolute -top-2 -right-4 bg-[#FF588A] text-[8px] leading-[16px] text-white rounded-[10px] w-[12px] h-[12px] flex items-center justify-center p-2">{quantity}</span>
                   {
                     t("header:cart")
                    }
-              </p>
+              </Link>
             </div>
         </div>
         </header>

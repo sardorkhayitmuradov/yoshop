@@ -1,7 +1,6 @@
-import NewAccordion from '../components/NewAccordion';
+import FaqAccordion from '../components/FaqAccordion/Faqaccordion';
 import ResourcesCard from '../components/ResourcesCard/ResourcesCard';
 import { resourcesVideos } from '../constants/resourcesVideo';
-import { accordionData } from '../constants/resourcesAccordionData';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 
@@ -38,21 +37,21 @@ const Resources = () => {
       <section className="py-[82px]">
         <h1 className='font-bold text-[32px] leading-[140%] text-[#111827] text-center mb-[44px]'>{t("common:faq")}</h1>
         <div className='max-w-[1152px] w-full mx-auto'>
-          <NewAccordion title={t("common:ques_inventory")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
+          <FaqAccordion title={t("common:ques_inventory")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
             {t("common:ans_inventory")}
-          </NewAccordion>
+          </FaqAccordion>
 
-          <NewAccordion title={t("common:ques_payment")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
+          <FaqAccordion title={t("common:ques_payment")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
             {t("common:ans_payment")}
-          </NewAccordion>
+          </FaqAccordion>
 
-          <NewAccordion title={t("common:ques_work")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
+          <FaqAccordion title={t("common:ques_work")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
             {t("common:ans_work")}
-          </NewAccordion>
+          </FaqAccordion>
 
-          <NewAccordion title={t("common:ques_fees")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
+          <FaqAccordion title={t("common:ques_fees")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
             {t("common:ans_fees")}
-          </NewAccordion>
+          </FaqAccordion>
         </div>
       </section>
     </main>

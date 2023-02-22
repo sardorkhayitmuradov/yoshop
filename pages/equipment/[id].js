@@ -10,7 +10,7 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import { useTranslation } from "next-i18next";
 import { useSelector , useDispatch } from "react-redux";
 import { addProducts , addToCart, removeProducts } from "../../redux/features/carts";
-import NewAccordion from "../../components/NewAccordion";
+import NewAccordion from "../../components/NewAccordion/NewAccordion";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -103,7 +103,7 @@ const Details = () => {
                       {t("common:add_cart")}
                     </Button>
                   </div>
-                  <h2 className="my-9 font-PoppinsBold text-[24px] leading-[140%]">
+                  <h2 className="my-9 font-bold text-[24px] leading-[140%]">
                     Product information
                   </h2>
                   <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
@@ -180,7 +180,7 @@ const Details = () => {
             You may be interested in
           </h2>
 
-          <div className="flex justify-between flex-wrap gap-[26px]">
+          <div className="gap-[26px] grid grid-cols-4 mb-[50px]">
             {
               productsCounter?.map(el => {
                 return (

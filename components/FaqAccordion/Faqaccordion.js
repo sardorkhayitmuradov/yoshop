@@ -1,16 +1,11 @@
-import React from 'react';
+import React, { useState } from "react";
 import {
   Accordion,
   AccordionBody,
   AccordionHeader,
   AccordionItem,
 } from 'react-headless-accordion';
-// import Button from "../Button/Button";
-// import { CalculatorProduct } from "../CalculatorProduct";
-// import { addEquipments, removeEquipments } from "../../redux/features/carts";
-// import { useSelector, useDispatch } from "react-redux";
-
-const NewAccordion = ({
+const FaqAccordion = ({
   title,
   accordionClassName,
   accordionHeaderClassName,
@@ -75,4 +70,6 @@ const NewAccordion = ({
   );
 };
 
-export default NewAccordion;
+export default FaqAccordion;
+
+

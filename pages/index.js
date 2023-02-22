@@ -60,11 +60,11 @@ function Home() {
           }}
         >
           <SwiperSlide>
-            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/hero.png")] pb-[50px] bg-no-repeat bg-right-bottom bg-[length:1200px_775px]'>
+            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/hero.png")] pb-[50px] bg-no-repeat bg-right-top bg-[length:1200px_775px]'>
               <div className='flex justify-between items-center mb-[200px]'>
                 <div className='max-w-[587px] w-full'>
                   <p className='mb-[25px] max-w-[490px] w-full text-[18px] leading-[180%]'>
-                    {t("common:mult_int_title")}
+                    {t("common:mult_int_title")}  
                   </p>
                   <h2 className='mb-[40px] max-w-[502px] w-full text-[56px] text-[#FF588A] font-bold leading-[120%]'>
                     {t("common:use_tech")}
