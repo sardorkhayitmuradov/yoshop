@@ -36,7 +36,7 @@ export const Annual = () => {
               accordionClassName={`mb-[11px] ${elFound ? "opacity-40" : ""}`}
               products={filtered}
               foundLicense={foundProd}
-              accordionBodyClassname={"py-[20px]"}
+              accordionBodyClassname={`py-[20px] ${elFound && 'hidden'}`}
               accordionHeaderClassName={"py-[10px] px-[34px]"}
               imgColor={"#FF588A"}
               title={

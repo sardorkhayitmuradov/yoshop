@@ -33,7 +33,7 @@ export const CalculatorProduct = ({
               ? "border-[#E5E7EB]"
               : "border-[#FF588A]"
             : "border-[#E5E7EB]"
-        } py-[3px] text-[20px] leading-[140%] font-PoppinsBold text-[#111827]`}
+        } py-[3px] text-[20px] leading-[140%] font-bold text-[#111827]`}
       >
         {quantity}
       </div>

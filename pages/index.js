@@ -62,11 +62,11 @@ function Home() {
           <SwiperSlide>
             <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/main-hero.png")] pb-[50px] bg-no-repeat bg-right bg-[length:800px_785px]'>
               <div className='flex justify-between items-center mb-[200px]'>
-                <div className='max-w-[567px] w-full'>
+                <div className='max-w-[587px] w-full'>
                   <p className='mb-[25px] max-w-[490px] w-full text-[18px] leading-[180%]'>
                     {t("common:mult_int_title")}
                   </p>
-                  <h2 className='mb-[40px] text-[56px] text-[#FF588A] font-bold leading-[120%]'>
+                  <h2 className='mb-[40px] max-w-[502px] w-full text-[56px] text-[#FF588A] font-bold leading-[120%]'>
                     {t("common:use_tech")}
                   </h2>
                   <Button
@@ -119,11 +119,11 @@ function Home() {
                       </div>
                     </div>
                     <div className='flex text-white items-center justify-between'>
-                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
+                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px]'}>
                         <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
                         App Store
                       </Button>
-                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
+                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px]'}>
                         <Image className='mr-[10px]' src={GooglePlay} width={40} height={40} alt='google play Image' />
                         Google Play
                       </Button>
@@ -489,11 +489,11 @@ function Home() {
             </div>
           </div>
           <div className='flex flex-col text-white'>
-            <Button className={'py-[17px] px-[50px] mb-[15px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
+            <Button className={'py-[17px] px-[50px] mb-[15px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px]'}>
               <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
               App Store
             </Button>
-            <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-PromptMedium text-[24px] leading-[36px]'}>
+            <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px]'}>
               <Image className='mr-[10px]' src={GooglePlay} width={40} height={40} alt='google play Image' />
               Google play
             </Button>

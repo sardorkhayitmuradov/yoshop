@@ -63,7 +63,7 @@ const Footer = () => {
             {t('header:contact')}
             </Link>
           </li>
-          <li className="footer-items w-full max-w-[273px]">
+          <li className="footer-items w-full max-w-[329px]">
             <h2 className="mb-[5px] text-xl font-normal">YoShop</h2>
             <p className="text-sm font-semibold mb-[14px]">{t("footer:rights_reserved")}</p>
             <p className="text-sm font-semibold mb-[5px]">8 700 450 11 50</p>

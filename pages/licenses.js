@@ -35,17 +35,17 @@ const Licenses = () => {
   return (
     <section>
       <div className="site-container !pt-[120px] !pb-[150px]">
-        <h2 className="text-[44px] leading-[140%] text-[#0F172A] font-PoppinsBold mb-[30px]">
+        <h2 className="text-[44px] leading-[140%] text-[#0F172A] font-bold mb-[30px]">
           {t("common:tariffs")}
         </h2>
 
         <div className="flex items-center mb-[30px]">
-          <p className="font-PoppinsBold text-[#F36784] text-[32px] leading-[140%] mr-[25px]">
+          <p className="font-bold text-[#F36784] text-[32px] leading-[140%] mr-[25px]">
             {t("common:choose_package")}
           </p>
           <Button
             className={
-              "bg-[#7D66BB] border border-solid border-[#94A3B8] rounded-[10px] p-4 max-w-[361px] w-full font-PoppinsBold text-white text-[20px] leading-[140%]"
+              "bg-[#7D66BB] border border-solid border-[#94A3B8] rounded-[10px] p-4 max-w-[361px] w-full font-bold text-white text-[20px] leading-[140%]"
             }
           >
             {t("common:free_version")}
@@ -91,44 +91,37 @@ const Licenses = () => {
         <Link href={'/guide'}>
           <div className="flex items-center mb-14">
             <Image src={UserGuide} width={30} height={30} alt="user guide" />
-            <p className="ml-3 mb-0 text-[18px] leading-[180%] text-[#F36784]">User guide</p>
+            <p className="ml-3 mb-0 text-[18px] leading-[180%] text-[#F36784]">{t("common:guide")}</p>
           </div>
         </Link>
 
-        {/* <Link href={'/assets/files/manual.pdf'}>
-          <div className="flex items-center mb-14">
-            <Image src={UserGuide} width={30} height={30} alt="user guide" />
-            <p className="ml-3 mb-0 text-[18px] leading-[180%] text-[#F36784]">User guide</p>
-          </div>
-        </Link> */}
-
-        <h2 className="font-PoppinsBold text-[32px] text-[#111827] leading-[140%] mb-[40px]">
+        <h2 className="font-bold text-[32px] text-[#111827] leading-[140%] mb-[40px]">
           {t("common:price_includes")}:
         </h2>
 
         <div className="flex items-center justify-between w-full mb-20">
           <EquipmentCard
             wrapperClassName={"max-w-[380px]"}
-            image={GuaranteeIcon}
+            image={GuaranteeIcon} titleClass={"max-w-[242px] w-full"}
           >
             {t("common:warranty")}
           </EquipmentCard>
-          <EquipmentCard wrapperClassName={"max-w-[380px]"} image={SaveIcon}>
+          <EquipmentCard wrapperClassName={"max-w-[380px]"} image={SaveIcon} titleClass={"max-w-[242px] w-full"}>
             {t("common:setup")}
           </EquipmentCard>
-          <EquipmentCard wrapperClassName={"max-w-[380px]"} image={DesktopIcon}>
+          <EquipmentCard wrapperClassName={"max-w-[380px]"} image={DesktopIcon} titleClass={"max-w-[242px] w-full"}>
             {t("common:support")}
           </EquipmentCard>
         </div>
 
         <div className="flex items-center justify-end">
-          <p className="mr-[30px] font-PoppinsBold text-[32px] leading-[140%] text-[#0F172A]">
+          <p className="mr-[30px] font-bold text-[32px] leading-[140%] text-[#0F172A]">
             {t("common:total")}:
             <span className="ml-[10px]">₸ {priceTotal}</span>
           </p>
           <Button
             className={
-              "cursor-pointer font-PoppinsBold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]"
+              "cursor-pointer font-bold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]"
             }
             onClick={() => dispatch(addToCart())}
           >

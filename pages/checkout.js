@@ -96,7 +96,7 @@ const Checkout = () => {
                       "w-full mb-8 flex justify-between items-center"
                     }
                     inputClassName={
-                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
+                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
                     }
                     placeholder={"First/Last Name"}
                     value={""}
@@ -110,7 +110,7 @@ const Checkout = () => {
                       "w-full mb-8 flex justify-between items-center"
                     }
                     inputClassName={
-                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
+                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
                     }
                     placeholder={"+7 700 000 00 00"}
                     value={""}
@@ -124,7 +124,7 @@ const Checkout = () => {
                       "w-full mb-8 flex justify-between items-center"
                     }
                     inputClassName={
-                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
+                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
                     }
                     placeholder={"Enter your e-mail"}
                     value={""}
@@ -138,7 +138,7 @@ const Checkout = () => {
                       "w-full mb-8 flex justify-between items-center"
                     }
                     inputClassName={
-                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
+                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
                     }
                     placeholder={"Enter your town"}
                     value={""}
@@ -152,7 +152,7 @@ const Checkout = () => {
                       "w-full mb-8 flex justify-between items-center"
                     }
                     inputClassName={
-                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
+                      "max-w-[377px] w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]"
                     }
                     placeholder={"Enter your actual address"}
                     value={""}
@@ -189,7 +189,7 @@ const Checkout = () => {
               </div> */}
 
                 <div className="mb-[26px]">
-                  <h3 className="text-[24px] font-[700] mt-[75px] mb-[40px]">
+                  <h3 className="text-[24px] font-bold mt-[75px] mb-[40px]">
                     Choose payment Method
                   </h3>
                   <div className="mb-8">
@@ -200,7 +200,7 @@ const Checkout = () => {
                         inptClass={"accent-[#FF588A] w-[20px] h-[20px] bg-[#fff]"}
                         labelText={"Cash upon receipt"}
                         labelClass={
-                          "text-[20px] font-regular ml-[30px]"
+                          "text-[20px] ml-[30px]"
                         }
                         inputName={"pay"}
                       />
@@ -212,7 +212,7 @@ const Checkout = () => {
                         inptClass={"accent-[#FF588A] w-[20px] h-[20px] bg-[#fff]"}
                         labelText={"Card payment"}
                         labelClass={
-                          "text-[20px] font-regular ml-[30px]"
+                          "text-[20px] ml-[30px]"
                         }
                         inputName={"pay"}
                       />
@@ -239,7 +239,7 @@ const Checkout = () => {
                           inputType={"text"}
                           wrapperClassName={"mb-4 flex flex-col"}
                           inputClassName={
-                            "py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] w-full placeholder: float-right"
+                            "py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] w-full placeholder:float-right"
                           }
                           placeholder={""}
                           value={""}
@@ -281,25 +281,25 @@ const Checkout = () => {
                   className="productsImg absolute left-[5px] h-[67px]"
                 />
               </div>
-              <h3 className="text-[20px] font-[700]">
+              <h3 className="text-[20px] font-bold">
                 YoShop POS (К9 Centerm)
               </h3>
-              <h3 className="text-[24px] font-[700]">
+              <h3 className="text-[24px] font-bold">
                 ₸ 150 000
               </h3>
             </div>
             <div className="confrimProductOnfoTextsWrapp w-full">
               <div className="w-[290px] float-right mt-[23px]">
                 <div className="flex justify-between items-center">
-                  <p className="text-[20px] font-regular">
+                  <p className="text-[20px]">
                     Subtotal
                   </p>
-                  <p className="text-[20px] font-regular">
+                  <p className="text-[20px]">
                     ₸ 150 000
                   </p>
                 </div>
                 <div className="flex justify-between items-center mb-4">
-                  <p className="text-[20px] font-regular mt-[15px]">
+                  <p className="text-[20px] mt-[15px]">
                     Shipping
                   </p>
                 </div>
@@ -308,8 +308,8 @@ const Checkout = () => {
             <hr className="opacity-40 w-full" />
             <div className="w-[290px] float-right mt-[23px]">
               <div className="flex justify-between items-center">
-                <p className="text-[20px] font-[700]">Subtotal</p>
-                <p className="text-[20px] font-[700]">
+                <p className="text-[20px] font-bold">Subtotal</p>
+                <p className="text-[20px] font-bold">
                   ₸ 150 000
                 </p>
               </div>
@@ -349,7 +349,7 @@ const Checkout = () => {
             >
               <div>
                 <button
-                  className="mr-6 float-right text-[40px] font-[700] opacity-60 text-[#000]"
+                  className="mr-6 float-right text-[40px] font-bold opacity-60 text-[#000]"
                   onClick={() => setOpenModal(false)}
                 >
                   x
@@ -363,7 +363,7 @@ const Checkout = () => {
                   <h3 className="my-[32px] text-[36px] font-medium text-center text-[#000]">
                     Thank you! Your data has been successfully sent.
                   </h3>
-                  <p className="text-[30px] font-regular text-center text-[#9CA3AF]">
+                  <p className="text-[30px] text-center text-[#9CA3AF]">
                     Expect feedback.
                   </p>
                 </div>

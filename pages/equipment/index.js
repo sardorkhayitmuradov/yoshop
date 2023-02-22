@@ -70,8 +70,8 @@ const Equipment = () => {
       <section className={`pt-[150px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-no-repeat bg-[right_0.5rem_bottom_4.5rem] bg-cover`}>
         <div className={`max-w-[1292px] mx-auto w-full`}>
           <div className="max-w-[1204px] mx-auto w-full pt-[34px]">
-              <h2 className="font-PoppinsBold text-[44px] leading-[140%] mb-[26px]">{t("common:equipment_shop")}</h2>
-              <p className="font-PoppinsRegular text-[18px] leading-[180%] mb-[26px]">{t("common:set")}
+              <h2 className="font-bold text-[44px] leading-[140%] mb-[26px]">{t("common:equipment_shop")}</h2>
+              <p className="text-[18px] leading-[180%] mb-[26px]">{t("common:set")}
               </p>
               <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px]">
   
@@ -79,11 +79,11 @@ const Equipment = () => {
                   
                   <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[20px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} />
               
-                  <Button className={'max-w-[232px] py-[20px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] font-PromptBold'}>
+                  <Button className={'max-w-[232px] py-[20px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%]'}>
                   {t("common:order_call")}
                   </Button>
               </div>
-              <h3 className="font-PoppinsBold text-[32px] leading-[140%] mb-[40px]">{t("common:you_get")}</h3>
+              <h3 className="font-bold text-[32px] leading-[140%] mb-[40px]">{t("common:you_get")}</h3>
               <div className="flex items-center justify-between w-full">
                   <EquipmentCard wrapperClassName={'max-w-[280px]'} image={GuaranteeIcon} >
                   {t("common:guarantee")}
@@ -123,7 +123,7 @@ const Equipment = () => {
                 return (
                   <Link key={el.id} href={'/equipment/' + el.id+"#equipment"} scroll={true}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>
-                      <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[10px] text-[#F9F9FB]'} >
+                      <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[10px] text-[#F9F9FB]'} >
                           <Image src={shopIcon} alt="shop-icon" className="pr-2" />
                           {t("common:add_cart")}
                       </Button>
@@ -134,7 +134,7 @@ const Equipment = () => {
                 return (
                   <Link key={el.id} href={'/equipment/' + el.id+"#equipment"}>
                     <ProductCard image={el.image} title={el.title} price={el.price}>
-                      <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-[700] text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[16px] px-[22px] rounded-[10px] text-[#F9F9FB]'} 
+                      <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[16px] px-[22px] rounded-[10px] text-[#F9F9FB]'} 
                         onClick={() => {
                           if (modalWindowBg.current.classList.contains("hidden")) {
                             modalWindowBg.current.classList.remove("hidden");

@@ -47,13 +47,13 @@ const NotFound = () => {
               className="mb-5"
             />
             <div className="-ml-2">
-              <p className="poppins font-bold text-[56px] leading-[140%] mb-[41px]">
+              <p className="font-bold text-[56px] leading-[140%] mb-[41px]">
                 404
               </p>
-              <p className="poppins font-bold text-[32px] leading-[140%] mb-[23px]">
+              <p className="font-bold text-[32px] leading-[140%] mb-[23px]">
                 Oh No! Something went wrong
               </p>
-              <p className="poppins font-bold text-[24px] leading-[140%]">
+              <p className="font-bold text-[24px] leading-[140%]">
                 Please try again later !
               </p>
             </div>

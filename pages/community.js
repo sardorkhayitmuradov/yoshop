@@ -22,7 +22,7 @@ const Community = () => {
     <main>
       <section className='pt-[150px] pb-[250px]'>
         <div className="site-container">
-          <h2 className='font-PoppinsBold text-[44px] leading-[140%] text-[#111827] text-center mb-[71px]'>{t('common:community_management')}</h2>
+          <h2 className='font-bold text-[44px] leading-[140%] text-[#111827] text-center mb-[71px]'>{t('common:community_management')}</h2>
           <div className='flex flex-col gap-[80px]'>
             {
               communityNews ? communityNews.map((el) => {

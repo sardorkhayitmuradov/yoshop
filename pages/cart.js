@@ -112,7 +112,7 @@ const Cart = () => {
               (
                 cart.products.map(product => {
                   return (
-                    <li className="py-5 border-b borderb-[#cbd5e1]" key={product.id}>
+                    <li className="py-5 border-b border-b-[#cbd5e1]" key={product.id}>
                       <Checkbox id={1} value={'pos'} onGetValue={onChecked} checkboxClass={"checkbox"} />
                       <div className="flex justify-between items-center mb-6">
                         <div className="max-w-[800px] w-full flex justify-between items-center">
@@ -139,7 +139,7 @@ const Cart = () => {
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center">
                 <p>Discount</p>
-                <p className="text-[12px] font-PoppinsRegular text-[#FF588A] ml-3">(Your promo code applied)</p>
+                <p className="text-[12px] text-[#FF588A] ml-3">(Your promo code applied)</p>
               </div>
               <p className="text-[#ff588a]">₸  1000</p>
             </div>
@@ -147,9 +147,9 @@ const Cart = () => {
             <p className="mb-3">Please enter your Promo Code</p>
 
             <div className="flex items-center justify-between mb-10">
-              <Input inputType={'text'} wrapperClassName={'max-w-[307px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[11px] pl-[14px] placeholder:text-[#9CA3AF] placeholder:poppins placeholder:text-[16px] placeholder:leading-[25px] outline-none rounded-[6px] border-[#94A3B8] border border-solid'} placeholder={"TALGATXOXO"} value={"TALGATXOXO"} onGetValue={(value) => setTown(value)} />
+              <Input inputType={'text'} wrapperClassName={'max-w-[307px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[11px] pl-[14px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[25px] outline-none rounded-[6px] border-[#94A3B8] border border-solid'} placeholder={"TALGATXOXO"} value={"TALGATXOXO"} onGetValue={(value) => setTown(value)} />
 
-              <Button className={'cursor-pointer font-PoppinsBold max-w-[185px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] py-[12px] px-[22px] rounded-[10px]'}
+              <Button className={'cursor-pointer font-bold max-w-[185px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] py-[12px] px-[22px] rounded-[10px]'}
               >
                 Apply
               </Button>
@@ -160,7 +160,7 @@ const Cart = () => {
               <p>₸ 193 000</p>
             </div>
 
-            <Link href={"/checkout"} className={'cursor-pointer font-PoppinsBold w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] py-[12px] px-[22px] rounded-[10px]'}
+            <Link href={"/checkout"} className={'cursor-pointer font-bold w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] py-[12px] px-[22px] rounded-[10px]'}
             >
               Checkout
             </Link>
@@ -168,7 +168,7 @@ const Cart = () => {
         </div></> : <div className="max-w-[510px] w-full mx-auto mt-[250px]">
           <p className="font-bold leading-[140%] text-[44px] text-center text-[#E5E7EB] mb-[21px]">your cart is empty</p>
           <Link href={'/'}>
-            <Button className={'cursor-pointer font-PoppinsBold max-w-[507px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'}>
+            <Button className={'cursor-pointer font-bold max-w-[507px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'}>
               Go to main page
             </Button>
           </Link>

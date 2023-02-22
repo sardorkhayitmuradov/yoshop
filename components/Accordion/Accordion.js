@@ -1,17 +1,11 @@
 import Image from "next/image";
 import React, { useState } from "react";
-// import {
-//   Accordion,
-//   AccordionBody,
-//   AccordionHeader,
-//   AccordionItem,
-// } from "react-headless-accordion";
 import Button from "../Button/Button";
 import PlusWhite from "../../public/assets/images/plusWhite.svg";
 import Cancel from "../../public/assets/images/cancel.svg";
 import { CalculatorProduct } from "../CalculatorProduct";
 import { addEquipments, removeEquipments } from "../../redux/features/carts";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const AccordionWrapper = ({
   title,
@@ -53,15 +47,16 @@ const AccordionWrapper = ({
                 </svg>
               </div>
             </div>
-            {isActive && <div
-              className={`font-light text-left w-full py-[20px] ${accordionBodyClassname ? accordionBodyClassname : ""
-                }`}
-            >
-              {children}
-            </div>}
+            {
+              elId === 23 || 26 || 29 ? "" : isActive && <div
+                className={`font-light text-left w-full py-[20px] ${accordionBodyClassname ? accordionBodyClassname : ""
+                  }`}
+              >
+                {children}
+              </div> } 
           </div>
         </div>
-        {isActive &&
+        { elId === 23 || 26 || 29 ? "" : isActive &&
           <div
             className={`mb-[70px] px-[20px] ${open ? "block" : "hidden"
               } mt-[40px]`}
@@ -134,8 +129,7 @@ const AccordionWrapper = ({
             <div className="max-w-[300px] w-full ml-auto text-right font-bold text-[24px] leading-[140%]">
               <p>SUBTOTAL: ₸ {subTotal}</p>
             </div>
-          </div>
-        }
+          </div> }
       </div>
     </>
   );

@@ -4,8 +4,8 @@ const ResourcesCard = ({video , title , description}) => {
         <video width="600" height='270' className="mb-[14px] rounded-[10px]" controls>
             <source src={video} type="video/mp4" />
         </video>
-        <h4 className="poppins font-bold text-[20px] leading-[140%] mb-[6px]">{title}</h4>
-        <p className="poppins text-[16px] leading-[25px]">{description}</p>
+        <h4 className="font-bold text-[20px] leading-[140%] mb-[6px]">{title}</h4>
+        <p className="text-[16px] leading-[25px]">{description}</p>
     </div>
   )
 }
