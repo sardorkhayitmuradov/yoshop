@@ -37,7 +37,7 @@ const Contact = () => {
                   {t("common:contact_us")}
                   </h2>
                   <p className='text-[20px] leading-[180%]'>
-                    8 700 450 11 50
+                  8 700 450 80 11
                   </p>
                   <p className='text-[20px] leading-[180%]'>
                     info@finenex.kz

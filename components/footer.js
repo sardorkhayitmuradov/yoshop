@@ -3,8 +3,7 @@ import Link from "next/link";
 import LogoImage from '../public/assets/images/logo.svg';
 import FacebookIcon from '../public/assets/images/facebook.svg';
 import InstagramIcon from '../public/assets/images/instagram.svg';
-import GithubIcon from '../public/assets/images/github.svg';
-import InboxIcon from '../public/assets/images/Inbox.svg';
+import YoutubeIcon from '../public/assets/images/youtube.svg';
 import TelegramIcon from '../public/assets/images/telegram.svg';
 import WhatsAppIcon from '../public/assets/images/whatsapp.svg';
 import { useTranslation } from "next-i18next";
@@ -21,23 +20,20 @@ const Footer = () => {
             </Link>
             <p className="mb-[21px] font-bold leading-[180%]">{t("footer:connect")}</p>
             <div className="footer-social-lists flex items-center justify-between max-w-[235px] w-full">
-              <Link href={'/'} >
+              <Link href={'https://www.facebook.com/profile.php?id=100081507637864'} target="_blank">
                 <Image src={FacebookIcon} alt="site-social Image" width={24} height={24} />
               </Link>
-              <Link href={'/'} >
+              <Link href={'https://www.instagram.com/yoshop.kz/'} target="_blank">
                 <Image src={InstagramIcon} alt="site-social Image" width={24} height={24} />
               </Link>
-              <Link href={'/'} >
-                <Image src={GithubIcon} alt="site-social Image" width={24} height={24} />
-              </Link>
-              <Link href={'/'} >
-                <Image src={InboxIcon} alt="site-social Image" width={24} height={24} />
-              </Link>
-              <Link href={'/'} >
+              <Link href={'https://t.me/+77004508011'} target="_blank">
                 <Image src={TelegramIcon} alt="site-social Image" width={24} height={24} />
               </Link>
-              <Link href={'/'} >
+              <Link href={'https://wa.me/qr/WS6FXCHK7CYEI1'} target="_blank">
                 <Image src={WhatsAppIcon} alt="site-social Image" width={24} height={24} />
+              </Link>
+              <Link href={'https://www.youtube.com/channel/UCIvu400yyF8NSElx61i-B_w'} target="_blank">
+                <Image src={YoutubeIcon} alt="site-social Image" width={24} height={24} />
               </Link>
             </div>
           </li>
@@ -66,7 +62,7 @@ const Footer = () => {
           <li className="footer-items w-full max-w-[329px]">
             <h2 className="mb-[5px] text-xl font-normal">YoShop</h2>
             <p className="text-sm font-semibold mb-[14px]">{t("footer:rights_reserved")}</p>
-            <p className="text-sm font-semibold mb-[5px]">8 700 450 11 50</p>
+            <p className="text-sm font-semibold mb-[5px]">8 700 450 80 11</p>
             <p className="text-sm font-semibold mb-[5px]">{t("footer:address")}</p>
             <p className="text-sm font-semibold mb-[5px]">info@finenex.kz</p>
           </li>
