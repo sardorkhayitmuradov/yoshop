@@ -12,14 +12,14 @@ const Footer = () => {
   const {t} = useTranslation()
   return (
     <footer className="py-[30px]">
-      <div className="site-container">
-        <ul className="footer-list flex items-center justify-between">
-          <li className="footer-items">
+      <div className="max-w-xl mx-auto max-[450px]:max-w-xs max-[450px]:px-6">
+        <ul className="flex items-center justify-between">
+          <li>
             <Link href={'/'}>
               <Image src={LogoImage} alt="site-logo" width={185} height={65} className="mb-[30px]" />
             </Link>
-            <p className="mb-[21px] font-bold leading-[180%]">{t("footer:connect")}</p>
-            <div className="footer-social-lists flex items-center justify-between max-w-[235px] w-full">
+            <p className="mb-[21px] font-bold leading-[180%] max-[450px]:hidden">{t("footer:connect")}</p>
+            <div className="footer-social-lists flex items-center justify-between max-w-[235px] w-full max-[450px]:mb-[28px]">
               <Link href={'https://www.facebook.com/profile.php?id=100081507637864'} target="_blank">
                 <Image src={FacebookIcon} alt="site-social Image" width={24} height={24} />
               </Link>
@@ -36,8 +36,12 @@ const Footer = () => {
                 <Image src={YoutubeIcon} alt="site-social Image" width={24} height={24} />
               </Link>
             </div>
+            <div className="max-[450px]:block hidden">
+              <h1 className="text-[#FF588A] text-sm font-bold mb-[4px]">Privacy Policy</h1>
+              <p className="text-sm font-semibold mb-[14px]">{t("footer:rights_reserved")}</p>
+            </div>
           </li>
-          <li className="footer-items max-w-[112px] w-full flex flex-col">
+          <li className="footer-items max-w-[112px] w-full flex flex-col max-[450px]:hidden">
             <Link href={'/licenses' + "#header"} className='text-base mb-[16px]'>
               {t('header:licenses')}
             </Link>
@@ -48,7 +52,7 @@ const Footer = () => {
             {t('header:resources')}
             </Link>
           </li>
-          <li className="footer-items max-w-[112px] w-full flex flex-col">
+          <li className="footer-items max-w-[112px] w-full flex flex-col max-[450px]:hidden">
             <Link href={'/company' + "#header"} className='text-base mb-[16px]'>
             {t('header:company')}
             </Link>
@@ -59,7 +63,7 @@ const Footer = () => {
             {t('header:contact')}
             </Link>
           </li>
-          <li className="footer-items w-full max-w-[329px]">
+          <li className="footer-items w-full max-w-[329px] max-[450px]:hidden">
             <h2 className="mb-[5px] text-xl font-normal">YoShop</h2>
             <p className="text-sm font-semibold mb-[14px]">{t("footer:rights_reserved")}</p>
             <p className="text-sm font-semibold mb-[5px]">8 700 450 80 11</p>

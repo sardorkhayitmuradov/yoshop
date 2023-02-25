@@ -35,57 +35,59 @@ function Home() {
   const [number, setNumber] = useState();
   const { t } = useTranslation();
   const [active, setActive] = useState(0);
-  const swiperRef = useRef()
+  const swiperRef = useRef();
   const handleChange = (event) => {
     let val = event.target.value;
     setActive(Number(val));
-    swiperRef.current.swiper.slideTo(Number(val))
+    swiperRef.current.swiper.slideTo(Number(val));
   };
 
-  const slideFirstCard = useRef()
-  const slideSecondCard = useRef()
+  const slideFirstCard = useRef();
+  const slideSecondCard = useRef();
 
 
   return (
-    <main className='pt-[100px] w-full'>
+    <main className='pt-[100px] w-full max-[450px]:pt-0'>
       <section>
         <Swiper
           pagination={{
             dynamicBullets: true,
           }}
           modules={[Autoplay, Pagination, Navigation]}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+        // autoplay={{
+        //   delay: 3000,
+        //   disableOnInteraction: false,
+        // }}
         >
           <SwiperSlide>
-            <div className='site-container flex flex-col !pt-[179px] justify-center bg-[url("../public/assets/images/hero.png")] pb-[50px] bg-no-repeat bg-right-top bg-[length:1200px_775px]'>
-              <div className='flex justify-between items-center mb-[200px]'>
-                <div className='max-w-[587px] w-full'>
-                  <p className='mb-[25px] max-w-[490px] w-full text-[18px] leading-[180%]'>
-                    {t("common:mult_int_title")}  
-                  </p>
-                  <h2 className='mb-[40px] max-w-[502px] w-full text-[56px] text-[#FF588A] font-bold leading-[120%]'>
-                    {t("common:use_tech")}
-                  </h2>
-                  <Button
-                    className={
-                      'py-[11px] px-[74.5px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
-                    }
-                  >
-                    {t("common:try_free")}
-                  </Button>
+            <div className='bg-[url("../public/assets/images/hero.png")] bg-no-repeat bg-right-top bg-[length:1200px_775px] max-[450px]:bg-[url("../public/assets/images/banner1-mobile.png")] max-[450px]:bg-cover max-[450px]:bg-center'>
+              <div className='max-w-xl mx-auto max-[450px]:px-6 flex flex-col pt-[179px] justify-center max-[450px]:py-[70px] max-[450px]:mt-[50px]'>
+                <div className='flex justify-between items-center mb-[200px] max-[450px]:m-0'>
+                  <div className='max-w-[587px] w-full max-[450px]:max-w-[280px]'>
+                    <p className='mb-[25px] max-w-[490px] w-full text-[18px] leading-[180%] max-[450px]:max-w-[142px] max-[450px]:mb-1 max-[450px]:text-[16zpx] max-[450px]:leading-[180%] max-[450px]:text-[#D1D5DB]'>
+                      {t("common:mult_int_title")}
+                    </p>
+                    <h2 className='mb-[40px] max-w-[502px] w-full text-[56px] text-[#FF588A] font-bold leading-[120%] max-[450px]:max-w-[185px] max-[450px]:mb-[18px] max-[450px]:text-[20px] max-[450px]:leading-[140%]'>
+                      {t("common:use_tech")}
+                    </h2>
+                    <Button
+                      className={
+                        'py-[11px] px-[74.5px] bg-[#7D66BB] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:py-[10px] max-[450px]:px-[64px] max-[450px]:bg-[#FF588A]'
+                      }
+                    >
+                      {t("common:try_free")}
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className='bg-[url("../public/assets/images/banner2.jpg")] hero bg-no-repeat bg-cover'>
-              <div className='site-container flex flex-col !pt-[179px] pb-[50px] justify-center'>
-                <div className='flex justify-between items-center mb-[200px]'>
-                  <div className='max-w-[567px] w-full'>
-                    <div className='mb-[67px] text-[40px] font-bold leading-[120%]'>
+            <div className='bg-[url("../public/assets/images/banner2.jpg")] hero bg-no-repeat bg-cover max-[450px]:bg-[url("../public/assets/images/banner2-mobile.png")] max-[450px]:bg-center max-[450px]:mt-[50px]'>
+              <div className='max-w-xl mx-auto flex flex-col pt-[179px] pb-[50px] justify-center max-[450px]:py-[100px] max-[450px]:px-6'>
+                <div className='flex justify-between items-center mb-[200px] max-[450px]:mb-0'>
+                  <div className='max-w-[567px] w-full max-[450px]:max-w-[235px]'>
+                    <div className='mb-[67px] text-[40px] font-bold leading-[120%] max-[450px]:max-w-[195px] max-[450px]:text-[20px] max-[450px]:mb-[32px] max-[450px]:leading-[140%]'>
                       <div>
                         <h2 className='bg-[#FF588A] text-[#fff] rounded inline-block'>{t("common:buy_title")}</h2>
                       </div>
@@ -95,7 +97,7 @@ function Home() {
 
                     <Button
                       className={
-                        'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white'
+                        'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[74px] max-[450px]:py-[10px]'
                       }
                     >
                       {t("common:buy_now")}
@@ -106,12 +108,12 @@ function Home() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className='bg-[url("../public/assets/images/banner3.jpg")] hero bg-no-repeat bg-cover'>
-              <div className='site-container flex flex-col !pt-[179px] pb-[50px] justify-center'>
-                <div className='flex justify-between items-center mb-[200px]'>
-                  <div className='max-w-[567px] w-full'>
+            <div className='bg-[url("../public/assets/images/banner3.jpg")] hero bg-no-repeat bg-cover  max-[450px]:bg-[url("../public/assets/images/banner3-mobile.png")] max-[450px]:bg-cover max-[450px]:bg-right max-[450px]:mt-[70px]'>
+              <div className='max-w-xl mx-auto flex flex-col pt-[179px] pb-[50px] justify-center max-[450px]:py-[100px] max-[450px]:px-6'>
+                <div className='flex justify-between items-center mb-[200px] max-[450px]:w-full max-[450px]:m-0'>
+                  <div className='max-w-[567px] w-full max-[450px]:max-w-[235px]'>
                     <div>
-                      <div className='max-w-[560px] w-full font-bold text-[40px] leading-[134%] mb-[40px]'>
+                      <div className='max-w-[560px] w-full font-bold text-[40px] leading-[134%] mb-[40px] max-[450px]:text-[20px]  max-[450px]:leading-[140%]'>
                         <span className='bg-[#FF588A] pt-1 px-1 rounded-md text-white'>{t("common:download")}</span>
                         {t("common:download_mobile")}
                         <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>
@@ -119,11 +121,18 @@ function Home() {
                       </div>
                     </div>
                     <div className='flex text-white items-center justify-between'>
-                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px]'}>
+                      <Button
+                        className={
+                          'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[74px] max-[450px]:py-[10px] max-[450px]:block hidden'
+                        }
+                      >
+                        Download
+                      </Button>
+                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px] max-[450px]:hidden'}>
                         <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
                         App Store
                       </Button>
-                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px]'}>
+                      <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px] max-[450px]:hidden'}>
                         <Image className='mr-[10px]' src={GooglePlay} width={40} height={40} alt='google play Image' />
                         Google Play
                       </Button>
@@ -139,7 +148,7 @@ function Home() {
         className={`pt-[150px] pb-[75px] relative`}
 
       >
-        <div className='mx-auto max-w-[1230px] w-full h-[750px] overflow-hidden bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
+        <div className='max-w-xl mx-auto w-full h-[750px] overflow-hidden bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
           <div className='fixed w-[81px] h-[81px] right-20  bottom-14 z-10'>
             <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
           </div>
@@ -478,34 +487,34 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className='py-[75px]'>
-        <div className="mx-auto max-w-[1230px] w-full bg-[#EFF1FE] h-[352px] rounded-[20px] pt-[55px] pb-[30px] pl-[60px] pr-[56px] flex items-center justify-between">
-          <div>
-            <div className='text-[#0F172A] max-w-[560px] w-full font-bold text-[40px] leading-[140%] mb-[30px]'>
-              <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download")}</span>
+      <section className='py-[75px] max-[450px]:py-4'>
+        <div className="max-w-xl mx-auto w-full bg-[#EFF1FE] h-[352px] rounded-[20px] pt-[55px] pb-[30px] pl-[60px] pr-[56px] flex items-center justify-between max-[450px]:flex-col max-[450px]:py-[0px] max-[450px]:bg-white max-[450px]:rounded-none max-[450px]:px-0">
+          <div className='max-[450px]:bg-[#EFF1FE] max-[450px]:py-[15px] max-[450px]:w-full max-[450px]:px-6 max-[450px]:mb-[20px]'>
+            <div className='text-[#0F172A] max-w-[560px] w-full font-bold text-[40px] leading-[140%] mb-[30px] max-[450px]:mb-0 max-[450px]:text-[24px] max-[450px]:leading-[175.5%] max-[450px]:text-center'>
+              <span className='bg-[#FF588A] rounded-md text-white max-[450px]:block max-[450px]:text-center'>{t("common:download")}</span>
               {t("common:download_mobile")}
-              <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>
+              <span className='bg-[#FF588A] rounded-md text-white max-[450px]:block max-[450px]:text-center'>{t("common:download_free")}</span>
               <h2>{t("common:download_month")}</h2>
             </div>
           </div>
-          <div className='flex flex-col text-white'>
-            <Button className={'py-[17px] px-[50px] mb-[15px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px]'}>
+          <div className='flex flex-col text-white max-[450px]:bg-[#fff]'>
+            <Button className={'py-[17px] px-[50px] mb-[15px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px] max-[450px]:py-[6px]'}>
               <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
               App Store
             </Button>
-            <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px]'}>
+            <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px] max-[450px]:py-[6px]'}>
               <Image className='mr-[10px]' src={GooglePlay} width={40} height={40} alt='google play Image' />
               Google play
             </Button>
           </div>
         </div>
       </section>
-      <section className='py-[75px]'>
-        <div className="mx-auto max-w-[1200px] w-full overflow-hidden">
-          <h2 className='text-[#111827] font-bold text-[44px] leading-[140%] mb-[60px]'>
+      <section className='py-[75px] max-[450px]:py-4'>
+        <div className="max-w-xl mx-auto w-full overflow-hidden max-[450px]:px-6">
+          <h2 className='text-[#111827] font-bold text-[44px] leading-[140%] mb-[60px] max-[450px]:text-[24px] max-[450px]:mb-5'>
             {t("common:improve_business")}
           </h2>
-          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] rounded-tr-[20px] rounded-br-[20px] overflow-hidden">
+          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] rounded-tr-[20px] rounded-br-[20px] overflow-hidden max-[450px]:hidden">
             <li className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__one'>
               <div className='max-w-[300px] w-full py-[64px] px-[78px]'>
                 <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
@@ -535,7 +544,7 @@ function Home() {
                 </ul>
               </div>
             </li>
-            <li ref={slideFirstCard} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__two'> 
+            <li ref={slideFirstCard} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__two'>
               <div className='max-w-[300px] w-full py-[64px] pl-[78px] bg-[#FBF1F1] h-full'>
                 <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                   <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
@@ -560,7 +569,7 @@ function Home() {
                 </ul>
               </div>
             </li>
-            <li onMouseOut={() =>  slideFirstCard.current.classList.remove('-translate-x-[50%]')} onMouseOver={() => slideFirstCard.current.classList.add('-translate-x-[50%]')} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__three'>
+            <li onMouseOut={() => slideFirstCard.current.classList.remove('-translate-x-[50%]')} onMouseOver={() => slideFirstCard.current.classList.add('-translate-x-[50%]')} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCard__three'>
               <div className='max-w-[300px] w-full py-[64px] pl-[78px] bg-[#FFE6E6] h-full'>
                 <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
                   <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
@@ -589,7 +598,7 @@ function Home() {
               </div>
             </li>
           </ul>
-          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] rounded-tr-[20px] rounded-br-[20px] overflow-hidden">
+          <ul className="w-full bg-[#fff] rounded-[4px] flex mb-[60px] rounded-tr-[20px] rounded-br-[20px] overflow-hidden max-[450px]:hidden">
             <li className="max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__one">
               <div className='max-w-[300px] w-full py-[64px] px-[78px]'>
                 <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
@@ -624,16 +633,16 @@ function Home() {
                 </ul>
               </div>
             </li>
-            <li onMouseOut={() =>  slideSecondCard.current.classList.remove('-translate-x-[50%]')} onMouseOver={() => slideSecondCard.current.classList.add('-translate-x-[50%]')} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__three'>
-            <div className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6] h-full'>
-              <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
-                <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
+            <li onMouseOut={() => slideSecondCard.current.classList.remove('-translate-x-[50%]')} onMouseOver={() => slideSecondCard.current.classList.add('-translate-x-[50%]')} className='max-w-[600px] w-full flex items-center flex-shrink-0 slideCard slideCardSecond__three'>
+              <div className='max-w-[300px] w-full py-[64px] px-[78px] bg-[#FFE6E6] h-full'>
+                <div className='bg-[#fff2f2] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[20px]'>
+                  <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
+                </div>
+                <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
+                  {t('common:elimination_theft')}
+                </p>
               </div>
-              <p className='max-w-[173px] w-full font-bold text-2xl text-[#656974] leading-[140%]'>
-                {t('common:elimination_theft')}
-              </p>
-            </div>
-            <div className='max-w-[300px] w-full flex flex-col justify-center pl-[34px] h-full bg-[#FFE6E6]'>
+              <div className='max-w-[300px] w-full flex flex-col justify-center pl-[34px] h-full bg-[#FFE6E6]'>
                 <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
                   <li className='max-w-[221px] w-full'>{t('common:exlusion_items')}</li>
                   <li className='max-w-[221px] w-full'>{t('common:prevention_cashier')}</li>
@@ -642,24 +651,195 @@ function Home() {
               </div>
             </li>
           </ul>
+          <div className='max-[450px]:block hidden'>
+          <Swiper
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            className='mb-[80px]'
+          >
+            <SwiperSlide>
+              <li className='w-full flex items-center py-10'>
+                <div className='w-[31%]'>
+                  <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                    <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
+                  </div>
+                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                    {t("common:types_of_payment")}
+                  </p>
+                </div>
+                <div className='pl-[34px] w-[69%]'>
+                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:bank_cards")}
+                    </li>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:qr")}
+                    </li>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:apple_pay")}
+                    </li>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:samsung_pay")}
+                    </li>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:google_pay")}
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </SwiperSlide>
+            <SwiperSlide>
+              <li className='w-full flex items-center py-10'>
+                <div className='w-[31%]'>
+                  <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                    <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
+                  </div>
+                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                    {
+                      t('common:simple_int_interface')
+                    }
+                  </p>
+                </div>
+                <div className='pl-[34px] w-[69%]'>
+                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:simplifies")}
+                    </li>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:reduces")}
+                    </li>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:simpliest_way")}
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </SwiperSlide>
+            <SwiperSlide>
+              <li className='w-full flex items-center py-10'>
+                <div className='w-[31%]'>
+                  <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                    <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
+                  </div>
+                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                    {
+                      t('common:store_report')
+                    }
+                  </p>
+                </div>
+                <div className='pl-[34px] w-[69%]'>
+                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                    <li className='max-w-[202px] w-full'>
+                      {t("common:items_report")}
+                    </li>
+                    <li className='max-w-[196px] w-full'>
+                      {t("common:items_shifts")}
+                    </li>
+                    <li className='max-w-[196px] w-full'>
+                      {t("common:items_returns")}
+                    </li>
+                    <li className='max-w-[196px] w-full'>
+                      {t("common:items_entry")}
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </SwiperSlide>
+          </Swiper>
+          <Swiper
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          >
+            <SwiperSlide>
+              <li className='w-full flex items-center py-10'>
+                <div className='w-[31%]'>
+                  <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                    <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
+                  </div>
+                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                    {t('common:fiscalazition')}
+                  </p>
+                </div>
+                <div className='pl-[34px] w-[69%]'>
+                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                    <li className='max-w-[188px] w-full'>{t('common:issuance')}</li>
+                    <li className='max-w-[188px] w-full'>{t('common:simple_tac_reporting')}</li>
+                  </ul>
+                </div>
+              </li>
+            </SwiperSlide>
+            <SwiperSlide>
+              <li className='w-full flex items-center py-10'>
+                <div className='w-[31%]'>
+                  <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                  <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
+                  </div>
+                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                  {t('common:orginize_store')}
+                    
+                  </p>
+                </div>
+                <div className='pl-[34px] w-[69%]'>
+                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                  <li className='max-w-[221px] w-full'>{t('common:organize_sales')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:fast_service')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:goods_stock')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:convinient_analystics')}</li>
+                  </ul>
+                </div>
+              </li>
+            </SwiperSlide>
+            <SwiperSlide>
+              <li className='w-full flex items-center py-10'>
+                <div className='w-[31%]'>
+                  <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                  <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
+                  </div>
+                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                  {t('common:elimination_theft')}
+                  </p>
+                </div>
+                <div className='pl-[34px] w-[69%]'>
+                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                  <li className='max-w-[221px] w-full'>{t('common:exlusion_items')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:prevention_cashier')}</li>
+                  <li className='max-w-[221px] w-full'>{t('common:closing_store')}</li>
+                  </ul>
+                </div>
+              </li>
+            </SwiperSlide>
+          </Swiper>
+          </div>
         </div>
       </section>
-      <section className={`h-[861px] bg-no-repeat w-full bg-center my-[70px] bg-cover`}>
-        <h1 className='font-bold text-[44px] mb-10 text-[#111827] text-center leading-[140%] max-w-[801px] mx-auto'>{t("common:make_business")}</h1>
+      <section className={`h-[861px] bg-no-repeat w-full bg-center my-[70px] bg-cover max-[450px]:py-4 max-[450px]:h-[400px]`}>
+        <h1 className='font-bold text-[44px] mb-10 text-[#111827] text-center leading-[140%] max-w-[801px] mx-auto max-[450px]:text-[24px] max-[450px]:leading-[140%] max-[450px]:text-left max-[450px]:px-6'>{t("common:make_business")}</h1>
         <div className='flex items-center justify-center cursor-pointer'>
-          <video loop poster="/assets/images/makeBusinessWithYoshop.png" className='w-full h-[600px]' controls>
-              <source src={'/assets/videos/advertisement.mp4'} type="video/mp4" />
+          <video loop poster="/assets/images/makeBusinessWithYoshop.png" className='w-full h-[600px] max-[450px]:h-[300px] max-[450px]:object-cover' controls>
+            <source src={'/assets/videos/advertisement.mp4'} type="video/mp4" />
           </video>
         </div>
       </section>
       <section className="py-[70px]">
-        <div className='mx-auto max-w-[1200px] bg-[url("../public/assets/images/question-bg.png")] w-full bg-[#fff] pl-[44px] pt-[21px] rounded-[20px] pb-[33px] bg-no-repeat my-[70px] bg-cover'>
+        <div className='max-w-xl mx-auto bg-[url("../public/assets/images/question-bg.png")] w-full bg-[#fff] pl-[44px] pt-[21px] rounded-[20px] pb-[33px] bg-no-repeat my-[70px] bg-cover'>
           <h3 className='font-bold text-[32px] text-[#0F172A] text-center leading-[140%] mb-[40px] max-w-[460px] w-full'>
             {t("common:questions")}
           </h3>
           <Input inputType={'text'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder=
             {t("common:name")}
-            value={name} onChange={(value)=> setName(value)} />
+            value={name} onChange={(value) => setName(value)} />
 
           <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={t('common:number')} value={number} onChange={(value) => setNumber(value)} />
 

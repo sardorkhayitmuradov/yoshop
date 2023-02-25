@@ -6,13 +6,13 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      // InterMedium: ["InterMedium"],
-      // InterRegular: ["InterRegular"],
-      
-      // OverpassRegular: ["OverpassRegular"],
       PoppinsRegular: ["PoppinsRegular"],
       PoppinsSemibold: ["PoppinsSemibold"],
       PoppinsBold: ["PoppinsBold"],
+      // InterMedium: ["InterMedium"],
+      // InterRegular: ["InterRegular"],
+
+      // OverpassRegular: ["OverpassRegular"],
 
       // PromtLight: ["PromtLight"],
       // PromptRegular: ["PromptRegular"],
@@ -22,8 +22,16 @@ module.exports = {
       // UbuntuRegular: ["UbuntuRegular"],
       // UbuntuMedium: ["UbuntuMedium"],
     },
+    maxWidth: {
+      'xs': '450px',
+      xl: '1200px',
+    },
+    screens: {
+      'xs': '450px',
+      xl: '1200px',
+    },
     extend: {
     },
   },
   plugins: [],
-}
+};

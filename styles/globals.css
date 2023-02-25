@@ -88,6 +88,12 @@ header {
   border-bottom: 2px solid #dce3ec;
 }
 
+@media only screen and (max-width: 450px) {
+  header{
+    border-bottom: none;
+  }
+}
+
 .site-container {
   max-width: 1230px;
   width: 100%;
@@ -205,6 +211,10 @@ header {
   /* background-position: center; */
 }
 
+
+.slideInfo {
+  box-shadow: 0px -11px 41px rgba(45, 45, 45, 0.12);
+}
 
 
 
