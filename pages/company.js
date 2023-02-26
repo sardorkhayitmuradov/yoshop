@@ -17,16 +17,17 @@ export async function getStaticProps({ locale }) {
   const { t } = useTranslation();
   const {locale} = useRouter();
   return (
-    <main className='pt-[100px]'>
-      <section className='bg-[url("../public/assets/images/companyBg.jpg")] bg-no-repeat bg-cover company-hero'>
-        <div className='h-[824px] max-w-[1200px] mx-auto flex flex-col justify-center text-white'>
-          <h2 className='font-bold text-[56px] leading-[120%] mb-[40px]'>Finenex LTD</h2>
-          <p className='text-[20px] leading-[180%] mb-[100px]'>{t('common:fin_intro')}</p>
+    <main className='pt-[100px] max-[450px]:pt-14 max-[450px]:pb-5'>
+      <section className='bg-[url("../public/assets/images/companyBg.jpg")] bg-no-repeat bg-cover company-hero max-[450px]:mb-[10px]'>
+        <div className='h-[824px] max-w-xl mx-auto flex flex-col justify-center text-white max-[450px]:h-[200px]'>
+          <h2 className='font-bold text-[56px] leading-[120%] mb-[40px] max-[450px]:text-[24px] max-[450px]:leading-[140%] max-[450px]:mb-0 max-[450px]:px-6'>Finenex LTD</h2>
+          <p className='text-[20px] leading-[180%] mb-[100px] max-[450px]:hidden'>{t('common:fin_intro')}</p>
         </div>
       </section>
-      <section className='pt-[48px] pb-[150px]'>
-        <div className='max-w-[1200px] mx-auto flex flex-col gap-[150px]'>
-          <CompanyCard image={CompanyFinnexPurpose} title={t('common:purpose')} description={t('common:purpose_intro')} />
+      <p className='text-[20px] leading-[180%] mb-[100px] max-[450px]:block hidden max-[450px]:text-[16px] max-[450px]:px-6 max-[450px]:mb-[30px]'>{t('common:fin_intro')}</p>
+      <section className='pt-[48px] pb-[150px] max-[450px]:py-0'>
+        <div className='max-w-xl mx-auto flex flex-col gap-[150px] max-[450px]:px-6 max-[450px]:gap-7'>
+          <CompanyCard image={CompanyFinnexPurpose} wrapperClassName={'max-[450px]:flex-col'} title={t('common:purpose')} description={t('common:purpose_intro')} />
 
           <CompanyCard wrapperClassName={'flex-row-reverse'} image={IbexlabsVision} title={t('common:vision')} >
             <p className='text-[20px] leading-[180%] text-[#111827]'>{t('common:business')}</p>
