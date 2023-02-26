@@ -149,7 +149,7 @@ function Home() {
 
       >
         <div className='max-w-xl mx-auto w-full h-[750px] overflow-hidden bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
-          <div className='fixed w-[81px] h-[81px] right-20  bottom-14 z-10'>
+          <div className='fixed w-[81px] h-[81px] right-20 bottom-14 z-10 max-[450px]:w-[60px] max-[450px]:h-[60px] max-[450px]:right-3'>
             <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
           </div>
           <h2 className='text-[38px] font-light leading-[57px] mb-[6px]'>
@@ -832,18 +832,18 @@ function Home() {
           </video>
         </div>
       </section>
-      <section className="py-[70px]">
-        <div className='max-w-xl mx-auto bg-[url("../public/assets/images/question-bg.png")] w-full bg-[#fff] pl-[44px] pt-[21px] rounded-[20px] pb-[33px] bg-no-repeat my-[70px] bg-cover'>
-          <h3 className='font-bold text-[32px] text-[#0F172A] text-center leading-[140%] mb-[40px] max-w-[460px] w-full'>
+      <section className="py-[70px] max-[450px]:pt-4 max-[450px]:pb-[40px]">
+        <div className='max-w-xl mx-auto bg-[url("../public/assets/images/question-bg.png")] w-full bg-[#fff] pl-[44px] pt-[21px] rounded-[20px] pb-[33px] bg-no-repeat my-[70px] bg-cover max-[450px]:px-6 max-[450px]:bg-none max-[450px]:my-0'>
+          <h3 className='font-bold text-[32px] text-[#0F172A] text-center leading-[140%] mb-[40px] max-w-[460px] w-full max-[450px]:text-[24px] max-[450px]:mb-5 max-[450px]:text-left'>
             {t("common:questions")}
           </h3>
-          <Input inputType={'text'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder=
+          <Input inputType={'text'} wrapperClassName={'max-w-[500px] w-full mb-5'} inputClassName={'w-full py-5 pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF] max-[450px]:py-[13px] max-[450px]:pl-[30px]'} placeholder=
             {t("common:name")}
             value={name} onChange={(value) => setName(value)} />
 
-          <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-[20px]'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF]'} placeholder={t('common:number')} value={number} onChange={(value) => setNumber(value)} />
+          <Input inputType={'tel'} wrapperClassName={'max-w-[500px] w-full mb-5'} inputClassName={'w-full py-[20px] pl-[56px] placeholder:text-[#979AA1] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] text-[#9CA3AF] max-[450px]:py-[13px] max-[450px]:pl-[30px]'} placeholder={t('common:number')} value={number} onChange={(value) => setNumber(value)} />
 
-          <Button className={'max-w-[500px] py-[20px] w-full bg-[#ff588a] text-white rounded-[10px] font-bold text-base leading-[140%]'}>{t('common:order_call')}</Button>
+          <Button className={'max-w-[500px] py-[20px] w-full bg-[#ff588a] text-white rounded-[10px] font-bold text-base leading-[140%] max-[450px]:py-[13px]'}>{t('common:order_call')}</Button>
         </div>
       </section>
     </main>
