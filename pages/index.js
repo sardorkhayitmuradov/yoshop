@@ -145,23 +145,24 @@ function Home() {
         </Swiper>
       </section>
       <section
-        className={`pt-[150px] pb-[75px] relative`}
+        className={`pt-[150px] pb-[75px] relative max-[450px]:py-[17px]`}
 
       >
-        <div className='max-w-xl mx-auto w-full h-[750px] overflow-hidden bg-[#eff1fe80] rounded-[20px] relative pt-12 px-[60px]'>
+        <div className='max-w-xl mx-auto w-full h-[750px] max-[450px]:h-auto overflow-hidden bg-[#eff1fe80] max-[450px]:bg-white rounded-[20px] relative pt-12 px-[60px] max-[450px]:px-0'>
           <div className='fixed w-[81px] h-[81px] right-20 bottom-14 z-10 max-[450px]:w-[60px] max-[450px]:h-[60px] max-[450px]:right-3'>
             <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
           </div>
-          <h2 className='text-[38px] font-light leading-[57px] mb-[6px]'>
+          <h2 className='text-[38px] font-light leading-[57px] mb-[6px] max-[450px]:text-[24px] max-[450px]:text-[#111827] max-[450px]:font-bold max-[450px]:leading-[140%] max-[450px]:mb-0 max-[450px]:px-6'>
             {t('common:yoshop_licence')}
           </h2>
-          <p className='text-base leading-[32px] uppercase opacity-60 mb-[70px]'>
+          <p className='text-base leading-[32px] uppercase opacity-60 mb-[70px] max-[450px]:text-[#111827] max-[450px]:text-[18px] max-[450px]:leading-[25px] max-[450px]:lowercase max-[450px]:mb-[30px] max-[450px]:px-6'>
             {t('common:phone_terminal')}
           </p>
+          {/* max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%] */}
 
           <div className='w-full'>
-            <div className='flex w-full justify-between h-[340px] items-center'>
-              <ul className='max-w-[175px] w-full pt-[35px]'>
+            <div className='flex w-full justify-between h-[340px] items-center max-[450px]:h-auto'>
+              <ul className='max-w-[175px] w-full pt-[35px] max-[450px]:hidden'>
                 <li className='mb-[30px] relative'>{active === 0 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:store_automation")}</p></li>
                 <li className='mb-[30px] relative'>{active === 1 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:full_control_business")}</p></li>
                 <li className='mb-[30px] relative'>{active === 2 && <div className='absolute left-[-3px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]'>{t("common:effective_sales_management")}</p></li>
@@ -171,6 +172,282 @@ function Home() {
                   <p className='z-10 relative text-base leading-[20px]'>{t("common:absolute_safe_business")}</p>
                 </li>
               </ul>
+              <Swiper
+                ref={swiperRef}
+                direction={"vertical"}
+                onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
+                mousewheel={true}
+                spaceBetween={10}
+                effect={"coverflow"}
+                grabCursor={true}
+                slidesPerView={'auto'}
+                centeredSlides={true}
+
+                coverflowEffect={{
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 0,
+                  modifier: 0.5,
+                  slideShadows: false,
+                }}
+                modules={[Mousewheel, EffectCoverflow, FreeMode, Thumbs, Autoplay]}
+                className="max-[450px]:block hidden max-[450px]:ml-0 w-full"
+              >
+                <SwiperSlide>
+                  <div className='mb-[30px] relative max-[450px]:px-6 max-[450px]:mb-4'>{active === 0 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px] max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:store_automation")}</p></div>
+                  <div className={`${active !== 0 && "hidden"}`}>
+                    <div className={`${active == 0 ? 'opacity-20' : ""} mb-4`}>
+                      <Image
+                        src={'/assets/images/store.png'}
+                        alt='slider image'
+                        width={550}
+                        height={300}
+                        className={`rounded-md`}
+                      />
+                    </div>
+                    <div className='mb-1 flex items-center px-6'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:simple_interface")}
+                    </div>
+                    <div className='mb-1 flex items-center px-6'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:manual_work")}
+                    </div>
+                    <div className='mb-1 flex items-center px-6'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:goods_sold")}
+                    </div>
+                    <div className='mb-1 flex items-center px-6'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:significant_savings")}
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className='mb-[30px] relative max-[450px]:px-6'>{active === 1 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]  max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:full_control_business")}</p></div>
+                  <div className={`${active !== 1 && "hidden"}`}>
+                    <div className={`${active == 1 ? 'opacity-40' : ""}`}>
+                      <Image
+                        src={'/assets/images/control.png'}
+                        alt='slider image'
+                        width={550}
+                        height={300}
+                        className={`rounded-md`}
+                      />
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:write_off_goods")}
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:control_remote_workers")}
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:search_clients")}
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className='mb-[30px] relative max-[450px]:px-6'>{active === 2 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px]  max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:effective_sales_management")}</p></div>
+                  <div className={`${active !== 2 && "hidden"}`}>
+                    <div className={`${active == 2 ? 'opacity-40' : ""}`}>
+                      <Image
+                        src={'/assets/images/effective.png'}
+                        alt='slider image'
+                        width={550}
+                        height={300}
+                        className={`rounded-md`}
+                      />
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:simple_goods")}
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:returns")}
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:no_queues_checkout")}
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className='mb-[30px] relative max-[450px]:px-6'>{active === 3 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px] max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:extract_min_profit")}</p></div>
+                  <div className={`${active !== 3 && "hidden"}`}>
+                  <div className={`${active == 3 ? 'opacity-40' : ""}`}>
+                    <Image
+                      src={'/assets/images/extract.png'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className={`rounded-md`}
+                    />
+                  </div>
+                  <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:all_types_payment")}
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:increasing_throughtput")}
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:prevention_theft")}
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+
+                  <div className='mb-[30px] relative max-[450px]:px-6'>
+                    {active === 4 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}
+                    <p className='z-10 relative text-base leading-[20px] max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:absolute_safe_business")}</p>
+                  </div>
+                  <div className={`${active !== 4 && "hidden"}`}>
+                  <div className={`${active == 4 ? 'opacity-40' : ""}`}>
+                    <Image
+                      src={'/assets/images/absolutely.png'}
+                      alt='slider image'
+                      width={550}
+                      height={300}
+                      className={`rounded-md`}
+                    />
+                  </div>
+                  <li className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:data_storage")}
+                    </li>
+                    <li className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:one_click")}
+                    </li>
+                    <li className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:secure_data_payment")}
+                    </li>
+                    <li className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:access_history")}
+                    </li>
+                    <li className='mb-1 px-6 flex items-center'>
+                      <Image
+                        src={ListIcon}
+                        alt='list circle'
+                        width={6}
+                        height={6}
+                        className='mr mr-2'
+                      />
+                      {t("common:complete_info")}
+                    </li>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
               <Swiper
                 ref={swiperRef}
                 direction={"vertical"}
@@ -193,7 +470,7 @@ function Home() {
                   slideShadows: false,
                 }}
                 modules={[Mousewheel, EffectCoverflow, FreeMode, Thumbs, Autoplay]}
-                className="mySwiper"
+                className="mySwiper max-[450px]:hidden"
               >
                 <SwiperSlide>
 
@@ -474,7 +751,7 @@ function Home() {
             </div>
           </div>
 
-          <div className='absolute -right-44 bottom-2/4 rotate-90'>
+          <div className='absolute -right-44 bottom-2/4 rotate-90 max-[450px]:hidden'>
             <input
               type='range'
               value={active}
@@ -652,175 +929,175 @@ function Home() {
             </li>
           </ul>
           <div className='max-[450px]:block hidden'>
-          <Swiper
-            pagination={{
-              dynamicBullets: true,
-            }}
-            modules={[Autoplay, Pagination, Navigation]}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            className='mb-[80px]'
-          >
-            <SwiperSlide>
-              <li className='w-full flex items-center py-10'>
-                <div className='w-[31%]'>
-                  <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                    <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
+            <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              modules={[Autoplay, Pagination, Navigation]}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              className='mb-[80px]'
+            >
+              <SwiperSlide>
+                <li className='w-full flex items-center py-10'>
+                  <div className='w-[31%]'>
+                    <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                      <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
+                    </div>
+                    <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                      {t("common:types_of_payment")}
+                    </p>
                   </div>
-                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                    {t("common:types_of_payment")}
-                  </p>
-                </div>
-                <div className='pl-[34px] w-[69%]'>
-                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:bank_cards")}
-                    </li>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:qr")}
-                    </li>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:apple_pay")}
-                    </li>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:samsung_pay")}
-                    </li>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:google_pay")}
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </SwiperSlide>
-            <SwiperSlide>
-              <li className='w-full flex items-center py-10'>
-                <div className='w-[31%]'>
-                  <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                    <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
+                  <div className='pl-[34px] w-[69%]'>
+                    <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:bank_cards")}
+                      </li>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:qr")}
+                      </li>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:apple_pay")}
+                      </li>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:samsung_pay")}
+                      </li>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:google_pay")}
+                      </li>
+                    </ul>
                   </div>
-                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                    {
-                      t('common:simple_int_interface')
-                    }
-                  </p>
-                </div>
-                <div className='pl-[34px] w-[69%]'>
-                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:simplifies")}
-                    </li>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:reduces")}
-                    </li>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:simpliest_way")}
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </SwiperSlide>
-            <SwiperSlide>
-              <li className='w-full flex items-center py-10'>
-                <div className='w-[31%]'>
-                  <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                    <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
+                </li>
+              </SwiperSlide>
+              <SwiperSlide>
+                <li className='w-full flex items-center py-10'>
+                  <div className='w-[31%]'>
+                    <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                      <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
+                    </div>
+                    <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                      {
+                        t('common:simple_int_interface')
+                      }
+                    </p>
                   </div>
-                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                    {
-                      t('common:store_report')
-                    }
-                  </p>
-                </div>
-                <div className='pl-[34px] w-[69%]'>
-                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                    <li className='max-w-[202px] w-full'>
-                      {t("common:items_report")}
-                    </li>
-                    <li className='max-w-[196px] w-full'>
-                      {t("common:items_shifts")}
-                    </li>
-                    <li className='max-w-[196px] w-full'>
-                      {t("common:items_returns")}
-                    </li>
-                    <li className='max-w-[196px] w-full'>
-                      {t("common:items_entry")}
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </SwiperSlide>
-          </Swiper>
-          <Swiper
-            pagination={{
-              dynamicBullets: true,
-            }}
-            modules={[Autoplay, Pagination, Navigation]}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          >
-            <SwiperSlide>
-              <li className='w-full flex items-center py-10'>
-                <div className='w-[31%]'>
-                  <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                    <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
+                  <div className='pl-[34px] w-[69%]'>
+                    <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:simplifies")}
+                      </li>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:reduces")}
+                      </li>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:simpliest_way")}
+                      </li>
+                    </ul>
                   </div>
-                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                    {t('common:fiscalazition')}
-                  </p>
-                </div>
-                <div className='pl-[34px] w-[69%]'>
-                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                    <li className='max-w-[188px] w-full'>{t('common:issuance')}</li>
-                    <li className='max-w-[188px] w-full'>{t('common:simple_tac_reporting')}</li>
-                  </ul>
-                </div>
-              </li>
-            </SwiperSlide>
-            <SwiperSlide>
-              <li className='w-full flex items-center py-10'>
-                <div className='w-[31%]'>
-                  <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                  <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
+                </li>
+              </SwiperSlide>
+              <SwiperSlide>
+                <li className='w-full flex items-center py-10'>
+                  <div className='w-[31%]'>
+                    <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                      <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
+                    </div>
+                    <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                      {
+                        t('common:store_report')
+                      }
+                    </p>
                   </div>
-                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                  {t('common:orginize_store')}
-                    
-                  </p>
-                </div>
-                <div className='pl-[34px] w-[69%]'>
-                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                  <li className='max-w-[221px] w-full'>{t('common:organize_sales')}</li>
-                  <li className='max-w-[221px] w-full'>{t('common:fast_service')}</li>
-                  <li className='max-w-[221px] w-full'>{t('common:goods_stock')}</li>
-                  <li className='max-w-[221px] w-full'>{t('common:convinient_analystics')}</li>
-                  </ul>
-                </div>
-              </li>
-            </SwiperSlide>
-            <SwiperSlide>
-              <li className='w-full flex items-center py-10'>
-                <div className='w-[31%]'>
-                  <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                  <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
+                  <div className='pl-[34px] w-[69%]'>
+                    <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                      <li className='max-w-[202px] w-full'>
+                        {t("common:items_report")}
+                      </li>
+                      <li className='max-w-[196px] w-full'>
+                        {t("common:items_shifts")}
+                      </li>
+                      <li className='max-w-[196px] w-full'>
+                        {t("common:items_returns")}
+                      </li>
+                      <li className='max-w-[196px] w-full'>
+                        {t("common:items_entry")}
+                      </li>
+                    </ul>
                   </div>
-                  <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                  {t('common:elimination_theft')}
-                  </p>
-                </div>
-                <div className='pl-[34px] w-[69%]'>
-                  <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                  <li className='max-w-[221px] w-full'>{t('common:exlusion_items')}</li>
-                  <li className='max-w-[221px] w-full'>{t('common:prevention_cashier')}</li>
-                  <li className='max-w-[221px] w-full'>{t('common:closing_store')}</li>
-                  </ul>
-                </div>
-              </li>
-            </SwiperSlide>
-          </Swiper>
+                </li>
+              </SwiperSlide>
+            </Swiper>
+            <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              modules={[Autoplay, Pagination, Navigation]}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+            >
+              <SwiperSlide>
+                <li className='w-full flex items-center py-10'>
+                  <div className='w-[31%]'>
+                    <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                      <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
+                    </div>
+                    <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                      {t('common:fiscalazition')}
+                    </p>
+                  </div>
+                  <div className='pl-[34px] w-[69%]'>
+                    <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                      <li className='max-w-[188px] w-full'>{t('common:issuance')}</li>
+                      <li className='max-w-[188px] w-full'>{t('common:simple_tac_reporting')}</li>
+                    </ul>
+                  </div>
+                </li>
+              </SwiperSlide>
+              <SwiperSlide>
+                <li className='w-full flex items-center py-10'>
+                  <div className='w-[31%]'>
+                    <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                      <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
+                    </div>
+                    <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                      {t('common:orginize_store')}
+
+                    </p>
+                  </div>
+                  <div className='pl-[34px] w-[69%]'>
+                    <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                      <li className='max-w-[221px] w-full'>{t('common:organize_sales')}</li>
+                      <li className='max-w-[221px] w-full'>{t('common:fast_service')}</li>
+                      <li className='max-w-[221px] w-full'>{t('common:goods_stock')}</li>
+                      <li className='max-w-[221px] w-full'>{t('common:convinient_analystics')}</li>
+                    </ul>
+                  </div>
+                </li>
+              </SwiperSlide>
+              <SwiperSlide>
+                <li className='w-full flex items-center py-10'>
+                  <div className='w-[31%]'>
+                    <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
+                      <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
+                    </div>
+                    <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
+                      {t('common:elimination_theft')}
+                    </p>
+                  </div>
+                  <div className='pl-[34px] w-[69%]'>
+                    <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
+                      <li className='max-w-[221px] w-full'>{t('common:exlusion_items')}</li>
+                      <li className='max-w-[221px] w-full'>{t('common:prevention_cashier')}</li>
+                      <li className='max-w-[221px] w-full'>{t('common:closing_store')}</li>
+                    </ul>
+                  </div>
+                </li>
+              </SwiperSlide>
+            </Swiper>
           </div>
         </div>
       </section>
