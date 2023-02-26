@@ -37,12 +37,32 @@ export const Monthly = () => {
               products={filtered}
               foundLicense={foundProd}
               accordionBodyClassname={"py-[20px]"}
-              accordionHeaderClassName={"py-[10px] px-[34px]"}
+              accordionHeaderClassName={"py-[10px] px-[34px] max-[450px]:px-0"}
               imgColor={"#FF588A"}
+              titleMobile={
+                <div className="flex items-center w-full justify-between flex-row-reverse">
+                <CalculatorProduct
+                  incrementItem={(e) => {
+                    elFound
+                      ? ""
+                      : dispatch(addLicences({ el, period: "monthly" }));
+                  }}
+                  quantity={foundProd?.qty || 0}
+                  decrementItem={() => {
+                    elFound ? "" : dispatch(removeLicences(el));
+                  }}
+                />
+                <span className={`text-[16px] w-full ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px]`}>
+                  ₸ {foundProd?.price || el.price}
+                  {foundProd?.qty > 1 && `(-₸ ${(el.price * foundProd.qty) - foundProd.price})`}
+                </span>
+              </div>
+              }
               title={
-                <div className="flex items-center max-w-[830px]">
+                <div className="flex items-center max-w-[830px] max-[450px]:mb-[10px]">
                   <h2 className="max-w-[300px] w-full">{el.name}</h2>
                   <CalculatorProduct
+                    wrapClass={"max-[450px]:hidden"}
                     incrementItem={(e) => {
                       elFound
                         ? ""
@@ -53,7 +73,7 @@ export const Monthly = () => {
                       elFound ? "" : dispatch(removeLicences(el));
                     }}
                   />
-                  <span className={`text-[16px] max-w-[190px] w-full ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] font-PoppinsRegular`}>
+                  <span className={`text-[16px] max-w-[190px] w-full max-[450px]:hidden ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] `}>
                     ₸ {foundProd?.price || el.price}
                     {foundProd?.qty > 1 && `(-₸ ${(el.price * foundProd.qty) - foundProd.price})`}
                   </span>
@@ -61,8 +81,8 @@ export const Monthly = () => {
               } >
               <div className="flex w-full">
                 <ul className="flex flex-col w-full">
-                  <li className="flex items-center mb-[15px] justify-between max-w-[700px] pl-[100px] w-full">
-                    <div className="flex items-center max-w-[215px] w-full mr-[110px]">
+                  <li className="flex items-center mb-[15px] justify-between max-w-[700px] pl-[100px] w-full max-[450px]:px-0 max-[450px]:w-full">
+                    <div className="flex items-center max-w-[215px] w-full mr-[110px] max-[450px]:mx-0">
                       <Image
                         src={TickIcon}
                         alt={"verify icon"}
@@ -70,18 +90,19 @@ export const Monthly = () => {
                         height={15}
                         className="mr-[18px]"
                       />
-                      <p className="font-PoppinsRegular text-[20px] w-full leading-[180%] text-[#111827]">
+                      <p className=" text-[20px] w-full leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
                         Trading place
                       </p>
                     </div>
                     <CalculatorProduct
+                      wrapClass={'max-[450px]:w-full'}
                       quantity={foundProd?.qty || 0}
                       opacity={true}
                     />
-                    <span className="max-w-[90px] w-full text-[16px] leading-[25px] font-PoppinsRegular ml-5"></span>
+                    <span className="max-w-[90px] w-full text-[16px] leading-[25px]  ml-5 max-[450px]:hidden"></span>
                   </li>
-                  <li className="flex items-center mb-[15px] justify-between max-w-[700px] pl-[100px] w-full">
-                    <div className="flex items-center max-w-[215px] w-full mr-[110px]">
+                  <li className="flex items-center mb-[15px] justify-between max-w-[700px] pl-[100px] w-full max-[450px]:px-0">
+                    <div className="flex items-center max-w-[215px] w-full mr-[110px] max-[450px]:mx-0">
                       <Image
                         src={TickIcon}
                         alt={"verify icon"}
@@ -89,7 +110,7 @@ export const Monthly = () => {
                         height={15}
                         className="mr-[18px]"
                       />
-                      <p className="w-full font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]">
+                      <p className="w-full  text-[20px] leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
                         Cash zone
                       </p>
                     </div>
@@ -97,10 +118,10 @@ export const Monthly = () => {
                       quantity={foundProd?.qty || 0}
                       opacity={true}
                     />
-                    <span className="max-w-[90px] w-full ml-5"></span>
+                    <span className="max-w-[90px] w-full ml-5 max-[450px]:hidden"></span>
                   </li>
-                  <li className="flex items-center mb-[15px] justify-between max-w-[800px] pl-[100px] w-full">
-                    <div className="flex items-center max-w-[215px] w-full mr-[110px]">
+                  <li className="flex items-center mb-[15px] justify-between max-w-[800px] pl-[100px] w-full max-[450px]:px-0 max-[450px]:justify-between">
+                    <div className="flex items-center max-w-[215px] w-full mr-[110px] max-[450px]:mx-0 max-[450px]:max-w-[100px]">
                       <Image
                         src={TickIcon}
                         alt={"verify icon"}
@@ -108,13 +129,14 @@ export const Monthly = () => {
                         height={15}
                         className="mr-[18px]"
                       />
-                      <p className="font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]">
+                      <p className=" text-[20px] leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
                         Users
                       </p>
                     </div>
                     {
                       el.products ? <>
                         <CalculatorProduct
+                          wrapClass={'mx-0'}
                           quantity={foundProd?.cashier.qty || 0}
                           incrementItem={(e) => {
                             dispatch(addUsers({ elId: el.id, price: 1000 }));
@@ -123,15 +145,16 @@ export const Monthly = () => {
                             dispatch(removeUsers({ elId: el.id, price: 1000 }));
                           }}
                         />
-                        <span className="max-w-[190px] w-full text-[16px] leading-[25px] font-PoppinsRegular ml-5">
+                        <span className="max-w-[190px] w-full text-[16px] leading-[25px]  ml-5 max-[450px]:hidden">
                           ₸ 1 000 per additional
                         </span>
                       </> : <>
                         <CalculatorProduct
+                          wrapClass={'max-[450px]:w-full max-[450px]:mx-0'}
                           quantity={foundProd?.cashier.qty || 0}
                           opacity={true}
                         />
-                        <span className="max-w-[190px] w-full text-[16px] leading-[25px] font-PoppinsRegular ml-5">
+                        <span className="max-w-[190px] w-full text-[16px] leading-[25px]  ml-5 max-[450px]:hidden">
                         </span>
                       </>
                     }
@@ -142,26 +165,26 @@ export const Monthly = () => {
                     );
                     return (
                       <li
-                        className="flex justify-between mb-[15px] w-full flex-col"
+                        className="flex justify-between mb-[15px] w-full flex-col max-[450px]:mb-0"
                         key={product.id}
                       >
-                        <h2 className="w-full px-[34px] mb-3 text-[16px] leading-[140%] font-PoppinsBold">
+                        <h2 className="w-full px-[34px] mb-3 text-[16px] leading-[140%] font-bold max-[450px]:text-[16px] max-[450px]:px-0">
                           <span className="text-[#FF588A]">*</span> You can use
                           this license only on the following hardware:
                         </h2>
-                        <div className="flex items-center w-full mr-[110px] pl-[90px] justify-between max-w-[1000px]">
-                          <div className="flex items-center w-full max-w-[340px]">
+                        <div className="flex items-center w-full mr-[110px] max-[450px]:mx-0 pl-[90px] max-[450px]:px-0 justify-between max-w-[1000px] max-[450px]:flex-col">
+                          <div className="flex items-center w-full max-w-[340px] max-[450px]:mb-1">
                             <Image
                               src={product.image}
                               alt={"harware icon icon"}
                               width={50}
                               height={50}
                             />
-                            <p className="font-PoppinsRegular text-[20px] leading-[180%] text-[#111827]">
+                            <p className=" text-[20px] leading-[180%] text-[#111827]">
                               {product.name}
                             </p>
                           </div>
-                          <div className="flex items-center w-full">
+                          <div className="flex items-center w-full max-[450px]:flex-row-reverse">
                             <CalculatorProduct
                               quantity={prod?.qty || 0}
                               incrementItem={() =>
@@ -175,8 +198,8 @@ export const Monthly = () => {
                                 )
                               }
                             />
-                            <span className="w-full text-[16px] leading-[25px] font-PoppinsRegular ml-5">
-                              ₸ {prod?.price || product.price} per additional
+                            <span className="w-full text-[16px] leading-[25px] ml-5 max-[450px]:mx-0">
+                              ₸ {prod?.price || product.price} <span className="max-[450px]:hidden">per additional</span>
                             </span>
                           </div>
                         </div>

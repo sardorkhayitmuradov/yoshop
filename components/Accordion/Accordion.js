@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 
 const AccordionWrapper = ({
   title,
+  titleMobile,
   imgColor,
   accordionClassName,
   accordionHeaderClassName,
@@ -27,24 +28,29 @@ const AccordionWrapper = ({
     <>
       <div className={`mb-[40px] ${accordionClassName ? accordionClassName : ""}`}>
         <div className="accordion-item">
-          <div className="border border-solid border-[#E5E7EB]" id={elId}>
+          <div className="border border-solid border-[#E5E7EB] max-[450px]:border-none" id={elId}>
             <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
-              <div className={`w-full flex justify-between items-center text-gray-600 z-10 ${accordionHeaderClassName ? accordionHeaderClassName : ""
+              <div className={`w-full flex justify-between items-center text-gray-600 z-10 max-[450px]:flex-col ${accordionHeaderClassName ? accordionHeaderClassName : ""
                 }`}>
-                <div className="font-PoppinsBold text-left text-[20px] leading-[140%] w-full text-[#111827]">{title}</div>
-                <svg
-                  className={`w-6 h-6 ${!isActive || elId === 23 || elId === 26 || elId === 29 ? "" : "rotate-90"}`}
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    color={imgColor ? imgColor : ""}
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <div className="flex items-center w-full">
+                  <div className="font-bold text-left text-[20px] leading-[140%] w-full text-[#111827] max-[450px]:text-[16px]">{title}</div>
+                  <svg
+                    className={`w-6 h-6 ${!isActive || elId === 23 || elId === 26 || elId === 29 ? "" : "rotate-90"}`}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      color={imgColor ? imgColor : ""}
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div className="max-[450px]:block hidden w-full">
+                  {titleMobile}
+                </div>
               </div>
             </div>
             {
@@ -53,18 +59,18 @@ const AccordionWrapper = ({
                   }`}
               >
                 {children}
-              </div> } 
+              </div>}
           </div>
         </div>
-        { elId === 23 || elId === 26 || elId === 29 ? "" : isActive &&
+        {elId === 23 || elId === 26 || elId === 29 ? "" : isActive &&
           <div
-            className={`mb-[70px] px-[20px] ${open ? "block" : "hidden"
-              } mt-[40px]`}
+            className={`mb-[70px] px-[20px] max-[450px]:px-0 max-[450px]:mt-0 ${open ? "block" : "hidden"
+              } mt-[40px] max-[450px]:mb-5`}
           >
             {isOpen ? (
               <Button
                 className={
-                  "cursor-pointer mb-5 font-PoppinsBold max-w-[60px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] border-solid border-x border-y border-[#fff] py-[13px] rounded-[10px]"
+                  "cursor-pointer mb-5 max-w-[60px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] border-solid border-x border-y border-[#fff] py-[13px] rounded-[10px] max-[450px]:px-[10px] max-[450px]:py-[7] max-[450px]:text-[14px]"
                 }
                 onClick={() => setIsOpen(false)}
               >
@@ -73,21 +79,23 @@ const AccordionWrapper = ({
                   alt="cancel-icon"
                   width={30}
                   height={30}
+                  className="max-[450px]:w-[18px] max-[450px]:h-[18px]"
                 />
               </Button>
             ) : (
               <Button
                 className={
-                  "cursor-pointer mb-5 font-PoppinsBold max-w-[220px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] border-solid border-x border-y border-[#fff] py-[13px] rounded-[10px]"
+                  "cursor-pointer mb-5 max-w-[220px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] border-solid border-x border-y border-[#fff] py-[13px] rounded-[10px] font-bold"
                 }
                 onClick={() => setIsOpen(true)}
               >
                 <Image
                   src={PlusWhite}
                   alt="shop-icon"
-                  className="pr-2"
+                  className="pr-2 max-[450px]:w-[27px] max-[450px]:h-[27px] max-[450px]:mr-[10px]"
                   width={35}
                   height={35}
+                  
                 />
                 Add equipment
               </Button>
@@ -104,32 +112,34 @@ const AccordionWrapper = ({
                       key={product.id}
                       className="mb-[25px] justify-between max-w-[700px] w-full"
                     >
-                      <div className="flex items-center justify-between max-w-[800px] w-full pl-[100px]">
-                        <div className="flex items-center  max-w-[290px] w-full">
+                      <div className="flex items-center justify-between max-w-[800px] w-full pl-[100px] max-[450px]:flex-col max-[450px]:px-0 max-[450px]:items-stretch">
+                        <div className="flex items-center max-w-[290px] w-full">
                           <Image
                             src={product.image}
                             height={50}
                             width={50}
                             alt='product name'
                           />
-                          <p className="text-[20px] leading-[180%] text-[#111827] ml-10">
+                          <p className="text-[20px] leading-[180%] text-[#111827] ml-10 max-[450px]:w-full max-[450px]:ml-2">
                             {product.title}
                           </p>
                         </div>
-                        <CalculatorProduct quantity={prod?.qty || 0} decrementItem={() => dispatch(removeEquipments({ elId, product }))} incrementItem={() => dispatch(addEquipments({ elId, product }))} />
-                        <span className="text-[16px] leading-[25px]">
-                          ₸ {prod?.price || product?.price}
-                        </span>
+                        <div className="flex items-center justify-between w-full max-[450px]:flex-row-reverse">
+                          <CalculatorProduct wrapClass={'mx-0'} quantity={prod?.qty || 0} decrementItem={() => dispatch(removeEquipments({ elId, product }))} incrementItem={() => dispatch(addEquipments({ elId, product }))} />
+                          <span className="text-[16px] leading-[25px]">
+                            ₸ {prod?.price || product?.price}
+                          </span>
+                        </div>
                       </div>
                     </li>
                   );
                 })
                 : ""}
             </ul>
-            <div className="max-w-[300px] w-full ml-auto text-right font-bold text-[24px] leading-[140%]">
+            <div className="max-w-[300px] w-full ml-auto text-right font-bold text-[24px] leading-[140%] max-[450px]:text-left max-[450px]:mx-0 max-[450px]:text-[16px]">
               <p>SUBTOTAL: ₸ {subTotal}</p>
             </div>
-          </div> }
+          </div>}
       </div>
     </>
   );
@@ -154,7 +164,7 @@ export default AccordionWrapper;
                   className={`w-full flex justify-between items-center text-gray-600 z-10 ${accordionHeaderClassName ? accordionHeaderClassName : ""
                     }`}
                 >
-                  <div className="font-PoppinsBold text-left text-[20px] leading-[140%] w-full text-[#111827]">
+                  <div className= text-left text-[20px] leading-[140%] w-full text-[#111827]">
                     {title}
                   </div>
                   <svg
@@ -188,7 +198,7 @@ export default AccordionWrapper;
                 {isOpen ? (
                   <Button
                     className={
-                      "cursor-pointer mb-5 font-PoppinsBold max-w-[60px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] border-solid border-x border-y border-[#fff] py-[13px] rounded-[10px]"
+                      "cursor-pointer mb-5 max-w-[60px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] border-solid border-x border-y border-[#fff] py-[13px] rounded-[10px]"
                     }
                     onClick={() => setIsOpen(false)}
                   >
@@ -202,7 +212,7 @@ export default AccordionWrapper;
                 ) : (
                   <Button
                     className={
-                      "cursor-pointer mb-5 font-PoppinsBold max-w-[220px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] border-solid border-x border-y border-[#fff] py-[13px] rounded-[10px]"
+                      "cursor-pointer mb-5 max-w-[220px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] border-solid border-x border-y border-[#fff] py-[13px] rounded-[10px]"
                     }
                     onClick={() => setIsOpen(true)}
                   >

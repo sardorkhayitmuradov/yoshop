@@ -34,18 +34,18 @@ const Licenses = () => {
 
   return (
     <section>
-      <div className="site-container !pt-[120px] !pb-[150px]">
-        <h2 className="text-[44px] leading-[140%] text-[#0F172A] font-bold mb-[30px]">
+      <div className="max-w-xl mx-auto pt-[120px] pb-[150px] max-[450px]:py-14 max-[450px]:px-6">
+        <h2 className="text-[44px] leading-[140%] text-[#0F172A] font-bold mb-[30px] max-[450px]:text-[34px] max-[450px]:font-bold max-[450px]:mb-[20px]">
           {t("common:tariffs")}
         </h2>
 
-        <div className="flex items-center mb-[30px]">
-          <p className="font-bold text-[#F36784] text-[32px] leading-[140%] mr-[25px]">
+        <div className="flex items-center mb-[30px] max-[450px]:flex-col max-[450px]:mb-[70px]">
+          <p className="font-bold text-[#F36784] text-[32px] leading-[140%] mr-[25px] max-[450px]:mb-[6px]">
             {t("common:choose_package")}
           </p>
           <Button
             className={
-              "bg-[#7D66BB] border border-solid border-[#94A3B8] rounded-[10px] p-4 max-w-[361px] w-full font-bold text-white text-[20px] leading-[140%]"
+              "bg-[#7D66BB] border border-solid border-[#94A3B8] rounded-[10px] p-4 max-w-[361px] w-full font-bold text-white text-[20px] leading-[140%] max-[450px]:py-[13px] max-[450px]:text-[16px]"
             }
           >
             {t("common:free_version")}
@@ -55,7 +55,7 @@ const Licenses = () => {
         <div className="flex justify-center mb-[25px]">
           <TabTitle
             onClick={() => setActiveTab("1")}
-            titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] ${activeTab == "1"
+            titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] max-[450px]:w-[33%] ${activeTab == "1"
                 ? "bg-[#FF588A] text-white"
                 : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
@@ -64,7 +64,7 @@ const Licenses = () => {
           </TabTitle>
           <TabTitle
             onClick={() => setActiveTab("2")}
-            titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] ${activeTab == "2"
+            titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] max-[450px]:w-[33%] ${activeTab == "2"
                 ? "bg-[#FF588A] text-white"
                 : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
@@ -73,7 +73,7 @@ const Licenses = () => {
           </TabTitle>
           <TabTitle
             onClick={() => setActiveTab("3")}
-            titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] ${activeTab == "3"
+            titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] max-[450px]:w-[33%] ${activeTab == "3"
                 ? "bg-[#FF588A] text-white"
                 : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
@@ -89,17 +89,39 @@ const Licenses = () => {
 
 
         <Link href={'/guide'}>
-          <div className="flex items-center mb-14 max-w-[300px] w-full">
+          <div className="flex items-center mb-14 max-w-[300px] w-full max-[450px]:mb-5">
             <Image src={UserGuide} width={30} height={30} alt="user guide" />
             <p className="ml-3 mb-0 text-[18px] leading-[180%] text-[#F36784]">{t("common:guide")}</p>
           </div>
         </Link>
 
-        <h2 className="font-bold text-[32px] text-[#111827] leading-[140%] mb-[40px]">
+        <div className="flex items-center justify-end max-[450px]:justify-between max-[450px]:mb-[50px]">
+          <p className="mr-[30px] font-bold text-[32px] leading-[140%] text-[#0F172A] max-[450px]:text-[16px]">
+            {t("common:total")}:
+            <span className="ml-[10px]">₸ {priceTotal}</span>
+          </p>
+          <Button
+            className={
+              `cursor-pointer font-bold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center ${priceTotal > 0 ? "bg-[#7D66BB]" : "bg-[#EFF1FE] text-[#D1D5DB]"} border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[4px] max-[450px]:py-[10px] max-[450px]:max-w-[146px] max-[450px]:text-[14px]`
+            }
+            onClick={() => dispatch(addToCart())}
+          >
+            <Image
+              src={shopIcon}
+              alt="shop-icon"
+              className="pr-2 max-[450px]:hidden"
+              width={35}
+              height={35}
+            />
+            {t("common:add_cart")}
+          </Button>
+        </div>
+
+        <h2 className="font-bold text-[32px] text-[#111827] leading-[140%] mb-[40px] max-[450px]:text-[26px] max-[450px]:mb-5">
           {t("common:price_includes")}:
         </h2>
 
-        <div className="flex items-center justify-between w-full mb-20">
+        <div className="flex items-center justify-between w-full mb-20 max-[450px]:flex-col max-[450px]:gap-2">
           <EquipmentCard
             wrapperClassName={"max-w-[380px]"}
             image={GuaranteeIcon} titleClass={"max-w-[242px] w-full"}
@@ -114,7 +136,7 @@ const Licenses = () => {
           </EquipmentCard>
         </div>
 
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-end max-[450px]:hidden">
           <p className="mr-[30px] font-bold text-[32px] leading-[140%] text-[#0F172A]">
             {t("common:total")}:
             <span className="ml-[10px]">₸ {priceTotal}</span>
