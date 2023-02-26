@@ -51,13 +51,13 @@ const Contact = () => {
         </div>
       </section>
       <section className='pt-[75px] pb-[150px] max-[450px]:py-[15px]'>
-        <div className="mx-auto max-w-[1200px] w-full py-[80px] bg-[#215988] h-[400px] rounded-[6px] max-[450px]:w-full max-[450px]:rounded-none max-[450px]:px-6 max-[450px]:py-5">
+        <div className="mx-auto max-w-xl w-full py-[80px] bg-[#215988] h-[400px] rounded-[6px] max-[450px]:w-full max-[450px]:rounded-none max-[450px]:px-6 max-[450px]:py-5">
           <h2 className='text-center font-semibold text-[44px] leading-[64px] mb-[40px] text-white max-[450px]:text-[20px] max-[450px]:leading-[140%] max-[450px]:font-bold max-[450px]:mb-[10px]'>{t("common:contact_ques")}</h2>
           <p className='text-center text-[18px] leading-[30px] mb-[40px] text-white max-[450px]:text-[14px] max-[450px]:leading-[21px] max-[450px]:mb-6'>{t("common:contact_form")}</p>
           <div className="mx-auto max-w-[817px] w-full flex items-center justify-between max-[450px]:flex-col max-[450px]:w-full max-[450px]:items-stretch">
             <div className='max-w-[595px] w-full flex items-center justify-between max-[450px]:flex-col max-[450px]:w-full max-[450px]:items-stretch'>
-              <Input inputType={'text'} wrapperClassName={'max-w-[267px] max-[450px]:max-w-[100%] w-full mr-[20px] max-[450px]:mx-0 max-[450px]:w-full'} inputClassName={'w-full py-[13px] pl-[30px] placeholder:text-[#98989C]  placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:w-full max-[450px]:mb-5'} placeholder={t("common:name")} value={userName} onGetValue={(value) => setUserName(value)} />
-              <Input inputType={'tel'} wrapperClassName={'max-w-[318px] max-[450px]:max-w-[100%] w-full max-[450px]:w-full'} inputClassName={'w-full py-[13px] pl-[30px] placeholder:text-[#98989C] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:w-full max-[450px]:mb-5'} placeholder={t("common:number")} value={number} onGetValue={(value) => setNumber(value)} />
+              <Input inputType={'text'} wrapperClassName={'max-w-[267px] max-[450px]:max-w-[100%] w-full mr-[20px] max-[450px]:mx-0 max-[450px]:w-full'} inputClassName={'w-full py-[13px] pl-[30px] placeholder:text-[#98989C]  placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:w-full max-[450px]:mb-5'} placeholder={t("common:name")} value={userName} onChange={(value) => setUserName(value)} />
+              <Input inputType={'tel'} wrapperClassName={'max-w-[318px] max-[450px]:max-w-[100%] w-full max-[450px]:w-full'} inputClassName={'w-full py-[13px] pl-[30px] placeholder:text-[#98989C] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:w-full max-[450px]:mb-5'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} />
             </div>
             <Button className={'max-w-[192px] py-[13px] w-full bg-[#FF588A] text-white rounded-[10px] font-bold text-base leading-[140%] max-[450px]:w-full max-[450px]:max-w-[100%]'}>
               {t("common:order_call")}

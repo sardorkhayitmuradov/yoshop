@@ -108,8 +108,15 @@ const Header = () => {
           </div>
         </div>
         {
-          isOpen && <div className="bg-[#fff] absolute max-[450px]:w-1/2 max-[450px]:h-auto">
+          isOpen && <div className="bg-[#fff] absolute max-[450px]:w-[60%] max-[450px]:h-auto">
             <ul className="flex items-start flex-col px-10 py-3 class">
+              <li className="mb-3" onClick={() => setIsOpen(false)}>
+                <Link href={'/'} className={`${router.pathname == "/licenses" ? " border-b-[2px] border-[#FF588A]" : ""}`}>
+                  {
+                    t("header:home")
+                  }
+                </Link>
+              </li>
               <li className="mb-3" onClick={() => setIsOpen(false)}>
                 <Link href={'/licenses'} className={`${router.pathname == "/licenses" ? " border-b-[2px] border-[#FF588A]" : ""}`}>
                   {
@@ -167,10 +174,9 @@ const Header = () => {
                   }
                 </button>
               </li>
-              <li className="mb-3" onClick={() => setIsOpen(false)}>
+              <li className="mb-3">
                 <LanguageSwitcher />
               </li>
-
             </ul>
           </div>
         }

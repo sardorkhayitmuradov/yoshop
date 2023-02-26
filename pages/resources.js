@@ -16,11 +16,11 @@ const Resources = () => {
   const { t } = useTranslation();
 
   return (
-    <main className='pt-[100px]'>
-      <section className='py-[50px]'>
-        <div className='mx-auto max-w-[1360px]'>
-          <h2 className='font-bold text-[44px] leading-[140%] text-[#111827] mb-[24px]'>{t("header:resources")}</h2>
-          <p className='text-[18px] leading-[180%] text-[#111827] mb-[50px]'>
+    <main className='pt-[100px] max-[450px]:py-[50px]'>
+      <section className='py-[50px] max-[450px]:pb-[30px] max-[450px]:pt-0'>
+        <div className='mx-auto max-w-xl max-[450px]:px-6'>
+          <h2 className='font-bold text-[44px] leading-[140%] text-[#111827] mb-[24px] max-[450px]:text-[24px] max-[450px]:mb-[10px]'>{t("header:resources")}</h2>
+          <p className='text-[18px] leading-[180%] text-[#111827] mb-[50px] max-[450px]:text-[16px] max-[450px]:leading-[18px] max-[450px]:mb-[30px]'>
             {t("common:resources_intro")}
           </p>
           <ul className='flex items-center justify-between flex-wrap gap-[40px]'>
@@ -34,22 +34,22 @@ const Resources = () => {
           </ul>
         </div>
       </section>
-      <section className="py-[82px]">
-        <h1 className='font-bold text-[32px] leading-[140%] text-[#111827] text-center mb-[44px]'>{t("common:faq")}</h1>
-        <div className='max-w-[1152px] w-full mx-auto'>
-          <FaqAccordion title={t("common:ques_inventory")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
+      <section className="py-[82px] max-[450px]:py-8">
+        <h1 className='font-bold text-[32px] leading-[140%] text-[#111827] text-center mb-[44px] max-[450px]:mb-[30px]'>{t("common:faq")}</h1>
+        <div className='max-w-[1152px] w-full mx-auto max-[450px]:px-6'>
+          <FaqAccordion title={t("common:ques_inventory")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px] max-[450px]:py-[13px] max-[450px]:px-[14px]"}>
             {t("common:ans_inventory")}
           </FaqAccordion>
 
-          <FaqAccordion title={t("common:ques_payment")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
+          <FaqAccordion title={t("common:ques_payment")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px] !max-[450px]:mb-[13px] max-[450px]:py-[13px] max-[450px]:px-[14px]"}>
             {t("common:ans_payment")}
           </FaqAccordion>
 
-          <FaqAccordion title={t("common:ques_work")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
+          <FaqAccordion title={t("common:ques_work")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px] max-[450px]:py-[13px] max-[450px]:px-[14px]"}>
             {t("common:ans_work")}
           </FaqAccordion>
 
-          <FaqAccordion title={t("common:ques_fees")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px]"}>
+          <FaqAccordion title={t("common:ques_fees")} accordionClassName={"border border-solid border-[#E5E7EB] py-[25px] px-[42px] bg-[#E2E8F0] rounded-[10px] !mb-[20px] max-[450px]:py-[13px] max-[450px]:px-[14px]"}>
             {t("common:ans_fees")}
           </FaqAccordion>
         </div>
