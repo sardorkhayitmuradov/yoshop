@@ -126,6 +126,12 @@ const Equipment = () => {
             <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scanner'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
               Scanner
             </div>
+            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'accessories'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
+              Accessories
+            </div>
+            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'cables'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
+              Cables
+            </div>
           </div>
           </div>
 

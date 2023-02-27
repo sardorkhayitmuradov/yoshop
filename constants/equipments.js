@@ -80,6 +80,28 @@ export let equipments = [
       "centerImage" : "/assets/images/at830-barcode-scanner-center.png",
       "rightImage" : "/assets/images/at830-barcode-scanner-right.png"
    },
+   {
+      "id" : 16,
+      "image" : "/assets/images/docking-station.png",
+      "title" : "Docking station",
+      "category" : "Accessories",
+      "mainSpecification": "High-quality desktop Docking Station  pos terminal",
+      "price" : 30000,
+      "leftImage" : "/assets/images/docking-station.png",
+      "centerImage" : "/assets/images/docking-station.png",
+      "rightImage" : "/assets/images/docking-station.png"
+   },
+   {
+         "id" : 76,
+         "image" : "/assets/images/cabel.png",
+         "title" : "Adapter cable, Black",
+         "category" : "Cables",
+         "mainSpecification": "Color:Black",
+         "price" : 15000,
+         "leftImage" : "/assets/images/cabel.png",
+         "centerImage" : "/assets/images/cabel.png",
+         "rightImage" : "/assets/images/cabel.png"
+   },
  ]
 
  //  {

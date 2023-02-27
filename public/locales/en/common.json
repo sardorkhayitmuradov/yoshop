@@ -145,5 +145,19 @@
   "contact_ques": "Have a question ? Let's get in touch with us.",
   "contact_form": "Fill up the Form  and our team will get back to you within 24 hrs",
   "notFound_title": "Oh No! Something went wrong",
-  "notFound_desc": "Please try again later !"
+  "notFound_desc": "Please try again later !",
+  "cart": "Cart",
+  "empty": "your cart is empty",
+  "main": "Go to Main page",
+  "products":"Products",
+  "qty": "Qty",
+  "order_summary": "Order Summary",
+  "select_all": "Select All",
+  "edit":"Edit License",
+  "period": "Period",
+  "sub_total": "Subtotal:",
+  "discount": "Discount",
+  "promo_code": "Please enter your Promo Code",
+  "apply": "Apply",
+  "checkout": "Checkout"
 }
