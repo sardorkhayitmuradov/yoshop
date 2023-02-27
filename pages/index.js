@@ -182,7 +182,10 @@ function Home() {
                 grabCursor={true}
                 slidesPerView={'auto'}
                 centeredSlides={true}
-
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
                 coverflowEffect={{
                   rotate: 0,
                   stretch: 0,

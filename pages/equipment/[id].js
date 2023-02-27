@@ -54,40 +54,45 @@ const Details = () => {
   return (
     <>
       <div id="equipment"></div>  
-      <section className="pt-[130px]">
+      <section className="pt-[130px] max-[450px]:py-[50px]">
         {
           card?.map(product => {
             const foundProd = products.find((item) => item.id === product.id);
             return (
-              <div key={product.id} className="container max-w-7xl mx-auto text-black flex justify-between">
-                <div className="w-[551px] flex flex-col">
-                  <div className="max-w-[100%] h-[532px] flex justify-center items-center mb-[70px]">
+              <div key={product.id} className="max-w-xl mx-auto text-black flex justify-between max-[450px]:px-6 max-[450px]:flex-col items-start">
+                 <h2 className="font-bold text-[32px] leading-[140%] mb-[26px] max-[450px]:mb-2 hidden max-[450px]:block">{t("common:equipment_shop")}</h2>
+                 <h2 className="text-[40px] leading-[140%] mb-[20px] max-[450px]:block hidden max-[450px]:text-[16px] max-[450px]:leading-[140%]">
+                    {product.title}
+                  </h2>
+                  <p className="mb-[30px] text-[32px] leading-[140%] max-[450px]:block hidden max-[450px]:text-[16px] max-[450px]:leading-[140%] font-bold">₸ {foundProd?.price || product?.price}</p>
+                <div className="max-w-[551px] w-full max-[450px]:w-full flex flex-col max-[450px]:mb-[25px]">
+                  <div className="max-w-[100%] max-h-[532px] h-full max-[450px]:bg-[#E2E8F0] max-[450px]:rounded-[10px] flex justify-center items-center mb-[70px] max-[450px]:py-5 max-[450px]:mb-1">
                     <div>
                       <Image src={product.image} alt="product-terminal" width={300} height={300} />
                     </div>
                   </div>
 
                   <ul className="w-full flex items-stretch justify-between">
-                    <li className="border border-solid border-[#606060] w-full flex items-center justify-center rounded-[10px] max-w-[175px]">
-                      <Image src={product.leftImage} alt="product-terminal" width={150} height={146} />
+                    <li className="border border-solid border-[#606060] max-[450px]:bg-[#e2e8f0] max-[540px]:py-4 max-[450px]:border-none w-full flex items-center justify-center rounded-[10px] max-w-[175px] mr-1">
+                      <Image src={product.leftImage} alt="product-terminal" width={150} height={146} className="max-[540px]:w-[90px] max-[540px]:h-[90px]" />
                     </li>
-                    <li className="border border-solid border-[#606060] w-full flex items-center justify-center rounded-[10px] max-w-[175px]">
-                      <Image src={product.centerImage} alt="product-terminal" width={150} height={146} />
+                    <li className="border border-solid border-[#606060] max-[450px]:bg-[#e2e8f0] max-[540px]:py-4 max-[450px]:border-none w-full flex items-center justify-center rounded-[10px] max-w-[175px] mr-1">
+                      <Image src={product.centerImage} alt="product-terminal" width={150} height={146} className="max-[540px]:w-[90px] max-[540px]:h-[90px]" />
                     </li>
-                    <li className="border border-solid border-[#606060] w-full flex items-center justify-center rounded-[10px] max-w-[175px]">
-                      <Image src={product.rightImage} alt="product-terminal" width={150} height={146} />
+                    <li className="border border-solid border-[#606060] max-[450px]:bg-[#e2e8f0] max-[540px]:py-4 max-[450px]:border-none w-full flex items-center justify-center rounded-[10px] max-w-[175px]">
+                      <Image src={product.rightImage} alt="product-terminal" width={150} height={146} className="max-[540px]:w-[90px] max-[540px]:h-[90px]" />
                     </li>
                   </ul>
 
                 </div>
 
-                <div className="w-[550px]">
-                  <h2 className="text-[40px] font-bold leading-[140%] mb-[20px]">
+                <div className="max-w-[550px] w-full">
+                  <h2 className="text-[40px] font-bold leading-[140%] mb-[20px] max-[450px]:hidden block">
                     {product.title}
                   </h2>
-                  <p className="mb-[30px] text-[32px] leading-[140%]">₸ {foundProd?.price || product?.price}</p>
+                  <p className="mb-[30px] text-[32px] leading-[140%] max-[450px]:hidden block">₸ {foundProd?.price || product?.price}</p>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between max-[450px]:mb-[50px]">
                     <CalculatorProduct
                     decrementItem={()=> foundProd?.qty > 0 ? dispatch(removeProducts(product)) : ""}
                     wrapClass={"!mx-0"}
@@ -96,17 +101,17 @@ const Details = () => {
                       dispatch(addProducts(product));
                     }}
                   />
-                    <Button className={'cursor-pointer font-bold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[11px] px-[22px] rounded-[10px]'}
+                    <Button className={'cursor-pointer font-bold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[11px] px-[22px] rounded-[10px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'}
                     onClick={() => dispatch(addToCart())}
                     >
-                      <Image src={shopIcon} alt="shop-icon" className="pr-2" width={40} height={40} />
+                      <Image src={shopIcon} alt="shop-icon" className="pr-2 max-[450px]:hidden" width={40} height={40} />
                       {t("common:add_cart")}
                     </Button>
                   </div>
-                  <h2 className="my-9 font-bold text-[24px] leading-[140%]">
+                  <h2 className="my-9 font-bold text-[24px] leading-[140%] max-[540px]:my-[9px]">
                     Product information
                   </h2>
-                  <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+                  <span className='mb-[26px] max-[540px]:mb-[10px] w-full bg-[#111827] border border-solid block'></span>
 
                   {/* acardion */}
                   <NewAccordion title={'Main Specifications'}>
@@ -115,13 +120,13 @@ const Details = () => {
                   {
                     product.addInfo ?
                       <>
-                        <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+                        <span className='mb-[26px] max-[540px]:mb-[10px] w-full bg-[#111827] border border-solid block'></span>
                         <NewAccordion title={'02 Additional information'}>
                           {
                             product.addInfo 
                           }
                         </NewAccordion>
-                        <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+                        <span className='mb-[26px] max-[540px]:mb-[10px] w-full bg-[#111827] border border-solid block'></span>
                         <NewAccordion title={'03 Fiscalization of monetary transactions:'} >
                           {
                             product.transactions
@@ -132,13 +137,13 @@ const Details = () => {
                   {
                     product.description ?
                       <>
-                        <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+                        <span className='mb-[26px] max-[540px]:mb-[10px] w-full bg-[#111827] border border-solid block'></span>
                         <NewAccordion title={'Description'} >
                           {
                             product.description
                           }
                         </NewAccordion>
-                        <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+                        <span className='mb-[26px] max-[540px]:mb-[10px] w-full bg-[#111827] border border-solid block'></span>
                         <NewAccordion title={'Network'}>
                           {
                             product.network
@@ -148,7 +153,7 @@ const Details = () => {
                   }
                   {
                     product.features ? <>
-                      <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+                      <span className='mb-[26px] max-[540px]:mb-[10px] w-full bg-[#111827] border border-solid block'></span>
                       <NewAccordion title={'Features'} >
                         {
                           product.features
@@ -159,7 +164,7 @@ const Details = () => {
                   {
                     product.dimensions ?
                       <>
-                        <span className='mb-[26px] w-full bg-[#111827] border border-solid block'></span>
+                        <span className='mb-[26px] max-[540px]:mb-[10px] w-full bg-[#111827] border border-solid block'></span>
                         <NewAccordion title={'Dimensions'} >
                           {
                             product.dimensions
@@ -174,19 +179,22 @@ const Details = () => {
         }
       </section>
 
-      <section className="pt-[150px] pb-[230px]">
-        <div className="container max-w-7xl mx-auto min-h-[100vh]">
-          <h2 className="recomendProductTitle mt-9 mb-[40px] font-[700] text-[32px]">
+      <section className="pt-[150px] pb-[230px] max-[450px]:py-0">
+        <div className="max-w-xl mx-auto max-[450px]:px-6">
+          <h2 className="mt-9 mb-[40px] font-[700] text-[32px] max-[450px]:text-[20px] max-[450px]:mt-0 max-[450px]:mb-5">
             You may be interested in
           </h2>
 
-          <div className="gap-[26px] grid grid-cols-4 mb-[50px]">
+          <div className="gap-[26px] grid grid-cols-4 mb-[50px] max-[450px]:flex  max-[450px]:justify-between max-[450px]:overflow-auto max-[450px]:flex-nowrap max-[450px]:items-stretch max-[450px]:h-full">
             {
-              productsCounter?.map(el => {
+              productsCounter?.map(product => {
                 return (
-                  <Link href={'/equipment/' + el.id+"#equipment"}  key={el.id} className="cursor-pointer">
-                    <ProductCard image={el.image} title={el.title} price={el.price} />
-                  </Link>
+                  <div key={product.id} className=" max-[540px]:flex-none max-[450px]:max-w-[250px] max-[450px]:items-stretch max-[450px]:flex-nowrap flex items-center flex-col justify-between">
+                    <Link href={'/equipment/' + product.id + "#equipment"} scroll={true} className="cursor-pointer">
+                      <ProductCard image={product.image} title={product.title} price={product.price}>
+                      </ProductCard>
+                    </Link>
+                  </div>
                 );
               })
             }

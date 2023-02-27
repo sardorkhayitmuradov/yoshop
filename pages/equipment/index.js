@@ -71,26 +71,26 @@ const Equipment = () => {
 
   return (
     <main>
-      <section className={`relative pt-[158px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-[length:453px_176px] bg-no-repeat bg-[right_7rem_top_12.7rem]`}>
-        <div className="equipment-bg-red w-[600px] h-[485px]"></div>
-        <div className="equipment-bg-blue w-[207px] h-[223px]"></div>
-        <div className={`max-w-[1292px] mx-auto w-full`}>
-          <div className="max-w-[1204px] mx-auto w-full pt-[34px]">
-            <h2 className="font-bold text-[32px] leading-[140%] mb-[26px]">{t("common:equipment_shop")}</h2>
-            <p className="text-[18px] leading-[180%] mb-[26px]">{t("common:set")}
+      <section className={`relative pt-[158px] pb-[150px] bg-[url("../public/assets/images/equipment-hero.png")] bg-[length:453px_176px] bg-no-repeat bg-[right_7rem_top_12.7rem] max-[450px]:bg-none max-[450px]:pt-[50px] max-[450px]:pb-5`}>
+        <div className="equipment-bg-red w-[600px] h-[485px] max-[450px]:hidden"></div>
+        <div className="equipment-bg-blue w-[207px] h-[223px] max-[450px]:hidden"></div>
+        <div className={`max-w-xl mx-auto w-full max-[450px]:px-6`}>
+          <div className="max-w-[1204px] mx-auto w-full pt-[34px] max-[450px]:py-0">
+            <h2 className="font-bold text-[32px] leading-[140%] mb-[26px] max-[450px]:mb-2">{t("common:equipment_shop")}</h2>
+            <p className="text-[18px] leading-[180%] mb-[26px] max-[450px]:mb-8">{t("common:set")}
             </p>
-            <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px]">
+            <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px] max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:mb-[40px]">
 
-              <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[13px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:town")} value={town} onChange={(value) => setTown(value)} />
+              <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full max-[450px]:max-w-[100%] max-[450px]:mb-5'} inputClassName={'text-[#9CA3AF] w-full py-[19px] max-[450px]:px-3 pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:py-[13px]'} placeholder={t("common:town")} value={town} onChange={(value) => setTown(value)} />
 
-              <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full'} inputClassName={'text-[#9CA3AF] w-full py-[13px] pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1]'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} />
+              <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full max-[450px]:max-w-[100%] max-[450px]:mb-5'} inputClassName={'text-[#9CA3AF] w-full py-[19px] max-[450px]:px-3 pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:py-[13px]'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} />
 
-              <Button className={'max-w-[232px] py-[13px] text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%]'}>
+              <Button className={'max-w-[232px] py-[19px] max-[450px]:px-3 text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] max-[450px]:max-w-[100%] max-[450px]:py-[13px]'}>
                 {t("common:order_call")}
               </Button>
             </div>
-            <h3 className="font-bold text-[32px] leading-[140%] mb-[40px]">{t("common:you_get")}</h3>
-            <div className="flex items-center justify-between w-full">
+            <h3 className="font-bold text-[32px] leading-[140%] mb-[40px] max-[450px]:text-[26px] max-[450px]:mb-5">{t("common:you_get")}</h3>
+            <div className="flex items-center justify-between w-full max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:gap-[10px]">
               <EquipmentCard wrapperClassName={'max-w-[280px]'} image={GuaranteeIcon} titleClass={"max-w-[106px] w-full]"} >
                 {t("common:guarantee")}
               </EquipmentCard>
@@ -108,68 +108,59 @@ const Equipment = () => {
         </div>
       </section>
       <section>
-        <div className="max-w-[1204px] mx-auto pt-[26px] pb-[150px]">
-          <div className="flex items-center justify-between flex-wrap mb-16">
-            {/* {
-              category.map((ct, i) => {
-                return (
-                  <p key={i} onClick={handleTab} className={ct == currentTab ? `max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]` : `max-w-[139px] cursor-pointer w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border capitalize leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]`}>
-                    {
-                      ct
-                    }
-                  </p>
-                );
-              })
-            } */}
-            <p onClick={(e) => handleTab(e)} className={'all' == currentTab ? `max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]` : `max-w-[139px] cursor-pointer w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border capitalize leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]`}>
+        <div className="max-w-xl mx-auto pt-[26px] pb-[150px] max-[450px]:px-6 max-[450px]:pt-5 w-full">
+          <div className="overflow-hidden">
+          <div className="flex max-[450px]:gap-4 overflow-hidden mb-16 max-[450px]:overflow-x-auto w-full  justify-between max-[450px]:scroll-smooth max-[450px]:mb-7">
+            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'all'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
               All
-            </p>
-            <p onClick={(e) => handleTab(e)} className={'pos' == currentTab ? `max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]` : `max-w-[139px] cursor-pointer w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border capitalize leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]`}>
+            </div>
+            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'pos'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
               POS
-            </p>
-            <p onClick={(e) => handleTab(e)} className={'scales' == currentTab ? `max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]` : `max-w-[139px] cursor-pointer w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border capitalize leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]`}>
+            </div>
+            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scales'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
               Scales
-            </p>
-            <p onClick={(e) => handleTab(e)} className={'cash drawer' == currentTab ? `max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]` : `max-w-[139px] cursor-pointer w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border capitalize leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]`}>
-              Cash drawer
-            </p>
-            <p onClick={(e) => handleTab(e)} className={'scanner' == currentTab ? `max-w-[139px] w-full flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]` : `max-w-[139px] cursor-pointer w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border capitalize leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]`}>
+            </div>
+            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'cash drawer'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB]"}`}>
+              <p className="!w-fit">Cash drawer</p>
+            </div>
+            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scanner'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
               Scanner
-            </p>
+            </div>
+          </div>
           </div>
 
-          <div className="gap-[26px] grid grid-cols-4 mb-[50px]">
+          <div className="gap-[26px] grid grid-cols-4 mb-[50px] max-[450px]:justify-between max-[450px]:grid-cols-2">
             {
               currentTab == 'all' ? productsCounter.map(product => {
                 return (
-                  <div key={product.id} className="flex items-center flex-col">
+                  <div key={product.id} className="flex items-center flex-col justify-between">
                     <Link href={'/equipment/' + product.id + "#equipment"} scroll={true}>
                       <ProductCard image={product.image} title={product.title} price={product.price}>
                       </ProductCard>
                     </Link>
-                    <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[10px] text-[#F9F9FB]'} onClick={() => {
+                    <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[4px] text-[#F9F9FB] max-[450px]:py-[2px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'} onClick={() => {
                       dispatch(addProducts(product)),
                         dispatch(addToCart()),
                         setVisible(!visible);
                     }}>
-                      <Image src={shopIcon} alt="shop-icon" className="pr-2" />
+                      <Image src={shopIcon} alt="shop-icon" className="pr-2 max-[450px]:hidden" />
                       {t("common:add_cart")}
                     </Button>
                   </div>
                 );
               }) : filteredProduct.map(product => {
                 return (
-                  <div key={product.id} className="flex items-center flex-col">
+                  <div key={product.id} className="flex items-center flex-col justify-between">
                     <Link href={'/equipment/' + product.id + "#equipment"} scroll={true}>
                       <ProductCard image={product.image} title={product.title} price={product.price}>
                       </ProductCard>
                     </Link>
-                    <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[10px] text-[#F9F9FB]'} onClick={() => {
+                    <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[4px] text-[#F9F9FB] max-[450px]:px-[8px] max-[450px]:py-[2px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'} onClick={() => {
                       dispatch(addProducts(product)),
                         dispatch(addToCart()),
                         setVisible(!visible);
                     }}>
-                      <Image src={shopIcon} alt="shop-icon" className="pr-2" />
+                      <Image src={shopIcon} alt="shop-icon" className="pr-2 max-[450px]:hidden" />
                       {t("common:add_cart")}
                     </Button>
                   </div>
@@ -187,3 +178,16 @@ const Equipment = () => {
 };
 
 export default Equipment;
+
+
+{/* {
+              category.map((ct, i) => {
+                return (
+                  <p key={i} onClick={handleTab} className={ct == currentTab ? ` w-fit flex items-center justify-center h-[50px] rounded-md text-[18px] leading-[140%] font-PoppinsBold bg-[#FF588A] text-[#FFF] shadow-[0_1px_2px_rgba(0,0,0,0.07)]` : `max-w-[139px] cursor-pointer w-full flex items-center justify-center h-[50px] rounded-md text-[18px] border capitalize leading-[180%] text-[#111827] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] border-[#D1D5DB]`}>
+                    {
+                      ct
+                    }
+                  </p>
+                );
+              })
+            } */}
