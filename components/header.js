@@ -59,17 +59,17 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href={'/company'} className={`${router.pathname == "/company" ? "p-2 border-b-[2px] border-[#FF588A]" : "p-2 hover:text-[#FF588A]"}`}>
+              <Link href={'/community'} className={`${router.pathname == "/community" ? "p-2 border-b-[2px] border-[#FF588A]" : "p-2 hover:text-[#FF588A]"}`}>
                 {
-                  t("header:company")
-                  // 
+                  t("header:community")
                 }
               </Link>
             </li>
             <li>
-              <Link href={'/community'} className={`${router.pathname == "/community" ? "p-2 border-b-[2px] border-[#FF588A]" : "p-2 hover:text-[#FF588A]"}`}>
+              <Link href={'/company'} className={`${router.pathname == "/company" ? "p-2 border-b-[2px] border-[#FF588A]" : "p-2 hover:text-[#FF588A]"}`}>
                 {
-                  t("header:community")
+                  t("header:company")
+                  // 
                 }
               </Link>
             </li>
