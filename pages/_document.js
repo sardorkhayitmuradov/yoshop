@@ -8,7 +8,6 @@ export default function Document(props) {
   return (
     <Html lang={currentLocale}>
       <Head>
-        
       </Head>
       <body>
         <Main />

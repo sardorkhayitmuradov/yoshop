@@ -20,7 +20,7 @@ function App({ Component, pageProps }) {
             <NextSeo
                 title='YoShop'
                 titleTemplate='YoShop'
-                description='YoShop E-commerce website for Clients products'
+                description='YoShop E-commerce'
             />
             <Layout>
                 <Component {...pageProps} />
