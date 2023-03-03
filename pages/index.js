@@ -1113,7 +1113,7 @@ function Home() {
           </video>
         </div>
       </section>
-      <section className="py-[70px] max-[450px]:pt-4 max-[450px]:pb-[40px]">
+      {/* <section className="py-[70px] max-[450px]:pt-4 max-[450px]:pb-[40px]">
         <div className='max-w-xl mx-auto bg-[url("../public/assets/images/question-bg.png")] w-full bg-[#fff] pl-[44px] pt-[21px] rounded-[20px] pb-[33px] bg-no-repeat my-[70px] bg-cover max-[450px]:px-6 max-[450px]:bg-none max-[450px]:my-0'>
           <h3 className='font-bold text-[32px] text-[#0F172A] text-center leading-[140%] mb-[40px] max-w-[460px] w-full max-[450px]:text-[24px] max-[450px]:mb-5 max-[450px]:text-left'>
             {t("common:questions")}
@@ -1126,7 +1126,7 @@ function Home() {
 
           <Button className={'max-w-[500px] py-[20px] w-full bg-[#ff588a] text-white rounded-[10px] font-bold text-base leading-[140%] max-[450px]:py-[13px]'}>{t('common:order_call')}</Button>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

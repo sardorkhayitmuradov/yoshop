@@ -89,7 +89,7 @@ const Header = () => {
           <div className="header-right flex items-center max-w-[380px] w-full space-x-8 text-[14px] leading-[25px] max-[450px]:hidden">
             {/* Added space-x-8, removed justift-between */}
             <LanguageSwitcher />
-            <Link href={'/'}>
+            {/* <Link href={'/'}>
               {
                 t("header:login")
               }
@@ -104,7 +104,7 @@ const Header = () => {
               {
                 t("header:cart")
               }
-            </Link>
+            </Link> */}
           </div>
         </div>
         {

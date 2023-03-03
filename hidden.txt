@@ -1,0 +1,3 @@
+index.js => last seciton for contact
+header.js => login, sign up, cart buttons
+equipment/index.js => line 82

@@ -79,7 +79,7 @@ const Equipment = () => {
             <h2 className="font-bold text-[32px] leading-[140%] mb-[26px] max-[450px]:mb-2">{t("common:equipment_shop")}</h2>
             <p className="text-[18px] leading-[180%] mb-[26px] max-[450px]:mb-8">{t("common:set")}
             </p>
-            <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px] max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:mb-[40px]">
+            {/* <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px] max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:mb-[40px]">
 
               <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full max-[450px]:max-w-[100%] max-[450px]:mb-5'} inputClassName={'text-[#9CA3AF] w-full py-[19px] max-[450px]:px-3 pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:py-[13px]'} placeholder={t("common:town")} value={town} onChange={(value) => setTown(value)} />
 
@@ -88,7 +88,7 @@ const Equipment = () => {
               <Button className={'max-w-[232px] py-[19px] max-[450px]:px-3 text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] max-[450px]:max-w-[100%] max-[450px]:py-[13px]'}>
                 {t("common:order_call")}
               </Button>
-            </div>
+            </div> */}
             <h3 className="font-bold text-[32px] leading-[140%] mb-[40px] max-[450px]:text-[26px] max-[450px]:mb-5">{t("common:you_get")}</h3>
             <div className="flex items-center justify-between w-full max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:gap-[10px]">
               <EquipmentCard wrapperClassName={'max-w-[280px]'} image={GuaranteeIcon} titleClass={"max-w-[106px] w-full]"} >
