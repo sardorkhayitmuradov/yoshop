@@ -55,7 +55,7 @@ const FaqAccordion = ({
 
               <AccordionBody>
                 <div
-                  className={`font-light text-left py-[20px] ml-auto max-w-[85%] w-full max-[450px]:py-[13px] ${
+                  className={`font-light text-left py-[20px] ml-auto max-w-[80%] w-full max-[450px]:py-[13px] ${
                     accordionBodyClassname ? accordionBodyClassname : ''
                   }`}
                 >

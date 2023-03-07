@@ -99,12 +99,13 @@ const Header = () => {
                 t("header:signup")
               }
             </button>
+            */}
             <Link href={'/cart'} className="cursor-pointer relative" >
               <span className="absolute -top-2 -right-4 bg-[#FF588A] text-[8px] leading-[16px] text-white rounded-[10px] w-[12px] h-[12px] flex items-center justify-center p-2">{quantity}</span>
               {
                 t("header:cart")
               }
-            </Link> */}
+            </Link> 
           </div>
         </div>
         {

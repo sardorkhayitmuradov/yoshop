@@ -1,22 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 import Input from "../components/Input/Input";
 import checkCircle from "../public/assets/images/check-circle1.png";
 import checkCircle2 from "../public/assets/images/check-circle2.png";
-import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
+import { useTranslation } from "next-i18next";
+// import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
 import confrimSuccessImg from "../public/assets/images/modalSuccessInfo.png";
-import locationAdressIcon from "../public/assets/images/locationIcon.svg";
-import AdressLocation from "../components/AdressLocation/AdressLocation";
+// import locationAdressIcon from "../public/assets/images/locationIcon.svg";
+// import AdressLocation from "../components/AdressLocation/AdressLocation";
 import InputCheckbox from "../components/InputCheckbox/InputCheckbox";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Savecheckbox from "../components/SaveCheckbox";
-import Checkbox from "../components/Checkbox";
-import Link from "next/link";
+// import Checkbox from "../components/Checkbox";
 
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['home', 'header', 'footer'])),
+      ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
     }
   };
 }
@@ -25,12 +27,15 @@ const Checkout = () => {
   const [tab, setTab] = useState("1");
   const [openModal, setOpenModal] = useState(false);
 
+  let cart = useSelector((store) => store.carts);
+  const { t } = useTranslation();
+  console.log(cart)
+
   const onChecked = (e) => {
     console.log(e.target.value);
   };
 
   return <>
-
     <section className="pt-[170px]">
       <div className="container max-w-7xl mx-auto">
         <h2 className="font-bold mb-10 text-[32px] leading-[140%]">
@@ -43,7 +48,7 @@ const Checkout = () => {
               Delivery options
             </h2>
             <div className="flex justify-between max-w-[392px] w-full mb-5">
-              <div className={`bg-[#F9FAFB] p-[14px] flex justify-between items-start rounded-[3px] max-w-[187px] w-full border border-solid ${tab === '1' ? 'border-[#7047EB]': "border-[#9CA3AF]"}`} onClick={() => setTab("1")}>
+              <div className={`bg-[#F9FAFB] p-[14px] flex justify-between cursor-pointer items-start rounded-[3px] max-w-[187px] w-full border border-solid ${tab === '1' ? 'border-[#7047EB]' : "border-[#9CA3AF]"}`} onClick={() => setTab("1")}>
                 <span>
                   <h4 className="text-[14px] leading-[17px] mb-[10px] font-medium">
                     Home delivery
@@ -53,20 +58,20 @@ const Checkout = () => {
                   </p>
                 </span>
                 {
-                   tab == '1' ?  <Image
-                   src={checkCircle}
-                   alt="check-circle"
-                   width={20}
-                   height={20} 
-                 /> : <Image
-                 src={checkCircle2}
-                 alt="check-circle"
-                 width={20}
-                 height={20} 
-               />
+                  tab == '1' ? <Image
+                    src={checkCircle}
+                    alt="check-circle"
+                    width={20}
+                    height={20}
+                  /> : <Image
+                    src={checkCircle2}
+                    alt="check-circle"
+                    width={20}
+                    height={20}
+                  />
                 }
               </div>
-              <div className={`bg-[#F9FAFB] p-[14px] flex justify-between items-start rounded-[3px] max-w-[187px] w-full border border-solid ${tab === '2' ? 'border-[#7047EB]': "border-[#9CA3AF]"}`} onClick={() => setTab("2")}>
+              <div className={`bg-[#F9FAFB] p-[14px] flex justify-between cursor-pointer items-start rounded-[3px] max-w-[187px] w-full border border-solid ${tab === '2' ? 'border-[#7047EB]' : "border-[#9CA3AF]"}`} onClick={() => setTab("2")}>
                 <span>
                   <h4 className="text-[14px] leading-[17px] mb-[10px] font-medium">
                     In-store pickup
@@ -76,12 +81,12 @@ const Checkout = () => {
                   </p>
                 </span>
                 {
-                  tab == '2' ?  <Image
-                  src={checkCircle}
-                  alt="check-circle"
-                  width={20}
-                  height={20} 
-                /> : ""
+                  tab == '2' ? <Image
+                    src={checkCircle}
+                    alt="check-circle"
+                    width={20}
+                    height={20}
+                  /> : ""
                 }
               </div>
             </div>
@@ -266,53 +271,81 @@ const Checkout = () => {
                 </div> </> || tab === '2' && "hello"
             }
           </div>
-          <div className="rightCheckWithInfo max-w-[580px] w-full">
-            <h3 className="checkProductItemTitle text-[20px] font-[700] mb-[30px]">
-              Items(1)
+          <div className="max-w-[580px] w-full">
+            <h3 className="text-[20px] font-[700] mb-[28px]">
+              Products:
             </h3>
-            <hr />
 
-            <div className="flex justify-between items-center mt-[20px]">
-              <div className="cartPageImg relative flex items-center w-[60px] h-[60px]">
-                {/* <Image src={cartElipsImg} alt="elips" className="elipsImg" /> */}
-                <Image
-                  src={cartPrImg}
-                  alt="product-Img"
-                  className="productsImg absolute left-[5px] h-[67px]"
-                />
-              </div>
-              <h3 className="text-[20px] font-bold">
-                YoShop POS (К9 Centerm)
-              </h3>
-              <h3 className="text-[24px] font-bold">
-                ₸ 150 000
-              </h3>
+            <hr className="bg-[#F9F9FB] w-full border border-solid mb-4" />
+
+            {
+              cart.cart.licenses?.length > 0 && cart.licenses.map(license => (
+                <>
+                  <div key={license.id}>
+                    <div className="flex items-center justify-between mb-[10px]">
+                      <p className="text-[20px] leading-[140%] font-bold">{license.name || license.title}</p>
+                      <p className="text-[20px] leading-[140%] font-bold">x{license.qty}</p>
+                    </div>
+                    <div className="flex items-center justify-between mb-[10px]">
+                      <p>Period:</p>
+                      <p className="text-[20px] leading-[140%] font-bold">{license.period}</p>
+                    </div>
+
+                    <div className="flex items-center justify-between w-full mb-[10px]">
+                      <p>{t("common:users")}:</p>
+
+                      <div className="flex items-center justify-between w-full max-w-[200px]">
+                        <p className="text-[20px] leading-[140%] font-bold">+{license.cashier.qty >= license.qty * 2 ? (license.cashier.qty - (license.qty * 2)) : license.cashier.qty}</p>
+                        <p className="text-[20px] leading-[140%] font-bold">₸ 16000</p>
+                      </div>
+                    </div>
+                    <div className="w-full mb-5">
+                      <p className="mb-[10px]">{t("header:equipment")}:</p>
+
+                      {
+                        license.products.map(product => (
+                          <div className="flex items-center justify-between mb-3" key={product.id}>
+                            <div className="flex items-center">
+                              <Image src={product.image} width={50} height={50} alt="product" className="mr-[3px]" />
+                              <h3 className="text-[20px] leading-[140%] max-w-[252px] w-full">{product.title || product.name}</h3>
+                            </div>
+                            <div className="flex items-center justify-between w-full max-w-[200px]">
+                              <p className="text-[20px] leading-[180%] font-bold">x{product.qty}</p>
+                              <p className="text-[20px] leading-[180%] font-bold">₸ {product.price}</p>
+                            </div>
+                          </div>
+                        ))
+                      }
+                    </div>
+                  </div>
+                  <hr className="bg-[#CBD5E1] border border-solid mb-5" />
+                </>
+              ))
+            }
+
+            <div>
+              {
+                cart.products.length > 0 ?
+                  (cart.products.map((product, i) => {
+                    return (
+                      <div className="flex items-center justify-between mb-3" key={product.id}>
+                        <div className="flex items-center">
+                          <Image src={product.image} width={50} height={50} alt="product" className="mr-[3px]" />
+                          <h3 className="text-[20px] leading-[140%] max-w-[252px] w-full">{product.title || product.name}</h3>
+                        </div>
+                        <div className="flex items-center justify-between w-full max-w-[200px]">
+                          <p className="text-[20px] leading-[180%] font-bold">x{product.qty}</p>
+                          <p className="text-[20px] leading-[180%] font-bold">₸ {product.price}</p>
+                        </div>
+                      </div>
+                    );
+                  }))
+                  : ""
+              }
             </div>
-            <div className="confrimProductOnfoTextsWrapp w-full">
-              <div className="w-[290px] float-right mt-[23px]">
-                <div className="flex justify-between items-center">
-                  <p className="text-[20px]">
-                    Subtotal
-                  </p>
-                  <p className="text-[20px]">
-                    ₸ 150 000
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mb-4">
-                  <p className="text-[20px] mt-[15px]">
-                    Shipping
-                  </p>
-                </div>
-              </div>
-            </div>
-            <hr className="opacity-40 w-full" />
-            <div className="w-[290px] float-right mt-[23px]">
-              <div className="flex justify-between items-center">
-                <p className="text-[20px] font-bold">Subtotal</p>
-                <p className="text-[20px] font-bold">
-                  ₸ 150 000
-                </p>
-              </div>
+            <div className="flex items-center text-[20px] leading-[140%] font-bold w-full justify-end">
+              <p className="mr-4">Total:</p>
+              ₸ {cart.totalPrice}
             </div>
           </div>
         </div>
@@ -374,10 +407,6 @@ const Checkout = () => {
       }
     </section>
   </>;
-
-
-
-
 };
 
 export default Checkout;

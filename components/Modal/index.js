@@ -92,7 +92,7 @@ const Modal = () => {
                                   <div className="flex items-center justify-between" key={i}>
                                     <div className="text-[14px] leading-[140%] text-[#111827] flex items-center">
                                       <Image src={p.image} width={20} height={23} alt='product' />
-                                      <p>{p.name || p.title}</p>
+                                      <p className='max-w-[80px] w-full'>{p.name || p.title}</p>
                                     </div>
                                     <p className="text-[14px] leading-[140%]">
                                       + {p.qty}
