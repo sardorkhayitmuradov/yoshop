@@ -21,16 +21,16 @@ const Community = () => {
 
   return (
     <main>
-      <section className='pt-[150px] pb-[137px]'>
-        <div className="max-w-xl mx-auto">
-          <h2 className='font-bold text-[32px] leading-[140%] text-[#111827] mb-[44px]'>{t('common:community_management')}</h2>
-          <p className='text-[18px] leading-[180%] mb-[60px]'>Stay up to date with ongoing events and become part of our success story!</p>
+      <section className='pt-[150px] pb-[137px] max-xs:pt-[70px]'>
+        <div className="max-w-xl mx-auto max-xs:px-6">
+          <h2 className='font-bold text-[32px] leading-[140%] text-[#111827] mb-[44px] max-xs:text-[20px] max-xs:leading-[140%] max-xs:mb-[10px]'>{t('common:community_management')}</h2>
+          <p className='text-[18px] leading-[180%] mb-[60px] max-xs:mb-[30px] max-xs:text-[14px] max-xs:leading-[18px]'>{t("common:community_intro")}</p>
           <div className='bg-[#E5E7EB] rounded flex items-center justify-between'>
             <div onClick={()=> setTab("1")} className={`cursor-pointer max-w-[50%] w-full text-center m-1 p-1 rounded-sm ${tab === '1' ? "bg-white shadow-[0_4px_8px_rgba(0,0,0,0.08)]": "shadow-none bg-transparent text-[#6B7280]"}`}>
-              <p className='text-[16px] leading-[25px]'>History of success</p>
+              <p className='text-[16px] leading-[25px]'>{t("common:community_success")}</p>
             </div>
             <div onClick={()=> setTab("2")} className={`cursor-pointer max-w-[50%] w-full text-center m-1 p-1 rounded-sm ${tab === '2' ? "bg-white shadow-[0_4px_8px_rgba(0,0,0,0.08)]": "shadow-none bg-transparent text-[#6B7280]"}`}>
-              <p className='text-[16px] leading-[25px]'>Events</p>
+              <p className='text-[16px] leading-[25px]'>{t("common:community_event")}</p>
             </div>
           </div>
           <div>

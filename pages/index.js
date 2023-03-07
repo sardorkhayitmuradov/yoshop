@@ -21,6 +21,7 @@ import i18nConfig from '../next-i18next.config';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
+import Link from 'next/link';
 
 export async function getStaticProps({ locale }) {
   return {
@@ -90,7 +91,7 @@ function Home() {
                   <div className='max-w-[567px] w-full max-[450px]:max-w-[235px]'>
                     <div className='mb-[67px] text-[40px] font-bold leading-[120%] max-[450px]:max-w-[195px] max-[450px]:text-[20px] max-[450px]:mb-[32px] max-[450px]:leading-[140%]'>
                       <div>
-                        <h2 className='bg-[#FF588A] text-[#fff] rounded inline-block'>{t("common:buy_title")}</h2>
+                        <h2 className='bg-[#FF588A] text-[#fff] rounded inline'>{t("common:buy_title")}</h2>
                       </div>
                       <h2 className='text-[#fff] inline'>{t("common:buy_retail")}</h2>
                       <h2 className='bg-[#FF588A] text-[#fff] rounded inline'>{t("common:buy_free")}</h2>
@@ -98,7 +99,7 @@ function Home() {
 
                     <Button
                       className={
-                        'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[74px] max-[450px]:py-[10px]'
+                        'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[10px] max-[450px]:py-[10px] max-xs:w-full'
                       }
                     >
                       {t("common:buy_now")}
@@ -118,7 +119,7 @@ function Home() {
                         <span className='bg-[#FF588A] pt-1 px-1 rounded-md text-white'>{t("common:download")}</span>
                         {t("common:download_mobile")}
                         <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>
-                        <h2>{t("common:download_month")}</h2>
+                        <h2  className='max-xs:max-w-[130px]'>{t("common:download_month")}</h2>
                       </div>
                     </div>
                     <div className='flex text-white items-center justify-between'>
@@ -127,7 +128,7 @@ function Home() {
                           'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[74px] max-[450px]:py-[10px] max-[450px]:block hidden'
                         }
                       >
-                        Download
+                        {t("common:downloadit")}
                       </Button>
                       <Button className={'py-[17px] px-[50px] bg-[#242424] rounded-2xl flex items-center font-medium text-[24px] leading-[36px] max-[450px]:hidden'}>
                         <Image className='mr-[10px]' src={AppStore} width={40} height={40} alt='app store Image' />
@@ -151,7 +152,9 @@ function Home() {
       >
         <div className='max-w-xl mx-auto w-full h-[750px] max-[450px]:h-auto overflow-hidden bg-[#eff1fe80] max-[450px]:bg-white rounded-[20px] relative pt-12 px-[60px] max-[450px]:px-0'>
           <div className='fixed w-[81px] h-[81px] right-20 bottom-14 z-10 max-[450px]:w-[60px] max-[450px]:h-[60px] max-[450px]:right-3'>
-            <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
+            <Link href="tel:+87004508011">
+              <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
+            </Link>
           </div>
           <h2 className='text-[38px] font-light leading-[57px] mb-[6px] max-[450px]:text-[24px] max-[450px]:text-[#111827] max-[450px]:font-bold max-[450px]:leading-[140%] max-[450px]:mb-0 max-[450px]:px-6'>
             {t('common:yoshop_licence')}
@@ -177,12 +180,13 @@ function Home() {
                 ref={swiperRef}
                 direction={"vertical"}
                 onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
-                mousewheel={true}
+                // mousewheel={true}
                 spaceBetween={10}
                 effect={"coverflow"}
-                grabCursor={true}
+                // grabCursor={true}
                 slidesPerView={'auto'}
                 centeredSlides={true}
+                passiveListeners={false}
                 autoplay={{
                   delay: 3000,
                   disableOnInteraction: false,
@@ -194,7 +198,7 @@ function Home() {
                   modifier: 0.5,
                   slideShadows: false,
                 }}
-                modules={[Mousewheel, EffectCoverflow, FreeMode, Thumbs, Autoplay]}
+                modules={[EffectCoverflow, FreeMode, Thumbs, Autoplay]}
                 className="max-[450px]:block hidden max-[450px]:ml-0 w-full"
               >
                 <SwiperSlide>

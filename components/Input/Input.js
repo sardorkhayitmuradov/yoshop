@@ -8,6 +8,7 @@ const Input = ({
   value,
   onChange,
   placeholder,
+  pattern
 }) => {
   const onGetValue = (e) => {
     onChange(e.target.value);
@@ -27,6 +28,7 @@ const Input = ({
         className={inputClassName}
         id={name}
         name={name}
+        pattern={pattern ? pattern : ""}
         value={value ? value : ""}
         onChange={onGetValue}
         placeholder={placeholder ? placeholder: ""}
