@@ -1,6 +1,6 @@
 const ResourcesCard = ({video , title , description}) => {
   return (
-    <div className="flex items-start flex-col justify-center max-w-[600px] w-full">
+    <div className="flex items-start flex-col justify-center max-w-[550px] w-full">
         <video width="600" height='270' className="mb-[14px] rounded-[10px]" controls>
             <source src={video} type="video/mp4" />
         </video>
