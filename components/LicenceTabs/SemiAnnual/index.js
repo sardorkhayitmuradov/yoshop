@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Accordion from "../../Accordion/Accordion";
 import TickIcon from "../../../public/assets/images/tick.svg";
@@ -12,8 +13,19 @@ import {
   addUsers,
   removeUsers,
 } from "../../../redux/features/carts";
+import { useTranslation } from "next-i18next";
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
+    },
+  };
+}
+
 
 export const SemiAnnual = () => {
+  const router = useRouter()
   const dispatch = useDispatch();
   const licences = useSelector((store) => store.licence);
   const products = useSelector((store) => store.productCounter.products);
@@ -22,6 +34,7 @@ export const SemiAnnual = () => {
   let filtered = products.filter((idx) => {
     return idx.id != 1;
   });
+  const {t} = useTranslation()
 
   return (
     <>
@@ -60,7 +73,7 @@ export const SemiAnnual = () => {
               }
               title={
                 <div className="flex items-center max-w-[830px] max-[450px]:mb-[10px]">
-                  <h2 className="max-w-[300px] w-full">{el.name}</h2>
+                  <h2 className="max-w-[300px] w-full">{router.locale == 'ru'? el.nameru: el.name}</h2>
                   <CalculatorProduct
                     wrapClass={"max-[450px]:hidden"}
                     incrementItem={(e) => {
@@ -91,7 +104,7 @@ export const SemiAnnual = () => {
                         className="mr-[18px]"
                       />
                       <p className=" text-[20px] w-full leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
-                        Trading place
+                        {router.locale == 'ru' ? "Торговая точка" : "Trading place"}
                       </p>
                     </div>
                     <CalculatorProduct
@@ -111,7 +124,7 @@ export const SemiAnnual = () => {
                         className="mr-[18px]"
                       />
                       <p className="w-full  text-[20px] leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
-                        Cash zone
+                        {router.locale == 'ru' ? "Кассовая зона" : "Cash zone"}
                       </p>
                     </div>
                     <CalculatorProduct
@@ -130,7 +143,7 @@ export const SemiAnnual = () => {
                         className="mr-[18px]"
                       />
                       <p className=" text-[20px] leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
-                        Users
+                        {t("common:users")}
                       </p>
                     </div>
                     {
@@ -146,7 +159,7 @@ export const SemiAnnual = () => {
                           }}
                         />
                         <span className="max-w-[190px] w-full text-[16px] leading-[25px]  ml-5 max-[450px]:hidden">
-                          ₸ 1 000 per additional
+                          ₸ 1 000 {t("common:per_additional")}
                         </span>
                       </> : <>
                         <CalculatorProduct
@@ -169,8 +182,7 @@ export const SemiAnnual = () => {
                         key={product.id}
                       >
                         <h2 className="w-full px-[34px] mb-3 text-[16px] leading-[140%] font-bold max-[450px]:text-[16px] max-[450px]:px-0">
-                          <span className="text-[#FF588A]">*</span> You can use
-                          this license only on the following hardware:
+                          <span className="text-[#FF588A]">*</span> {t("common:use_method")}
                         </h2>
                         <div className="flex items-center w-full mr-[110px] max-[450px]:mx-0 pl-[90px] max-[450px]:px-0 justify-between max-w-[1000px] max-[450px]:flex-col">
                           <div className="flex items-center w-full max-w-[340px] max-[450px]:mb-1">
@@ -199,7 +211,7 @@ export const SemiAnnual = () => {
                               }
                             />
                             <span className="w-full text-[16px] leading-[25px] ml-5 max-[450px]:mx-0">
-                              ₸ {prod?.price || product.price} <span className="max-[450px]:hidden">per additional</span>
+                              ₸ {prod?.price || product.price} <span className="max-[450px]:hidden">{t("common:per_additional")}</span>
                             </span>
                           </div>
                         </div>

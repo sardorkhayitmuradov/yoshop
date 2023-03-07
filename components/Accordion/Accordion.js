@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Button from "../Button/Button";
 import PlusWhite from "../../public/assets/images/plusWhite.svg";
@@ -6,6 +7,16 @@ import Cancel from "../../public/assets/images/cancel.svg";
 import { CalculatorProduct } from "../CalculatorProduct";
 import { addEquipments, removeEquipments } from "../../redux/features/carts";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "next-i18next";
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
+    },
+  };
+}
+
 
 const AccordionWrapper = ({
   title,
@@ -20,9 +31,11 @@ const AccordionWrapper = ({
   foundLicense,
   elId
 }) => {
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
+  const {t} = useTranslation()
 
   return (
     <>
@@ -41,6 +54,7 @@ const AccordionWrapper = ({
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
+                    className=""
                       fillRule="evenodd"
                       color={imgColor ? imgColor : ""}
                       d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -97,16 +111,13 @@ const AccordionWrapper = ({
                   height={35}
                   
                 />
-                Add equipment
+                {t("common:add_product")}
               </Button>
             )}
             <ul>
               {isOpen
                 ? products?.map((product) => {
                   let prod = foundLicense?.products.find(l => l.id === product.id);
-                  // let p = prod?.slice(-1).pop()
-                  // console.log(p)
-                  // console.log(prod)
                   return (
                     <li
                       key={product.id}
@@ -121,7 +132,7 @@ const AccordionWrapper = ({
                             alt='product name'
                           />
                           <p className="text-[20px] leading-[180%] text-[#111827] ml-10 max-[450px]:w-full max-[450px]:ml-2">
-                            {product.title}
+                            {router.locale == 'ru' ? product.titleru || product.title : product.title}
                           </p>
                         </div>
                         <div className="flex items-center justify-between w-full max-[450px]:flex-row-reverse">
@@ -137,7 +148,7 @@ const AccordionWrapper = ({
                 : ""}
             </ul>
             <div className="max-w-[300px] w-full ml-auto text-right font-bold text-[24px] leading-[140%] max-[450px]:text-left max-[450px]:mx-0 max-[450px]:text-[16px]">
-              <p>SUBTOTAL: ₸ {subTotal}</p>
+              <p>{t("common:sub_total")}: ₸ {subTotal}</p>
             </div>
           </div>}
       </div>

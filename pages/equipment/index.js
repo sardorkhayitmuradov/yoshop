@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
-import Input from "../../components/Input/Input";
+import { useRouter } from "next/router";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import EquipmentCard from "../../components/EquipmentCard/EquipmentCard";
 import Button from "../../components/Button/Button";
@@ -25,9 +25,10 @@ export async function getServerSideProps({ locale }) {
 }
 
 const Equipment = () => {
+  const router = useRouter();
   const { t } = useTranslation();
-  const [town, setTown] = useState('');
-  const [number, setNumber] = useState("");
+  // const [town, setTown] = useState('');
+  // const [number, setNumber] = useState("");
   const [currentTab, setCurrentTab] = useState('all');
   const [filteredProduct, setFilterProduct] = useState([]);
   const [category, setCategory] = useState([]);
@@ -50,15 +51,14 @@ const Equipment = () => {
   };
 
   const handleTab = (e) => {
-    console.log(e.target.outerText);
     let filteredProducts = [];
     productsCounter.forEach(pr => {
-      if (pr.category.trim().toLowerCase() == e.target.innerHTML.trim().toLowerCase()) {
+      if (pr.category.trim().toLowerCase() == e.trim().toLowerCase()) {
         filteredProducts.push(pr);
       }
     });
     setFilterProduct(filteredProducts);
-    setCurrentTab(e.target.outerText.trim().toLowerCase());
+    setCurrentTab(e.trim().toLowerCase());
   };
 
   useEffect(() => {
@@ -111,26 +111,28 @@ const Equipment = () => {
         <div className="max-w-xl mx-auto pt-[26px] pb-[150px] max-[450px]:px-6 max-[450px]:pt-5 w-full">
           <div className="overflow-hidden">
           <div className="flex max-[450px]:gap-4 overflow-hidden mb-16 max-[450px]:overflow-x-auto w-full  justify-between max-[450px]:scroll-smooth max-[450px]:mb-7">
-            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'all'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
-              All
+            <div onClick={() => handleTab("All")} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'all'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
+              {router.locale == 'ru' ? "Все":"All"}
             </div>
-            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'pos'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
+            <div onClick={() => handleTab("POS")} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'pos'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
               POS
             </div>
-            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scales'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
-              Scales
+            <div onClick={() => handleTab("Scales")} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scales'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
+              {router.locale == 'ru' ? "Весы":"Scales"}
             </div>
-            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'cash drawer'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB]"}`}>
-              <p className="!w-fit">Cash drawer</p>
+            <div onClick={() => handleTab("Cash drawer")} className={`max-[450px]:max-w-[139px] px-3 flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'cash drawer'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB]"}`}>
+          
+              {router.locale == 'ru' ? "Денежный ящик":"Cash drawer"}
+             
             </div>
-            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scanner'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
-              Scanner
+            <div onClick={() => handleTab("Scanner")} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scanner'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
+              {router.locale == 'ru' ? "Сканер":"Scanner"}
             </div>
-            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'accessories'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
-              Accessories
+            <div onClick={() => handleTab("Accessories")} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'accessories'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
+              {router.locale == 'ru' ? "Аксессуары":"Accessories"}
             </div>
-            <div onClick={(e) => handleTab(e)} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'cables'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
-              Cables
+            <div onClick={() => handleTab("Cables")} className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'cables'?  "bg-[#FF588A] text-[#FFF]": "border capitalize leading-[180%] border-[#D1D5DB] "}`}>
+              {router.locale == 'ru' ? "Кабели":"Cables"}
             </div>
           </div>
           </div>
@@ -141,7 +143,7 @@ const Equipment = () => {
                 return (
                   <div key={product.id} className="flex items-center flex-col justify-between">
                     <Link href={'/equipment/' + product.id + "#equipment"} scroll={true}>
-                      <ProductCard image={product.image} title={product.title} price={product.price}>
+                      <ProductCard image={product.image} title={router.locale == 'ru' ? product.titleru || product.title : product.title} price={product.price}>
                       </ProductCard>
                     </Link>
                     <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[4px] text-[#F9F9FB] max-[450px]:py-[2px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'} onClick={() => {
@@ -158,7 +160,7 @@ const Equipment = () => {
                 return (
                   <div key={product.id} className="flex items-center flex-col justify-between">
                     <Link href={'/equipment/' + product.id + "#equipment"} scroll={true}>
-                      <ProductCard image={product.image} title={product.title} price={product.price}>
+                      <ProductCard image={product.image} title={router.locale == 'ru' ? product.titleru || product.title : product.title} price={product.price}>
                       </ProductCard>
                     </Link>
                     <Button className={'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[4px] text-[#F9F9FB] max-[450px]:px-[8px] max-[450px]:py-[2px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'} onClick={() => {

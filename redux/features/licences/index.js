@@ -5,6 +5,7 @@ const initialState = {
     {
       id: 21,
       name: "Yoshop Retail for Yoshop POS",
+      nameru: "Yoshop Retail для Yoshop POS",
       price: 45000,
       discounts: [
         {
@@ -29,6 +30,7 @@ const initialState = {
     {
       id: 22,
       name: "Yoshop retail for mobile",
+      nameru: "Yoshop retail для мобильных устройств",
       price: 30000,
       discounts: [
         {
@@ -44,6 +46,7 @@ const initialState = {
     {
       id: 23,
       name: "Yoshop retail for Android POS",
+      nameru: "Yoshop retail для Android POS",
       price: 30000,
       discount: 1000,
     },
@@ -52,6 +55,7 @@ const initialState = {
     {
       id: 24,
       name: "Yoshop Retail for Yoshop POS",
+      nameru: "Yoshop Retail для Yoshop POS",
       price: 25000,
       discounts: [
         {
@@ -72,6 +76,7 @@ const initialState = {
     {
       id: 25,
       name: "Yoshop retail for mobile",
+      nameru: "Yoshop retail для мобильных устройств",
       price: 20000,
       discounts: [
         {
@@ -87,6 +92,7 @@ const initialState = {
     {
       id: 26,
       name: "Yoshop retail for Android POS",
+      nameru: "Yoshop retail для Android POS",
       price: 20000,
       discount: 5000,
     },
@@ -95,6 +101,7 @@ const initialState = {
     {
       id: 27,
       name: "Yoshop Retail for Yoshop POS",
+      nameru: "Yoshop Retail для Yoshop POS",
       price: 4500,
       discounts: [
         {
@@ -119,6 +126,7 @@ const initialState = {
     {
       id: 28,
       name: "Yoshop retail for mobile",
+      nameru: "Yoshop retail для мобильных устройств",
       price: 4500,
       discounts: [
         {
@@ -134,6 +142,7 @@ const initialState = {
     {
       id: 29,
       name: "Yoshop retail for Android POS",
+      nameru: "Yoshop retail для Android POS",
       price: 4500,
       discount: 1000,
     },

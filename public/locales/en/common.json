@@ -159,5 +159,17 @@
   "discount": "Discount",
   "promo_code": "Please enter your Promo Code",
   "apply": "Apply",
-  "checkout": "Checkout"
+  "checkout": "Checkout",
+  "use_method": "You can use this license only on the following hardware:",
+  "per_additional": "per additional",
+  "add_product": "Add equipment",
+  "product_information": "Product information",
+  "main_specification": "Main Specifications",
+  "dimensions": "Dimensions",
+  "add_info": "Additional information",
+  "fisc_mon_trans": "Fiscalization of monetary transactions:",
+  "description": "Description",
+  "network": "Network",
+  "features": "Features",
+  "interested": "You may be interested in"
 }
