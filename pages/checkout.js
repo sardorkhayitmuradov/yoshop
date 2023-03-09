@@ -267,10 +267,10 @@ const Checkout = () => {
 
                 <div className="flex items-start">
                   <input type="checkbox" name="terms" id="terms" className="w-[20px] h-[20px] mt-2" />
-                  <div className="ml-[33px] text-[20px] leading-[180%]">I agree to the <span className="text-[20px] leading-[180%] text-[#FF588A] cursor-pointer">Terms & conditions</span>, Privacy policy & Return policy</div>
+                  <div className="ml-[33px] text-[20px] leading-[180%]">I accept the terms of the <span className="text-[20px] leading-[180%] text-[#FF588A] cursor-pointer">Public Offer*</span></div>
                 </div> </> || tab === '2' && "hello"
             }
-          </div>
+          </div> 
           <div className="max-w-[580px] w-full">
             <h3 className="text-[20px] font-[700] mb-[28px]">
               Products:
