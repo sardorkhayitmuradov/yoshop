@@ -115,7 +115,7 @@
   "load" : "load more",
   "faq": "FAQ",
   "guide": "User guide",
-  "ques_inventory": "Does YoShop have automatic inventory?",
+  "ques_inventory": "Does YoShop have fiscalization?",
   "ans_inventory": "Yes! Yoshop has a fiscalization system in the form of an online-register.",
   "ques_payment": "What types of payments are accepted?",
   "ans_payment": "Yoshop accepts cash, non-cash (QR-code, bank card) types of payments.",
