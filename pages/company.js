@@ -20,7 +20,7 @@ export async function getStaticProps({ locale }) {
     <main className='pt-[100px] max-[450px]:pt-14 max-[450px]:pb-5'>
       <section className='bg-[url("../public/assets/images/companyBg.jpg")] bg-no-repeat bg-cover company-hero max-[450px]:mb-[10px]'>
         <div className='h-[824px] max-w-xl mx-auto flex flex-col justify-center text-white max-[450px]:h-[200px]'>
-          <h2 className='font-bold text-[56px] leading-[120%] mb-[40px] max-[450px]:text-[24px] max-[450px]:leading-[140%] max-[450px]:mb-0 max-[450px]:px-6'>Finenex LTD</h2>
+          <h2 className='font-bold text-[56px] leading-[120%] mb-[40px] max-[450px]:text-[24px] max-[450px]:leading-[140%] max-[450px]:mb-0 max-[450px]:px-6'>{t("common:company_title")}</h2>
           <p className='text-[20px] leading-[180%] mb-[100px] max-[450px]:hidden'>{t('common:fin_intro')}</p>
         </div>
       </section>
@@ -38,7 +38,7 @@ export async function getStaticProps({ locale }) {
             <p>- {t("common:bring")} {t('common:pleasure')}</p>
           </CompanyCard>
 
-          <CompanyCard image={CompanyDetails} title={t('common:details')} ><p className='text-[20px] leading-[180%] text-[#111827]'>LLP Finenex</p><p className='poppins text-[20px] leading-[180%] text-[#111827]'>BIN: 220140013991</p></CompanyCard>
+          <CompanyCard image={CompanyDetails} title={t('common:details')} ><p className='text-[20px] leading-[180%] text-[#111827]'>{t("common:company_header")}</p><p className='poppins text-[20px] leading-[180%] text-[#111827]'>{t("common:company_bin")}</p></CompanyCard>
         </div>
       </section>
     </main>

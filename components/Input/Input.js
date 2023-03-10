@@ -8,7 +8,9 @@ const Input = ({
   value,
   onChange,
   placeholder,
-  pattern
+  pattern,
+  children,
+  inputInnerWrapperClassName
 }) => {
   const onGetValue = (e) => {
     onChange(e.target.value);
@@ -23,16 +25,19 @@ const Input = ({
       ) : ( 
         ""
       )}
-      <input
-        type={inputType}
-        className={inputClassName}
-        id={name}
-        name={name}
-        pattern={pattern ? pattern : ""}
-        value={value ? value : ""}
-        onChange={onGetValue}
-        placeholder={placeholder ? placeholder: ""}
-      />
+      <div className={inputInnerWrapperClassName}>
+        <input
+          type={inputType}
+          className={inputClassName}
+          id={name}
+          name={name}
+          pattern={pattern ? pattern : ""}
+          value={value ? value : ""}
+          onChange={onGetValue}
+          placeholder={placeholder ? placeholder: ""}
+        />
+        {children}
+      </div>
     </div>
   );
 };

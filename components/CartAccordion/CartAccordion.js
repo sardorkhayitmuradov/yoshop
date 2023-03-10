@@ -20,6 +20,7 @@ const CartAccordion = ({
   accordionClassName,
   accordionHeaderClassName,
   accordionBodyClassname,
+  licensePrice,
   children,
 }) => {
   const router = useRouter();
@@ -42,9 +43,14 @@ const CartAccordion = ({
                 accordionHeaderClassName ? accordionHeaderClassName : ''
               }`}
             >
-              <div className='flex flex-col items-center w-full' onClick={(e) => e.stopPropagation()}>
+              <div
+                className='flex flex-col items-center w-full'
+                onClick={(e) => e.stopPropagation()}
+              >
                 <svg
-                  className={`w-6 h-6 self-end mb-2 ${!isActive ? '-rotate-90' : 'rotate-90'}`}
+                  className={`w-6 h-6 self-end mb-2 ${
+                    !isActive ? '-rotate-90' : 'rotate-90'
+                  }`}
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -60,6 +66,16 @@ const CartAccordion = ({
                 </svg>
                 <div className='font-bold text-left text-[20px] leading-[140%] w-full text-[#111827] max-[450px]:text-[16px]'>
                   {title}
+                  {!isActive && (
+                    <li className='flex items-center ml-auto w-[82%] justify-between'>
+                      <h4 className='text-[12px] leading-[140%] font-bold'>
+                        Subtotal:
+                      </h4>
+                      <p className='text-[12px] leading-[140%] font-bold'>
+                        ₸ {licensePrice}
+                      </p>
+                    </li>
+                  )}
                 </div>
               </div>
             </div>

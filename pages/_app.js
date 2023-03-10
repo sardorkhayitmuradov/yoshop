@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { appWithTranslation } from 'next-i18next';
 import Layout from '../components/layout';
 import ModalProvider from "../context/modal";
+import CheckoutModalProvider from '../context/CheckoutModal';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import '../styles/globals.css'
@@ -16,16 +17,18 @@ function App({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <ModalProvider>
-            <NextSeo
-                title='YoShop'
-                titleTemplate='YoShop'
-                description='YoShop E-commerce'
-            />
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
-      </ModalProvider>
+      <CheckoutModalProvider>
+        <ModalProvider>
+              <NextSeo
+                  title='YoShop'
+                  titleTemplate='YoShop'
+                  description='YoShop E-commerce'
+              />
+              <Layout>
+                  <Component {...pageProps} />
+              </Layout>
+        </ModalProvider>
+      </CheckoutModalProvider>
     </Provider>
   )
 }

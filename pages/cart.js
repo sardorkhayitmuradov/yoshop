@@ -9,6 +9,7 @@ import CancelButton from '../public/assets/images/cart-cancel.svg';
 import { CalculatorProduct } from '../components/CalculatorProduct';
 import { useTranslation } from 'next-i18next';
 import Accordion from '../components/CartAccordion/CartAccordion';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps({ locale }) {
   return {
@@ -18,34 +19,21 @@ export async function getStaticProps({ locale }) {
   };
 }
 const Cart = () => {
+  const router = useRouter();
   let cart = useSelector((store) => store.carts.cart);
   const { t } = useTranslation();
 
   const onChecked = (e) => {
     const { value, checked } = e.target;
-    console.log(value, checked);
   };
 
   return (
     <>
-      <section className='min-h-[90vh] pt-[170px] mb-[250px] text-[#111827] max-[450px]:py-[50px]'>
+      <section className='min-h-[90vh] pt-[170px] mb-[250px] text-[#111827] max-[450px]:py-[50px] max-[450px]:mb-0'>
         <div className='max-w-xl mx-auto max-[450px]:px-6'>
           <h1 className='font-bold text-[32px] leading-[140%] mb-7 max-[450px]:text-[20px] max-[450px]:mb-5'>
             {t('common:cart')}
           </h1>
-          <div className='mb-5 items-center justify-between max-[450px]:flex hidden'>
-            <p className='font-bold text-[16px] leading-[140%] cursor-pointer'>
-              Products
-            </p>
-            <div className='flex items-center gap-x-5'>
-              <p className='font-bold text-[12px] leading-[180%] text-[#FF588A] cursor-pointer'>
-                Delete All
-              </p>
-              <p className='font-bold text-[12px] leading-[180%] text-[#FF588A] cursor-pointer'>
-                Select All
-              </p>
-            </div>
-          </div>
           <div className='w-full max-[450px]:hidden'>
             {cart?.quantity > 0 ? (
               <>
@@ -87,7 +75,11 @@ const Cart = () => {
                                     className='mr-[25px]'
                                   />
                                   <h3 className='text-[20px] font-bold leading-[140%] mr-[25px]'>
-                                    {license.name || license.title}
+                                    {
+                                      (router.locale = 'ru'
+                                        ? license.nameru || license.titleru
+                                        : license.name || license.title)
+                                    }
                                   </h3>
                                   <Link
                                     href={'/licenses'}
@@ -121,10 +113,12 @@ const Cart = () => {
                                 </div>
                                 <div className='w-full'>
                                   <p className='mb-[10px]'>
-                                    {t('header:equipment')}
+                                    {license.products.length > 0 &&
+                                      t('header:equipment')}
                                   </p>
                                   {license.products.length > 0
                                     ? license.products.map((product) => {
+                                        console.log(product);
                                         return (
                                           <div
                                             className='flex items-center justify-between mb-3'
@@ -139,7 +133,14 @@ const Cart = () => {
                                                 className='mr-[3px]'
                                               />
                                               <h3 className='text-[20px] leading-[140%]'>
-                                                {product.name || product.title}
+                                                {
+                                                  (router.locale = 'ru'
+                                                    ? product.name ||
+                                                      product.titleru ||
+                                                      product.title
+                                                    : product.name ||
+                                                      product.title)
+                                                }
                                               </h3>
                                             </div>
                                             <div className='flex items-center justify-between w-full max-w-[200px]'>
@@ -222,7 +223,7 @@ const Cart = () => {
                       <div className='flex items-center'>
                         <p>{t('common:discount')}</p>
                         <p className='text-[12px] text-[#FF588A] ml-3'>
-                          (Your promo code applied)
+                        {t("common:applied_promo_code")}
                         </p>
                       </div>
                       <p className='text-[#ff588a]'>₸ 1000</p>
@@ -284,59 +285,209 @@ const Cart = () => {
               </div>
             )}
           </div>
-          <Accordion
-            // subTotal={foundProd?.subTotal || 0}
-            accordionClassName={`mb-[11px]`}
-            accordionBodyClassname={'py-[20px]'}
-            accordionHeaderClassName={'py-[10px] px-[34px] max-[450px]:px-0'}
-            title={
-              <div className='flex items-center max-w-[830px] max-[450px]:mb-[10px]'>
-                <ul className='flex flex-col w-full'>
-                  <li className='flex items-center justify-between'>
-                    <Image
-                      src={CancelButton}
-                      width={18}
-                      height={18}
-                      alt='cancel-btn'
-                      className='mr-[14px]'
-                    />
-                    <div className='max-[450px]:max-w-[207px] flex items-center justify-between'>
-                      <h2 className='text-[14px] mr-7 leading-[140%] text-[#111827]'>
-                        YoShop Mobile License
-                      </h2>
-                      <p>x 1</p>
-                    </div>
-                    <Checkbox
-                      id={6}
-                      value={'pos'}
-                      onGetValue={onChecked}
-                      checkboxClass={'checkbox'}
-                    />
-                  </li>
-                  <li className='flex items-center ml-auto max-w-[250px] w-full mb-3'>
-                    <Link
-                      href={'/licenses'}
-                      className='text-[#FF588A] text-[12px] leading-[140%] border-b border-[#ff588a] pb-1'
-                    >
-                      {t('common:edit')}
-                    </Link>
-                  </li>
-                  <li className='flex items-center ml-auto max-w-[250px] justify-between w-full'>
-                    <h4
-                      className='text-[12px] leading-[140%] font-bold'
-                    >
-                      Subtotal:
-                    </h4>
-                    <p className='text-[12px] leading-[140%] font-bold'>₸ 164 500</p>
-                  </li>
-                </ul>
+          {cart.quantity > 0 ? (
+            <>
+              <div className='mb-5 items-center justify-between max-[450px]:flex hidden'>
+                <p className='font-bold text-[16px] leading-[140%] cursor-pointer'>
+                  {t('common:products')}
+                </p>
+                <div className='flex items-center gap-x-5'>
+                  <p className='font-bold text-[12px] leading-[180%] text-[#FF588A] cursor-pointer'>
+                    {t('common:delete_all')}
+                  </p>
+                  <p className='font-bold text-[12px] leading-[180%] text-[#FF588A] cursor-pointer'>
+                    {t('common:select_all')}
+                  </p>
+                </div>
               </div>
-            }
-          >
-            <div className='flex w-full'>
-              <h2 className='text-[14px] leading-[140%] font-bold'>Order summary:</h2>
+              <div className='w-full mb-16'>
+                {cart.licenses.map((license) => {
+                  return (
+                    <Accordion
+                      key={license.id}
+                      accordionClassName={`mb-[11px] max-[450px]:block hidden`}
+                      accordionBodyClassname={'py-[20px]'}
+                      accordionHeaderClassName={
+                        'py-[10px] px-[34px] max-[450px]:px-0'
+                      }
+                      licensePrice={license.subTotal}
+                      title={
+                        <div className='flex items-center max-w-[830px] max-[450px]:mb-[10px]'>
+                          <ul className='flex flex-col w-full'>
+                            <li className='flex items-center justify-between'>
+                              <Image
+                                src={CancelButton}
+                                width={18}
+                                height={18}
+                                alt='cancel-btn'
+                                className='mr-[14px]'
+                              />
+                              <div className='max-[450px]:max-w-[207px] flex items-center justify-between'>
+                                <h2 className='text-[14px] mr-7 leading-[140%] text-[#111827]'>
+                                  {
+                                    (router.locale = 'ru'
+                                      ? license.nameru || license.titleru
+                                      : license.name || license.title)
+                                  }
+                                </h2>
+                                <p className='w-[30%]'>x {license.qty}</p>
+                              </div>
+                              <Checkbox
+                                id={license.id}
+                                value={'pos'}
+                                onGetValue={onChecked}
+                                checkboxClass={'checkbox'}
+                              />
+                            </li>
+                            <li className='flex items-center ml-auto max-w-[250px] w-full mb-3'>
+                              <Link
+                                href={'/licenses'}
+                                className='text-[#FF588A] text-[12px] leading-[140%] border-b border-[#ff588a] pb-1'
+                              >
+                                {t('common:edit')}
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      }
+                    >
+                      <div className='flex w-full flex-col pb-6'>
+                        <h2 className='text-[14px] leading-[140%] font-bold'>
+                          {t('common:order_summary')}
+                        </h2>
+                        <div className='flex items-center justify-between mb-2'>
+                          <p className='text-[14px] leading-[25px]'>
+                            {t('common:period')}
+                          </p>
+                          <p className='text-[14px] leading-[25px]'>
+                            {license.period}
+                          </p>
+                        </div>
+                        <div className='flex items-center justify-between mb-[10px]'>
+                          <p className='text-[14px] leading-[25px]'>
+                            {t('common:users')}
+                          </p>
+                          <p className='text-[14px] leading-[140%] font-bold'>
+                            +
+                            {license.cashier.qty >= license.qty * 2
+                              ? license.cashier.qty - license.qty * 2
+                              : license.cashier.qty}
+                          </p>
+                        </div>
+                        <p className='mb-3'>{t('header:equipment')}</p>
+                        {license.products.length > 0
+                          ? license.products.map((product) => {
+                              return (
+                                <>
+                                  <div
+                                    className='flex items-center justify-between mb-3'
+                                    key={product.id}
+                                  >
+                                    <div className='flex items-center justify-between'>
+                                      <Image
+                                        src={product.image}
+                                        width={30}
+                                        height={34}
+                                        alt='devices'
+                                      />
+                                      <p className='text-[14px] leading-[25px]'>
+                                        {
+                                          (router.locale = 'ru'
+                                            ? product.name ||
+                                              product.titleru ||
+                                              product.title
+                                            : product.name || product.title)
+                                        }
+                                      </p>
+                                    </div>
+                                    <p className='text-[14px] leading-[25px] font-bold'>
+                                      x{product.qty}
+                                    </p>
+                                  </div>
+                                </>
+                              );
+                            })
+                          : ''}
+                        <div className='flex items-center justify-between ml-3'>
+                          <p className='text-[14px] leading-[25px] font-bold'>
+                            {t('common:sub_total')}
+                          </p>
+                          <p className='text-[14px] leading-[25px] font-bold'>
+                            ₸ {license.subTotal}
+                          </p>
+                        </div>
+                      </div>
+                    </Accordion>
+                  );
+                })}
+              </div>
+              <div className='w-full hidden max-[450px]:flex  items-center text-[14px] leading-[140%] justify-end font-bold'>
+                <div className='w-full max-w-[500px]'>
+                  <div className='flex justify-between mb-5 flex-col'>
+                    <div className='flex items-center justify-between'>
+                      <p>{t('common:discount')}</p>
+                      <p className='text-[#ff588a]'>₸ 1000</p>
+                    </div>
+                      <p className='text-[12px] leading-[180%] text-[#FF588A]'>
+                        {t("common:applied_promo_code")}
+                      </p>
+                  </div>
+
+                  <p className='mb-3'>{t('common:promo_code')}</p>
+
+                  <div className='flex items-center justify-between mb-7'>
+                    <Input
+                      inputType={'text'}
+                      wrapperClassName={'max-w-[307px] w-[50%]'}
+                      inputClassName={
+                        'text-[#9CA3AF] w-full py-[11px] pl-[14px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[25px] outline-none rounded-[6px] border-[#94A3B8] border border-solid'
+                      }
+                      placeholder={'TALGATXOXO'}
+                      value={'TALGATXOXO'}
+                      onGetValue={(value) => setTown(value)}
+                    />
+
+                    <Button
+                      className={
+                        'cursor-pointer font-bold w-[40%] text-white text-[16px] flex justify-center items-center bg-[#FF588A] py-[12px] px-1 rounded-[10px]'
+                      }
+                    >
+                      {t('common:apply')}
+                    </Button>
+                  </div>
+
+                  <div className='flex items-center justify-between mb-5 text-[32px]'>
+                    <p className='text-[20px] leading-[140%] font-bold'>{t('common:total')}</p>
+                    <p className='text-[20px] leading-[140%] font-bold'>₸ 193 000</p>
+                  </div>
+
+                  <Link
+                    href={'/checkout'}
+                    className={
+                      'cursor-pointer font-bold w-full text-white text-[16px] flex justify-center items-center bg-[#7D66BB] py-[12px] px-[22px] rounded-[10px]'
+                    }
+                  >
+                    {t('common:checkout')}
+                  </Link>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className='max-w-[510px] max-[450px]:block hidden w-full mx-auto mt-10'>
+              <p className='font-bold leading-[140%] text-[44px] max-[450px]:leading-[140%] max-[450px]:text-[24px] text-center text-[#E5E7EB] mb-[21px] max-[450px]:mb-10'>
+                {t('common:empty')}
+              </p>
+              <Link href={'/'}>
+                <Button
+                  className={
+                    'cursor-pointer font-bold max-w-[507px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'
+                  }
+                >
+                  {t('common:main')}
+                </Button>
+              </Link>
             </div>
-          </Accordion>
+          )}
         </div>
       </section>
     </>

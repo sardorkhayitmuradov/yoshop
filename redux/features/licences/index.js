@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   annual: [
-    {
+    {  
       id: 21,
       name: "Yoshop Retail for Yoshop POS",
       nameru: "Yoshop Retail для Yoshop POS",
@@ -113,7 +113,7 @@ const initialState = {
           price: 4000,
         },
       ],
-      product: [
+      product: [  
         {
           id: 99,
           image: "/assets/images/centrem.png",

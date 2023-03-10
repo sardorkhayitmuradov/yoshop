@@ -22,6 +22,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps({ locale }) {
   return {
@@ -32,6 +33,7 @@ export async function getStaticProps({ locale }) {
 }
 
 function Home() {
+  const router = useRouter()
   const [name, setName] = useState();
   const [number, setNumber] = useState();
   const { t } = useTranslation();
@@ -56,10 +58,10 @@ function Home() {
             
           }}
           modules={[Autoplay, Pagination, Navigation]}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 3000,
+        //   disableOnInteraction: false,
+        // }}
         >
           <SwiperSlide>
             <div className='bg-[url("../public/assets/images/hero.png")] bg-no-repeat bg-right-top bg-[length:1200px_775px] max-[450px]:bg-[url("../public/assets/images/banner1-mobile.png")] max-[450px]:bg-cover max-[450px]:bg-center'>
@@ -88,13 +90,14 @@ function Home() {
             <div className='bg-[url("../public/assets/images/banner2.jpg")] hero bg-no-repeat bg-cover max-[450px]:bg-[url("../public/assets/images/banner2-mobile.png")] max-[450px]:bg-center max-[450px]:mt-[50px]'>
               <div className='max-w-xl mx-auto flex flex-col pt-[179px] pb-[50px] justify-center max-[450px]:py-[100px] max-[450px]:px-6'>
                 <div className='flex justify-between items-center mb-[200px] max-[450px]:mb-0'>
-                  <div className='max-w-[567px] w-full max-[450px]:max-w-[235px]'>
+                  <div className='max-w-[649px] w-full max-[450px]:max-w-[240px]'>
                     <div className='mb-[67px] text-[40px] font-bold leading-[120%] max-[450px]:max-w-[195px] max-[450px]:text-[20px] max-[450px]:mb-[32px] max-[450px]:leading-[140%]'>
                       <div>
-                        <h2 className='bg-[#FF588A] text-[#fff] rounded inline'>{t("common:buy_title")}</h2>
+                        <h2 className={`bg-[#FF588A] text-[#fff] rounded ${router.locale = 'ru' ? 'inline-block max-[450px]:inline p-[1px]' : 'inline'}`}>{t("common:buy_title")}</h2>
                       </div>
                       <h2 className='text-[#fff] inline'>{t("common:buy_retail")}</h2>
-                      <h2 className='bg-[#FF588A] text-[#fff] rounded inline'>{t("common:buy_free")}</h2>
+                      <br />
+                      <h2 className={`bg-[#FF588A] text-[#fff] rounded ${router.locale = 'ru' ? 'inline-block max-[450px]:inline max-[450px]:p-[1px]' : 'inline'}`}>{t("common:buy_free")}</h2>
                     </div>
 
                     <Button
@@ -113,7 +116,7 @@ function Home() {
             <div className='bg-[url("../public/assets/images/banner3.jpg")] hero bg-no-repeat bg-cover  max-[450px]:bg-[url("../public/assets/images/banner3-mobile.png")] max-[450px]:bg-cover max-[450px]:bg-right max-[450px]:mt-[70px]'>
               <div className='max-w-xl mx-auto flex flex-col pt-[179px] pb-[50px] justify-center max-[450px]:py-[100px] max-[450px]:px-6'>
                 <div className='flex justify-between items-center mb-[200px] max-[450px]:w-full max-[450px]:m-0'>
-                  <div className='max-w-[567px] w-full max-[450px]:max-w-[235px]'>
+                  <div className='max-w-[567px] w-full max-[450px]:max-w-[250px]'>
                     <div>
                       <div className='max-w-[560px] w-full font-bold text-[40px] leading-[134%] mb-[40px] max-[450px]:text-[20px]  max-[450px]:leading-[140%]'>
                         <span className='bg-[#FF588A] pt-1 px-1 rounded-md text-white'>{t("common:download")}</span>

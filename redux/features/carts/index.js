@@ -85,6 +85,7 @@ export const CartSlice = createSlice({
 
     addEquipments(state, action) {
       const { elId, product } = action.payload;
+      // console.log(action.payload)
       const existingLicenseIndex = state.licenses.findIndex(
         (licence) => licence.id === elId
       );
@@ -111,7 +112,7 @@ export const CartSlice = createSlice({
 
     addLicences(state, action) {
       let {
-        el: { id, price, name, discounts , product },
+        el: { id, price, name,nameru,titleru, discounts , product },
         period,
       } = action.payload;
 
@@ -142,6 +143,7 @@ export const CartSlice = createSlice({
           period: period,
           qty: 1,
           name: name,
+          nameru: nameru || titleru,
           price: price,
           products: [],
           cashier: {
@@ -185,7 +187,8 @@ export const CartSlice = createSlice({
     },
 
     addProducts(state, action) {
-      const { id, price, title, image } = action.payload;
+      const { id, price, title, image , titleru  } = action.payload;
+      console.log(action.payload)
       const existingLicenseIndex = state.products.findIndex(
         (product) => product.id === id
       );
@@ -205,6 +208,7 @@ export const CartSlice = createSlice({
           id: id,
           qty: 1,
           name: title,
+          nameru: titleru,
           price: price,
           image: image,
         });
