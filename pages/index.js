@@ -102,7 +102,7 @@ function Home() {
 
                     <Button
                       className={
-                        'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[10px] max-[450px]:py-[10px] max-xs:w-full'
+                        'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[10px] max-[450px]:py-[10px] max-[450px]:max-w-[225px] max-xs:w-full'
                       }
                     >
                       {t("common:buy_now")}
@@ -128,7 +128,7 @@ function Home() {
                     <div className='flex text-white items-center justify-between'>
                       <Button
                         className={
-                          'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[74px] max-[450px]:py-[10px] max-[450px]:block hidden'
+                          'py-[17px] px-[132px] bg-[#FF588A] border-[1px] border-solid border-[#94A3B8] rounded-[10px] leading-[140%] text-xl font-bold text-white max-[450px]:px-[74px] max-[450px]:py-[10px] max-[450px]:max-w-[225px] max-[450px]:block hidden'
                         }
                       >
                         {t("common:downloadit")}
@@ -155,7 +155,7 @@ function Home() {
       >
         <div className='max-w-xl mx-auto w-full h-[750px] max-[450px]:h-auto overflow-hidden bg-[#eff1fe80] max-[450px]:bg-white rounded-[20px] relative pt-12 px-[60px] max-[450px]:px-0'>
           <div className='fixed w-[81px] h-[81px] right-20 bottom-14 z-10 max-[450px]:w-[60px] max-[450px]:h-[60px] max-[450px]:right-3'>
-            <Link href="tel:+87004508011">
+            <Link href="tel:+77004508011">
               <Image src={PhoneCall} width={81} height={81} alt='phone call image' />
             </Link>
           </div>
