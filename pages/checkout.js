@@ -425,48 +425,46 @@ const Checkout = () => {
                           inputName={'pay'}
                         />
                       </span>
-                      {
-                        payment == "1" && 
-                          <div className='mb-[70px] max-[450px]:mb-[30px]'>
-                            <AdressLocation
-                              locationInfoWrappClassName={
-                                'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
-                              }
-                              imgaes={locationAdressIcon}
-                              locationTextClassName={
-                                'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
-                              }
-                              locationText={
-                                'Almaty town, Amangeldy 59a, 7 floor, 702'
-                              }
-                            />
-                            <AdressLocation
-                              locationInfoWrappClassName={
-                                'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
-                              }
-                              imgaes={locationAdressIcon}
-                              locationTextClassName={
-                                'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
-                              }
-                              locationText={
-                                'Almaty town, Amangeldy 59a, 7 floor, 702'
-                              }
-                            />
-                            <AdressLocation
-                              locationInfoWrappClassName={
-                                'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
-                              }
-                              imgaes={locationAdressIcon}
-                              locationTextClassName={
-                                'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
-                              }
-                              locationText={
-                                'Almaty town, Amangeldy 59a, 7 floor, 702'
-                              }
-                            />
-                          </div>
-                        
-                      }
+                      {payment == '1' && (
+                        <div className='mb-[70px] max-[450px]:mb-[30px]'>
+                          <AdressLocation
+                            locationInfoWrappClassName={
+                              'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
+                            }
+                            imgaes={locationAdressIcon}
+                            locationTextClassName={
+                              'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
+                            }
+                            locationText={
+                              'Almaty town, Amangeldy 59a, 7 floor, 702'
+                            }
+                          />
+                          <AdressLocation
+                            locationInfoWrappClassName={
+                              'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
+                            }
+                            imgaes={locationAdressIcon}
+                            locationTextClassName={
+                              'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
+                            }
+                            locationText={
+                              'Almaty town, Amangeldy 59a, 7 floor, 702'
+                            }
+                          />
+                          <AdressLocation
+                            locationInfoWrappClassName={
+                              'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
+                            }
+                            imgaes={locationAdressIcon}
+                            locationTextClassName={
+                              'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
+                            }
+                            locationText={
+                              'Almaty town, Amangeldy 59a, 7 floor, 702'
+                            }
+                          />
+                        </div>
+                      )}
                       <span className='flex items-center max-[450px]:mb-8'>
                         <InputCheckbox
                           type={'radio'}
@@ -482,67 +480,69 @@ const Checkout = () => {
                           inputName={'pay'}
                         />
                       </span>
-                      {
-                        payment == "1" && <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
-                        <Input
-                          inputType={'text'}
-                          wrapperClassName={'mb-4'}
-                          inputClassName={
-                            'w-full py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] max-[450px]:placeholder:text-[10px]'
-                          }
-                          placeholder={''}
-                          value={cardName}
-                          onChange={(value) => setCardName(value)}
-                          labelValue={'Name on card'}
-                          name={'paycCardInfo'}
-                          labelClassName={'mb-[3px] font-bold'}
-                        />
-  
-                        <div className='payCardNumbInfo'>
-                          <div className='flex items-center'>
-                            <Input
-                              inputType={'number'}
-                              wrapperClassName={'mb-4 flex flex-col'}
-                              inputClassName={
-                                'p-3 border-none outline-none bg-[#E2E8F0] rounded-[5px] w-full placeholder:float-right max-[450px]:placeholder:text-[10px]'
-                              }
-                              inputInnerWrapperClassName={'flex items-center'}
-                              placeholder={''}
-                              value={cardNumber}
-                              onChange={(value) => setCardNumber(value)}
-                              labelValue={'Card Number'}
-                              name={'cardNumbInfo'}
-                              labelClassName={'mb-[3px] font-bold'}
-                            >
-                              <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
+                      {payment == '1' && (
+                        <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
+                          <Input
+                            inputType={'text'}
+                            wrapperClassName={'mb-4'}
+                            inputClassName={
+                              'w-full py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] max-[450px]:placeholder:text-[10px]'
+                            }
+                            placeholder={''}
+                            value={cardName}
+                            onChange={(value) => setCardName(value)}
+                            labelValue={'Name on card'}
+                            name={'paycCardInfo'}
+                            labelClassName={'mb-[3px] font-bold'}
+                          />
+
+                          <div className='payCardNumbInfo'>
+                            <div className='flex items-center'>
                               <Input
                                 inputType={'number'}
-                                wrapperClassName={'flex flex-col w-[30%]'}
+                                wrapperClassName={'mb-4 flex flex-col'}
                                 inputClassName={
-                                  'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] max-[450px]:px-1 max-[450px]:placeholder:py-3'
+                                  'p-3 border-none outline-none bg-[#E2E8F0] rounded-[5px] w-full placeholder:float-right max-[450px]:placeholder:text-[10px]'
                                 }
-                                placeholder={'MM/YY'}
-                                value={cardValidityPeriod}
-                                onChange={(value) => setCardValidityPeriod(value)}
-                                name={'validity_period'}
-                              />
-                              <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
-                              <Input
-                                inputType={'number'}
-                                wrapperClassName={'flex flex-col w-[25%]'}
-                                inputClassName={
-                                  'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] appearance-none max-[450px]:px-1 max-[450px]:placeholder:py-3'
-                                }
-                                placeholder={'CVC'}
-                                value={cardCVC}
-                                onChange={(value) => setCardCVC(value)}
-                                name={'CVC'}
-                              />
-                            </Input>
+                                inputInnerWrapperClassName={'flex items-center'}
+                                placeholder={''}
+                                value={cardNumber}
+                                onChange={(value) => setCardNumber(value)}
+                                labelValue={'Card Number'}
+                                name={'cardNumbInfo'}
+                                labelClassName={'mb-[3px] font-bold'}
+                              >
+                                <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
+                                <Input
+                                  inputType={'number'}
+                                  wrapperClassName={'flex flex-col w-[30%]'}
+                                  inputClassName={
+                                    'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] max-[450px]:px-1 max-[450px]:placeholder:py-3'
+                                  }
+                                  placeholder={'MM/YY'}
+                                  value={cardValidityPeriod}
+                                  onChange={(value) =>
+                                    setCardValidityPeriod(value)
+                                  }
+                                  name={'validity_period'}
+                                />
+                                <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
+                                <Input
+                                  inputType={'number'}
+                                  wrapperClassName={'flex flex-col w-[25%]'}
+                                  inputClassName={
+                                    'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] appearance-none max-[450px]:px-1 max-[450px]:placeholder:py-3'
+                                  }
+                                  placeholder={'CVC'}
+                                  value={cardCVC}
+                                  onChange={(value) => setCardCVC(value)}
+                                  name={'CVC'}
+                                />
+                              </Input>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      }
+                      )}
                     </div>
 
                     <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
@@ -619,7 +619,7 @@ const Checkout = () => {
                     Please review the order details and payment details before
                     proceeding to confirm your order{' '}
                   </p>
-                  <div className='flex items-center max-[450px]:mb-5'>
+                  <div className='items-center max-[450px]:mb-5 hidden max-[450px]:flex'>
                     <PolicyCheckbox
                       id={'termsPolicy'}
                       onGetValue={onSave}
@@ -630,7 +630,7 @@ const Checkout = () => {
                       policy
                     </div>
                   </div>
-                  <div className='flex items-center'>
+                  <div className='items-center hidden max-[450px]:flex'>
                     <PolicyCheckbox
                       id={'emailPolicy'}
                       onGetValue={onSave}
@@ -638,6 +638,35 @@ const Checkout = () => {
                     />
                     <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
                       Sign me up to the email list
+                    </div>
+                  </div>
+                  <div className='flex items-center max-[450px]:mb-5 max-[450px]:hidden'>
+                    <PolicyCheckbox
+                      id={'policyPublic'}
+                      onGetValue={onSave}
+                      value={'policyPublic'}
+                    />
+                    <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
+                      I accept the terms of the{' '}
+                      <span
+                        onClick={() => setVisible(!visible)}
+                        className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'
+                      >
+                        Public Offer*
+                      </span>
+                    </div>
+                  </div>
+                  <div className='flex items-center max-[450px]:hidden'>
+                    <PolicyCheckbox
+                      id={'paymentPolicy'}
+                      onGetValue={onSave}
+                      value={'paymentPolicy'}
+                    />
+                    <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
+                      I have read the{' '}
+                      <span className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'>
+                        Payment and Return Policy*
+                      </span>
                     </div>
                   </div>
                 </>
@@ -857,25 +886,54 @@ const Checkout = () => {
                         Please review the order details and payment details
                         before proceeding to confirm your order{' '}
                       </p>
-                      <div className='flex items-center max-[450px]:mb-5'>
+                      <div className='items-center max-[450px]:mb-5 hidden max-[450px]:flex'>
                         <PolicyCheckbox
-                          id={'paymentPolicy'}
+                          id={'termsPolicy'}
                           onGetValue={onSave}
-                          value={'paymentPolicy'}
+                          value={'termsPolicy'}
                         />
                         <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
                           I agree to the Terms & conditions, Privacy policy &
                           Return policy
                         </div>
                       </div>
-                      <div className='flex items-center'>
+                      <div className='items-center hidden max-[450px]:flex'>
+                        <PolicyCheckbox
+                          id={'emailPolicy'}
+                          onGetValue={onSave}
+                          value={'emailPolicy'}
+                        />
+                        <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
+                          Sign me up to the email list
+                        </div>
+                      </div>
+                      <div className='flex items-center max-[450px]:mb-5 max-[450px]:hidden'>
                         <PolicyCheckbox
                           id={'policyPublic'}
                           onGetValue={onSave}
                           value={'policyPublic'}
                         />
                         <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                          Sign me up to the email list
+                          I accept the terms of the{' '}
+                          <span
+                            onClick={() => setVisible(!visible)}
+                            className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'
+                          >
+                            Public Offer*
+                          </span>
+                        </div>
+                      </div>
+                      <div className='flex items-center max-[450px]:hidden'>
+                        <PolicyCheckbox
+                          id={'paymentPolicy'}
+                          onGetValue={onSave}
+                          value={'paymentPolicy'}
+                        />
+                        <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
+                          I have read the{' '}
+                          <span className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'>
+                            Payment and Return Policy*
+                          </span>
                         </div>
                       </div>
                     </div>
