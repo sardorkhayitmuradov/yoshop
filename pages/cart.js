@@ -453,8 +453,8 @@ const Cart = () => {
                                 <h2 className='text-[14px] mr-7 leading-[140%] text-[#111827]'>
                                   {
                                      router.locale = 'ru'
-                                      ? products.name
-                                      :  products.nameru
+                                      ? products.nameru || products.name
+                                      :  products.name
                                   }
                                 </h2>
                                 <p className='w-[30%]'>x {products.qty}</p>
