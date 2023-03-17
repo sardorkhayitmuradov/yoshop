@@ -7,7 +7,7 @@ const EquipmentCard = ({ image, children, wrapperClassName, titleClass }) => {
       <div className='w-[80px] h-[80px] flex items-center bg-[#d8d9dc] rounded-full mr-[17px] max-[450px]:hidden'>
         <Image src={image} className='mx-auto' width={50} height={50} alt='equipment card image' />
       </div>
-      <div className='hidden max-[450px]:block h-full bg-[#eeeff0] max-[450px]:px-1 max-[450px]:py-[12px] max-[450px]:mr-[10px]'>
+      <div className='hidden odd max-[450px]:block h-full max-[450px]:px-1 max-[450px]:py-[12px] max-[450px]:mr-[10px]'>
         <div className='w-[80px] h-[80px] flex items-center max-[450px]:w-[40px] max-[450px]:h-[40px] bg-[#d8d9dc] rounded-full mr-[17px] max-[450px]:m-0'>
           <Image src={image} className='mx-auto max-[450px]:w-[20px] max-[450px]:h-[20px]' width={50} height={50} alt='equipment card image' />
         </div>

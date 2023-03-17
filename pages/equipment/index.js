@@ -86,51 +86,41 @@ const Equipment = () => {
       >
         <div className='equipment-bg-red w-[600px] h-[485px] max-[450px]:hidden'></div>
         <div className='equipment-bg-blue w-[207px] h-[223px] max-[450px]:hidden'></div>
-        <div className={`max-w-xl mx-auto w-full max-[450px]:px-6`}>
+        <div className={`max-w-xl mx-auto w-full`}>
           <div className='max-w-[1204px] mx-auto w-full pt-[34px] max-[450px]:py-0'>
-            <h2 className='font-bold text-[32px] leading-[140%] mb-[26px] max-[450px]:mb-2'>
+            <h2 className='max-[450px]:px-6 font-bold text-[32px] leading-[140%] mb-[26px] max-[450px]:mb-2'>
               {t('common:equipment_shop')}
             </h2>
-            <p className='text-[18px] leading-[180%] mb-[26px] max-[450px]:mb-8'>
+            <p className='max-[450px]:px-6 text-[18px] leading-[180%] mb-[26px] max-[450px]:mb-8'>
               {t('common:set')}
             </p>
-            {/* <div className="max-w-[728px] w-full flex items-center justify-between mb-[75px] max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:mb-[40px]">
-
-              <Input inputType={'text'} wrapperClassName={'max-w-[232px] w-full max-[450px]:max-w-[100%] max-[450px]:mb-5'} inputClassName={'text-[#9CA3AF] w-full py-[19px] max-[450px]:px-3 pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:py-[13px]'} placeholder={t("common:town")} value={town} onChange={(value) => setTown(value)} />
-
-              <Input inputType={'tel'} wrapperClassName={'max-w-[232px] w-full max-[450px]:max-w-[100%] max-[450px]:mb-5'} inputClassName={'text-[#9CA3AF] w-full py-[19px] max-[450px]:px-3 pl-[30px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[24px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:py-[13px]'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} />
-
-              <Button className={'max-w-[232px] py-[19px] max-[450px]:px-3 text-white w-full bg-[#7D66BB] rounded-[10px] font-bold text-base leading-[140%] max-[450px]:max-w-[100%] max-[450px]:py-[13px]'}>
-                {t("common:order_call")}
-              </Button>
-            </div> */}
-            <h3 className='font-bold text-[32px] leading-[140%] mb-[40px] max-[450px]:text-[26px] max-[450px]:mb-5'>
+            <h3 className='max-[450px]:px-6 font-bold text-[32px] leading-[140%] mb-[40px] max-[450px]:text-[26px] max-[450px]:mb-5'>
               {t('common:you_get')}
             </h3>
-            <div className='flex items-center justify-between w-full max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:gap-[10px]'>
+            <div className='flex items-center justify-between w-full max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:gap-[10px] max-[450px]:pl-6'>
               <EquipmentCard
-                wrapperClassName={'max-w-[280px]'}
+                wrapperClassName={'max-w-[280px] max-[450px]:max-w-[100%] animate-equipment-card'}
                 image={GuaranteeIcon}
                 titleClass={'max-w-[106px] w-full]'}
               >
                 {t('common:guarantee')}
               </EquipmentCard>
               <EquipmentCard
-                wrapperClassName={'max-w-[280px]'}
+                wrapperClassName={'max-w-[280px] max-[450px]:max-w-[100%] animate-equipment-card-even'}
                 image={LearnIcon}
                 titleClass={'max-w-[106px] w-full]'}
               >
                 {t('common:training')}
               </EquipmentCard>
               <EquipmentCard
-                wrapperClassName={'max-w-[280px]'}
+                wrapperClassName={'max-w-[280px] max-[450px]:max-w-[100%] animate-equipment-card'}
                 image={SaveIcon}
                 titleClass={'max-w-[106px] w-full]'}
               >
                 {t('common:setup')}
               </EquipmentCard>
               <EquipmentCard
-                wrapperClassName={'max-w-[280px]'}
+                wrapperClassName={'max-w-[280px] max-[450px]:max-w-[100%] animate-equipment-card-even'}
                 image={DesktopIcon}
                 titleClass={'max-w-[106px] w-full]'}
               >
