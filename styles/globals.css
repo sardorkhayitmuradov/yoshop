@@ -224,7 +224,65 @@ header {
 } */
 
 
+.animate-equipment-card {
+  animation-name: linearDarker;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
 
+.animate-equipment-card .odd {
+  background-color: #eeeff0;
+}
+
+@keyframes linearDarker  {
+  0% {
+    width: 0%;
+    background-color: white;
+    border-radius: 0px;
+  }
+
+  15% {
+    background-color: #eeeff0;
+    padding-left: 20px;
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  90%{
+    background-color: #eeeff0;
+    /* background-color: red; */
+    padding-left: 20px;
+    border-radius: 0px;
+  }
+}
+
+.animate-equipment-card-even {
+  animation-name: linearEvenDarker;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+@keyframes linearEvenDarker  {
+  0% {
+    width: 0%;
+    border-radius: 0px;
+  }
+
+  15% {
+    padding-left: 20px;
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  90%{
+    padding-left: 20px;
+    border-radius: 0px;
+  }
+}
 
 @media print {
   .pdf-container {

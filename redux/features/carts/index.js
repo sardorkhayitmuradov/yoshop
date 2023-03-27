@@ -19,7 +19,8 @@ export const CartSlice = createSlice({
     addToCart(state, action) {
       state.cart.licenses = [...state.licenses];
       state.cart.products = [...state.products];
-      state.cart.quantity = state.quantity
+      state.cart.quantity = state.quantity;
+      state.cart.totalPrice = state.totalPrice;
     },
 
     addUsers(state, action) {

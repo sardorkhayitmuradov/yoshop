@@ -26,6 +26,7 @@ const Cart = () => {
   const onChecked = (e) => {
     const { value, checked } = e.target;
   };
+  console.log(cart);
 
   return (
     <>
@@ -223,7 +224,7 @@ const Cart = () => {
                       <div className='flex items-center'>
                         <p>{t('common:discount')}</p>
                         <p className='text-[12px] text-[#FF588A] ml-3'>
-                        {t("common:applied_promo_code")}
+                          {t('common:applied_promo_code')}
                         </p>
                       </div>
                       <p className='text-[#ff588a]'>₸ 1000</p>
@@ -254,7 +255,7 @@ const Cart = () => {
 
                     <div className='flex items-center justify-between mb-5 text-[32px]'>
                       <p>{t('common:total')}</p>
-                      <p>₸ 193 000</p>
+                      <p>₸ {cart.totalPrice}</p>
                     </div>
 
                     <Link
@@ -420,6 +421,76 @@ const Cart = () => {
                     </Accordion>
                   );
                 })}
+                {cart.products.map((products) => {
+                  return (
+                    <Accordion
+                      key={products.id}
+                      accordionClassName={`mb-[11px] max-[450px]:block hidden`}
+                      accordionBodyClassname={'py-[20px]'}
+                      accordionHeaderClassName={
+                        'py-[10px] px-[34px] max-[450px]:px-0'
+                      }
+                      licensePrice={products.price}
+                      title={
+                        <div className='flex items-center max-w-[830px] max-[450px]:mb-[10px]'>
+                          <ul className='flex flex-col w-full'>
+                            <li className='flex items-center justify-between'>
+                              <Image
+                                src={CancelButton}
+                                width={18}
+                                height={18}
+                                alt='cancel-btn'
+                                className='mr-[14px]'
+                              />
+                              <div className='max-[450px]:max-w-[207px] flex items-center justify-between'>
+                                  <Image
+                                    src={products.image}
+                                    width={30}
+                                    height={34}
+                                    alt='cancel-btn'
+                                    className='mr-[14px]'
+                                  />
+                                <h2 className='text-[14px] mr-7 leading-[140%] text-[#111827]'>
+                                  {
+                                     router.locale = 'ru'
+                                      ? products.nameru || products.name
+                                      :  products.name
+                                  }
+                                </h2>
+                                <p className='w-[30%]'>x {products.qty}</p>
+                              </div>
+                              <Checkbox
+                                id={products.id}
+                                value={'pos'}
+                                onGetValue={onChecked}
+                                checkboxClass={'checkbox'}
+                              />
+                            </li>
+                            <li className='flex items-center ml-auto max-w-[250px] w-full mb-3'>
+                              <Link
+                                href={'/licenses'}
+                                className='text-[#FF588A] text-[12px] leading-[140%] border-b border-[#ff588a] pb-1'
+                              >
+                                {t('common:edit')}
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      }
+                    >
+                      <div className='flex w-full flex-col pb-6'>
+                        <div className='flex items-center justify-between ml-3'>
+                          <p className='text-[14px] leading-[25px] font-bold'>
+                            {t('common:sub_total')}
+                          </p>
+                          <p className='text-[14px] leading-[25px] font-bold'>
+                            ₸ {products.price}
+                          </p>
+                        </div>
+                      </div>
+                    </Accordion>
+                  );
+                })}
               </div>
               <div className='w-full hidden max-[450px]:flex  items-center text-[14px] leading-[140%] justify-end font-bold'>
                 <div className='w-full max-w-[500px]'>
@@ -428,9 +499,9 @@ const Cart = () => {
                       <p>{t('common:discount')}</p>
                       <p className='text-[#ff588a]'>₸ 1000</p>
                     </div>
-                      <p className='text-[12px] leading-[180%] text-[#FF588A]'>
-                        {t("common:applied_promo_code")}
-                      </p>
+                    <p className='text-[12px] leading-[180%] text-[#FF588A]'>
+                      {t('common:applied_promo_code')}
+                    </p>
                   </div>
 
                   <p className='mb-3'>{t('common:promo_code')}</p>
@@ -457,12 +528,16 @@ const Cart = () => {
                   </div>
 
                   <div className='flex items-center justify-between mb-5 text-[32px]'>
-                    <p className='text-[20px] leading-[140%] font-bold'>{t('common:total')}</p>
-                    <p className='text-[20px] leading-[140%] font-bold'>₸ 193 000</p>
+                    <p className='text-[20px] leading-[140%] font-bold'>
+                      {t('common:total')}
+                    </p>
+                    <p className='text-[20px] leading-[140%] font-bold'>
+                      ₸ {cart.totalPrice}
+                    </p>
                   </div>
 
                   <Link
-                    href={'/checkout'}
+                    href={cart.quantity > 0 ? '/checkout' : "/cart"}
                     className={
                       'cursor-pointer font-bold w-full text-white text-[16px] flex justify-center items-center bg-[#7D66BB] py-[12px] px-[22px] rounded-[10px]'
                     }

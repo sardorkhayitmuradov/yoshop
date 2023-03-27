@@ -9,6 +9,7 @@ import { store } from '../redux/store';
 import '../styles/globals.css'
 import '../components/Checkbox/check.css'
 import '../components/SaveCheckbox/SaveCheckbox.css'
+import '../components/PolicyCheckbox/index.css'
 
 function App({ Component, pageProps }) {
   const router = useRouter();
