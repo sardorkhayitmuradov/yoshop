@@ -183,10 +183,10 @@ function Home() {
                 ref={swiperRef}
                 direction={"vertical"}
                 onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
-                // mousewheel={true}
+                // mousewheel={false}
+                // grabCursor={false}
                 spaceBetween={10}
                 effect={"coverflow"}
-                // grabCursor={true}
                 slidesPerView={'auto'}
                 centeredSlides={true}
                 passiveListeners={false}
