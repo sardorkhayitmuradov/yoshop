@@ -58,10 +58,10 @@ function Home() {
             
           }}
           modules={[Autoplay, Pagination, Navigation]}
-        // autoplay={{
-        //   delay: 3000,
-        //   disableOnInteraction: false,
-        // }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
         >
           <SwiperSlide>
             <div className='bg-[url("../public/assets/images/hero.png")] bg-no-repeat bg-right-top bg-[length:1200px_775px] max-[450px]:bg-[url("../public/assets/images/banner1-mobile.png")] max-[450px]:bg-cover max-[450px]:bg-center'>
@@ -186,6 +186,7 @@ function Home() {
                 // mousewheel={false}
                 // grabCursor={false}
                 spaceBetween={10}
+                touchReleaseOnEdges={true}
                 effect={"coverflow"}
                 slidesPerView={'auto'}
                 centeredSlides={true}
@@ -464,9 +465,9 @@ function Home() {
                 direction={"vertical"}
                 onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
                 mousewheel={true}
+                grabCursor={true}
                 spaceBetween={200}
                 effect={"coverflow"}
-                grabCursor={true}
                 slidesPerView={'auto'}
                 centeredSlides={true}
                 autoplay={{
