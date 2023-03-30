@@ -27,7 +27,7 @@ const Resources = () => {
             {
               resourcesVideos.length > 0 ? resourcesVideos.map(resVideo => {
                 return (
-                  <ResourcesCard key={resVideo.id} video={resVideo.video} title={resVideo.title} description={resVideo.description} />
+                  <ResourcesCard thumbnail={resVideo.thumbnail} key={resVideo.id} video={resVideo.video} title={resVideo.title} description={resVideo.description} />
                 );
               }) : ''
             }
