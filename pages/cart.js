@@ -37,9 +37,7 @@ const Cart = () => {
     if (typeof window !== "undefined") {
       const datas = JSON.parse(localStorage.getItem("data"));
       if (datas) {
-        // dispatch(getItems(datas))
-        // setDatas(datas)
-        // console.log(datas)
+
         dispatch(getItems(datas))
       }
     }
@@ -92,7 +90,7 @@ const Cart = () => {
                               />
                               <h3 className='text-[20px] font-bold leading-[140%] mr-[25px]'>
                                 {
-                                  (router.locale = 'ru'
+                                  (router.locale === 'ru'
                                     ? license.nameru || license.titleru
                                     : license.name || license.title)
                                 }
@@ -111,7 +109,7 @@ const Cart = () => {
                           <div className='max-w-[500px] w-full text-[20px] leading-[180%]'>
                             <div className='flex items-center justify-between w-full mb-5'>
                               <p>{t('common:period')}</p>
-                              <p className='font-bold'>{router.locale = 'ru' ? license.periodru : license.period}</p>
+                              <p className='font-bold'>{router.locale === 'ru' ? license.periodru : license.period}</p>
                             </div>
 
                             <div className='flex items-center justify-between w-full mb-5'>
@@ -149,7 +147,7 @@ const Cart = () => {
                                         />
                                         <h3 className='text-[20px] leading-[140%]'>
                                           {
-                                            (router.locale = 'ru'
+                                            (router.locale === 'ru'
                                               ? product.name ||
                                               product.titleru ||
                                               product.title
@@ -340,7 +338,7 @@ const Cart = () => {
                             <div className='max-[450px]:max-w-[207px] flex items-center justify-between'>
                               <h2 className='text-[14px] mr-7 leading-[140%] text-[#111827]'>
                                 {
-                                  (router.locale = 'ru'
+                                  (router.locale === 'ru'
                                     ? license.nameru || license.titleru
                                     : license.name || license.title)
                                 }
@@ -375,7 +373,7 @@ const Cart = () => {
                           {t('common:period')}
                         </p>
                         <p className='text-[14px] leading-[25px]'>
-                          {router.locale == 'ru' ? license.periodru : license.period}
+                          {router.locale === 'ru' ? license.periodru : license.period}
                         </p>
                       </div>
                       <div className='flex items-center justify-between mb-[10px]'>
@@ -407,7 +405,7 @@ const Cart = () => {
                                   />
                                   <p className='text-[14px] leading-[25px]'>
                                     {
-                                      (router.locale = 'ru'
+                                      (router.locale === 'ru'
                                         ? product.name ||
                                         product.titleru ||
                                         product.title
@@ -466,7 +464,7 @@ const Cart = () => {
                               />
                               <h2 className='text-[14px] mr-7 leading-[140%] text-[#111827]'>
                                 {
-                                  router.locale = 'ru'
+                                  router.locale === 'ru'
                                     ? products.nameru || products.name
                                     : products.name
                                 }
