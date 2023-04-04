@@ -69,7 +69,7 @@ export const Monthly = () => {
                   />
                   <span className={`text-[16px] w-full ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px]`}>
                     ₸ <PriceFormatNumber value={foundProd?.price || el.price} />
-                    {foundProd?.qty > 1 && <span className="text-[#ff588a]">({t("common:discount")} ₸ {(el.price * foundProd.qty) - foundProd.price})</span>}
+                    {foundProd?.qty > 1 && (el.price * foundProd.qty > foundProd.price && <span className="text-[#ff588a]">({t("common:discount")} ₸ {(el.price * foundProd.qty) - foundProd.price})</span>)}
                   </span>
                 </div>
               }
@@ -90,7 +90,7 @@ export const Monthly = () => {
                   />
                   <span className={`text-[16px] max-w-[300px] w-full max-[450px]:hidden ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] `}>
                     ₸ <PriceFormatNumber value={foundProd?.price || el.price} />
-                    {foundProd?.qty > 1 && <span className="text-[#ff588a]">({t("common:discount")} ₸ {(el.price * foundProd.qty) - foundProd.price})</span>}
+                    {foundProd?.qty > 1 && (el.price * foundProd.qty > foundProd.price && <span className="text-[#ff588a]">({t("common:discount")} ₸ {(el.price * foundProd.qty) - foundProd.price})</span>)}
                   </span>
                 </div>
               } >
@@ -213,7 +213,7 @@ export const Monthly = () => {
                               }
                             />
                             <span className="w-full text-[16px] leading-[25px] ml-5 max-[450px]:mx-0">
-                              ₸ <PriceFormatNumber value={prod?.price || product.price} /> 
+                              ₸ <PriceFormatNumber value={prod?.price || product.price} />
                               {/* <span className="max-[450px]:hidden">{t("common:per_additional")}</span> */}
                             </span>
                           </div>
