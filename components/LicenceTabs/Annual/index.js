@@ -14,6 +14,7 @@ import {
   removeUsers,
 } from "../../../redux/features/carts";
 import { useTranslation } from "next-i18next";
+import PriceFormatNumber from "../../PriceFormatNumber";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -34,7 +35,7 @@ export const Annual = () => {
     return idx.id != 1;
   });
 
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <>
@@ -54,41 +55,41 @@ export const Annual = () => {
               imgColor={"#FF588A"}
               titleMobile={
                 <div className="flex items-center w-full justify-between flex-row-reverse">
-                <CalculatorProduct
-                  incrementItem={(e) => {
-                    elFound
-                      ? ""
-                      : dispatch(addLicences({ el, period: "monthly" }));
-                  }}
-                  quantity={foundProd?.qty || 0}
-                  decrementItem={() => {
-                    elFound ? "" : dispatch(removeLicences(el));
-                  }}
-                />
-                <span className={`text-[16px] w-full ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px]`}>
-                  ₸ {foundProd?.price || el.price}
-                  {foundProd?.qty > 1 && `(-₸ ${(el.price * foundProd.qty) - foundProd.price})`}
-                </span>
-              </div>
-              }
-              title={
-                <div className="flex items-center max-w-[830px] max-[450px]:mb-[10px]">
-                  <h2 className="max-w-[300px] w-full">{router.locale == 'ru'? el.nameru: el.name}</h2>
                   <CalculatorProduct
-                    wrapClass={"max-[450px]:hidden"}
                     incrementItem={(e) => {
                       elFound
                         ? ""
-                        : dispatch(addLicences({ el, period: "monthly" }));
+                        : dispatch(addLicences({ el }));
                     }}
                     quantity={foundProd?.qty || 0}
                     decrementItem={() => {
                       elFound ? "" : dispatch(removeLicences(el));
                     }}
                   />
-                  <span className={`text-[16px] max-w-[190px] w-full max-[450px]:hidden ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] `}>
-                    ₸ {foundProd?.price || el.price}
-                    {foundProd?.qty > 1 && `(-₸ ${(el.price * foundProd.qty) - foundProd.price})`}
+                  <span className={`text-[16px] w-full ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px]`}>
+                    ₸ <PriceFormatNumber value={foundProd?.price || el.price} />
+                    {foundProd?.qty > 1 && <span className="text-[#ff588a]">({t("common:discount")} ₸ {(el.price * foundProd.qty) - foundProd.price})</span>}
+                  </span>
+                </div>
+              }
+              title={
+                <div className="flex items-center max-w-[830px] max-[450px]:mb-[10px]">
+                  <h2 className="max-w-[300px] w-full">{router.locale == 'ru' ? el.nameru : el.name}</h2>
+                  <CalculatorProduct
+                    wrapClass={"max-[450px]:hidden"}
+                    incrementItem={(e) => {
+                      elFound
+                        ? ""
+                        : dispatch(addLicences({ el }));
+                    }}
+                    quantity={foundProd?.qty || 0}
+                    decrementItem={() => {
+                      elFound ? "" : dispatch(removeLicences(el));
+                    }}
+                  />
+                  <span className={`text-[16px] max-w-[300px] w-full max-[450px]:hidden ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] `}>
+                    ₸ <PriceFormatNumber value={foundProd?.price || el.price} />
+                    {foundProd?.qty > 1 && <span className="text-[#ff588a]">({t("common:discount")} ₸ {(el.price * foundProd.qty) - foundProd.price})</span>}
                   </span>
                 </div>
               } >
@@ -104,7 +105,7 @@ export const Annual = () => {
                         className="mr-[18px]"
                       />
                       <p className=" text-[20px] w-full leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
-                      {router.locale == 'ru' ? "Торговая точка" : "Trading place"}
+                        {router.locale == 'ru' ? "Торговая точка" : "Trading place"}
                       </p>
                     </div>
                     <CalculatorProduct
@@ -211,7 +212,8 @@ export const Annual = () => {
                               }
                             />
                             <span className="w-full text-[16px] leading-[25px] ml-5 max-[450px]:mx-0">
-                              ₸ {prod?.price || product.price} <span className="max-[450px]:hidden">{t("common:per_additional")}</span>
+                              ₸ <PriceFormatNumber value={prod?.price || product.price} />
+                              {/* <span className="max-[450px]:hidden">{t("common:per_additional")}</span> */}
                             </span>
                           </div>
                         </div>

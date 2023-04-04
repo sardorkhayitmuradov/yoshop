@@ -8,6 +8,7 @@ import { CalculatorProduct } from "../CalculatorProduct";
 import { addEquipments, removeEquipments } from "../../redux/features/carts";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "next-i18next";
+import PriceFormatNumber from "../PriceFormatNumber";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -35,7 +36,7 @@ const AccordionWrapper = ({
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <>
@@ -54,7 +55,7 @@ const AccordionWrapper = ({
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                    className=""
+                      className=""
                       fillRule="evenodd"
                       color={imgColor ? imgColor : ""}
                       d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -109,7 +110,7 @@ const AccordionWrapper = ({
                   className="pr-2 max-[450px]:w-[27px] max-[450px]:h-[27px] max-[450px]:mr-[10px]"
                   width={35}
                   height={35}
-                  
+
                 />
                 {t("common:add_product")}
               </Button>
@@ -138,7 +139,7 @@ const AccordionWrapper = ({
                         <div className="flex items-center justify-between w-full max-[450px]:flex-row-reverse">
                           <CalculatorProduct wrapClass={'mx-0'} quantity={prod?.qty || 0} decrementItem={() => dispatch(removeEquipments({ elId, product }))} incrementItem={() => dispatch(addEquipments({ elId, product }))} />
                           <span className="text-[16px] leading-[25px]">
-                            ₸ {prod?.price || product?.price}
+                            ₸ <PriceFormatNumber value={prod?.price || product?.price} />
                           </span>
                         </div>
                       </div>
@@ -148,7 +149,7 @@ const AccordionWrapper = ({
                 : ""}
             </ul>
             <div className="max-w-[300px] w-full ml-auto text-right font-bold text-[24px] leading-[140%] max-[450px]:text-left max-[450px]:mx-0 max-[450px]:text-[16px]">
-              <p>{t("common:sub_total")}: ₸ {subTotal}</p>
+              <p>{t("common:sub_total")}: ₸ <PriceFormatNumber value={subTotal} /></p>
             </div>
           </div>}
       </div>

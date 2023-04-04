@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from 'next-i18next';
 import { useSelector } from "react-redux";
@@ -16,7 +16,6 @@ const Header = () => {
   const { t } = useTranslation();
   const quantity = useSelector((store) => store.carts.cart.quantity);
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -105,7 +104,7 @@ const Header = () => {
               {
                 t("header:cart")
               }
-            </Link> 
+            </Link>
           </div>
         </div>
         {

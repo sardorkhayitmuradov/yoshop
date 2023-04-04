@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { useReducer, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Monthly, Annual, SemiAnnual } from "../components/LicenceTabs";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../redux/features/carts";
+import { addToCart, getItems } from "../redux/features/carts";
 import Button from "../components/Button/Button";
 import TabTitle from "../components/TabTitle/TabTitle";
 import EquipmentCard from "../components/EquipmentCard/EquipmentCard";
@@ -14,6 +14,7 @@ import SaveIcon from "../public/assets/images/save-as.svg";
 import DesktopIcon from "../public/assets/images/desktop-computer.svg";
 import shopIcon from "../public/assets/images/bascet.svg";
 import UserGuide from '../public/assets/images/document-text.svg';
+import PriceFormatNumber from "../components/PriceFormatNumber";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -30,7 +31,26 @@ const Licenses = () => {
 
   const carts = useSelector((store) => store.carts);
 
+  // const [datas, setDatas] = useState("")
+
   let priceTotal = carts.totalPrice;
+
+  const addToCartHandler = useCallback(() => {
+    dispatch(addToCart())
+  }, [dispatch])
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const datas = JSON.parse(localStorage.getItem("data"));
+      if (datas) {
+        // dispatch(getItems(datas))
+        // setDatas(datas)
+        // console.log(datas)
+        dispatch(getItems(datas))
+      }
+    }
+  }, [addToCartHandler, dispatch]);
+
 
   return (
     <section>
@@ -56,8 +76,8 @@ const Licenses = () => {
           <TabTitle
             onClick={() => setActiveTab("1")}
             titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] max-[450px]:w-[33%] ${activeTab == "1"
-                ? "bg-[#FF588A] text-white"
-                : "bg-[#D1D5DB] text-[#4B5563]"
+              ? "bg-[#FF588A] text-white"
+              : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
           >
             {t("common:monthly")}
@@ -65,8 +85,8 @@ const Licenses = () => {
           <TabTitle
             onClick={() => setActiveTab("2")}
             titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] max-[450px]:w-[33%] ${activeTab == "2"
-                ? "bg-[#FF588A] text-white"
-                : "bg-[#D1D5DB] text-[#4B5563]"
+              ? "bg-[#FF588A] text-white"
+              : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
           >
             {t("common:semi_annual")}
@@ -74,8 +94,8 @@ const Licenses = () => {
           <TabTitle
             onClick={() => setActiveTab("3")}
             titleWrappClassName={`max-w-[400px] w-full py-[13px] px-[12px] max-[450px]:w-[33%] ${activeTab == "3"
-                ? "bg-[#FF588A] text-white"
-                : "bg-[#D1D5DB] text-[#4B5563]"
+              ? "bg-[#FF588A] text-white"
+              : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
           >
             {t("common:annual")}
@@ -95,7 +115,7 @@ const Licenses = () => {
           </div>
         </Link>
 
-        <div className="flex items-center justify-end max-[450px]:justify-between max-[450px]:mb-[50px]">
+        {/* <div className="flex items-center justify-end max-[450px]:justify-between max-[450px]:mb-[50px]">
           <p className="mr-[30px] font-bold text-[32px] leading-[140%] text-[#0F172A] max-[450px]:text-[16px]">
             {t("common:total")}:
             <span className="ml-[10px]">₸ {priceTotal}</span>
@@ -115,7 +135,7 @@ const Licenses = () => {
             />
             {t("common:add_cart")}
           </Button>
-        </div>
+        </div> */}
 
         <h2 className="font-bold text-[32px] text-[#111827] leading-[140%] mb-[40px] max-[450px]:text-[26px] max-[450px]:mb-5">
           {t("common:price_includes")}:
@@ -123,15 +143,15 @@ const Licenses = () => {
 
         <div className="flex items-center justify-between w-full mb-20 max-[450px]:flex-col max-[450px]:gap-2">
           <EquipmentCard
-            wrapperClassName={"max-w-[380px]"}
+            wrapperClassName={"max-w-[380px] animate-equipment-card"}
             image={GuaranteeIcon} titleClass={"max-w-[242px] w-full"}
           >
             {t("common:warranty")}
           </EquipmentCard>
-          <EquipmentCard wrapperClassName={"max-w-[380px]"} image={SaveIcon} titleClass={"max-w-[242px] w-full"}>
+          <EquipmentCard wrapperClassName={"max-w-[380px] animate-equipment-card-even"} image={SaveIcon} titleClass={"max-w-[242px] w-full"}>
             {t("common:setup")}
           </EquipmentCard>
-          <EquipmentCard wrapperClassName={"max-w-[380px]"} image={DesktopIcon} titleClass={"max-w-[242px] w-full"}>
+          <EquipmentCard wrapperClassName={"max-w-[380px] animate-equipment-card"} image={DesktopIcon} titleClass={"max-w-[242px] w-full"}>
             {t("common:support")}
           </EquipmentCard>
         </div>
@@ -139,13 +159,13 @@ const Licenses = () => {
         <div className="flex items-center justify-end max-[450px]:hidden">
           <p className="mr-[30px] font-bold text-[32px] leading-[140%] text-[#0F172A]">
             {t("common:total")}:
-            <span className="ml-[10px]">₸ {priceTotal}</span>
+            <span className="ml-[10px]">₸ <PriceFormatNumber value={priceTotal} /></span>
           </p>
           <Button
             className={
               "cursor-pointer font-bold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]"
             }
-            onClick={() => dispatch(addToCart())}
+            onClick={addToCartHandler}
           >
             <Image
               src={shopIcon}

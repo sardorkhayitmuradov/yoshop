@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CompanyCard from '../components/CompanyCard/CompanyCard';
 import CompanyFinnexPurpose from '../public/assets/images/FinenexsPurpose.jpg';
 import IbexlabsVision from '../public/assets/images/IbexlabsVision.jpg';
@@ -6,6 +6,8 @@ import CompanyDetails from '../public/assets/images/companyDetails.jpg';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { getItems } from "../redux/features/carts";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -15,7 +17,20 @@ export async function getStaticProps({ locale }) {
   };
 } const Company = () => {
   const { t } = useTranslation();
-  const {locale} = useRouter();
+  const { locale } = useRouter();
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const datas = JSON.parse(localStorage.getItem("data"));
+      if (datas) {
+        // dispatch(getItems(datas))
+        // setDatas(datas)
+        // console.log(datas)
+        dispatch(getItems(datas))
+      }
+    }
+  }, [dispatch]);
   return (
     <main className='pt-[100px] max-[450px]:pt-14 max-[450px]:pb-5'>
       <section className='bg-[url("../public/assets/images/companyBg.jpg")] bg-no-repeat bg-cover company-hero max-[450px]:mb-[10px]'>
@@ -31,9 +46,9 @@ export async function getStaticProps({ locale }) {
 
           <CompanyCard wrapperClassName={'flex-row-reverse'} image={IbexlabsVision} title={t('common:vision')} >
             <p className='text-[20px] leading-[180%] text-[#111827]'>{t('common:business')}</p>
-            <div>- {t('common:max')} <span className='text-[#FF588A]'>{t('common:profitable')}</span> { locale === 'en' && "as possible"  }</div>
+            <div>- {t('common:max')} <span className='text-[#FF588A]'>{t('common:profitable')}</span> {locale === 'en' && "as possible"}</div>
             <div>-  <span className='text-[#FF588A]'>{t('common:easy_com')}</span>
-            {t("common:manage")}
+              {t("common:manage")}
             </div>
             <p>- {t("common:bring")} {t('common:pleasure')}</p>
           </CompanyCard>

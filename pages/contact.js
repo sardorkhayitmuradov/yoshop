@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Input from '../components/Input/Input';
 import Button from '../components/Button/Button';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import PhoneInput from 'react-phone-number-input/input'
+import { useDispatch } from 'react-redux';
+import { getItems } from "../redux/features/carts";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -14,10 +16,23 @@ export async function getStaticProps({ locale }) {
 }
 
 const Contact = () => {
-  console.log(PhoneInput)
   const { t } = useTranslation();
   const [userName, setUserName] = useState('');
-  const [number, setNumber] = useState(+7 - 777 - 123 - 11 - 22);
+  const [number, setNumber] = useState();
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const datas = JSON.parse(localStorage.getItem("data"));
+      if (datas) {
+        // dispatch(getItems(datas))
+        // setDatas(datas)
+        // console.log(datas)
+        dispatch(getItems(datas))
+      }
+    }
+  }, [dispatch]);
   return (
     <main>
       <section className='pt-[150px] pb-[75px] max-[450px]:pt-14 max-[450px]:pb-7'>
@@ -59,21 +74,21 @@ const Contact = () => {
           <div className="mx-auto max-w-[817px] w-full flex items-center justify-between max-[450px]:flex-col max-[450px]:w-full max-[450px]:items-stretch">
             <div className='max-w-[595px] w-full flex items-center justify-between max-[450px]:flex-col max-[450px]:w-full max-[450px]:items-stretch'>
               <Input inputType={'text'} wrapperClassName={'max-w-[267px] max-[450px]:max-w-[100%] w-full mr-[20px] max-[450px]:mx-0 max-[450px]:w-full'} inputClassName={'w-full py-[13px] pl-[30px] placeholder:text-[#98989C]  placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:w-full max-[450px]:mb-5'} placeholder={t("common:name")} pattern={"[a-zA-Z]+"} value={userName} onChange={(value) => {
-              let newValue = value.replace(/[^a-zA-Z]/g, '');
-              {setUserName(newValue)} 
-              }}/>
+                let newValue = value.replace(/[^a-zA-Z]/g, '');
+                { setUserName(newValue) }
+              }} />
               {/* <Input inputType={'tel'} wrapperClassName={'max-w-[318px] max-[450px]:max-w-[100%] w-full max-[450px]:w-full'} inputClassName={'w-full py-[13px] pl-[30px] placeholder:text-[#98989C] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:w-full max-[450px]:mb-5'} placeholder={t("common:number")} value={number} onChange={(value) => setNumber(value)} /> */}
               <PhoneInput
                 country="KZ"
                 defaultCountry='KZ'
-                value={t("common:number")}
+                value={number}
                 placeholder={t("common:number")}
                 maxLength={16}
                 className="w-full py-[13px] pl-[30px] placeholder:text-[#98989C] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] bg-[#F1F1F1] max-[450px]:w-full max-[450px]:mb-5"
                 international
                 withCountryCallingCode
                 onChange={(value) => setNumber(value)}
-                 />
+              />
             </div>
             <Button className={'max-w-[192px] py-[13px] w-full bg-[#FF588A] text-white rounded-[10px] font-bold text-base leading-[140%] max-[450px]:w-full max-[450px]:max-w-[100%]'}>
               {t("common:order_call")}

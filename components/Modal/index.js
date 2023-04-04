@@ -1,19 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ModalContext } from '../../context/modal';
 import modalStickIcon from '../../public/assets/images/modalStick.svg';
 import Button from '../Button/Button';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Link from 'next/link';
 
 const Modal = () => {
-  let cart = useSelector((store) => store.carts.cart);
-  let carts = useSelector((store) => store.carts)
+  // let cart = useSelector((store) => store.carts.cart);
+  const [cart , setCart] = useState([]);
 
   const { visible, setVisible } = useContext(ModalContext);
   const modal = () => {
     setVisible(false);
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      let cart = JSON.parse(window.localStorage.getItem('data'));
+      setCart(cart)
+    }
+  }, []);
+
 
   return (
     <>
@@ -43,11 +51,11 @@ const Modal = () => {
               <p className='text-[16px] leading-[140%] text-[#111827] mb-[6px] max-w-[220px] w-full text-right'>Order Summary</p>
             </div>
 
-            {cart.licenses.length > 0 ? (
-              cart.licenses.map((cart) => {
+            {cart?.quantity > 0 > 0 ? (
+              cart?.licenses.map((cart ,index) => {
                 return (
                   <div
-                    key={cart.id}
+                    key={index}
                     className="flex items-center justify-between w-full border-b border-solid border-[#9CA3AF] py-[15px] mb-[15px]"
                   >
                     <div className="text-[16px] leading-[140%] font-PoppinsBold text-[#111827] max-w-[255px] w-full">
@@ -86,10 +94,9 @@ const Modal = () => {
                         }
                         {
                           cart.products.length > 0 ?
-                            (cart.products.map((p, i) => {
+                            (cart.products.map((p, index) => {
                               return (
-                                <>
-                                  <div className="flex items-center justify-between" key={i}>
+                                  <div className="flex items-center justify-between" key={index}>
                                     <div className="text-[14px] leading-[140%] text-[#111827] flex items-center">
                                       <Image src={p.image} width={20} height={23} alt='product' />
                                       <p className='max-w-[80px] w-full'>{p.name || p.title}</p>
@@ -101,7 +108,6 @@ const Modal = () => {
                                     ₸ {p.price}
                                     </p>
                                   </div>
-                                </>
                               );
                             }))
                             : ""
@@ -128,10 +134,10 @@ const Modal = () => {
               </div>
             )}
 
-              {cart.products.length > 0 ? (
-              cart.products.map((product) => {
+              {cart?.quantity > 0 ? (
+              cart.products.map((product, index) => {
                 return (
-                  <div key={product.id} className='flex items-center justify-between w-full border-b border-solid border-[#9CA3AF] py-[15px]'>
+                  <div key={index} className='flex items-center justify-between w-full border-b border-solid border-[#9CA3AF] py-[15px]'>
                     <div className='text-[16px] leading-[140%] font-PoppinsBold text-[#111827] max-w-[255px] w-full flex items-center'>
                       <Image src={product.image} alt='cart-icon' width={50} height={50} className='mr-[10px]' />
                       <p>{product.name}</p>
@@ -157,7 +163,7 @@ const Modal = () => {
                 Total
               </p>
               <p>
-                ₸ {carts.totalPrice}
+                ₸ {cart?.totalPrice}
               </p>
             </div>
             {/* <Link href={'/cart'} className={'cursor-pointer ml-auto font-PoppinsBold max-w-[230px] w-full text-white text-[14px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[7px] px-[22px] rounded-[10px]'} onClick={modal}>

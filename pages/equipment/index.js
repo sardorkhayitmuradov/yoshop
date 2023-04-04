@@ -13,7 +13,7 @@ import DesktopIcon from '../../public/assets/images/desktop-computer.svg';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useSelector, useDispatch } from 'react-redux';
-import { addProducts, addToCart } from '../../redux/features/carts';
+import { addProducts, addToCart, getItems } from '../../redux/features/carts';
 import { ModalContext } from '../../context/modal';
 
 export async function getServerSideProps({ locale }) {
@@ -27,8 +27,6 @@ export async function getServerSideProps({ locale }) {
 const Equipment = () => {
   const router = useRouter();
   const { t } = useTranslation();
-  // const [town, setTown] = useState('');
-  // const [number, setNumber] = useState("");
   const [currentTab, setCurrentTab] = useState('all');
   const [filteredProduct, setFilterProduct] = useState([]);
   const [category, setCategory] = useState([]);
@@ -36,6 +34,8 @@ const Equipment = () => {
   const productsCounter = useSelector((store) => store.productCounter.products);
   const dispatch = useDispatch();
   const { visible, setVisible } = useContext(ModalContext);
+  // const [town, setTown] = useState('');
+  // const [number, setNumber] = useState("");
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const filterCategories = () => {
@@ -74,6 +74,15 @@ const Equipment = () => {
 
   useEffect(() => {
     return () => {
+      if (typeof window !== "undefined") {
+        const datas = JSON.parse(localStorage.getItem("data"));
+        if (datas) {
+          // dispatch(getItems(datas))
+          // setDatas(datas)
+          // console.log(datas)
+          dispatch(getItems(datas))
+        }
+      }
       filterCategories();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -136,71 +145,64 @@ const Equipment = () => {
             <div className='flex max-[450px]:gap-4 overflow-hidden mb-16 max-[450px]:overflow-x-auto w-full  justify-between max-[450px]:scroll-smooth max-[450px]:mb-7'>
               <div
                 onClick={() => handleTab('All')}
-                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${
-                  currentTab === 'all'
-                    ? 'bg-[#FF588A] text-[#FFF]'
-                    : 'border capitalize leading-[180%] border-[#D1D5DB] '
-                }`}
+                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'all'
+                  ? 'bg-[#FF588A] text-[#FFF]'
+                  : 'border capitalize leading-[180%] border-[#D1D5DB] '
+                  }`}
               >
                 {router.locale == 'ru' ? 'Все' : 'All'}
               </div>
               <div
                 onClick={() => handleTab('POS')}
-                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${
-                  currentTab === 'pos'
-                    ? 'bg-[#FF588A] text-[#FFF]'
-                    : 'border capitalize leading-[180%] border-[#D1D5DB] '
-                }`}
+                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'pos'
+                  ? 'bg-[#FF588A] text-[#FFF]'
+                  : 'border capitalize leading-[180%] border-[#D1D5DB] '
+                  }`}
               >
                 POS
               </div>
               <div
                 onClick={() => handleTab('Scales')}
-                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${
-                  currentTab === 'scales'
-                    ? 'bg-[#FF588A] text-[#FFF]'
-                    : 'border capitalize leading-[180%] border-[#D1D5DB] '
-                }`}
+                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scales'
+                  ? 'bg-[#FF588A] text-[#FFF]'
+                  : 'border capitalize leading-[180%] border-[#D1D5DB] '
+                  }`}
               >
                 {router.locale == 'ru' ? 'Весы' : 'Scales'}
               </div>
               <div
                 onClick={() => handleTab('Cash drawer')}
-                className={`max-[450px]:max-w-[139px] px-3 flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${
-                  currentTab === 'cash drawer'
-                    ? 'bg-[#FF588A] text-[#FFF]'
-                    : 'border capitalize leading-[180%] border-[#D1D5DB]'
-                }`}
+                className={`max-[450px]:max-w-[139px] px-3 flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'cash drawer'
+                  ? 'bg-[#FF588A] text-[#FFF]'
+                  : 'border capitalize leading-[180%] border-[#D1D5DB]'
+                  }`}
               >
                 {router.locale == 'ru' ? 'Денежный ящик' : 'Cash drawer'}
               </div>
               <div
                 onClick={() => handleTab('Scanner')}
-                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${
-                  currentTab === 'scanner'
-                    ? 'bg-[#FF588A] text-[#FFF]'
-                    : 'border capitalize leading-[180%] border-[#D1D5DB] '
-                }`}
+                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'scanner'
+                  ? 'bg-[#FF588A] text-[#FFF]'
+                  : 'border capitalize leading-[180%] border-[#D1D5DB] '
+                  }`}
               >
                 {router.locale == 'ru' ? 'Сканер' : 'Scanner'}
               </div>
               <div
                 onClick={() => handleTab('Accessories')}
-                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${
-                  currentTab === 'accessories'
-                    ? 'bg-[#FF588A] text-[#FFF]'
-                    : 'border capitalize leading-[180%] border-[#D1D5DB] '
-                }`}
+                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'accessories'
+                  ? 'bg-[#FF588A] text-[#FFF]'
+                  : 'border capitalize leading-[180%] border-[#D1D5DB] '
+                  }`}
               >
                 {router.locale == 'ru' ? 'Аксессуары' : 'Accessories'}
               </div>
               <div
                 onClick={() => handleTab('Cables')}
-                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${
-                  currentTab === 'cables'
-                    ? 'bg-[#FF588A] text-[#FFF]'
-                    : 'border capitalize leading-[180%] border-[#D1D5DB] '
-                }`}
+                className={`max-[450px]:max-w-[139px] max-w-[139px] w-full flex items-center justify-center max-[450px]:w-full h-auto max-[450px]:leading-[120%] max-[450px]:text-center max-[450px]:px-10 rounded-md text-[18px] leading-[140%] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] text-[#111827] cursor-pointer ${currentTab === 'cables'
+                  ? 'bg-[#FF588A] text-[#FFF]'
+                  : 'border capitalize leading-[180%] border-[#D1D5DB] '
+                  }`}
               >
                 {router.locale == 'ru' ? 'Кабели' : 'Cables'}
               </div>
@@ -210,77 +212,77 @@ const Equipment = () => {
           <div className='gap-[26px] grid grid-cols-4 mb-[50px] max-[450px]:justify-between max-[450px]:grid-cols-2'>
             {currentTab == 'all'
               ? productsCounter.map((product) => {
-                  return (
-                    <div
-                      key={product.id}
-                      className='flex items-center flex-col justify-between'
+                return (
+                  <div
+                    key={product.id}
+                    className='flex items-center flex-col justify-between'
+                  >
+                    <Link
+                      href={'/equipment/' + product.id + '#equipment'}
+                      scroll={true}
                     >
-                      <Link
-                        href={'/equipment/' + product.id + '#equipment'}
-                        scroll={true}
-                      >
-                        <ProductCard
-                          image={product.image}
-                          title={
-                            router.locale == 'ru'
-                              ? product.titleru || product.title
-                              : product.title
-                          }
-                          price={product.price}
-                        ></ProductCard>
-                      </Link>
-                      <Button
-                        className={
-                          'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[4px] text-[#F9F9FB] max-[450px]:py-[2px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'
+                      <ProductCard
+                        image={product.image}
+                        title={
+                          router.locale == 'ru'
+                            ? product.titleru || product.title
+                            : product.title
                         }
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        <Image
-                          src={shopIcon}
-                          alt='shop-icon'
-                          className='pr-2 max-[450px]:hidden'
-                        />
-                        {t('common:add_cart')}
-                      </Button>
-                    </div>
-                  );
-                })
+                        price={product.price}
+                      ></ProductCard>
+                    </Link>
+                    <Button
+                      className={
+                        'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[4px] text-[#F9F9FB] max-[450px]:py-[2px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'
+                      }
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      <Image
+                        src={shopIcon}
+                        alt='shop-icon'
+                        className='pr-2 max-[450px]:hidden'
+                      />
+                      {t('common:add_cart')}
+                    </Button>
+                  </div>
+                );
+              })
               : filteredProduct.map((product) => {
-                  return (
-                    <div
-                      key={product.id}
-                      className='flex items-center flex-col justify-between'
+                return (
+                  <div
+                    key={product.id}
+                    className='flex items-center flex-col justify-between'
+                  >
+                    <Link
+                      href={'/equipment/' + product.id + '#equipment'}
+                      scroll={true}
                     >
-                      <Link
-                        href={'/equipment/' + product.id + '#equipment'}
-                        scroll={true}
-                      >
-                        <ProductCard
-                          image={product.image}
-                          title={
-                            router.locale == 'ru'
-                              ? product.titleru || product.title
-                              : product.title
-                          }
-                          price={product.price}
-                        ></ProductCard>
-                      </Link>
-                      <Button
-                        className={
-                          'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[4px] text-[#F9F9FB] max-[450px]:px-[8px] max-[450px]:py-[2px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'
+                      <ProductCard
+                        image={product.image}
+                        title={
+                          router.locale == 'ru'
+                            ? product.titleru || product.title
+                            : product.title
                         }
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        <Image
-                          src={shopIcon}
-                          alt='shop-icon'
-                          className='pr-2 max-[450px]:hidden'
-                        />
-                        {t('common:add_cart')}
-                      </Button>
-                    </div>
-                  );
-                })}
+                        price={product.price}
+                      ></ProductCard>
+                    </Link>
+                    <Button
+                      className={
+                        'cursor-pointer border-[#94A3B8] bg-[#7D66BB] font-bold text-[20px] flex justify-center items-center w-full border-solid border-x border-y mt-[20px] py-[12px] px-[22px] rounded-[4px] text-[#F9F9FB] max-[450px]:px-[8px] max-[450px]:py-[2px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'
+                      }
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      <Image
+                        src={shopIcon}
+                        alt='shop-icon'
+                        className='pr-2 max-[450px]:hidden'
+                      />
+                      {t('common:add_cart')}
+                    </Button>
+                  </div>
+                );
+              })}
           </div>
           {currentTab !== 'all' ? (
             <p

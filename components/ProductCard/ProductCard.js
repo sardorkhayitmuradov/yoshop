@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import PriceFormatNumber from '../PriceFormatNumber'
 
 
 const ProductCard = ({image , title , price ,children}) => {
@@ -14,7 +15,7 @@ const ProductCard = ({image , title , price ,children}) => {
           {title}
           </p>
           <p className="font-bold text-[14px] mt-[10px] leading-[25px] max-[450px]:text-[12px] max-[450px]:leading-[180%] max-[450px]:mb-[6px]">
-          ₸ {price}
+          ₸ <PriceFormatNumber value={price} />
           </p>
         </div>
         {

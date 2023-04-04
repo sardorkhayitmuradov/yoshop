@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import FaqAccordion from '../components/FaqAccordion/Faqaccordion';
 import ResourcesCard from '../components/ResourcesCard/ResourcesCard';
 import { resourcesVideos } from '../constants/resourcesVideo';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import { useDispatch } from 'react-redux';
+import { getItems } from "../redux/features/carts";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -14,6 +17,20 @@ export async function getStaticProps({ locale }) {
 
 const Resources = () => {
   const { t } = useTranslation();
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const datas = JSON.parse(localStorage.getItem("data"));
+      if (datas) {
+        // dispatch(getItems(datas))
+        // setDatas(datas)
+        // console.log(datas)
+        dispatch(getItems(datas))
+      }
+    }
+  }, [dispatch]);
 
   return (
     <main className='pt-[100px] max-[450px]:py-[50px]'>

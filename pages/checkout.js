@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Input from '../components/Input/Input';
 import checkCircle from '../public/assets/images/check-circle1.png';
 import checkCircle2 from '../public/assets/images/check-circle2.png';
 import { useTranslation } from 'next-i18next';
 import AdressLocation from '../components/AdressLocation/AdressLocation';
 import locationAdressIcon from '../public/assets/images/locationIcon.svg';
-// import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
-// import Checkbox from "../components/Checkbox";
 import confrimSuccessImg from '../public/assets/images/modalSuccessInfo.png';
 import InputCheckbox from '../components/InputCheckbox/InputCheckbox';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -19,6 +17,8 @@ import { useContext } from 'react';
 import CheckoutModal from '../components/CheckoutModal/CheckoutModal';
 import SelectIcon from '../public/assets/images/select-icon.svg';
 import PolicyCheckbox from '../components/PolicyCheckbox';
+// import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
+// import Checkbox from "../components/Checkbox";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -54,9 +54,23 @@ const Checkout = () => {
 
   const onSave = (e) => {
     setCheckedPolicy([...checkedPolicy, e.target.value]);
-    console.log(e);
+    // console.log(e);
   };
-  console.log(checkedPolicy);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const datas = JSON.parse(localStorage.getItem("data"));
+      if (datas) {
+        // dispatch(getItems(datas))
+        // setDatas(datas)
+        // console.log(datas)
+        dispatch(getItems(datas))
+      }
+    }
+  }, [dispatch]);
+  // console.log(checkedPolicy);
 
   return (
     <>
@@ -83,32 +97,27 @@ const Checkout = () => {
           </p>
           <ul>
             <li className='text-[24px] leading-[140%] text-[#000]'>
-              {' '}
               · keep convenient sales statistics and adjust the range of goods
               sold, quickly getting rid of slow-moving positions;
             </li>
             <li className='text-[24px] leading-[140%] text-[#000]'>
-              {' '}
               · timely replenish stock balances;
             </li>
             <li className='text-[24px] leading-[140%] text-[#000]'>
-              {' '}
               · speed up customer service and get rid of queues - and, as a
               result, increase traffic in the store;
             </li>
             <li className='text-[24px] leading-[140%] text-[#000]'>
-              {' '}
               · exclude the possibility of theft of goods and money from the
               cash desk (constant control of the balance of money and goods in
               the warehouse);
             </li>
             <li className='text-[24px] leading-[140%] text-[#000]'>
-              {' '}
               · the possibility of keeping records of debtors, a discount and
               loyalty system;
             </li>
             <li className='text-[24px] leading-[140%] text-[#000] mb-7'>
-              work with labeled goods (tobacco products, shoes, medicines, etc.){' '}
+              work with labeled goods (tobacco products, shoes, medicines, etc.)
             </li>
           </ul>
           <p className='text-[24px] leading-[140%] text-[#000] mb-3'>
@@ -251,9 +260,8 @@ const Checkout = () => {
               </h2>
               <div className='flex justify-between max-w-[392px] w-full mb-7 max-[450px]:mb-[7px]'>
                 <div
-                  className={`bg-[#F9FAFB] p-[14px] flex justify-between cursor-pointer items-start rounded-[3px] max-w-[187px] max-[450px]:w-[45%] w-full border border-solid ${
-                    tab === '1' ? 'border-[#7047EB]' : 'border-[#9CA3AF]'
-                  }`}
+                  className={`bg-[#F9FAFB] p-[14px] flex justify-between cursor-pointer items-start rounded-[3px] max-w-[187px] max-[450px]:w-[45%] w-full border border-solid ${tab === '1' ? 'border-[#7047EB]' : 'border-[#9CA3AF]'
+                    }`}
                   onClick={() => setTab('1')}
                 >
                   <span>
@@ -281,9 +289,8 @@ const Checkout = () => {
                   )}
                 </div>
                 <div
-                  className={`bg-[#F9FAFB] p-[14px] flex justify-between cursor-pointer items-start rounded-[3px] max-w-[187px] max-[450px]:w-[45%] w-full border border-solid ${
-                    tab === '2' ? 'border-[#7047EB]' : 'border-[#9CA3AF]'
-                  }`}
+                  className={`bg-[#F9FAFB] p-[14px] flex justify-between cursor-pointer items-start rounded-[3px] max-w-[187px] max-[450px]:w-[45%] w-full border border-solid ${tab === '2' ? 'border-[#7047EB]' : 'border-[#9CA3AF]'
+                    }`}
                   onClick={() => setTab('2')}
                 >
                   <span>
@@ -617,7 +624,7 @@ const Checkout = () => {
                   </div>
                   <p className='text-[20px] leading-[180%] mb-8 max-[450px]:text-[14px] max-[450px]:leading-[21px] max-[450px]:mb-5'>
                     Please review the order details and payment details before
-                    proceeding to confirm your order{' '}
+                    proceeding to confirm your order
                   </p>
                   <div className='items-center max-[450px]:mb-5 hidden max-[450px]:flex'>
                     <PolicyCheckbox
@@ -647,7 +654,7 @@ const Checkout = () => {
                       value={'policyPublic'}
                     />
                     <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                      I accept the terms of the{' '}
+                      I accept the terms of the
                       <span
                         onClick={() => setVisible(!visible)}
                         className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'
@@ -663,7 +670,7 @@ const Checkout = () => {
                       value={'paymentPolicy'}
                     />
                     <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                      I have read the{' '}
+                      I have read the
                       <span className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'>
                         Payment and Return Policy*
                       </span>
@@ -678,7 +685,7 @@ const Checkout = () => {
                         className={
                           'py-[10px] text-[#FF588A] max-w-[255px] w-full rounded-[6px] font-bold leading-[180%] text-[18px] border-[#D1D5DB] border-[2px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.07)] flex items-center justify-center max-[450px]:text-[12px] max-[450px]:max-w-[170px]'
                         }
-                        // onClick={() => setOpenModal(true)}
+                      // onClick={() => setOpenModal(true)}
                       >
                         Choose your town
                         <Image
@@ -728,7 +735,7 @@ const Checkout = () => {
                       />
                       <p className='text-[20px] font-regular leading-[180%] max-[450px]:text-[12px] max-[450px]:mb-10'>
                         Please review the order details and payment details
-                        before proceeding to confirm your order{' '}
+                        before proceeding to confirm your order
                       </p>
                       <div className='mb-[26px]'>
                         <h3 className='text-[24px] font-bold mt-[75px] mb-[40px] max-[450px]:mt-0 max-[450px]:text-[16px] max-[450px]:mb-5'>
@@ -884,7 +891,7 @@ const Checkout = () => {
                       </div>
                       <p className='text-[20px] leading-[180%] mb-8 max-[450px]:text-[14px] max-[450px]:leading-[21px] max-[450px]:mb-5'>
                         Please review the order details and payment details
-                        before proceeding to confirm your order{' '}
+                        before proceeding to confirm your order
                       </p>
                       <div className='items-center max-[450px]:mb-5 hidden max-[450px]:flex'>
                         <PolicyCheckbox
@@ -914,7 +921,7 @@ const Checkout = () => {
                           value={'policyPublic'}
                         />
                         <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                          I accept the terms of the{' '}
+                          I accept the terms of the
                           <span
                             onClick={() => setVisible(!visible)}
                             className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'
@@ -930,7 +937,7 @@ const Checkout = () => {
                           value={'paymentPolicy'}
                         />
                         <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                          I have read the{' '}
+                          I have read the
                           <span className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'>
                             Payment and Return Policy*
                           </span>
@@ -1032,50 +1039,49 @@ const Checkout = () => {
               <div>
                 {cart.products.length > 0
                   ? cart.products.map((product, i) => {
-                      return (
-                        <div
-                          className='flex items-center justify-between mb-3'
-                          key={product.id}
-                        >
-                          <div className='flex items-center'>
-                            <Image
-                              src={product.image}
-                              width={50}
-                              height={50}
-                              alt='product'
-                              className='mr-[3px]'
-                            />
-                            <h3 className='text-[20px] leading-[140%] max-w-[252px] w-full max-[450px]:text-[14px]'>
-                              {product.title || product.name}
-                            </h3>
-                          </div>
-                          <div className='flex items-center justify-between w-full max-w-[200px] max-[450px]:max-w-[140px]'>
-                            <p className='text-[20px] leading-[180%] font-bold max-[450px]:text-[14px]'>
-                              x{product.qty}
-                            </p>
-                            <p className='text-[20px] leading-[180%] font-bold max-[450px]:text-[14px]'>
-                              ₸ {product.price}
-                            </p>
-                          </div>
+                    return (
+                      <div
+                        className='flex items-center justify-between mb-3'
+                        key={product.id}
+                      >
+                        <div className='flex items-center'>
+                          <Image
+                            src={product.image}
+                            width={50}
+                            height={50}
+                            alt='product'
+                            className='mr-[3px]'
+                          />
+                          <h3 className='text-[20px] leading-[140%] max-w-[252px] w-full max-[450px]:text-[14px]'>
+                            {product.title || product.name}
+                          </h3>
                         </div>
-                      );
-                    })
+                        <div className='flex items-center justify-between w-full max-w-[200px] max-[450px]:max-w-[140px]'>
+                          <p className='text-[20px] leading-[180%] font-bold max-[450px]:text-[14px]'>
+                            x{product.qty}
+                          </p>
+                          <p className='text-[20px] leading-[180%] font-bold max-[450px]:text-[14px]'>
+                            ₸ {product.price}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })
                   : ''}
               </div>
               <hr className='border border-solid mb-4 max-[450px]:block hidden' />
               <div className='flex items-center text-[20px] leading-[140%] font-bold w-full justify-end max-[450px]:text-[16px] max-[450px]:justify-between'>
-                <p className='mr-4 max-[450px]:text-[16px]'>Total:</p>₸{' '}
+                <p className='mr-4 max-[450px]:text-[16px]'>Total:</p>₸
                 {cart.totalPrice}
               </div>
             </div>
           </div>
           <div className='flex items-center my-[100px] max-[450px]:flex-col max-[450px]:px-6 max-[450px]:gap-y-4 max-[450px]:my-5'>
             <button
-              className={`py-[12px] text-[#fff] max-w-[500px] w-full ${
-                checkedPolicy.length > 1
-                  ? 'bg-[#7D66BB]'
-                  : 'bg-[#eff1fe] text-[#9ca3af]'
-              } rounded-[10px] font-bold leading-[140%] text-xl`}
+              className={`py-[12px] text-[#fff] max-w-[500px] w-full ${checkedPolicy.length > 1
+                ? 'bg-[#7D66BB]'
+                : 'bg-[#eff1fe] text-[#9ca3af]'
+                } rounded-[10px] font-bold leading-[140%] text-xl`}
               onClick={() => checkedPolicy.length > 1 && setOpenModal(true)}
             >
               Pay

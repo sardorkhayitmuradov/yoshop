@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { CalculatorProduct } from "../../components/CalculatorProduct";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Button from "../../components/Button/Button";
@@ -9,8 +9,9 @@ import shopIcon from "../../public/assets/images/bascet.svg";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from "next-i18next";
 import { useSelector, useDispatch } from "react-redux";
-import { addProducts, addToCart, removeProducts } from "../../redux/features/carts";
+import { addProducts, addToCart, removeProducts, getItems } from "../../redux/features/carts";
 import NewAccordion from "../../components/NewAccordion/NewAccordion";
+import PriceFormatNumber from "../../components/PriceFormatNumber";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -36,18 +37,30 @@ const Details = () => {
   const { id } = router.query;
   let emtyString = "";
   const [card, setCard] = useState();
+  // const [datas, setDatas] = useState("");
 
-  const filterCard = () => {
+  const addToCartHandler = useCallback(() => {
+    dispatch(addToCart())
+  }, [dispatch])
+
+  const filterCard = useCallback(() => {
     let filteredProduct = productsCounter.filter(pr => {
       return pr.id == id;
     });
     setCard(filteredProduct);
-  };
+  }, [id, productsCounter]);
 
   useEffect(() => {
     filterCard();
+    if (typeof window !== "undefined") {
+      const data = JSON.parse(localStorage.getItem("data"));
+      if (data) {
+        // setDatas(data)
+        dispatch(getItems(data))
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productsCounter, id]);
+  }, [productsCounter, id, dispatch, filterCard]);
 
   const { t } = useTranslation();
 
@@ -90,7 +103,7 @@ const Details = () => {
                   <h2 className="text-[40px] font-bold leading-[140%] mb-[20px] max-[450px]:hidden block">
                     {router.locale == 'ru' ? product.titleru || product.title : product.title}
                   </h2>
-                  <p className="mb-[30px] text-[32px] leading-[140%] max-[450px]:hidden block">₸ {foundProd?.price || product?.price}</p>
+                  <p className="mb-[30px] text-[32px] leading-[140%] max-[450px]:hidden block">₸ <PriceFormatNumber value={foundProd?.price || product?.price} /></p>
 
                   <div className="flex items-center justify-between max-[450px]:mb-[50px]">
                     <CalculatorProduct
@@ -102,7 +115,7 @@ const Details = () => {
                       }}
                     />
                     <Button className={'cursor-pointer font-bold max-w-[200px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[11px] px-[22px] rounded-[10px] max-[450px]:text-[14px] max-[450px]:leading-[140%]'}
-                      onClick={() => dispatch(addToCart())}
+                      onClick={addToCartHandler}
                     >
                       <Image src={shopIcon} alt="shop-icon" className="pr-2 max-[450px]:hidden" width={40} height={40} />
                       {t("common:add_cart")}

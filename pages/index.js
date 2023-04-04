@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Button from '../components/Button/Button';
-import Input from '../components/Input/Input';
 import ListIcon from '../public/assets/images/listCircle.svg';
 import AppStore from '../public/assets/images/appStore.png';
 import GooglePlay from '../public/assets/images/googlePlay.png';
@@ -23,6 +22,9 @@ import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { getItems } from "../redux/features/carts";
+// import Input from '../components/Input/Input';
 
 export async function getStaticProps({ locale }) {
   return {
@@ -48,6 +50,20 @@ function Home() {
   const slideFirstCard = useRef();
   const slideSecondCard = useRef();
 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const datas = JSON.parse(localStorage.getItem("data"));
+      if (datas) {
+        // dispatch(getItems(datas))
+        // setDatas(datas)
+        // console.log(datas)
+        dispatch(getItems(datas))
+      }
+    }
+  }, [dispatch]);
+
 
   return (
     <main className='pt-[100px] w-full max-[450px]:pt-0'>
@@ -55,7 +71,7 @@ function Home() {
         <Swiper
           pagination={{
             dynamicBullets: true,
-            
+
           }}
           modules={[Autoplay, Pagination, Navigation]}
           autoplay={{
@@ -122,7 +138,7 @@ function Home() {
                         <span className='bg-[#FF588A] pt-1 px-1 rounded-md text-white'>{t("common:download")}</span>
                         {t("common:download_mobile")}
                         <span className='bg-[#FF588A] rounded-md text-white'>{t("common:download_free")}</span>
-                        <h2  className='max-xs:max-w-[130px]'>{t("common:download_month")}</h2>
+                        <h2 className='max-xs:max-w-[130px]'>{t("common:download_month")}</h2>
                       </div>
                     </div>
                     <div className='flex text-white items-center justify-between'>
@@ -182,11 +198,12 @@ function Home() {
               <Swiper
                 ref={swiperRef}
                 direction={"vertical"}
-                onActiveIndexChange={(swiper) => setActive(swiper.activeIndex)}
+                onActiveIndexChange={(swiper) => { setActive(swiper.activeIndex) }}
                 // mousewheel={false}
                 // grabCursor={false}
                 spaceBetween={10}
-                touchReleaseOnEdges={true}
+                draggable={true}
+                // touchReleaseOnEdges={true}
                 effect={"coverflow"}
                 slidesPerView={'auto'}
                 centeredSlides={true}
@@ -202,11 +219,12 @@ function Home() {
                   modifier: 0.5,
                   slideShadows: false,
                 }}
+                allowTouchMove={false}
                 modules={[EffectCoverflow, FreeMode, Thumbs, Autoplay]}
                 className="max-[450px]:block hidden max-[450px]:ml-0 w-full"
               >
                 <SwiperSlide>
-                  <div className='mb-[30px] relative max-[450px]:px-6 max-[450px]:mb-4'>{active === 0 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px] max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:store_automation")}</p></div>
+                  <div className='mb-[30px] first relative max-[450px]:px-6 max-[450px]:mb-4'>{active === 0 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px] max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:store_automation")}</p></div>
                   <div className={`${active !== 0 && "hidden"}`}>
                     <div className={`${active == 0 ? 'opacity-20' : ""} mb-4`}>
                       <Image
@@ -350,16 +368,16 @@ function Home() {
                 <SwiperSlide>
                   <div className='mb-[30px] relative max-[450px]:px-6'>{active === 3 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}<p className='z-10 relative text-base leading-[20px] max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:extract_min_profit")}</p></div>
                   <div className={`${active !== 3 && "hidden"}`}>
-                  <div className={`${active == 3 ? 'opacity-40' : ""}`}>
-                    <Image
-                      src={'/assets/images/extract.png'}
-                      alt='slider image'
-                      width={550}
-                      height={300}
-                      className={`rounded-md`}
-                    />
-                  </div>
-                  <div className='mb-1 px-6 flex items-center'>
+                    <div className={`${active == 3 ? 'opacity-40' : ""}`}>
+                      <Image
+                        src={'/assets/images/extract.png'}
+                        alt='slider image'
+                        width={550}
+                        height={300}
+                        className={`rounded-md`}
+                      />
+                    </div>
+                    <div className='mb-1 px-6 flex items-center'>
                       <Image
                         src={ListIcon}
                         alt='list circle'
@@ -393,21 +411,21 @@ function Home() {
                 </SwiperSlide>
                 <SwiperSlide>
 
-                  <div className='mb-[30px] relative max-[450px]:px-6'>
+                  <div className='mb-[30px] last relative max-[450px]:px-6'>
                     {active === 4 && <div className='absolute left-[23px] w-[15px] h-[30px] bg-[#FF588A] top-[-6px]'></div>}
                     <p className='z-10 relative text-base leading-[20px] max-[450px]:font-bold max-[450px]:text-[20px] max-[450px]:leading-[140%]'>{t("common:absolute_safe_business")}</p>
                   </div>
                   <div className={`${active !== 4 && "hidden"}`}>
-                  <div className={`${active == 4 ? 'opacity-40' : ""}`}>
-                    <Image
-                      src={'/assets/images/absolutely.png'}
-                      alt='slider image'
-                      width={550}
-                      height={300}
-                      className={`rounded-md`}
-                    />
-                  </div>
-                  <li className='mb-1 px-6 flex items-center'>
+                    <div className={`${active == 4 ? 'opacity-40' : ""}`}>
+                      <Image
+                        src={'/assets/images/absolutely.png'}
+                        alt='slider image'
+                        width={550}
+                        height={300}
+                        className={`rounded-md`}
+                      />
+                    </div>
+                    <li className='mb-1 px-6 flex items-center'>
                       <Image
                         src={ListIcon}
                         alt='list circle'

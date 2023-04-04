@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Document, Page, pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-import  {CalculatorProduct}  from "../components/CalculatorProduct";
+import { CalculatorProduct } from "../components/CalculatorProduct";
+import { useDispatch } from 'react-redux';
+import { getItems } from "../redux/features/carts";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -16,6 +18,20 @@ export default function Guide() {
   const [numPages, setNumPages] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [scale, setScale] = useState(0.4);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const datas = JSON.parse(localStorage.getItem("data"));
+      if (datas) {
+        // dispatch(getItems(datas))
+        // setDatas(datas)
+        // console.log(datas)
+        dispatch(getItems(datas))
+      }
+    }
+  }, [dispatch]);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -53,13 +69,13 @@ export default function Guide() {
           Page {currentPage} of {numPages}
         </span>
         <button onClick={handleNextPage} className='border border-solid border-pink-600 text-pink-600 p-1 rounded-md'>Next</button>
-        <div> 
-        <CalculatorProduct
-                    decrementItem={handleScaleDecrement}
-                    wrapClass={"!mx-4"}
-                    quantity={`${Math.round(scale*100)}%`}
-                    incrementItem={handleScaleIncrement}
-                  />
+        <div>
+          <CalculatorProduct
+            decrementItem={handleScaleDecrement}
+            wrapClass={"!mx-4"}
+            quantity={`${Math.round(scale * 100)}%`}
+            incrementItem={handleScaleIncrement}
+          />
         </div>
       </div>
       <Document
@@ -67,9 +83,9 @@ export default function Guide() {
         onContextMenu={(e) => e.preventDefault()}
         onLoadSuccess={onDocumentLoadSuccess}
       >
-       <div className='grid place-items-center'>
-       <Page pageNumber={currentPage} scale={scale} loading="Please wait loading..."/>
-       </div>
+        <div className='grid place-items-center'>
+          <Page pageNumber={currentPage} scale={scale} loading="Please wait loading..." />
+        </div>
       </Document>
     </div>
   );

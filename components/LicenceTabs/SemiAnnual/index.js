@@ -14,6 +14,7 @@ import {
   removeUsers,
 } from "../../../redux/features/carts";
 import { useTranslation } from "next-i18next";
+import PriceFormatNumber from "../../PriceFormatNumber";
 
 export async function getStaticProps({ locale }) {
   return {
@@ -58,7 +59,7 @@ export const SemiAnnual = () => {
                   incrementItem={(e) => {
                     elFound
                       ? ""
-                      : dispatch(addLicences({ el, period: "monthly" }));
+                      : dispatch(addLicences({ el }));
                   }}
                   quantity={foundProd?.qty || 0}
                   decrementItem={() => {
@@ -66,7 +67,7 @@ export const SemiAnnual = () => {
                   }}
                 />
                 <span className={`text-[16px] w-full ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px]`}>
-                  ₸ {foundProd?.price || el.price}
+                  ₸ <PriceFormatNumber value={foundProd?.price || el.price} />
                   {foundProd?.qty > 1 && `(-₸ ${(el.price * foundProd.qty) - foundProd.price})`}
                 </span>
               </div>
@@ -79,7 +80,7 @@ export const SemiAnnual = () => {
                     incrementItem={(e) => {
                       elFound
                         ? ""
-                        : dispatch(addLicences({ el, period: "monthly" }));
+                        : dispatch(addLicences({ el}));
                     }}
                     quantity={foundProd?.qty || 0}
                     decrementItem={() => {
@@ -87,7 +88,7 @@ export const SemiAnnual = () => {
                     }}
                   />
                   <span className={`text-[16px] max-w-[190px] w-full max-[450px]:hidden ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] `}>
-                    ₸ {foundProd?.price || el.price}
+                    ₸ <PriceFormatNumber value={foundProd?.price || el.price} />
                     {foundProd?.qty > 1 && `(-₸ ${(el.price * foundProd.qty) - foundProd.price})`}
                   </span>
                 </div>
@@ -211,7 +212,8 @@ export const SemiAnnual = () => {
                               }
                             />
                             <span className="w-full text-[16px] leading-[25px] ml-5 max-[450px]:mx-0">
-                              ₸ {prod?.price || product.price} <span className="max-[450px]:hidden">{t("common:per_additional")}</span>
+                              ₸ <PriceFormatNumber value={prod?.price || product.price} />
+                              {/* <span className="max-[450px]:hidden">{t("common:per_additional")}</span> */}
                             </span>
                           </div>
                         </div>

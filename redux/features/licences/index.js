@@ -2,11 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   annual: [
-    {  
+    {
       id: 21,
       name: "Yoshop Retail for Yoshop POS",
       nameru: "Yoshop Retail для Yoshop POS",
       price: 45000,
+      period: "Annual",
+      periodru: "Год",
       discounts: [
         {
           from: 2,
@@ -32,6 +34,8 @@ const initialState = {
       name: "Yoshop retail for mobile",
       nameru: "Yoshop retail для мобильных устройств",
       price: 30000,
+      period: "Annual",
+      periodru: "Год",
       discounts: [
         {
           from: 2,
@@ -49,6 +53,8 @@ const initialState = {
       nameru: "Yoshop retail для Android POS",
       price: 30000,
       discount: 1000,
+      period: "Annual",
+      periodru: "Год",
     },
   ],
   semiAnnual: [
@@ -57,6 +63,8 @@ const initialState = {
       name: "Yoshop Retail for Yoshop POS",
       nameru: "Yoshop Retail для Yoshop POS",
       price: 25000,
+      period: "Semi-annual",
+      periodru: "Полгода",
       discounts: [
         {
           from: 2,
@@ -78,6 +86,8 @@ const initialState = {
       name: "Yoshop retail for mobile",
       nameru: "Yoshop retail для мобильных устройств",
       price: 20000,
+      period: "Semi-annual",
+      periodru: "Полгода",
       discounts: [
         {
           from: 2,
@@ -95,6 +105,8 @@ const initialState = {
       nameru: "Yoshop retail для Android POS",
       price: 20000,
       discount: 5000,
+      period: "Semi-annual",
+      periodru: "Полгода",
     },
   ],
   monthly: [
@@ -103,6 +115,8 @@ const initialState = {
       name: "Yoshop Retail for Yoshop POS",
       nameru: "Yoshop Retail для Yoshop POS",
       price: 4500,
+      period: "Monthly",
+      periodru: "Месяц",
       discounts: [
         {
           from: 2,
@@ -113,7 +127,7 @@ const initialState = {
           price: 4000,
         },
       ],
-      product: [  
+      product: [
         {
           id: 99,
           image: "/assets/images/centrem.png",
@@ -128,6 +142,8 @@ const initialState = {
       name: "Yoshop retail for mobile",
       nameru: "Yoshop retail для мобильных устройств",
       price: 4500,
+      period: "Monthly",
+      periodru: "Месяц",
       discounts: [
         {
           from: 2,
@@ -145,6 +161,8 @@ const initialState = {
       nameru: "Yoshop retail для Android POS",
       price: 4500,
       discount: 1000,
+      period: "Monthly",
+      periodru: "Месяц",
     },
   ],
 };

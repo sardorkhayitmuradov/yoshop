@@ -1,11 +1,12 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
-import Button from '../Button/Button';
-import PlusWhite from '../../public/assets/images/plusWhite.svg';
-import Cancel from '../../public/assets/images/cancel.svg';
+// import Button from '../Button/Button';
+// import PlusWhite from '../../public/assets/images/plusWhite.svg';
+// import Cancel from '../../public/assets/images/cancel.svg';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'next-i18next';
+import PriceFormatNumber from '../PriceFormatNumber';
 
 export async function getStaticProps({ locale }) {
   return {
@@ -72,7 +73,7 @@ const CartAccordion = ({
                         Subtotal:
                       </h4>
                       <p className='text-[12px] leading-[140%] font-bold'>
-                        ₸ {licensePrice}
+                        ₸ <PriceFormatNumber value={licensePrice} />
                       </p>
                     </li>
                   )}

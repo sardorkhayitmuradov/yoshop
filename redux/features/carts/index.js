@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = {
+import { useEffect } from "react";
+let initialState = {
   cart: {
     licenses: [],
     products: [],
@@ -21,6 +22,23 @@ export const CartSlice = createSlice({
       state.cart.products = [...state.products];
       state.cart.quantity = state.quantity;
       state.cart.totalPrice = state.totalPrice;
+      // To save data
+      localStorage.setItem('data', JSON.stringify(state));
+    },
+
+    getItems(state,action) {
+      const datas = JSON.parse(window.localStorage.getItem("data"));
+      console.log(datas)
+
+      state.cart.licenses = [...datas.cart.licenses];
+      state.cart.products = [...datas.cart.products];
+      state.cart.quantity = datas.cart.quantity;
+      state.cart.totalPrice = datas.cart.totalPrice;
+
+      state.licenses = [...datas.licenses];
+      state.products = [...datas.products];
+      state.quantity = datas.quantity;
+      state.totalPrice = datas.totalPrice;
     },
 
     addUsers(state, action) {
@@ -113,8 +131,7 @@ export const CartSlice = createSlice({
 
     addLicences(state, action) {
       let {
-        el: { id, price, name,nameru,titleru, discounts , product },
-        period,
+        el: { id, price, name, nameru, titleru, discounts, product, period, periodru }
       } = action.payload;
 
       const existingLicenseIndex = state.licenses.findIndex(
@@ -127,7 +144,7 @@ export const CartSlice = createSlice({
           : null;
 
       if (licence) {
-        licence.cashier.qty += product ? 2 : 1 ;
+        licence.cashier.qty += product ? 2 : 1;
         licence.qty += 1;
         discounts.forEach((dsc) => {
           if (dsc.from <= licence.qty) {
@@ -142,6 +159,7 @@ export const CartSlice = createSlice({
         state.licenses.push({
           id: id,
           period: period,
+          periodru: periodru,
           qty: 1,
           name: name,
           nameru: nameru || titleru,
@@ -159,7 +177,7 @@ export const CartSlice = createSlice({
     },
 
     removeLicences(state, action) {
-      let { id, price, discounts , product } = action.payload;
+      let { id, price, discounts, product } = action.payload;
 
       const existingLicenseIndex = state.licenses.findIndex(
         (licence) => licence.id === id
@@ -188,7 +206,7 @@ export const CartSlice = createSlice({
     },
 
     addProducts(state, action) {
-      const { id, price, title, image , titleru  } = action.payload;
+      const { id, price, title, image, titleru } = action.payload;
       console.log(action.payload)
       const existingLicenseIndex = state.products.findIndex(
         (product) => product.id === id
@@ -232,12 +250,12 @@ export const CartSlice = createSlice({
         product.qty -= 1;
         product.price -= price;
         state.totalPrice -= price;
-        if(price){
+        if (price) {
           state.quantity -= 1;
         }
       } else {
         state.products.splice(existingLicenseIndex, 1);
-        if(price){
+        if (price) {
           state.quantity -= 1;
           state.totalPrice -= price;
         }
@@ -256,5 +274,27 @@ export const {
   removeEquipments,
   removeUsers,
   addToCart,
+  getItems
 } = CartSlice.actions;
+
+
 export default CartSlice.reducer;
+
+// export const useLocalStorage = () => {
+//   useEffect(() => {
+//     if (typeof window !== "undefined") {
+//       const datas = JSON.parse(localStorage.getItem("data"));
+//       if (datas) {
+//         console.log(initialState)
+//         initialState.cart.licenses = [...datas.licenses];
+//         initialState.cart.products = [...datas.products];
+//         initialState.cart.totalPrice = datas.totalPrice || 0;
+//         initialState.cart.quantity = datas.quantity || 0;
+//         initialState.licenses = [...datas.licenses];
+//         initialState.products = [...datas.products];
+//         initialState.totalPrice = datas.totalPrice || 0;
+//         initialState.quantity = datas.quantity || 0;
+//       }
+//     }
+//   }, []);
+// };
