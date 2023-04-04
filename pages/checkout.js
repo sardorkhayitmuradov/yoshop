@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import Input from '../components/Input/Input';
+import PhoneInput from 'react-phone-number-input';
 import checkCircle from '../public/assets/images/check-circle1.png';
 import checkCircle2 from '../public/assets/images/check-circle2.png';
 import { useTranslation } from 'next-i18next';
@@ -17,6 +18,7 @@ import { useContext } from 'react';
 import CheckoutModal from '../components/CheckoutModal/CheckoutModal';
 import SelectIcon from '../public/assets/images/select-icon.svg';
 import PolicyCheckbox from '../components/PolicyCheckbox';
+import { getItems } from "../redux/features/carts";
 // import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
 // import Checkbox from "../components/Checkbox";
 
@@ -30,14 +32,14 @@ export async function getStaticProps({ locale }) {
 
 const Checkout = () => {
   const [userName, setUserName] = useState('');
-  const [userPhone, setUserPhone] = useState('');
+  const [userPhone, setUserPhone] = useState();
   const [userEmail, setUserEmail] = useState('');
   const [userTown, setUserTown] = useState('');
   const [userCurrentAddress, setUserCurrentAddress] = useState('');
   const [cardName, setCardName] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [cardValidityPeriod, setCardValidityPeriod] = useState('');
-  const [cardCVC, setCardCVC] = useState('');
+  const [cardNumber, setCardNumber] = useState();
+  const [cardValidityPeriod, setCardValidityPeriod] = useState();
+  const [cardCVC, setCardCVC] = useState();
   let [payment, setPayment] = useState('0');
   const [checkedPolicy, setCheckedPolicy] = useState('');
   const { visible, setVisible } = useContext(ModalContext);
@@ -326,8 +328,12 @@ const Checkout = () => {
                       wrapperClassName={
                         'w-full mb-8 flex justify-between items-center w-full max-[450px]:flex-col max-[450px]:items-start max-[450px]:mb-5'
                       }
+                      pattern={"[a-zA-Z]+"}
                       inputInnerWrapperClassName={'max-w-[380px] w-full'}
-                      onChange={(value) => setUserName(value)}
+                      onChange={(value) => {
+                        let newValue = value.replace(/[^a-zA-Z]/g, '');
+                        setUserName(newValue)
+                      }}
                       inputClassName={
                         'w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] max-[450px]:py-3 max-[450px]:placeholder:text-[14px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]'
                       }
@@ -340,15 +346,20 @@ const Checkout = () => {
                       }
                     />
                     <Input
-                      inputType={'number'}
+                      inputType='tel'
                       wrapperClassName={
-                        'w-full mb-8 flex justify-between items-center w-full max-[450px]:flex-col max-[450px]:items-start max-[450px]:mb-5'
+                        'w-full mb-8 flex justify-between items-center max-[450px]:flex-col max-[450px]:items-start max-[450px]:mb-5'
                       }
                       inputInnerWrapperClassName={'max-w-[380px] w-full'}
-                      onChange={(value) => setUserPhone(value)}
+                      onChange={(value) => {
+                        let newValue = value.replace(/[^0-9\s\-\+\(\)]+/g, '');
+                        setUserPhone(newValue)
+                      }}
+                      maxLength={16}
                       inputClassName={
                         'w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] max-[450px]:py-3 max-[450px]:placeholder:text-[14px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]'
                       }
+                      pattern={"^[0-9\s\-\+\(\)]+$"}
                       placeholder={'+7 700 000 00 00'}
                       value={userPhone}
                       labelValue={'Mobile phone*'}
@@ -363,7 +374,10 @@ const Checkout = () => {
                         'w-full mb-8 flex justify-between items-center w-full max-[450px]:flex-col max-[450px]:items-start max-[450px]:mb-5'
                       }
                       inputInnerWrapperClassName={'max-w-[380px] w-full'}
-                      onChange={(value) => setUserEmail(value)}
+                      onChange={(value) => {
+                        let newValue = value.replace(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "")
+                        setUserEmail(newValue)
+                      }}
                       inputClassName={
                         'w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] max-[450px]:py-3 max-[450px]:placeholder:text-[14px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]'
                       }
@@ -374,6 +388,7 @@ const Checkout = () => {
                       labelClassName={
                         'text-[20px] max-[450px]:text-[12px] font-regular'
                       }
+                      maxLength={100}
                     />
                     <Input
                       inputType={'text'}
@@ -446,7 +461,7 @@ const Checkout = () => {
                               'Almaty town, Amangeldy 59a, 7 floor, 702'
                             }
                           />
-                          <AdressLocation
+                          {/* <AdressLocation
                             locationInfoWrappClassName={
                               'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
                             }
@@ -469,7 +484,7 @@ const Checkout = () => {
                             locationText={
                               'Almaty town, Amangeldy 59a, 7 floor, 702'
                             }
-                          />
+                          /> */}
                         </div>
                       )}
                       <span className='flex items-center max-[450px]:mb-8'>
@@ -487,7 +502,7 @@ const Checkout = () => {
                           inputName={'pay'}
                         />
                       </span>
-                      {payment == '1' && (
+                      {payment == '2' && (
                         <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
                           <Input
                             inputType={'text'}
@@ -495,9 +510,11 @@ const Checkout = () => {
                             inputClassName={
                               'w-full py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] max-[450px]:placeholder:text-[10px]'
                             }
-                            placeholder={''}
                             value={cardName}
-                            onChange={(value) => setCardName(value)}
+                            onChange={(value) => {
+                              let newValue = value.replace(/[^a-zA-Z]/g, '');
+                              setCardName(newValue)
+                            }}
                             labelValue={'Name on card'}
                             name={'paycCardInfo'}
                             labelClassName={'mb-[3px] font-bold'}
@@ -514,23 +531,28 @@ const Checkout = () => {
                                 inputInnerWrapperClassName={'flex items-center'}
                                 placeholder={''}
                                 value={cardNumber}
-                                onChange={(value) => setCardNumber(value)}
+                                onChange={(value) => {
+                                  let newValue = value.replace(/[^0-9\s\-\+\(\)]+/g, '');
+                                  setCardNumber(newValue)
+                                }}
+                                maxLength={16}
                                 labelValue={'Card Number'}
                                 name={'cardNumbInfo'}
                                 labelClassName={'mb-[3px] font-bold'}
                               >
                                 <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
                                 <Input
-                                  inputType={'number'}
-                                  wrapperClassName={'flex flex-col w-[30%]'}
+                                  inputType={'month'}
+                                  wrapperClassName={'flex flex-col w-[20%] month-year-input-wrapper'}
                                   inputClassName={
-                                    'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] max-[450px]:px-1 max-[450px]:placeholder:py-3'
+                                    'p-4 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] text-[10px] max-[450px]:placeholder:text-[10px] max-[450px]:px-1 max-[450px]:placeholder:py-3'
                                   }
-                                  placeholder={'MM/YY'}
+                                  // labelValue={'MM/YY'}
                                   value={cardValidityPeriod}
                                   onChange={(value) =>
                                     setCardValidityPeriod(value)
                                   }
+                                  maxLength={4}
                                   name={'validity_period'}
                                 />
                                 <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
@@ -541,8 +563,12 @@ const Checkout = () => {
                                     'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] appearance-none max-[450px]:px-1 max-[450px]:placeholder:py-3'
                                   }
                                   placeholder={'CVC'}
+                                  onChange={(value) => {
+                                    let newValue = value.replace(/[^0-9]/g, '');
+                                    setCardCVC(newValue)
+                                  }}
+                                  maxLength={4}
                                   value={cardCVC}
-                                  onChange={(value) => setCardCVC(value)}
                                   name={'CVC'}
                                 />
                               </Input>
@@ -552,7 +578,7 @@ const Checkout = () => {
                       )}
                     </div>
 
-                    <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
+                    {/* <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
                       <Input
                         inputType={'text'}
                         wrapperClassName={'mb-4'}
@@ -610,7 +636,7 @@ const Checkout = () => {
                           </Input>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                   <div className='flex items-center justify-start mb-10 text-[20px] leading-[180%] max-[450px]:mb-[30px]'>
                     <Savecheckbox

@@ -10,11 +10,14 @@ const Input = ({
   placeholder,
   pattern,
   children,
-  inputInnerWrapperClassName
+  inputInnerWrapperClassName,
+  maxLength
 }) => {
   const onGetValue = (e) => {
     onChange(e.target.value);
   };
+
+  console.log(inputType)
 
   return (
     <div className={wrapperClassName}>
@@ -35,6 +38,7 @@ const Input = ({
           value={value ? value : ""}
           onChange={onGetValue}
           placeholder={placeholder ? placeholder: ""}
+          maxLength={maxLength}
         />
         {children}
       </div>

@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import PriceFormatNumber from '../components/PriceFormatNumber';
 import { getItems } from "../redux/features/carts";
+import { useState } from 'react';
 
 export async function getStaticProps({ locale }) {
   return {
@@ -23,6 +24,8 @@ export async function getStaticProps({ locale }) {
   };
 }
 const Cart = () => {
+  const [code , setCode] = useState("");
+  const [promoCode , setPromoCode] = useState(false)
   const router = useRouter();
   let cart = useSelector((store) => store.carts.cart);
   const { t } = useTranslation();
@@ -30,6 +33,12 @@ const Cart = () => {
   const onChecked = (e) => {
     const { value, checked } = e.target;
   };
+
+  const handleCode = () => {
+    if(code.length > 0){
+      setPromoCode(true)
+    }
+  }
 
   const dispatch = useDispatch()
 
@@ -206,8 +215,12 @@ const Cart = () => {
                                 height={50}
                                 alt='product'
                               />
-                              <h3 className='text-[20px] font-bold leading-[140%] ml-[25px] font-PoppinsRegular max-w-[272px] w-full'>
-                                {product.name || product.title}
+                              <h3 className='text-[20px] font-bold leading-[140%] ml-[25px] max-w-[272px] w-full'>
+                                {
+                                  router.locale === 'ru'
+                                    ? product.nameru || product.name
+                                    : product.name
+                                }
                               </h3>
                               <p className='text-[20px] leading-[140%] font-bold w-full'>
                                 x {product.qty}
@@ -232,15 +245,17 @@ const Cart = () => {
               </ul>
               <div className='w-full flex items-center text-[20px] leading-[180%] justify-end font-bold'>
                 <div className='w-full max-w-[500px]'>
-                  {/* <div className='flex items-center justify-between mb-5'>
+                  <div className='flex items-center justify-between mb-5'>
                     <div className='flex items-center'>
                       <p>{t('common:discount')}</p>
-                      <p className='text-[12px] text-[#FF588A] ml-3'>
+                      {
+                        promoCode ? <p className='text-[12px] text-[#FF588A] ml-3'>
                         {t('common:applied_promo_code')}
-                      </p>
+                      </p> : ""
+                      }
                     </div>
-                    <p className='text-[#ff588a]'>₸ 1000</p>
-                  </div> */}
+                    <p className='text-[#ff588a]'>₸ {code.length > 0 ? 1000 : 0}</p>
+                  </div>
 
                   <p className='mb-3'>{t('common:promo_code')}</p>
 
@@ -252,14 +267,15 @@ const Cart = () => {
                         'text-[#9CA3AF] w-full py-[11px] pl-[14px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[25px] outline-none rounded-[6px] border-[#94A3B8] border border-solid'
                       }
                       // placeholder={'TALGATXOXO'}
-                      value={''}
-                      onGetValue={(value) => setTown(value)}
+                      value={code}
+                      onChange={(value) => setCode(value)}
                     />
 
                     <Button
                       className={
                         'cursor-pointer font-bold max-w-[185px] w-full text-white text-[20px] flex justify-center items-center bg-[#FF588A] py-[12px] px-[22px] rounded-[10px]'
                       }
+                      onClick={handleCode}
                     >
                       {t('common:apply')}
                     </Button>
