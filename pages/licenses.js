@@ -43,9 +43,6 @@ const Licenses = () => {
     if (typeof window !== "undefined") {
       const datas = JSON.parse(localStorage.getItem("data"));
       if (datas) {
-        // dispatch(getItems(datas))
-        // setDatas(datas)
-        // console.log(datas)
         dispatch(getItems(datas))
       }
     }

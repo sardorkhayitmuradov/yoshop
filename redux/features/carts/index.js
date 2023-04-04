@@ -28,8 +28,6 @@ export const CartSlice = createSlice({
 
     getItems(state,action) {
       const datas = JSON.parse(window.localStorage.getItem("data"));
-      console.log(datas)
-
       state.cart.licenses = [...datas.cart.licenses];
       state.cart.products = [...datas.cart.products];
       state.cart.quantity = datas.cart.quantity;
@@ -104,7 +102,6 @@ export const CartSlice = createSlice({
 
     addEquipments(state, action) {
       const { elId, product } = action.payload;
-      // console.log(action.payload)
       const existingLicenseIndex = state.licenses.findIndex(
         (licence) => licence.id === elId
       );
@@ -207,7 +204,6 @@ export const CartSlice = createSlice({
 
     addProducts(state, action) {
       const { id, price, title, image, titleru } = action.payload;
-      console.log(action.payload)
       const existingLicenseIndex = state.products.findIndex(
         (product) => product.id === id
       );
@@ -285,7 +281,6 @@ export default CartSlice.reducer;
 //     if (typeof window !== "undefined") {
 //       const datas = JSON.parse(localStorage.getItem("data"));
 //       if (datas) {
-//         console.log(initialState)
 //         initialState.cart.licenses = [...datas.licenses];
 //         initialState.cart.products = [...datas.products];
 //         initialState.cart.totalPrice = datas.totalPrice || 0;

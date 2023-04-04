@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import Input from '../components/Input/Input';
-import PhoneInput from 'react-phone-number-input';
 import checkCircle from '../public/assets/images/check-circle1.png';
 import checkCircle2 from '../public/assets/images/check-circle2.png';
 import { useTranslation } from 'next-i18next';
@@ -19,6 +18,7 @@ import CheckoutModal from '../components/CheckoutModal/CheckoutModal';
 import SelectIcon from '../public/assets/images/select-icon.svg';
 import PolicyCheckbox from '../components/PolicyCheckbox';
 import { getItems } from "../redux/features/carts";
+import { useRouter } from 'next/router';
 // import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
 // import Checkbox from "../components/Checkbox";
 
@@ -41,7 +41,10 @@ const Checkout = () => {
   const [cardValidityPeriod, setCardValidityPeriod] = useState();
   const [cardCVC, setCardCVC] = useState();
   let [payment, setPayment] = useState('0');
-  const [checkedPolicy, setCheckedPolicy] = useState('');
+  const [checkedPolicy, setCheckedPolicy] = useState({
+    policyPublic: false,
+    paymentPolicy: false
+  });
   const { visible, setVisible } = useContext(ModalContext);
 
   const [tab, setTab] = useState('1');
@@ -49,14 +52,19 @@ const Checkout = () => {
 
   let cart = useSelector((store) => store.carts);
   const { t } = useTranslation();
+  const router = useRouter()
 
   const onChecked = (e) => {
     // console.log(e.target.value);
   };
 
   const onSave = (e) => {
-    setCheckedPolicy([...checkedPolicy, e.target.value]);
-    // console.log(e);
+    const { value, checked } = e.target;
+
+    setCheckedPolicy((prev) => ({
+      ...prev,
+      [value]: checked
+    }));
   };
 
   const dispatch = useDispatch()
@@ -983,13 +991,13 @@ const Checkout = () => {
               {cart.cart.licenses?.length > 0 &&
                 cart.licenses.map(
                   (license) => (
-                    console.log(license),
+                    // console.log(license),
                     (
                       <>
                         <div key={license.id}>
                           <div className='flex items-center justify-between mb-[10px]'>
                             <p className='text-[20px] leading-[140%] font-bold max-[450px]:text-[14px]'>
-                              {license.name || license.title}
+                              {router.locale === 'ru' ? license.nameru : license.name}
                             </p>
                             <p className='text-[20px] leading-[140%] font-bold max-[450px]:hidden'>
                               x{license.qty}
@@ -1001,7 +1009,7 @@ const Checkout = () => {
                           <div className='flex items-center justify-between mb-[10px]'>
                             <p className='max-[450px]:text-[14px]'>Period:</p>
                             <p className='text-[20px] leading-[140%] font-bold max-[450px]:text-[14px]'>
-                              {license.period}
+                              {router.locale === 'ru' ? license.periodru : license.period}
                             </p>
                           </div>
 
@@ -1104,11 +1112,11 @@ const Checkout = () => {
           </div>
           <div className='flex items-center my-[100px] max-[450px]:flex-col max-[450px]:px-6 max-[450px]:gap-y-4 max-[450px]:my-5'>
             <button
-              className={`py-[12px] text-[#fff] max-w-[500px] w-full ${checkedPolicy.length > 1
+              className={`py-[12px] text-[#fff] max-w-[500px] w-full  ${checkedPolicy.paymentPolicy === true && checkedPolicy.policyPublic === true 
                 ? 'bg-[#7D66BB]'
                 : 'bg-[#eff1fe] text-[#9ca3af]'
                 } rounded-[10px] font-bold leading-[140%] text-xl`}
-              onClick={() => checkedPolicy.length > 1 && setOpenModal(true)}
+              onClick={() => checkedPolicy.paymentPolicy === true && checkedPolicy.policyPublic === true  && setOpenModal(true)}
             >
               Pay
             </button>
