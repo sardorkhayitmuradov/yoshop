@@ -79,9 +79,6 @@ function Home(props) {
 
   let pageData = data.home;
 
-  console.log(pageData)
-
-
   return (
     <main className='pt-[100px] w-full max-[450px]:pt-0'>
       <section>

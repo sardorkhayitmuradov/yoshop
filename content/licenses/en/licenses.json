@@ -1,0 +1,40 @@
+{
+  "tariffs": {
+    "title": "Licenses and tariffs",
+    "package": "Choose your license package or",
+    "button": "Get a free version",
+    "tabs": {
+      "monthly": "Monthly",
+      "semiAnnual": "Semi-annual",
+      "annual": "Annual"
+    },
+    "license": {
+      "discount": "Discount",
+      "tradingPlace": "Trading place",
+      "cashZone": "Cash zone",
+      "users": "Users",
+      "perAdditional" : "per additional",
+      "licenceHardware": "*You can use this license only on the following hardware:",
+      "addEquipment": "Add equipment",
+      "subtotal": "Subtotal"
+    },
+    "guide": "User guide",
+    "total": "TOTAL:",
+    "licenseFeatures": {
+      "title": "The license price includes",
+      "warranty": {
+        "title": "Software warranty",
+        "image": "/assets/images/badge-check.svg"
+      },
+      "setup": {
+        "title": "Setup",
+        "image": "/assets/images/save-as.svg"
+      },
+      "support": {
+        "title": "Remote technical support",
+        "image": "/assets/images/desktop-computer.svg"
+      }
+    },
+    "subTotal": "Subtotal"
+  }
+}

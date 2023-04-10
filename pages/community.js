@@ -3,24 +3,40 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next';
 import { useDispatch } from 'react-redux';
 import { getItems } from "../redux/features/carts";
+import { useTina } from "tinacms/dist/react";
+import client from '../tina/__generated__/client';
 // import Input from '../components/Input/Input';
 // import Button from '../components/Button/Button';
 // import CommunityCard from '../components/CommunityCard/CommunityCard';
 // import { communityNews } from '../constants/communityNews';
 
 export async function getStaticProps({ locale }) {
+  const { data, query, variables } = await client.queries.community({
+    relativePath: `${locale}/community.json`,
+  });
   return {
     props: {
+      data,
+      query,
+      variables,
       ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
     }
   }
 }
 
-const Community = () => {
+const Community = (props) => {
   const [userName, setUserName] = useState('');
   const [tab, setTab] = useState("1")
   const { t } = useTranslation()
   const dispatch = useDispatch()
+
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  let pageData = data.community;
 
   useEffect(() => {
     if (typeof window !== "undefined") {

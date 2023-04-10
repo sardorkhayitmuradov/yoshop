@@ -1,5 +1,7 @@
 import { defineConfig } from "tinacms";
 import { home } from "./custom_schemas/home/home";
+import { licenses } from "./custom_schemas/licenses/licenses";
+import { community } from "./custom_schemas/community/community";
 // import { ruhome } from "./custom_schemas/home/ru/ruhome";
 
 // Your hosting provider likely exposes this as an environment variable
@@ -29,6 +31,8 @@ export default defineConfig({
   schema: {
     collections: [
       home,
+      licenses,
+      community,
       {
         name: "post",
         label: "Posts",

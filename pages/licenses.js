@@ -15,16 +15,26 @@ import DesktopIcon from "../public/assets/images/desktop-computer.svg";
 import shopIcon from "../public/assets/images/bascet.svg";
 import UserGuide from '../public/assets/images/document-text.svg';
 import PriceFormatNumber from "../components/PriceFormatNumber";
+import { useTina } from "tinacms/dist/react";
+import client from '../tina/__generated__/client';
 
 export async function getStaticProps({ locale }) {
+
+  const { data, query, variables } = await client.queries.licenses({
+    relativePath: `${locale}/licenses.json`,
+  });
+
   return {
     props: {
+      data,
+      query,
+      variables,
       ...(await serverSideTranslations(locale, ["common", "header", "footer"])),
     },
   };
 }
 
-const Licenses = () => {
+const Licenses = (props) => {
   const [activeTab, setActiveTab] = useState("1");
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -48,6 +58,13 @@ const Licenses = () => {
     }
   }, [addToCartHandler, dispatch]);
 
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  let pageData = data.licenses;
 
   return (
     <section>

@@ -1,0 +1,40 @@
+{
+  "tariffs": {
+    "title": "Лицензии и тарифы",
+    "package": "Выберите свою лицензию или",
+    "button": "Получить бесплатную версию",
+    "tabs": {
+      "monthly": "Месячная",
+      "semiAnnual": "Полугодовая",
+      "annual": "Годовая"
+    },
+    "license": {
+      "discount": "Скидка",
+      "tradingPlace": "Торговая точка",
+      "cashZone": "Кассовая зона",
+      "users": "Пользователи",
+      "perAdditional": "за дополнение",
+      "licenceHardware": "*Вы можете использовать эту лицензию только на следующем оборудовании:",
+      "addEquipment": "Добавить оборудование",
+      "subtotal": "Итого:"
+    },
+    "guide": "Руководство пользователя",
+    "total": "ВСЕГО:",
+    "licenseFeatures": {
+      "title": "The license price includes",
+      "warranty": {
+        "title": "Гарантия на программное обеспечение",
+        "image": "/assets/images/badge-check.svg"
+      },
+      "setup": {
+        "title": "Установка",
+        "image": "/assets/images/save-as.svg"
+      },
+      "support": {
+        "title": "Удаленная тех. поддержка",
+        "image": "/assets/images/desktop-computer.svg"
+      }
+    },
+    "subTotal": "ВСЕГО:"
+  }
+}
