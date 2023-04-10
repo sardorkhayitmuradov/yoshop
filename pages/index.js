@@ -24,17 +24,25 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { getItems } from "../redux/features/carts";
+import client from '../tina/__generated__/client';
 // import Input from '../components/Input/Input';
 
 export async function getStaticProps({ locale }) {
+
+  const { data } = await client.queries.home({
+    relativePath: `${locale}/home.json`,
+  });
+
   return {
     props: {
+      data,
       ...(await serverSideTranslations(locale ?? 'ru', ["common", "header", "footer"], i18nConfig)),
     },
   };
 }
 
-function Home() {
+function Home({ data }) {
+  console.log(data)
   const router = useRouter()
   const [name, setName] = useState();
   const [number, setNumber] = useState();

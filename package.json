@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "tinacms dev -c \"next dev\"",
+    "build": "tinacms build && next build",
+    "start": "tinacms build && next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
+    "@tinacms/cli": "^1.5.5",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "i18next": "^22.4.9",
@@ -24,7 +25,8 @@
     "react-phone-number-input": "^3.2.19",
     "react-redux": "^8.0.5",
     "swiper": "^8.4.7",
-    "swr": "^2.0.3"
+    "swr": "^2.0.3",
+    "tinacms": "^1.4.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

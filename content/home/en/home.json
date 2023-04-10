@@ -1,0 +1,212 @@
+{
+  "hero": {
+    "firstSlider": {
+      "multIntTitle": "Multifunctional inventory software that allows you to fully automate the work of the store",
+      "useTech": "Use Your Phone as a POS-Terminal",
+      "tryFreeButton": "Try for free"
+    },
+    "secondSlider": {
+      "buyTitle": " Buy YoShop POS ",
+      "buyRetail": " and install YoShop Retail and use for ",
+      "buyFree": " free the first 6 months ",
+      "buyNow": "Buy now"
+    },
+    "thirdSlider": {
+      "download": " Download ",
+      "downloadMobile": " the mobile app and get ",
+      "downloadFree": " 2 month free, ",
+      "downloadApp": " the mobile app and get ",
+      "downloadMonth": " then ₸ 4 500 for month "
+    }
+  },
+  "license": {
+    "title": "With a Yoshop license",
+    "text": "you can use the phone as a pos terminal",
+    "storeAutomation": {
+      "title": "Store automation",
+      "image": "/assets/images/store.png",
+      "items": [
+        {
+          "text": "simple and intuitive interface"
+        },
+        {
+          "text": "minimizing the amount of 'manual' work"
+        },
+        {
+          "text": "the maximum expansion of the range of goods sold"
+        },
+        {
+          "text": "significant savings in time and effort required for the operation of the store"
+        }
+      ]
+    },
+    "fullControlBusiness": {
+      "title": "Full control business",
+      "image": "/assets/images/control.png",
+      "items": [
+        {
+          "text": "write-off of goods"
+        },
+        {
+          "text": "remote control 'from home' for employees and the store"
+        },
+        {
+          "text": "search for reliable suppliers and distributors/coming soon"
+        }
+      ]
+    },
+    "effectiveSalesManagement": {
+      "title": "Effective sales management",
+      "image": "/assets/images/effective.png",
+      "items": [
+        {
+          "text": "simple and convenient sale of goods"
+        },
+        {
+          "text": "simplified procedure and automatic accounting of returns"
+        },
+        {
+          "text": "no queues at the checkout"
+        }
+      ]
+    },
+    "extractMinProfit": {
+      "title": "Extracting maximum profit",
+      "image": "/assets/images/extract.png",
+      "items": [
+        {
+          "text": "acceptance of all possible types of payments (cash and non-cash)"
+        },
+        {
+          "text": "increasing store throughput"
+        },
+        {
+          "text": "prevention of theft by unscrupulous employees"
+        }
+      ]
+    },
+    "absoluteSafeBusiness": {
+      "title": "Absolutely safe and legal business",
+      "image": "/assets/images/absolutely.png",
+      "items": [
+        {
+          "text": "secure 'cloud' data storage"
+        },
+        {
+          "text": "issuance of fiscal receipts 'in one click'"
+        },
+        {
+          "text": "secure storage of data on all payments"
+        },
+        {
+          "text": "access to fiscal history - for any period of time"
+        },
+        {
+          "text": "complete confidentiality of all information"
+        }
+      ]
+    }
+  },
+  "features": {
+    "title": "Yoshop will help you to improve your business",
+    "typesOfPayment": {
+      "title": "All types of payment",
+      "image": "/assets/images/typesOfPayment.svg",
+      "items": [
+        {
+          "text": "Cards of all banks"
+        },
+        {
+          "text": "QR"
+        },
+        {
+          "text": "Apple Pay"
+        },
+        {
+          "text": "Samsung Pay"
+        },
+        {
+          "text": "Google Pay"
+        }
+      ]
+    },
+    "simpleIntInterface": {
+      "title": "Simple intuitive interface",
+      "image": "/assets/images/simpleInterface.svg",
+      "items": [
+        {
+          "text": "Simplifies the work of the store and staff."
+        },
+        {
+          "text": "Reduces manual input of information."
+        },
+        {
+          "text": "The simplest and most convenient way of doing business."
+        }
+      ]
+    },
+    "storeReport": {
+      "title": "Full store Report ",
+      "image": "/assets/images/fullStoreReport.svg",
+      "items": [
+        {
+          "text": "Reports by items"
+        },
+        {
+          "text": "Reports by cashiers/shifts"
+        },
+        {
+          "text": "Reports by sales/returns"
+        },
+        {
+          "text": "Reports by entry/withdrawal"
+        }
+      ]
+    },
+    "fiscalazition": {
+      "title": "Fiscalization",
+      "image": "/assets/images/fiscalization.svg",
+      "items": [
+        {
+          "text": "Automatic issuance of a fiscal receipt"
+        },
+        {
+          "text": "Simple tax reporting"
+        }
+      ]
+    },
+    "orginizeStore": {
+      "title": "Fully organize your store",
+      "image": "/assets/images/sullyOrganizeStore.svg",
+      "items": [
+        {
+          "text": "Fully automated sales"
+        },
+        {
+          "text": "Fast customer service and no queue"
+        },
+        {
+          "text": "Timely replenishment of goods in stock"
+        },
+        {
+          "text": "Convenient analytics (reports)"
+        }
+      ]
+    },
+    "eliminationTheft": {
+      "title": "Elimination of theft",
+      "image": "/assets/images/securitysafe.svg",
+      "items": [
+        {
+          "text": "Exclusion of shortage/theft of items"
+        },
+        {
+          "text": "Prevention of theft by cashiers"
+        },
+        {
+          "text": "Conducting an audit without closing the store"
+        }
+      ]
+    }
+  }
+}

@@ -270,6 +270,39 @@ header {
   }
 }
 
+.custom-select {
+  position: relative;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-select__selected {
+  padding: 8px 12px;
+}
+
+.custom-select__options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.custom-select__option {
+  padding: 8px 12px;
+}
+
+.custom-select__option:hover {
+  background-color: #f0f0f0;
+}
+
+
 @media print {
   .pdf-container {
     display: none;

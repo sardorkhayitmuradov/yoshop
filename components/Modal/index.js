@@ -2,9 +2,10 @@ import React, { useContext, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ModalContext } from '../../context/modal';
 import modalStickIcon from '../../public/assets/images/modalStick.svg';
-import Button from '../Button/Button';
+import PriceFormatNumber from '../PriceFormatNumber';
+// import Button from '../Button/Button';
 // import { useSelector } from "react-redux";
-import Link from 'next/link';
+// import Link from 'next/link';
 
 const Modal = () => {
   // let cart = useSelector((store) => store.carts.cart);
@@ -30,7 +31,7 @@ const Modal = () => {
         onClick={modal}
       ></div>
       <div
-        className={`${visible ? "ease-linear  duration-[300ms] font-PoppinsRegular shadow-[0px_4px_4px_rgba(0, 0, 0, 0.25)] fixed z-[31] bg-[#fff] py-[40px] pb-[40px] px-[40px] min-h-[300px] w-[728px] right-36 text-[#111827] top-[90px] rounded-[10px] border border-solid border-[#F9F9FB]" : "hidden"}`}
+        className={`${visible ? "ease-linear  duration-[300ms] shadow-[0px_4px_4px_rgba(0, 0, 0, 0.25)] fixed z-[31] bg-[#fff] py-[40px] pb-[40px] px-[40px] min-h-[300px] w-[728px] right-36 text-[#111827] top-[90px] rounded-[10px] border border-solid border-[#F9F9FB]" : "hidden"}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative flex justify-between overflow-y-scroll h-[500px] cart">
@@ -42,7 +43,7 @@ const Modal = () => {
             className='absolute right-0 top-[-70px] z-[31]'
           />
           <div className="w-full">
-            <h3 className="text-[32px] font-PoppinsBold leading-[140%] mb-[5px]">
+            <h3 className="text-[32px] font-bold leading-[140%] mb-[5px]">
               Cart
             </h3>
             <div className='flex items-center justify-between w-full border-b border-solid border-[#9CA3AF]'>
@@ -58,10 +59,10 @@ const Modal = () => {
                     key={index}
                     className="flex items-center justify-between w-full border-b border-solid border-[#9CA3AF] py-[15px] mb-[15px]"
                   >
-                    <div className="text-[16px] leading-[140%] font-PoppinsBold text-[#111827] max-w-[255px] w-full">
+                    <div className="text-[16px] leading-[140%] font-bold text-[#111827] max-w-[255px] w-full">
                       {cart.name}
                     </div>
-                    <p className="text-[16px] leading-[140%] font-PoppinsBold text-[#111827] w-[50px]">
+                    <p className="text-[16px] leading-[140%] font-bold text-[#111827] w-[50px]">
                       x {cart.qty}
                     </p>
                     <div className="flex flex-col justify-between max-w-[220px] w-full">
@@ -82,7 +83,7 @@ const Modal = () => {
                           + {cart.cashier.qty >= cart.qty *2 ? (cart.cashier.qty - (cart.qty * 2)) : cart.cashier.qty}
                         </p>
                         <p className="text-[14px] leading-[140%]">
-                        ₸ {cart.cashier.price}
+                        ₸ <PriceFormatNumber value={cart.cashier.price} />
                         </p>
                       </div>
 
@@ -105,7 +106,7 @@ const Modal = () => {
                                       + {p.qty}
                                     </p>
                                     <p className="text-[14px] leading-[140%]">
-                                    ₸ {p.price}
+                                    ₸ <PriceFormatNumber value={p.price} />
                                     </p>
                                   </div>
                               );
@@ -119,7 +120,7 @@ const Modal = () => {
                           Subtotal
                         </p>
                         <p className="text-[14px] leading-[140%]">
-                          {cart.subTotal}
+                         <PriceFormatNumber value={cart.subTotal} />
                         </p>
                       </div>
                     </div>
@@ -128,7 +129,7 @@ const Modal = () => {
               })
             ) : (
               <div className="flex items-center justify-between w-full border-b border-solid border-[#9CA3AF] py-[15px] mb-[15px]">
-                <div className="text-[16px] leading-[140%] font-PoppinsBold text-[#111827] max-w-[255px] w-full">
+                <div className="text-[16px] leading-[140%] font-bold text-[#111827] max-w-[255px] w-full">
                   No licences yet ....
                 </div>
               </div>
@@ -138,35 +139,35 @@ const Modal = () => {
               cart.products.map((product, index) => {
                 return (
                   <div key={index} className='flex items-center justify-between w-full border-b border-solid border-[#9CA3AF] py-[15px]'>
-                    <div className='text-[16px] leading-[140%] font-PoppinsBold text-[#111827] max-w-[255px] w-full flex items-center'>
+                    <div className='text-[16px] leading-[140%] font-bold text-[#111827] max-w-[255px] w-full flex items-center'>
                       <Image src={product.image} alt='cart-icon' width={50} height={50} className='mr-[10px]' />
                       <p>{product.name}</p>
                     </div>
-                    <p className='text-[16px] leading-[140%] font-PoppinsBold text-[#111827] w-[50px]'>x {product.qty}</p>
+                    <p className='text-[16px] leading-[140%] font-bold text-[#111827] w-[50px]'>x {product.qty}</p>
                     <div className='flex items-center justify-between max-w-[220px] w-full'>
                       <p className='text-[14px] leading-[140%] text-[#111827]'>Subtotal</p>
-                      <p className='text-[14px] leading-[140%]'>₸ {product.price}</p>
+                      <p className='text-[14px] leading-[140%]'>₸ <PriceFormatNumber value={product.price} /></p>
                     </div>
                   </div>
                 );
               })
             ) : (
               <div className="flex items-center justify-between w-full border-b border-solid border-[#9CA3AF] py-[15px] mb-[15px]">
-                <div className="text-[16px] leading-[140%] font-PoppinsBold text-[#111827] max-w-[255px] w-full">
+                <div className="text-[16px] leading-[140%] font-bold text-[#111827] max-w-[255px] w-full">
                   No products yet ....
                 </div>
               </div>
             )}
 
-            <div className='max-w-[230px] mb-[14px] w-full flex items-center justify-between ml-auto font-PoppinsBold text-[16px]'>
+            <div className='max-w-[230px] mb-[14px] w-full flex items-center justify-between ml-auto font-bold text-[16px]'>
               <p>
                 Total
               </p>
               <p>
-                ₸ {cart?.totalPrice}
+                ₸ <PriceFormatNumber value={cart?.totalPrice} />
               </p>
             </div>
-            {/* <Link href={'/cart'} className={'cursor-pointer ml-auto font-PoppinsBold max-w-[230px] w-full text-white text-[14px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[7px] px-[22px] rounded-[10px]'} onClick={modal}>
+            {/* <Link href={'/cart'} className={'cursor-pointer ml-auto font-bold max-w-[230px] w-full text-white text-[14px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[7px] px-[22px] rounded-[10px]'} onClick={modal}>
               Checkout
             </Link> */}
           </div>

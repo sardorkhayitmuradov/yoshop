@@ -19,6 +19,7 @@ import SelectIcon from '../public/assets/images/select-icon.svg';
 import PolicyCheckbox from '../components/PolicyCheckbox';
 import { getItems } from "../redux/features/carts";
 import { useRouter } from 'next/router';
+import CustomSelect from '../components/CustomSelect';
 // import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
 // import Checkbox from "../components/Checkbox";
 
@@ -73,14 +74,22 @@ const Checkout = () => {
     if (typeof window !== "undefined") {
       const datas = JSON.parse(localStorage.getItem("data"));
       if (datas) {
-        // dispatch(getItems(datas))
-        // setDatas(datas)
-        // console.log(datas)
         dispatch(getItems(datas))
       }
     }
   }, [dispatch]);
-  // console.log(checkedPolicy);
+
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const options = [
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' },
+  ];
+
+  const handleSelectChange = (option) => {
+    setSelectedValue(option.value);
+  };
 
   return (
     <>
@@ -743,30 +752,12 @@ const Checkout = () => {
                           'Almaty town, Amangeldy 59a, 7 floor, 702'
                         }
                       />
-                      <AdressLocation
-                        locationInfoWrappClassName={
-                          'pl-3 flex items-center mt-[22px] max-[450px]:pl-0 max-[450px]:mb-6 max-[450px]:mt-4'
-                        }
-                        imgaes={locationAdressIcon}
-                        locationTextClassName={
-                          'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] ml-1'
-                        }
-                        locationText={
-                          'Almaty town, Amangeldy 59a, 7 floor, 702'
-                        }
+                      <CustomSelect
+                        options={options}
+                        value={selectedValue}
+                        onChange={handleSelectChange}
                       />
-                      <AdressLocation
-                        locationInfoWrappClassName={
-                          'pl-3 flex items-center mt-[22px] mb-[70px] max-[450px]:pl-0 max-[450px]:mb-6 max-[450px]:mt-4'
-                        }
-                        imgaes={locationAdressIcon}
-                        locationTextClassName={
-                          'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] ml-1'
-                        }
-                        locationText={
-                          'Almaty town, Amangeldy 59a, 7 floor, 702'
-                        }
-                      />
+
                       <p className='text-[20px] font-regular leading-[180%] max-[450px]:text-[12px] max-[450px]:mb-10'>
                         Please review the order details and payment details
                         before proceeding to confirm your order
@@ -1112,11 +1103,11 @@ const Checkout = () => {
           </div>
           <div className='flex items-center my-[100px] max-[450px]:flex-col max-[450px]:px-6 max-[450px]:gap-y-4 max-[450px]:my-5'>
             <button
-              className={`py-[12px] text-[#fff] max-w-[500px] w-full  ${checkedPolicy.paymentPolicy === true && checkedPolicy.policyPublic === true 
+              className={`py-[12px] text-[#fff] max-w-[500px] w-full  ${checkedPolicy.paymentPolicy === true && checkedPolicy.policyPublic === true
                 ? 'bg-[#7D66BB]'
                 : 'bg-[#eff1fe] text-[#9ca3af]'
                 } rounded-[10px] font-bold leading-[140%] text-xl`}
-              onClick={() => checkedPolicy.paymentPolicy === true && checkedPolicy.policyPublic === true  && setOpenModal(true)}
+              onClick={() => checkedPolicy.paymentPolicy === true && checkedPolicy.policyPublic === true && setOpenModal(true)}
             >
               Pay
             </button>
