@@ -113,30 +113,6 @@ export const home = {
                         },
                     ]
                 },
-                // {
-                //     label: 'Hero Image',
-                //     name: 'image',
-                //     component: 'image',
-                //     type: 'image',
-                //     parse: (media) => {
-                //         return `${media}`; // This is how the image is saved in public/uploads
-                //     },
-                //     uploadDir: () => '/public',
-
-                //     previewSrc: (fullSrc) => fullSrc.replace('/public', ''),
-                // },
-                // {
-                //     label: 'Hero app store button title',
-                //     name: 'app_store',
-                //     component: 'text',
-                //     type: 'string'
-                // },
-                // {
-                //     label: 'Hero google play button title',
-                //     name: 'play_market',
-                //     component: 'text',
-                //     type: 'string'
-                // },
             ],
         },
         {

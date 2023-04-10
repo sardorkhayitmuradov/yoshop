@@ -19,7 +19,7 @@
       "downloadMonth": ""
     }
   },
-  "License": {
+  "license": {
     "title": "С лицензией Yoshop",
     "text": "Вы можете использовать телефон как pos терминал",
     "storeAutomation": {
@@ -107,7 +107,7 @@
       ]
     }
   },
-  "Features": {
+  "features": {
     "title": " Yoshop поможет улучшить ваш бизнес ",
     "typesOfPayment": {
       "title": " Все виды оплаты ",
