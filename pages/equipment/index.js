@@ -6,25 +6,35 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import EquipmentCard from '../../components/EquipmentCard/EquipmentCard';
 import Button from '../../components/Button/Button';
 import shopIcon from '../../public/assets/images/bascet.svg';
-import GuaranteeIcon from '../../public/assets/images/badge-check.svg';
-import LearnIcon from '../../public/assets/images/learn.svg';
-import SaveIcon from '../../public/assets/images/save-as.svg';
-import DesktopIcon from '../../public/assets/images/desktop-computer.svg';
+// import GuaranteeIcon from '../../public/assets/images/badge-check.svg';
+// import LearnIcon from '../../public/assets/images/learn.svg';
+// import SaveIcon from '../../public/assets/images/save-as.svg';
+// import DesktopIcon from '../../public/assets/images/desktop-computer.svg';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useSelector, useDispatch } from 'react-redux';
 import { addProducts, addToCart, getItems } from '../../redux/features/carts';
 import { ModalContext } from '../../context/modal';
+import { useTina } from "tinacms/dist/react";
+import client from '../../tina/__generated__/client';
 
 export async function getServerSideProps({ locale }) {
+
+  const { data, query, variables } = await client.queries.equipment({
+    relativePath: `${locale}/equipment.json`,
+  });
+
   return {
     props: {
+      data,
+      query,
+      variables,
       ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
     },
   };
 }
 
-const Equipment = () => {
+const Equipment = (props) => {
   const router = useRouter();
   const { t } = useTranslation();
   const [currentTab, setCurrentTab] = useState('all');
@@ -72,6 +82,15 @@ const Equipment = () => {
     }
   };
 
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  let pageData = data.equipment;
+  // console.log(pageData)
+
   useEffect(() => {
     return () => {
       if (typeof window !== "undefined") {
@@ -95,43 +114,32 @@ const Equipment = () => {
         <div className={`max-w-xl mx-auto w-full`}>
           <div className='max-w-[1204px] mx-auto w-full pt-[34px] max-[450px]:py-0'>
             <h2 className='max-[450px]:px-6 font-bold text-[32px] leading-[140%] mb-[26px] max-[450px]:mb-2'>
-              {t('common:equipment_shop')}
+              {pageData.heroSection.title}
             </h2>
             <p className='max-[450px]:px-6 text-[18px] leading-[180%] mb-[26px] max-[450px]:mb-8'>
-              {t('common:set')}
+              {pageData.heroSection.text}
             </p>
             <h3 className='max-[450px]:px-6 font-bold text-[32px] leading-[140%] mb-[40px] max-[450px]:text-[26px] max-[450px]:mb-5'>
-              {t('common:you_get')}
+              {pageData.heroSection.offers.title}
             </h3>
             <div className='flex items-center justify-between w-full max-[450px]:flex-col max-[450px]:items-stretch max-[450px]:gap-[10px] max-[450px]:pl-6'>
-              <EquipmentCard
-                wrapperClassName={'max-w-[280px] max-[450px]:max-w-[100%] animate-equipment-card'}
-                image={GuaranteeIcon}
-                titleClass={'max-w-[106px] w-full]'}
-              >
-                {t('common:guarantee')}
-              </EquipmentCard>
-              <EquipmentCard
-                wrapperClassName={'max-w-[280px] max-[450px]:max-w-[100%] animate-equipment-card-even'}
-                image={LearnIcon}
-                titleClass={'max-w-[106px] w-full]'}
-              >
-                {t('common:training')}
-              </EquipmentCard>
-              <EquipmentCard
-                wrapperClassName={'max-w-[280px] max-[450px]:max-w-[100%] animate-equipment-card'}
-                image={SaveIcon}
-                titleClass={'max-w-[106px] w-full]'}
-              >
-                {t('common:setup')}
-              </EquipmentCard>
-              <EquipmentCard
-                wrapperClassName={'max-w-[280px] max-[450px]:max-w-[100%] animate-equipment-card-even'}
-                image={DesktopIcon}
-                titleClass={'max-w-[106px] w-full]'}
-              >
-                {t('common:tech_support')}
-              </EquipmentCard>
+              {
+                pageData.heroSection.offers.items.map((el, index) => {
+                  return (
+                    <EquipmentCard
+                      key={index}
+                      wrapperClassName={`max-w-[280px] max-[450px]:max-w-[100%] ${index % 2 === 0 ? "animate-equipment-card" :"animate-equipment-card-even"}`}
+                      image={el.image}
+                      titleClass={'max-w-[106px] w-full]'}
+                    >
+                      {el.title}
+                    </EquipmentCard>
+
+                  )
+                })
+              }
+
+              {/* animate-equipment-card-even */}
             </div>
           </div>
         </div>
@@ -239,7 +247,7 @@ const Equipment = () => {
                         alt='shop-icon'
                         className='pr-2 max-[450px]:hidden'
                       />
-                      {t('common:add_cart')}
+                      {pageData.addCart}
                     </Button>
                   </div>
                 );
@@ -275,7 +283,7 @@ const Equipment = () => {
                         alt='shop-icon'
                         className='pr-2 max-[450px]:hidden'
                       />
-                      {t('common:add_cart')}
+                      {pageData.addCart}
                     </Button>
                   </div>
                 );

@@ -1,0 +1,28 @@
+{
+    "heroSection" : {
+        "title" : "Equipment for your shop",
+        "text" : "We will assemble a set of our license and equipment for them.",
+        "offers" : {
+            "title" : "With YoShop you get",
+            "items" : [
+                {
+                    "title" : "Guarantee",
+                    "image" : "/assets/images/badge-check.svg"
+                },
+                {
+                    "title" : "Training",
+                    "image" : "/assets/images/learn.svg"
+                },
+                {
+                    "title" : "Setup",
+                    "image" : "/assets/images/save-as.svg"
+                },
+                {
+                    "title" : "Technical Support",
+                    "image" : "/assets/images/desktop-computer.svg"
+                }
+            ]
+        }
+    },
+    "addCart" : "Add to cart"
+}

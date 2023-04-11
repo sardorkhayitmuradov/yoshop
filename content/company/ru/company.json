@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "TOO Finenex",
+    "text": "Finenex — казахстанско-корейская финтех-компания, занимающаяся разработкой и внедрением высокотехнологичных программных решений для различных сфер бизнеса."
+  },
+  "companyFeatures": {
+    "purpose": {
+      "title": "Наша Цель",
+      "image": "/assets/images/FinenexsPurpose.jpg",
+      "text": "Оптимальная автоматизация любой сферы деятельности за счет внедрения передовых финансовых технологий и качественного сервиса"
+    },
+    "vision": {
+      "title": "Наше Видение",
+      "image": "/assets/images/IbexlabsVision.jpg",
+      "text": "Бизнес должен быть:",
+      "firstLine": {
+        "first": "Максимально ",
+        "second": "выгодным.",
+        "third": ""
+      },
+      "secondLine": {
+        "first": "Простым и удобным",
+        "second": " в управлении."
+      },
+      "thirdLine": {
+        "first" : "Приносить",
+        "second" : "удовольствие."
+      }
+    },
+    "details": {
+      "title": "Сведения о компании",
+      "image": "/assets/images/companyDetails.jpg",
+      "name": "TOO Finenex",
+      "code": "БИН: 220140013991"
+    }
+  }
+}

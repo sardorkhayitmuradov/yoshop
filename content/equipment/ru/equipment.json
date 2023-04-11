@@ -1,0 +1,28 @@
+{
+  "heroSection": {
+    "title": "Оборудование для вашего магазина",
+    "text": "Мы соберем комплект лицензии и оборудования для Вас.",
+    "offers": {
+      "title": "С YoShop вы получаете",
+      "items": [
+        {
+          "title": "Гарантия",
+          "image": "/assets/images/badge-check.svg"
+        },
+        {
+          "title": "Обучение",
+          "image": "/assets/images/learn.svg"
+        },
+        {
+          "title": "Установка",
+          "image": "/assets/images/save-as.svg"
+        },
+        {
+          "title": "Тех. поддержка",
+          "image": "/assets/images/desktop-computer.svg"
+        }
+      ]
+    }
+  },
+  "addCart" : "В корзину"
+}

@@ -41,8 +41,6 @@ const Licenses = (props) => {
 
   const carts = useSelector((store) => store.carts);
 
-  // const [datas, setDatas] = useState("")
-
   let priceTotal = carts.totalPrice;
 
   const addToCartHandler = useCallback(() => {

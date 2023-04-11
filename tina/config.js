@@ -2,6 +2,11 @@ import { defineConfig } from "tinacms";
 import { home } from "./custom_schemas/home/home";
 import { licenses } from "./custom_schemas/licenses/licenses";
 import { community } from "./custom_schemas/community/community";
+import { resources } from "./custom_schemas/resources/resources";
+import { contact } from "./custom_schemas/contact/contact";
+import { company } from "./custom_schemas/company/company";
+import { equipment } from "./custom_schemas/equipment/equipment";
+import { cart } from "./custom_schemas/cart/cart";
 // import { ruhome } from "./custom_schemas/home/ru/ruhome";
 
 // Your hosting provider likely exposes this as an environment variable
@@ -32,31 +37,12 @@ export default defineConfig({
     collections: [
       home,
       licenses,
+      equipment,
+      resources,
       community,
-      {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
-        ui: {
-          // This is an DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-        },
-      },
+      company,
+      contact,
+      cart
     ],
   },
 });

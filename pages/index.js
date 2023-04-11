@@ -5,12 +5,6 @@ import Button from '../components/Button/Button';
 import ListIcon from '../public/assets/images/listCircle.svg';
 import AppStore from '../public/assets/images/appStore.png';
 import GooglePlay from '../public/assets/images/googlePlay.png';
-import PaymentIcon from '../public/assets/images/typesOfPayment.svg';
-import InterfaceIcon from '../public/assets/images/simpleInterface.svg';
-import StoreReport from '../public/assets/images/fullStoreReport.svg';
-import FiscalizationIcon from '../public/assets/images/fiscalization.svg';
-import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg';
-import SecurityIcon from '../public/assets/images/securitysafe.svg';
 import PhoneCall from '../public/assets/images/phone.svg';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -27,6 +21,12 @@ import { getItems } from "../redux/features/carts";
 import { useTina } from "tinacms/dist/react";
 import client from '../tina/__generated__/client';
 // import Input from '../components/Input/Input';
+// import PaymentIcon from '../public/assets/images/typesOfPayment.svg';
+// import InterfaceIcon from '../public/assets/images/simpleInterface.svg';
+// import StoreReport from '../public/assets/images/fullStoreReport.svg';
+// import FiscalizationIcon from '../public/assets/images/fiscalization.svg';
+// import FullyOrginazeStore from '../public/assets/images/sullyOrganizeStore.svg';
+// import SecurityIcon from '../public/assets/images/securitysafe.svg';
 
 export async function getStaticProps({ locale }) {
 
@@ -60,7 +60,15 @@ function Home(props) {
   const slideFirstCard = useRef();
   const slideSecondCard = useRef();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  let pageData = data.home;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -71,13 +79,6 @@ function Home(props) {
     }
   }, [dispatch]);
 
-  const { data } = useTina({
-    query: props.query,
-    variables: props.variables,
-    data: props.data,
-  });
-
-  let pageData = data.home;
 
   return (
     <main className='pt-[100px] w-full max-[450px]:pt-0'>
@@ -801,29 +802,23 @@ function Home(props) {
                 <li className='w-full flex items-center py-10'>
                   <div className='w-[31%]'>
                     <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                      <Image src={PaymentIcon} alt='improve section Image' width={85} height={58} />
+                      <Image src={pageData.features.typesOfPayment.image} alt='improve section Image' width={85} height={58} />
                     </div>
                     <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                      {t("common:types_of_payment")}
+                      {pageData.features.typesOfPayment.title}
                     </p>
                   </div>
                   <div className='pl-[34px] w-[69%]'>
                     <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:bank_cards")}
-                      </li>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:qr")}
-                      </li>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:apple_pay")}
-                      </li>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:samsung_pay")}
-                      </li>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:google_pay")}
-                      </li>
+                      {
+                        pageData.features.typesOfPayment.items.map((el, index) => {
+                          return (
+                            <li key={index} className='max-w-[202px] w-full'>
+                              {el.text}
+                            </li>
+                          )
+                        })
+                      }
                     </ul>
                   </div>
                 </li>
@@ -832,25 +827,25 @@ function Home(props) {
                 <li className='w-full flex items-center py-10'>
                   <div className='w-[31%]'>
                     <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                      <Image src={InterfaceIcon} alt='improve section Image' width={42} height={69} />
+                      <Image src={pageData.features.simpleIntInterface.image} alt='improve section Image' width={42} height={69} />
                     </div>
                     <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
                       {
-                        t('common:simple_int_interface')
+                        pageData.features.simpleIntInterface.title
                       }
                     </p>
                   </div>
                   <div className='pl-[34px] w-[69%]'>
                     <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:simplifies")}
-                      </li>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:reduces")}
-                      </li>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:simpliest_way")}
-                      </li>
+                      {
+                        pageData.features.simpleIntInterface.items.map((el, index) => {
+                          return (
+                            <li key={index} className='max-w-[202px] w-full'>
+                              {el.text}
+                            </li>
+                          )
+                        })
+                      }
                     </ul>
                   </div>
                 </li>
@@ -859,28 +854,26 @@ function Home(props) {
                 <li className='w-full flex items-center py-10'>
                   <div className='w-[31%]'>
                     <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                      <Image src={StoreReport} alt='improve section Image' width={60} height={60} />
+                      <Image src={pageData.features.storeReport.image} alt='improve section Image' width={60} height={60} />
                     </div>
                     <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
                       {
-                        t('common:store_report')
+                        pageData.features.storeReport.title
                       }
                     </p>
                   </div>
                   <div className='pl-[34px] w-[69%]'>
                     <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                      <li className='max-w-[202px] w-full'>
-                        {t("common:items_report")}
-                      </li>
-                      <li className='max-w-[196px] w-full'>
-                        {t("common:items_shifts")}
-                      </li>
-                      <li className='max-w-[196px] w-full'>
-                        {t("common:items_returns")}
-                      </li>
-                      <li className='max-w-[196px] w-full'>
-                        {t("common:items_entry")}
-                      </li>
+                      {
+                        pageData.features.storeReport.items.map((el, index) => {
+                          return (
+                            <li key={index} className='max-w-[202px] w-full'>
+                              {el.text}
+                            </li>
+
+                          )
+                        })
+                      }
                     </ul>
                   </div>
                 </li>
@@ -900,16 +893,21 @@ function Home(props) {
                 <li className='w-full flex items-center py-10'>
                   <div className='w-[31%]'>
                     <div className='bg-[#ffeef3] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                      <Image src={FiscalizationIcon} alt='improve section Image' width={50} height={60} />
+                      <Image src={pageData.features.fiscalazition.image} alt='improve section Image' width={50} height={60} />
                     </div>
                     <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                      {t('common:fiscalazition')}
+                      {pageData.features.fiscalazition.title}
                     </p>
                   </div>
                   <div className='pl-[34px] w-[69%]'>
                     <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                      <li className='max-w-[188px] w-full'>{t('common:issuance')}</li>
-                      <li className='max-w-[188px] w-full'>{t('common:simple_tac_reporting')}</li>
+                      {
+                        pageData.features.fiscalazition.items.map((el, index) => {
+                          return (
+                            <li key={index} className='max-w-[188px] w-full'>{el.text}</li>
+                          )
+                        })
+                      }
                     </ul>
                   </div>
                 </li>
@@ -918,19 +916,21 @@ function Home(props) {
                 <li className='w-full flex items-center py-10'>
                   <div className='w-[31%]'>
                     <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                      <Image src={FullyOrginazeStore} alt='improve section Image' width={60} height={49} />
+                      <Image src={pageData.features.orginizeStore.image} alt='improve section Image' width={60} height={49} />
                     </div>
                     <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                      {t('common:orginize_store')}
-
+                      {pageData.features.orginizeStore.title}
                     </p>
                   </div>
                   <div className='pl-[34px] w-[69%]'>
                     <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                      <li className='max-w-[221px] w-full'>{t('common:organize_sales')}</li>
-                      <li className='max-w-[221px] w-full'>{t('common:fast_service')}</li>
-                      <li className='max-w-[221px] w-full'>{t('common:goods_stock')}</li>
-                      <li className='max-w-[221px] w-full'>{t('common:convinient_analystics')}</li>
+                      {
+                        pageData.features.orginizeStore.items.map((el, index) => {
+                          return (
+                            <li key={index} className='max-w-[221px] w-full'>{el.text}</li>
+                          )
+                        })
+                      }
                     </ul>
                   </div>
                 </li>
@@ -939,17 +939,21 @@ function Home(props) {
                 <li className='w-full flex items-center py-10'>
                   <div className='w-[31%]'>
                     <div className='bg-[#fbe2e7] max-w-[100px] h-[100px] w-full rounded-full flex items-center justify-center mb-[6px]'>
-                      <Image src={SecurityIcon} alt='improve section Image' width={50} height={50} />
+                      <Image src={pageData.features.eliminationTheft.image} alt='improve section Image' width={50} height={50} />
                     </div>
                     <p className='max-w-[145px] w-full font-bold text-base text-center text-[#656974] leading-[140%]'>
-                      {t('common:elimination_theft')}
+                      {pageData.features.eliminationTheft.title}
                     </p>
                   </div>
                   <div className='pl-[34px] w-[69%]'>
                     <ul className='text-[#0F172A] text-base gap-4 flex flex-col list-disc'>
-                      <li className='max-w-[221px] w-full'>{t('common:exlusion_items')}</li>
-                      <li className='max-w-[221px] w-full'>{t('common:prevention_cashier')}</li>
-                      <li className='max-w-[221px] w-full'>{t('common:closing_store')}</li>
+                      {
+                        pageData.features.eliminationTheft.items.map((el, index) => {
+                          return (
+                            <li key={index} className='max-w-[221px] w-full'>{el.text}</li>
+                          )
+                        })
+                      }
                     </ul>
                   </div>
                 </li>

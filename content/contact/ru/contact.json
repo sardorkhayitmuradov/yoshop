@@ -1,0 +1,21 @@
+{
+  "contactSection": {
+    "title": "Контакты",
+    "locationLink" : "https://yandex.com/map-widget/v1/-/CCUvjKv6WB",
+    "location": {
+      "title": "Локация",
+      "text": "г.Алматы, Амангельды 59а, 7 этаж, 702а"
+    },
+    "contact": {
+      "title": "Свяжитесь с нами",
+      "tel": "8 700 450 80 11",
+      "email": "info@finenex.kz"
+    }
+  },
+  "form": {
+    "title": "Есть вопросы? Свяжитесь с нами.",
+    "text": "Заполните форму и наша команда свяжется с вами в течение 24 часов.",
+    "name": "Введите имя",
+    "button": "Заказать звонок"
+  }
+}

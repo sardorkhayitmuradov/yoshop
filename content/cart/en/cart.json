@@ -1,0 +1,27 @@
+{
+  "title": "Cart",
+  "emptyCart": {
+    "title": "Your cart is empty",
+    "button": "Go to Main page"
+  },
+  "filledCart": {
+    "products": "Products",
+    "qty": "Qty",
+    "summary": "Order Summary",
+    "selectAll": "Select All",
+    "deleteAll": "Delete All",
+    "licenses": {
+      "editLicense": "Edit License",
+      "period": "Period",
+      "users": "Users",
+      "equipment": "Equipment"
+    },
+    "subTotal": "Subtotal:",
+    "discount": "Discount",
+    "promoCodeApplied": "(Your promo code applied)",
+    "promoCodeRequested": "Please enter your Promo Code",
+    "applyButton": "Apply",
+    "total": "Total",
+    "checkoutButton": "Checkout"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Finenex LLP",
+    "text": "Finenex is a Kazakh fintech company engaged in the development and implementation of high-tech software solutions for various business areas."
+  },
+  "companyFeatures": {
+    "purpose": {
+      "title": "Our Purpose",
+      "image": "/assets/images/FinenexsPurpose.jpg",
+      "text": "Optimal automation of any field of activity through the introduction of advanced financial technologies and high-quality service"
+    },
+    "vision": {
+      "title": "Our Vision",
+      "image": "/assets/images/IbexlabsVision.jpg",
+      "text": "Business should be:",
+      "firstLine": {
+        "first": "As",
+        "second": "profitable",
+        "third": "as possible"
+      },
+      "secondLine": {
+        "first": "Easy and comfortable",
+        "second": " to manage."
+      },
+      "thirdLine": {
+        "first" : "Bringing",
+        "second" : "pleasure."
+      }
+    },
+    "details": {
+      "title": "Company details",
+      "image": "/assets/images/companyDetails.jpg",
+      "name": "LLP Finenex",
+      "code": "BIN: 220140013991"
+    }
+  }
+}

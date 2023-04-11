@@ -1,0 +1,27 @@
+{
+    "resources" : {
+        "title": "Resources",
+        "text" : "On this section you can find the questions you are interested in and instructional videos" 
+    },
+    "questions" : {
+        "title" : "FAQ",
+        "items" : [
+            {
+                "title" : "Does YoShop have fiscalization?",
+                "text" : "Yes! Yoshop has a fiscalization system in the form of an online-register."
+            },
+            {
+                "title" :"What types of payments are accepted?",
+                "text" : "Yoshop accepts cash, non-cash (QR-code, bank card) types of payments."
+            },
+            {
+                "title" : "Does YoShop know how to work with labeled goods?",
+                "text" : "Yoshop works with marked goods (Reading and recognition of DataMatrix code)."
+            },
+            {
+                "title" : "What fees does YoShop have when accepting non-cash payments?",
+                "text" : "Without connecting to the network, the terminal is able to work: up to 12 hours (with active use), up to 48 hours (standby). Charging the device to 100% with a zero battery value takes 2.5-3 hours."
+            }
+        ]
+    }
+}

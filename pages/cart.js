@@ -15,17 +15,27 @@ import { useSelector, useDispatch } from 'react-redux';
 import PriceFormatNumber from '../components/PriceFormatNumber';
 import { getItems } from "../redux/features/carts";
 import { useState } from 'react';
+import { useTina } from "tinacms/dist/react";
+import client from '../tina/__generated__/client';
 
 export async function getStaticProps({ locale }) {
+
+  const { data, query, variables } = await client.queries.cart({
+    relativePath: `${locale}/cart.json`,
+  });
+
   return {
     props: {
+      data,
+      query,
+      variables,
       ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
     },
   };
 }
-const Cart = () => {
-  const [code , setCode] = useState("");
-  const [promoCode , setPromoCode] = useState(false)
+const Cart = (props) => {
+  const [code, setCode] = useState("");
+  const [promoCode, setPromoCode] = useState(false)
   const router = useRouter();
   let cart = useSelector((store) => store.carts.cart);
   const { t } = useTranslation();
@@ -35,12 +45,20 @@ const Cart = () => {
   };
 
   const handleCode = () => {
-    if(code.length > 0){
+    if (code.length > 0) {
       setPromoCode(true)
     }
   }
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  let pageData = data.cart;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -56,22 +74,22 @@ const Cart = () => {
     <section className='min-h-[90vh] pt-[170px] mb-[250px] text-[#111827] max-[450px]:py-[50px] max-[450px]:mb-0'>
       <div className='max-w-xl mx-auto max-[450px]:px-6'>
         <h1 className='font-bold text-[32px] leading-[140%] mb-7 max-[450px]:text-[20px] max-[450px]:mb-5'>
-          {t('common:cart')}
+          {pageData.title}
         </h1>
         <div className='w-full max-[450px]:hidden'>
           {cart?.quantity > 0 ? (
             <div>
               <div className='border-y border-[#CBD5E1] flex items-center py-4 justify-between mb-2'>
                 <div className='flex items-center max-w-[590px] w-full justify-between pl-[95px]'>
-                  <p>{t('common:products')}</p>
-                  <p>{t('common:qty')}</p>
+                  <p>{pageData.filledCart.products}</p>
+                  <p>{pageData.filledCart.qty}</p>
                 </div>
                 <div className='max-w-[500px] w-full'>
-                  <p>{t('common:order_summary')}</p>
+                  <p>{pageData.filledCart.summary}</p>
                 </div>
               </div>
               <p className='text-[#FF588A] mb-5 leading-[180%] cursor-pointer'>
-                {t('common:select_all')}
+                {pageData.filledCart.selectAll}
               </p>
               <ul className='mb-16'>
                 {cart.licenses.length > 0
@@ -108,7 +126,7 @@ const Cart = () => {
                                 href={'/licenses'}
                                 className='text-[#FF588A] text-[12px] leading-[140%] border-b border-[#ff588a] pb-1'
                               >
-                                {t('common:edit')}
+                                {pageData.filledCart.licenses.editLicense}
                               </Link>
                             </div>
                             <p className='text-[20px] leading-[140%] font-bold'>
@@ -117,12 +135,12 @@ const Cart = () => {
                           </div>
                           <div className='max-w-[500px] w-full text-[20px] leading-[180%]'>
                             <div className='flex items-center justify-between w-full mb-5'>
-                              <p>{t('common:period')}</p>
+                              <p>{pageData.filledCart.licenses.period}</p>
                               <p className='font-bold'>{router.locale === 'ru' ? license.periodru : license.period}</p>
                             </div>
 
                             <div className='flex items-center justify-between w-full mb-5'>
-                              <p>{t('common:users')}</p>
+                              <p>{pageData.filledCart.licenses.users}</p>
 
                               <div className='flex items-center justify-between w-full max-w-[200px]'>
                                 <p>
@@ -137,7 +155,7 @@ const Cart = () => {
                             <div className='w-full'>
                               <p className='mb-[10px]'>
                                 {license.products.length > 0 &&
-                                  t('header:equipment')}
+                                  pageData.filledCart.licenses.equipment}
                               </p>
                               {license.products.length > 0
                                 ? license.products.map((product) => {
@@ -177,7 +195,7 @@ const Cart = () => {
                           </div>
                         </div>
                         <p className='text-right text-[20px] leading-[140%] font-bold'>
-                          {t('common:sub_total')}
+                          {pageData.filledCart.subTotal}
                           <span className='ml-[30px]'>
                             ₸ <PriceFormatNumber value={license.subTotal} />
                           </span>
@@ -232,7 +250,7 @@ const Cart = () => {
                           </div>
 
                           <p className='text-right text-[20px] leading-[140%] font-bold'>
-                            {t('common:sub_total')}{' '}
+                            {pageData.filledCart.subTotal}
                             <span className='ml-[30px]'>
                               ₸ <PriceFormatNumber value={product.price} />
                             </span>
@@ -247,17 +265,17 @@ const Cart = () => {
                 <div className='w-full max-w-[500px]'>
                   <div className='flex items-center justify-between mb-5'>
                     <div className='flex items-center'>
-                      <p>{t('common:discount')}</p>
+                      <p>{pageData.filledCart.discount}</p>
                       {
                         promoCode ? <p className='text-[12px] text-[#FF588A] ml-3'>
-                        {t('common:applied_promo_code')}
-                      </p> : ""
+                          {pageData.filledCart.promoCodeApplied}
+                        </p> : ""
                       }
                     </div>
                     <p className='text-[#ff588a]'>₸ {code.length > 0 ? 1000 : 0}</p>
                   </div>
 
-                  <p className='mb-3'>{t('common:promo_code')}</p>
+                  <p className='mb-3'>{pageData.filledCart.promoCodeRequested}</p>
 
                   <div className='flex items-center justify-between mb-10'>
                     <Input
@@ -277,12 +295,12 @@ const Cart = () => {
                       }
                       onClick={handleCode}
                     >
-                      {t('common:apply')}
+                      {pageData.filledCart.applyButton}
                     </Button>
                   </div>
 
                   <div className='flex items-center justify-between mb-5 text-[32px]'>
-                    <p>{t('common:total')}</p>
+                    <p>{pageData.filledCart.total}</p>
                     <p>₸ <PriceFormatNumber value={cart.totalPrice} /></p>
                   </div>
 
@@ -292,7 +310,7 @@ const Cart = () => {
                       'cursor-pointer font-bold w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] py-[12px] px-[22px] rounded-[10px]'
                     }
                   >
-                    {t('common:checkout')}
+                    {pageData.filledCart.checkoutButton}
                   </Link>
                 </div>
               </div>
@@ -300,7 +318,7 @@ const Cart = () => {
           ) : (
             <div className='max-w-[510px] w-full mx-auto mt-[250px]'>
               <p className='font-bold leading-[140%] text-[44px] text-center text-[#E5E7EB] mb-[21px]'>
-                {t('common:empty')}
+                {pageData.emptyCart.title}
               </p>
               <Link href={'/'}>
                 <Button
@@ -308,7 +326,7 @@ const Cart = () => {
                     'cursor-pointer font-bold max-w-[507px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'
                   }
                 >
-                  {t('common:main')}
+                  {pageData.emptyCart.button}
                 </Button>
               </Link>
             </div>
@@ -318,14 +336,14 @@ const Cart = () => {
           <>
             <div className='mb-5 items-center justify-between max-[450px]:flex hidden'>
               <p className='font-bold text-[16px] leading-[140%] cursor-pointer'>
-                {t('common:products')}
+                {pageData.filledCart.products}
               </p>
               <div className='flex items-center gap-x-5'>
                 <p className='font-bold text-[12px] leading-[180%] text-[#FF588A] cursor-pointer'>
-                  {t('common:delete_all')}
+                  {pageData.filledCart.deleteAll}
                 </p>
                 <p className='font-bold text-[12px] leading-[180%] text-[#FF588A] cursor-pointer'>
-                  {t('common:select_all')}
+                  {pageData.filledCart.selectAll}
                 </p>
               </div>
             </div>
@@ -373,7 +391,7 @@ const Cart = () => {
                               href={'/licenses'}
                               className='text-[#FF588A] text-[12px] leading-[140%] border-b border-[#ff588a] pb-1'
                             >
-                              {t('common:edit')}
+                              {pageData.filledCart.licenses.editLicense}
                             </Link>
                           </li>
                         </ul>
@@ -382,11 +400,11 @@ const Cart = () => {
                   >
                     <div className='flex w-full flex-col pb-6'>
                       <h2 className='text-[14px] leading-[140%] font-bold'>
-                        {t('common:order_summary')}
+                        {pageData.filledCart.summary}
                       </h2>
                       <div className='flex items-center justify-between mb-2'>
                         <p className='text-[14px] leading-[25px]'>
-                          {t('common:period')}
+                          {pageData.filledCart.licenses.period}
                         </p>
                         <p className='text-[14px] leading-[25px]'>
                           {router.locale === 'ru' ? license.periodru : license.period}
@@ -394,7 +412,7 @@ const Cart = () => {
                       </div>
                       <div className='flex items-center justify-between mb-[10px]'>
                         <p className='text-[14px] leading-[25px]'>
-                          {t('common:users')}
+                          {pageData.filledCart.licenses.users}
                         </p>
                         <p className='text-[14px] leading-[140%] font-bold'>
                           +
@@ -403,7 +421,7 @@ const Cart = () => {
                             : license.cashier.qty}
                         </p>
                       </div>
-                      <p className='mb-3'>{t('header:equipment')}</p>
+                      <p className='mb-3 text-[14px] leading-[140%]'>{pageData.filledCart.licenses.equipment}</p>
                       {license.products.length > 0
                         ? license.products.map((product) => {
                           return (
@@ -439,7 +457,7 @@ const Cart = () => {
                         : ''}
                       <div className='flex items-center justify-between ml-3'>
                         <p className='text-[14px] leading-[25px] font-bold'>
-                          {t('common:sub_total')}
+                          {pageData.filledCart.subTotal}
                         </p>
                         <p className='text-[14px] leading-[25px] font-bold'>
                           ₸ <PriceFormatNumber value={license.subTotal} />
@@ -499,7 +517,7 @@ const Cart = () => {
                               href={'/licenses'}
                               className='text-[#FF588A] text-[12px] leading-[140%] border-b border-[#ff588a] pb-1'
                             >
-                              {t('common:edit')}
+                              {pageData.filledCart.licenses.editLicense}
                             </Link>
                           </li>
                         </ul>
@@ -509,7 +527,7 @@ const Cart = () => {
                     <div className='flex w-full flex-col pb-6'>
                       <div className='flex items-center justify-between ml-3'>
                         <p className='text-[14px] leading-[25px] font-bold'>
-                          {t('common:sub_total')}
+                          {pageData.filledCart.subTotal}
                         </p>
                         <p className='text-[14px] leading-[25px] font-bold'>
                           ₸ <PriceFormatNumber value={products.price} />
@@ -524,15 +542,15 @@ const Cart = () => {
               <div className='w-full max-w-[500px]'>
                 <div className='flex justify-between mb-5 flex-col'>
                   <div className='flex items-center justify-between'>
-                    <p>{t('common:discount')}</p>
+                    <p>{pageData.filledCart.discount}</p>
                     <p className='text-[#ff588a]'>₸ 1000</p>
                   </div>
                   <p className='text-[12px] leading-[180%] text-[#FF588A]'>
-                    {t('common:applied_promo_code')}
+                    {pageData.filledCart.promoCodeApplied}
                   </p>
                 </div>
 
-                <p className='mb-3'>{t('common:promo_code')}</p>
+                <p className='mb-3'>{pageData.filledCart.promoCodeRequested}</p>
 
                 <div className='flex items-center justify-between mb-7'>
                   <Input
@@ -541,7 +559,7 @@ const Cart = () => {
                     inputClassName={
                       'text-[#9CA3AF] w-full py-[11px] pl-[14px] placeholder:text-[#9CA3AF] placeholder:text-[16px] placeholder:leading-[25px] outline-none rounded-[6px] border-[#94A3B8] border border-solid'
                     }
-                    placeholder={'TALGATXOXO'}
+                    // placeholder={'TALGATXOXO'}
                     value={'TALGATXOXO'}
                     onGetValue={(value) => setTown(value)}
                   />
@@ -551,13 +569,13 @@ const Cart = () => {
                       'cursor-pointer font-bold w-[40%] text-white text-[16px] flex justify-center items-center bg-[#FF588A] py-[12px] px-1 rounded-[10px]'
                     }
                   >
-                    {t('common:apply')}
+                    {pageData.filledCart.applyButton}
                   </Button>
                 </div>
 
                 <div className='flex items-center justify-between mb-5 text-[32px]'>
-                  <p className='text-[20px] leading-[140%] font-bold'>
-                    {t('common:total')}
+                  <p className='text-[20px] leading-[140%] font-bold uppercase'>
+                    {pageData.filledCart.total}
                   </p>
                   <p className='text-[20px] leading-[140%] font-bold'>
                     ₸ <PriceFormatNumber value={cart.totalPrice} />
@@ -570,7 +588,7 @@ const Cart = () => {
                     'cursor-pointer font-bold w-full text-white text-[16px] flex justify-center items-center bg-[#7D66BB] py-[12px] px-[22px] rounded-[10px]'
                   }
                 >
-                  {t('common:checkout')}
+                  {pageData.filledCart.checkoutButton}
                 </Link>
               </div>
             </div>
@@ -578,7 +596,7 @@ const Cart = () => {
         ) : (
           <div className='max-w-[510px] max-[450px]:block hidden w-full mx-auto mt-10'>
             <p className='font-bold leading-[140%] text-[44px] max-[450px]:leading-[140%] max-[450px]:text-[24px] text-center text-[#E5E7EB] mb-[21px] max-[450px]:mb-10'>
-              {t('common:empty')}
+              {pageData.emptyCart.title}
             </p>
             <Link href={'/'}>
               <Button
@@ -586,7 +604,7 @@ const Cart = () => {
                   'cursor-pointer font-bold max-w-[507px] w-full text-white text-[20px] flex justify-center items-center bg-[#7D66BB] border-solid border-x border-y border-[#fff] py-[13px] px-[22px] rounded-[10px]'
                 }
               >
-                {t('common:main')}
+                {pageData.emptyCart.button}
               </Button>
             </Link>
           </div>

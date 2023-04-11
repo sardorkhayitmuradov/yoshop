@@ -1,0 +1,27 @@
+{
+  "title": "Корзина",
+  "emptyCart": {
+    "title": "Ваша корзина пуста",
+    "button": "Вернуться на главную"
+  },
+  "filledCart": {
+    "products": "Товары",
+    "qty": "Кол-во",
+    "summary": "Сумма заказа",
+    "selectAll": "Выбрать все",
+    "deleteAll": "Удалить все",
+    "licenses": {
+      "editLicense": "Редактировать",
+      "period": "Период",
+      "users": "Пользователи",
+      "equipment": "Оборудование"
+    },
+    "subTotal": "Итого:",
+    "discount": "Скидка",
+    "promoCodeApplied": "(Ваш промокод применен)",
+    "promoCodeRequested": "Пожалуйста, введите промокод",
+    "applyButton": "Применить",
+    "total": "ВСЕГО",
+    "checkoutButton": "Оплата"
+  }
+}

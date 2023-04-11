@@ -10,7 +10,7 @@ export const community = {
     format: 'json',
     fields: [
         {
-            label: 'community Section',
+            label: 'Community Section',
             name: 'community',
             component: 'group',
             type: 'object',
