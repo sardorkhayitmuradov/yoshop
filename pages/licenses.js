@@ -68,19 +68,19 @@ const Licenses = (props) => {
     <section>
       <div className="max-w-xl mx-auto pt-[120px] pb-[150px] max-[450px]:py-14 max-[450px]:px-6">
         <h2 className="text-[44px] leading-[140%] text-[#0F172A] font-bold mb-[30px] max-[450px]:text-[34px] max-[450px]:font-bold max-[450px]:mb-[20px]">
-          {t("common:tariffs")}
+          {pageData.tariffs.title}
         </h2>
 
         <div className="flex items-center mb-[30px] max-[450px]:flex-col max-[450px]:mb-[70px]">
           <p className="font-bold text-[#F36784] text-[32px] leading-[140%] mr-[25px] max-[450px]:mb-[6px]">
-            {t("common:choose_package")}
+            {pageData.tariffs.package}
           </p>
           <Button
             className={
               "bg-[#7D66BB] border border-solid border-[#94A3B8] rounded-[10px] p-4 max-w-[361px] w-full font-bold text-white text-[20px] leading-[140%] max-[450px]:py-[13px] max-[450px]:text-[16px]"
             }
           >
-            {t("common:free_version")}
+            {pageData.tariffs.button}
           </Button>
         </div>
 
@@ -92,7 +92,7 @@ const Licenses = (props) => {
               : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
           >
-            {t("common:monthly")}
+            {pageData.tariffs.tabs.monthly}
           </TabTitle>
           <TabTitle
             onClick={() => setActiveTab("2")}
@@ -101,7 +101,7 @@ const Licenses = (props) => {
               : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
           >
-            {t("common:semi_annual")}
+            {pageData.tariffs.tabs.semiAnnual}
           </TabTitle>
           <TabTitle
             onClick={() => setActiveTab("3")}
@@ -110,20 +110,20 @@ const Licenses = (props) => {
               : "bg-[#D1D5DB] text-[#4B5563]"
               } rounded-t-[6px] text-center cursor-pointer`}
           >
-            {t("common:annual")}
+            {pageData.tariffs.tabs.annual}
           </TabTitle>
         </div>
         <div className="mb-6">
-          {(activeTab == "1" && <Monthly key={'1'} />) ||
-            (activeTab == "2" && <SemiAnnual key={'2'} />) ||
-            (activeTab == "3" && <Annual key={'3'} />)}
+          {(activeTab == "1" && <Monthly key={'1'} data={pageData.tariffs.license} />) ||
+            (activeTab == "2" && <SemiAnnual key={'2'} data={pageData.tariffs.license} />) ||
+            (activeTab == "3" && <Annual key={'3'} data={pageData.tariffs.license} />)}
         </div>
 
 
         <Link href={'/guide'}>
           <div className="flex items-center mb-14 max-w-[300px] w-full max-[450px]:mb-5">
             <Image src={UserGuide} width={30} height={30} alt="user guide" />
-            <p className="ml-3 mb-0 text-[18px] leading-[180%] text-[#F36784]">{t("common:guide")}</p>
+            <p className="ml-3 mb-0 text-[18px] leading-[180%] text-[#F36784]">{pageData.tariffs.guide}</p>
           </div>
         </Link>
 
@@ -150,27 +150,27 @@ const Licenses = (props) => {
         </div> */}
 
         <h2 className="font-bold text-[32px] text-[#111827] leading-[140%] mb-[40px] max-[450px]:text-[26px] max-[450px]:mb-5">
-          {t("common:price_includes")}:
+          {pageData.tariffs.licenseFeatures.title}
         </h2>
 
         <div className="flex items-center justify-between w-full mb-20 max-[450px]:flex-col max-[450px]:gap-2">
           <EquipmentCard
             wrapperClassName={"max-w-[380px] animate-equipment-card"}
-            image={GuaranteeIcon} titleClass={"max-w-[242px] w-full"}
+            image={pageData.tariffs.licenseFeatures.warranty.image} titleClass={"max-w-[242px] w-full"}
           >
-            {t("common:warranty")}
+            {pageData.tariffs.licenseFeatures.warranty.title}
           </EquipmentCard>
-          <EquipmentCard wrapperClassName={"max-w-[380px] animate-equipment-card-even"} image={SaveIcon} titleClass={"max-w-[242px] w-full"}>
-            {t("common:setup")}
+          <EquipmentCard wrapperClassName={"max-w-[380px] animate-equipment-card-even"} image={pageData.tariffs.licenseFeatures.setup.image} titleClass={"max-w-[242px] w-full"}>
+            {pageData.tariffs.licenseFeatures.setup.title}
           </EquipmentCard>
-          <EquipmentCard wrapperClassName={"max-w-[380px] animate-equipment-card"} image={DesktopIcon} titleClass={"max-w-[242px] w-full"}>
-            {t("common:support")}
+          <EquipmentCard wrapperClassName={"max-w-[380px] animate-equipment-card"} image={pageData.tariffs.licenseFeatures.support.image} titleClass={"max-w-[242px] w-full"}>
+            {pageData.tariffs.licenseFeatures.support.title}
           </EquipmentCard>
         </div>
 
         <div className="flex items-center justify-end max-[450px]:hidden">
           <p className="mr-[30px] font-bold text-[32px] leading-[140%] text-[#0F172A]">
-            {t("common:total")}:
+            {pageData.tariffs.total}
             <span className="ml-[10px]">₸ <PriceFormatNumber value={priceTotal} /></span>
           </p>
           <Button
@@ -186,7 +186,7 @@ const Licenses = (props) => {
               width={35}
               height={35}
             />
-            {t("common:add_cart")}
+            {pageData.tariffs.addCart}
           </Button>
         </div>
       </div>

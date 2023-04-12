@@ -25,7 +25,7 @@ export async function getStaticProps({ locale }) {
 }
 
 
-export const Monthly = () => {
+export const Monthly = ({ data }) => {
   const router = useRouter()
   const dispatch = useDispatch();
   const licences = useSelector((store) => store.licence);
@@ -35,7 +35,7 @@ export const Monthly = () => {
   let filtered = products.filter((idx) => {
     return idx.id != 1;
   });
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <>
@@ -54,6 +54,7 @@ export const Monthly = () => {
               accordionBodyClassname={"py-[20px]"}
               accordionHeaderClassName={"py-[10px] px-[34px] max-[450px]:px-0"}
               imgColor={"#FF588A"}
+              addEquipment={data}
               titleMobile={
                 <div className="flex items-center w-full justify-between flex-row-reverse">
                   <CalculatorProduct
@@ -69,7 +70,7 @@ export const Monthly = () => {
                   />
                   <span className={`text-[16px] w-full ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px]`}>
                     ₸ <PriceFormatNumber value={foundProd?.price || el.price} />
-                    {foundProd?.qty > 1 && (el.price * foundProd.qty > foundProd.price && <span className="text-[#ff588a]">({t("common:discount")} ₸ <PriceFormatNumber value={discountPrice} />)</span>)}
+                    {foundProd?.qty > 1 && (el.price * foundProd.qty > foundProd.price && <span className="text-[#ff588a]">({data.discount} ₸ <PriceFormatNumber value={discountPrice} />)</span>)}
                   </span>
                 </div>
               }
@@ -90,7 +91,7 @@ export const Monthly = () => {
                   />
                   <span className={`text-[16px] max-w-[300px] w-full max-[450px]:hidden ${foundProd?.qty >= 2 && "text-[#D4006E]"} leading-[25px] `}>
                     ₸ <PriceFormatNumber value={foundProd?.price || el.price} />
-                    {foundProd?.qty > 1 && (el.price * foundProd.qty > foundProd.price && <span className="text-[#ff588a]">({t("common:discount")} ₸ <PriceFormatNumber value={discountPrice} />)</span>)}
+                    {foundProd?.qty > 1 && (el.price * foundProd.qty > foundProd.price && <span className="text-[#ff588a]">({data.discount} ₸ <PriceFormatNumber value={discountPrice} />)</span>)}
                   </span>
                 </div>
               } >
@@ -106,7 +107,7 @@ export const Monthly = () => {
                         className="mr-[18px]"
                       />
                       <p className=" text-[20px] w-full leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
-                        {router.locale == 'ru' ? "Торговая точка" : "Trading place"}
+                        {data.tradingPlace}
                       </p>
                     </div>
                     <CalculatorProduct
@@ -126,7 +127,7 @@ export const Monthly = () => {
                         className="mr-[18px]"
                       />
                       <p className="w-full  text-[20px] leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
-                        {router.locale == 'ru' ? "Кассовая зона" : "Cash zone"}
+                        {data.cashZone}
                       </p>
                     </div>
                     <CalculatorProduct
@@ -145,7 +146,7 @@ export const Monthly = () => {
                         className="mr-[18px]"
                       />
                       <p className=" text-[20px] leading-[180%] text-[#111827] max-[450px]:text-[16px] max-[450px]:leading-[25px]">
-                        {t("common:users")}
+                        {data.users}
                       </p>
                     </div>
                     {
@@ -161,7 +162,7 @@ export const Monthly = () => {
                           }}
                         />
                         <span className="max-w-[190px] w-full text-[16px] leading-[25px]  ml-5 max-[450px]:hidden">
-                          ₸ 1 000 {t("common:per_additional")}
+                          ₸ 1 000 {data.perAdditional}
                         </span>
                       </> : <>
                         <CalculatorProduct
@@ -184,7 +185,7 @@ export const Monthly = () => {
                         key={product.id}
                       >
                         <h2 className="w-full px-[34px] mb-3 text-[16px] leading-[140%] font-bold max-[450px]:text-[16px] max-[450px]:px-0">
-                          <span className="text-[#FF588A]">*</span> {t("common:use_method")}
+                          <span className="text-[#FF588A]">*</span> {data.licenceHardware}
                         </h2>
                         <div className="flex items-center w-full mr-[110px] max-[450px]:mx-0 pl-[90px] max-[450px]:px-0 justify-between max-w-[1000px] max-[450px]:flex-col">
                           <div className="flex items-center w-full max-w-[340px] max-[450px]:mb-1">

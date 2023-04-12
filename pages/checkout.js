@@ -3,12 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import Input from '../components/Input/Input';
-import checkCircle from '../public/assets/images/check-circle1.png';
-import checkCircle2 from '../public/assets/images/check-circle2.png';
 import { useTranslation } from 'next-i18next';
 import AdressLocation from '../components/AdressLocation/AdressLocation';
 import locationAdressIcon from '../public/assets/images/locationIcon.svg';
-import confrimSuccessImg from '../public/assets/images/modalSuccessInfo.png';
 import InputCheckbox from '../components/InputCheckbox/InputCheckbox';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Savecheckbox from '../components/SaveCheckbox';
@@ -19,19 +16,33 @@ import SelectIcon from '../public/assets/images/select-icon.svg';
 import PolicyCheckbox from '../components/PolicyCheckbox';
 import { getItems } from "../redux/features/carts";
 import { useRouter } from 'next/router';
-import CustomSelect from '../components/CustomSelect';
+import PriceFormatNumber from '../components/PriceFormatNumber';
+import { useTina } from "tinacms/dist/react";
+import client from '../tina/__generated__/client';
+// import confrimSuccessImg from '../public/assets/images/modalSuccessInfo.png';
+// import CustomSelect from '../components/CustomSelect';
+// import checkCircle from '../public/assets/images/check-circle1.png';
+// import checkCircle2 from '../public/assets/images/check-circle2.png';
 // import cartPrImg from "../public/assets/images/checkPageProductsideRotateImg.png";
 // import Checkbox from "../components/Checkbox";
 
 export async function getStaticProps({ locale }) {
+
+  const { data, query, variables } = await client.queries.checkout({
+    relativePath: `${locale}/checkout.json`,
+  });
+
   return {
     props: {
+      data,
+      query,
+      variables,
       ...(await serverSideTranslations(locale, ['common', 'header', 'footer'])),
     },
   };
 }
 
-const Checkout = () => {
+const Checkout = (props) => {
   const [userName, setUserName] = useState('');
   const [userPhone, setUserPhone] = useState();
   const [userEmail, setUserEmail] = useState('');
@@ -68,7 +79,15 @@ const Checkout = () => {
     }));
   };
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
+  let pageData = data.checkout;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -79,17 +98,17 @@ const Checkout = () => {
     }
   }, [dispatch]);
 
-  const [selectedValue, setSelectedValue] = useState('');
+  // const [selectedValue, setSelectedValue] = useState('');
 
-  const options = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
-  ];
+  // const options = [
+  //   { value: 'option1', label: 'Option 1' },
+  //   { value: 'option2', label: 'Option 2' },
+  //   { value: 'option3', label: 'Option 3' },
+  // ];
 
-  const handleSelectChange = (option) => {
-    setSelectedValue(option.value);
-  };
+  // const handleSelectChange = (option) => {
+  //   setSelectedValue(option.value);
+  // };
 
   return (
     <>
@@ -269,13 +288,13 @@ const Checkout = () => {
       <section className='pt-[170px] max-[450px]:pt-[70px]'>
         <div className='container max-w-7xl mx-auto'>
           <h2 className='font-bold mb-10 text-[32px] leading-[140%] max-[450px]:px-6 max-[450px]:text-[24px] max-[450px]:leading-[36px] max-[450px]:mb-[14px]'>
-            Checkout
+            {pageData.title}
           </h2>
 
           <div className='flex justify-between mb-8 max-[450px]:flex-col max-[450px]:px-6 max-[450px]:gap-y-10'>
             <div className='pt-[14px] max-w-[580px] w-full max-[450px]:pt-0'>
               <h2 className='font-bold mb-[40px] text-[20px] leading-[140%] max-[450px]:mb-[13px] max-[450px]:text-[16px]'>
-                Delivery options
+                {pageData.deliveryOptions.title}
               </h2>
               <div className='flex justify-between max-w-[392px] w-full mb-7 max-[450px]:mb-[7px]'>
                 <div
@@ -285,22 +304,22 @@ const Checkout = () => {
                 >
                   <span>
                     <h4 className='text-[14px] leading-[17px] max-[450px]:text-[12px] max-[450px]:mb-[6px] max-[450px]:leading-[180%] mb-[10px] font-medium'>
-                      Home delivery
+                      {pageData.deliveryOptions.home.tab.title}
                     </h4>
                     <p className='text-[12px] max-[450px]:text-[10px] leading-[150%] text-[#828282]'>
-                      Takes 3-5 business days
+                      {pageData.deliveryOptions.home.tab.text}
                     </p>
                   </span>
                   {tab == '1' ? (
                     <Image
-                      src={checkCircle}
+                      src={pageData.deliveryOptions.home.tab.image}
                       alt='check-circle'
                       width={20}
                       height={20}
                     />
                   ) : (
                     <Image
-                      src={checkCircle2}
+                      src={pageData.deliveryOptions.store.tab.image}
                       alt='check-circle'
                       width={20}
                       height={20}
@@ -314,15 +333,15 @@ const Checkout = () => {
                 >
                   <span>
                     <h4 className='text-[14px] leading-[17px] max-[450px]:text-[12px] max-[450px]:mb-[6px] max-[450px]:leading-[180%] mb-[10px] font-medium'>
-                      In-store pickup
+                      {pageData.deliveryOptions.store.tab.title}
                     </h4>
                     <p className='text-[12px] max-[450px]:text-[10px] leading-[150%] text-[#828282]'>
-                      Pick from store location
+                      {pageData.deliveryOptions.store.tab.text}
                     </p>
                   </span>
                   {tab == '2' ? (
                     <Image
-                      src={checkCircle}
+                      src={pageData.deliveryOptions.home.tab.image}
                       alt='check-circle'
                       width={20}
                       height={20}
@@ -336,8 +355,7 @@ const Checkout = () => {
               {(tab === '1' && (
                 <>
                   <p className='text-[16px] leading-[25px] max-w-[500px] w-full mb-10 max-[450px]:text-[11px] max-[450px]:leading-[15px] max-[450px]:mb-7'>
-                    *Delivery is paid by a private person according to the
-                    tariff of the courier company.
+                    {pageData.deliveryOptions.home.text}
                   </p>
                   <div className='w-full mb-[70px] max-[450px]:mb-[30px]'>
                     <Input
@@ -354,9 +372,9 @@ const Checkout = () => {
                       inputClassName={
                         'w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] max-[450px]:py-3 max-[450px]:placeholder:text-[14px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]'
                       }
-                      placeholder={'First/Last Name'}
+                      placeholder={pageData.deliveryOptions.home.name.placeholder}
                       value={userName}
-                      labelValue={'Name*'}
+                      labelValue={pageData.deliveryOptions.home.name.label}
                       name={'nameInput'}
                       labelClassName={
                         'text-[20px] font-regular max-[450px]:text-[12px]'
@@ -377,9 +395,9 @@ const Checkout = () => {
                         'w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] max-[450px]:py-3 max-[450px]:placeholder:text-[14px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]'
                       }
                       pattern={"^[0-9\s\-\+\(\)]+$"}
-                      placeholder={'+7 700 000 00 00'}
+                      placeholder={pageData.deliveryOptions.home.number.placeholder}
                       value={userPhone}
-                      labelValue={'Mobile phone*'}
+                      labelValue={pageData.deliveryOptions.home.number.label}
                       name={'phoneInput'}
                       labelClassName={
                         'text-[20px] max-[450px]:text-[12px] font-regular'
@@ -398,9 +416,9 @@ const Checkout = () => {
                       inputClassName={
                         'w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] max-[450px]:py-3 max-[450px]:placeholder:text-[14px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]'
                       }
-                      placeholder={'Enter your e-mail'}
+                      placeholder={pageData.deliveryOptions.home.email.placeholder}
                       value={userEmail}
-                      labelValue={'E-mail*'}
+                      labelValue={pageData.deliveryOptions.home.email.label}
                       name={'emailInput'}
                       labelClassName={
                         'text-[20px] max-[450px]:text-[12px] font-regular'
@@ -417,9 +435,9 @@ const Checkout = () => {
                       inputClassName={
                         'w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] max-[450px]:py-3 max-[450px]:placeholder:text-[14px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]'
                       }
-                      placeholder={'Enter your town'}
+                      placeholder={pageData.deliveryOptions.home.town.placeholder}
                       value={userTown}
-                      labelValue={'Town*'}
+                      labelValue={pageData.deliveryOptions.home.town.label}
                       name={'townInput'}
                       labelClassName={
                         'text-[20px] max-[450px]:text-[12px] font-regular'
@@ -435,290 +453,16 @@ const Checkout = () => {
                       inputClassName={
                         'w-full py-[14px] px-[14px] placeholder:text-[16px] placeholder:leading-[25px] border-none outline-none rounded-[10px] max-[450px]:py-3 max-[450px]:placeholder:text-[14px] placeholder:text-[#9CA3AF]  bg-[#eff2f6]'
                       }
-                      placeholder={'Enter your actual address'}
+                      placeholder={pageData.deliveryOptions.home.currentAddress.placeholder}
                       value={userCurrentAddress}
-                      labelValue={'Actual address*'}
+                      labelValue={pageData.deliveryOptions.home.currentAddress.label}
                       name={'adressInput'}
                       labelClassName={
                         'text-[20px] max-[450px]:text-[12px] font-regular'
                       }
                     />
                   </div>
-                  <div className='mb-[26px] max-[450px]:mb-4'>
-                    <h3 className='text-[24px] font-bold mt-[75px] mb-[40px] max-[450px]:mt-0 max-[450px]:text-[16px] max-[450px]:mb-5'>
-                      Choose payment Method
-                    </h3>
-                    <div className='mb-8'>
-                      <span className='flex items-center mb-5'>
-                        <InputCheckbox
-                          type={'radio'}
-                          idName={'1'}
-                          onChange={(value) => setPayment(value)}
-                          inptClass={
-                            'accent-[#FF588A] w-[20px] h-[20px] bg-[#fff]'
-                          }
-                          labelText={'Cash upon receipt'}
-                          labelClass={
-                            'text-[20px] ml-[30px] max-[450px]:text-[14px] max-[450px]:ml-5'
-                          }
-                          inputName={'pay'}
-                        />
-                      </span>
-                      {payment == '1' && (
-                        <div className='mb-[70px] max-[450px]:mb-[30px]'>
-                          <AdressLocation
-                            locationInfoWrappClassName={
-                              'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
-                            }
-                            imgaes={locationAdressIcon}
-                            locationTextClassName={
-                              'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
-                            }
-                            locationText={
-                              'Almaty town, Amangeldy 59a, 7 floor, 702'
-                            }
-                          />
-                          {/* <AdressLocation
-                            locationInfoWrappClassName={
-                              'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
-                            }
-                            imgaes={locationAdressIcon}
-                            locationTextClassName={
-                              'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
-                            }
-                            locationText={
-                              'Almaty town, Amangeldy 59a, 7 floor, 702'
-                            }
-                          />
-                          <AdressLocation
-                            locationInfoWrappClassName={
-                              'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
-                            }
-                            imgaes={locationAdressIcon}
-                            locationTextClassName={
-                              'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
-                            }
-                            locationText={
-                              'Almaty town, Amangeldy 59a, 7 floor, 702'
-                            }
-                          /> */}
-                        </div>
-                      )}
-                      <span className='flex items-center max-[450px]:mb-8'>
-                        <InputCheckbox
-                          type={'radio'}
-                          idName={'2'}
-                          onChange={(value) => setPayment(value)}
-                          inptClass={
-                            'accent-[#FF588A] w-[20px] h-[20px] bg-[#fff]'
-                          }
-                          labelText={'Card payment'}
-                          labelClass={
-                            'text-[20px] ml-[30px] max-[450px]:text-[14px] max-[450px]:ml-5'
-                          }
-                          inputName={'pay'}
-                        />
-                      </span>
-                      {payment == '2' && (
-                        <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
-                          <Input
-                            inputType={'text'}
-                            wrapperClassName={'mb-4'}
-                            inputClassName={
-                              'w-full py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] max-[450px]:placeholder:text-[10px]'
-                            }
-                            value={cardName}
-                            onChange={(value) => {
-                              let newValue = value.replace(/[^a-zA-Z]/g, '');
-                              setCardName(newValue)
-                            }}
-                            labelValue={'Name on card'}
-                            name={'paycCardInfo'}
-                            labelClassName={'mb-[3px] font-bold'}
-                          />
 
-                          <div className='payCardNumbInfo'>
-                            <div className='flex items-center'>
-                              <Input
-                                inputType={'number'}
-                                wrapperClassName={'mb-4 flex flex-col'}
-                                inputClassName={
-                                  'p-3 border-none outline-none bg-[#E2E8F0] rounded-[5px] w-full placeholder:float-right max-[450px]:placeholder:text-[10px]'
-                                }
-                                inputInnerWrapperClassName={'flex items-center'}
-                                placeholder={''}
-                                value={cardNumber}
-                                onChange={(value) => {
-                                  let newValue = value.replace(/[^0-9\s\-\+\(\)]+/g, '');
-                                  setCardNumber(newValue)
-                                }}
-                                maxLength={16}
-                                labelValue={'Card Number'}
-                                name={'cardNumbInfo'}
-                                labelClassName={'mb-[3px] font-bold'}
-                              >
-                                <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
-                                <Input
-                                  inputType={'month'}
-                                  wrapperClassName={'flex flex-col w-[20%] month-year-input-wrapper'}
-                                  inputClassName={
-                                    'p-4 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] text-[10px] max-[450px]:placeholder:text-[10px] max-[450px]:px-1 max-[450px]:placeholder:py-3'
-                                  }
-                                  // labelValue={'MM/YY'}
-                                  value={cardValidityPeriod}
-                                  onChange={(value) =>
-                                    setCardValidityPeriod(value)
-                                  }
-                                  maxLength={4}
-                                  name={'validity_period'}
-                                />
-                                <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
-                                <Input
-                                  inputType={'number'}
-                                  wrapperClassName={'flex flex-col w-[25%]'}
-                                  inputClassName={
-                                    'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] appearance-none max-[450px]:px-1 max-[450px]:placeholder:py-3'
-                                  }
-                                  placeholder={'CVC'}
-                                  onChange={(value) => {
-                                    let newValue = value.replace(/[^0-9]/g, '');
-                                    setCardCVC(newValue)
-                                  }}
-                                  maxLength={4}
-                                  value={cardCVC}
-                                  name={'CVC'}
-                                />
-                              </Input>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
-                      <Input
-                        inputType={'text'}
-                        wrapperClassName={'mb-4'}
-                        inputClassName={
-                          'w-full py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] max-[450px]:placeholder:text-[10px]'
-                        }
-                        placeholder={''}
-                        value={cardName}
-                        onChange={(value) => setCardName(value)}
-                        labelValue={'Name on card'}
-                        name={'paycCardInfo'}
-                        labelClassName={'mb-[3px] font-bold'}
-                      />
-
-                      <div className='payCardNumbInfo'>
-                        <div className='flex items-center'>
-                          <Input
-                            inputType={'number'}
-                            wrapperClassName={'mb-4 flex flex-col'}
-                            inputClassName={
-                              'p-3 border-none outline-none bg-[#E2E8F0] rounded-[5px] w-full placeholder:float-right max-[450px]:placeholder:text-[10px]'
-                            }
-                            inputInnerWrapperClassName={'flex items-center'}
-                            placeholder={''}
-                            value={cardNumber}
-                            onChange={(value) => setCardNumber(value)}
-                            labelValue={'Card Number'}
-                            name={'cardNumbInfo'}
-                            labelClassName={'mb-[3px] font-bold'}
-                          >
-                            <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
-                            <Input
-                              inputType={'number'}
-                              wrapperClassName={'flex flex-col w-[30%]'}
-                              inputClassName={
-                                'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] max-[450px]:px-1 max-[450px]:placeholder:py-3'
-                              }
-                              placeholder={'MM/YY'}
-                              value={cardValidityPeriod}
-                              onChange={(value) => setCardValidityPeriod(value)}
-                              name={'validity_period'}
-                            />
-                            <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
-                            <Input
-                              inputType={'number'}
-                              wrapperClassName={'flex flex-col w-[25%]'}
-                              inputClassName={
-                                'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] appearance-none max-[450px]:px-1 max-[450px]:placeholder:py-3'
-                              }
-                              placeholder={'CVC'}
-                              value={cardCVC}
-                              onChange={(value) => setCardCVC(value)}
-                              name={'CVC'}
-                            />
-                          </Input>
-                        </div>
-                      </div>
-                    </div> */}
-                  </div>
-                  <div className='flex items-center justify-start mb-10 text-[20px] leading-[180%] max-[450px]:mb-[30px]'>
-                    <Savecheckbox
-                      id={4}
-                      value={'save'}
-                      onGetValue={onChecked}
-                    />
-                    <p className='ml-3 max-[450px]:text-[16px] max-[450px]:leading-[25px]'>
-                      Save my card for future purchase
-                    </p>
-                  </div>
-                  <p className='text-[20px] leading-[180%] mb-8 max-[450px]:text-[14px] max-[450px]:leading-[21px] max-[450px]:mb-5'>
-                    Please review the order details and payment details before
-                    proceeding to confirm your order
-                  </p>
-                  <div className='items-center max-[450px]:mb-5 hidden max-[450px]:flex'>
-                    <PolicyCheckbox
-                      id={'termsPolicy'}
-                      onGetValue={onSave}
-                      value={'termsPolicy'}
-                    />
-                    <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                      I agree to the Terms & conditions, Privacy policy & Return
-                      policy
-                    </div>
-                  </div>
-                  <div className='items-center hidden max-[450px]:flex'>
-                    <PolicyCheckbox
-                      id={'emailPolicy'}
-                      onGetValue={onSave}
-                      value={'emailPolicy'}
-                    />
-                    <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                      Sign me up to the email list
-                    </div>
-                  </div>
-                  <div className='flex items-center max-[450px]:mb-5 max-[450px]:hidden'>
-                    <PolicyCheckbox
-                      id={'policyPublic'}
-                      onGetValue={onSave}
-                      value={'policyPublic'}
-                    />
-                    <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                      I accept the terms of the
-                      <span
-                        onClick={() => setVisible(!visible)}
-                        className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'
-                      >
-                        Public Offer*
-                      </span>
-                    </div>
-                  </div>
-                  <div className='flex items-center max-[450px]:hidden'>
-                    <PolicyCheckbox
-                      id={'paymentPolicy'}
-                      onGetValue={onSave}
-                      value={'paymentPolicy'}
-                    />
-                    <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
-                      I have read the
-                      <span className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'>
-                        Payment and Return Policy*
-                      </span>
-                    </div>
-                  </div>
                 </>
               )) ||
                 (tab === '2' && (
@@ -730,7 +474,7 @@ const Checkout = () => {
                         }
                       // onClick={() => setOpenModal(true)}
                       >
-                        Choose your town
+                        {pageData.deliveryOptions.store.townOption.title}
                         <Image
                           src={SelectIcon}
                           alt='SelectIcon'
@@ -749,20 +493,15 @@ const Checkout = () => {
                           'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] ml-1'
                         }
                         locationText={
-                          'Almaty town, Amangeldy 59a, 7 floor, 702'
+                          pageData.deliveryOptions.store.townOption.option
                         }
                       />
-                      <CustomSelect
+                      {/* <CustomSelect
                         options={options}
                         value={selectedValue}
                         onChange={handleSelectChange}
-                      />
-
-                      <p className='text-[20px] font-regular leading-[180%] max-[450px]:text-[12px] max-[450px]:mb-10'>
-                        Please review the order details and payment details
-                        before proceeding to confirm your order
-                      </p>
-                      <div className='mb-[26px]'>
+                      /> */}
+                      {/* <div className='mb-[26px]'>
                         <h3 className='text-[24px] font-bold mt-[75px] mb-[40px] max-[450px]:mt-0 max-[450px]:text-[16px] max-[450px]:mb-5'>
                           Choose payment Method
                         </h3>
@@ -967,14 +706,275 @@ const Checkout = () => {
                             Payment and Return Policy*
                           </span>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </>
                 ))}
+
+              <div className='mb-[26px] max-[450px]:mb-4'>
+                <h3 className='text-[24px] font-bold mt-[75px] mb-[40px] max-[450px]:mt-0 max-[450px]:text-[16px] max-[450px]:mb-5'>
+                  {pageData.payment.title}
+                </h3>
+                <div className='mb-8'>
+                  <span className='flex items-center mb-5'>
+                    <InputCheckbox
+                      type={'radio'}
+                      idName={'1'}
+                      onChange={(value) => setPayment(value)}
+                      inptClass={
+                        'accent-[#FF588A] w-[20px] h-[20px] bg-[#fff]'
+                      }
+                      labelText={pageData.payment.cash.title}
+                      labelClass={
+                        'text-[20px] ml-[30px] max-[450px]:text-[14px] max-[450px]:ml-5'
+                      }
+                      inputName={'pay'}
+                    />
+                  </span>
+                  {payment == '1' && (
+                    <div className='mb-[70px] max-[450px]:mb-[30px]'>
+                      <AdressLocation
+                        locationInfoWrappClassName={
+                          'pl-3 max-[450px]:pl-0 flex items-center mt-[22px]'
+                        }
+                        imgaes={locationAdressIcon}
+                        locationTextClassName={
+                          'ml-[26px]  text-[20px] font-regular max-[450px]:text-[14px] max-[450px]:ml-[10px]'
+                        }
+                        locationText={
+                          pageData.payment.cash.address
+                        }
+                      />
+                    </div>
+                  )}
+                  <span className='flex items-center max-[450px]:mb-8 mb-3'>
+                    <InputCheckbox
+                      type={'radio'}
+                      idName={'2'}
+                      onChange={(value) => setPayment(value)}
+                      inptClass={
+                        'accent-[#FF588A] w-[20px] h-[20px] bg-[#fff]'
+                      }
+                      labelText={pageData.payment.card.title}
+                      labelClass={
+                        'text-[20px] ml-[30px] max-[450px]:text-[14px] max-[450px]:ml-5'
+                      }
+                      inputName={'pay'}
+                    />
+                  </span>
+                  {payment == '2' && (
+                    <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
+                      <Input
+                        inputType={'text'}
+                        wrapperClassName={'mb-4'}
+                        inputClassName={
+                          'w-full py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] max-[450px]:placeholder:text-[10px]'
+                        }
+                        value={cardName}
+                        onChange={(value) => {
+                          let newValue = value.replace(/[^a-zA-Z]/g, '');
+                          setCardName(newValue)
+                        }}
+                        labelValue={pageData.payment.card.name.title}
+                        name={'paycCardInfo'}
+                        labelClassName={'mb-[3px] font-bold'}
+                      />
+
+                      <div className='payCardNumbInfo'>
+                        <div className='flex items-center'>
+                          <Input
+                            inputType={'number'}
+                            wrapperClassName={'mb-4 flex flex-col'}
+                            inputClassName={
+                              'p-3 border-none outline-none bg-[#E2E8F0] rounded-[5px] w-full placeholder:float-right max-[450px]:placeholder:text-[10px]'
+                            }
+                            inputInnerWrapperClassName={'flex items-center'}
+                            placeholder={''}
+                            value={cardNumber}
+                            onChange={(value) => {
+                              let newValue = value.replace(/[^0-9\s\-\+\(\)]+/g, '');
+                              setCardNumber(newValue)
+                            }}
+                            maxLength={16}
+                            labelValue={pageData.payment.card.cardNumber.title}
+                            name={'cardNumbInfo'}
+                            labelClassName={'mb-[3px] font-bold'}
+                          >
+                            <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
+                            <Input
+                              inputType={'month'}
+                              wrapperClassName={'flex flex-col w-[20%] month-year-input-wrapper'}
+                              inputClassName={
+                                'p-4 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] text-[10px] max-[450px]:placeholder:text-[10px] max-[450px]:px-1 max-[450px]:placeholder:py-3'
+                              }
+                              // labelValue={'MM/YY'}
+                              value={cardValidityPeriod}
+                              onChange={(value) =>
+                                setCardValidityPeriod(value)
+                              }
+                              maxLength={4}
+                              name={'validity_period'}
+                            />
+                            <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
+                            <Input
+                              inputType={'number'}
+                              wrapperClassName={'flex flex-col w-[25%]'}
+                              inputClassName={
+                                'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] appearance-none max-[450px]:px-1 max-[450px]:placeholder:py-3'
+                              }
+                              placeholder={pageData.payment.card.cardNumber.code}
+                              onChange={(value) => {
+                                let newValue = value.replace(/[^0-9]/g, '');
+                                setCardCVC(newValue)
+                              }}
+                              maxLength={4}
+                              value={cardCVC}
+                              name={'CVC'}
+                            />
+                          </Input>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* <div className='py-[30px] px-[40px] bg-[#CBD5E1] rounded-[10px]'>
+                      <Input
+                        inputType={'text'}
+                        wrapperClassName={'mb-4'}
+                        inputClassName={
+                          'w-full py-[12px] px-[12px] border-none outline-none bg-[#E2E8F0] rounded-[5px] max-[450px]:placeholder:text-[10px]'
+                        }
+                        placeholder={''}
+                        value={cardName}
+                        onChange={(value) => setCardName(value)}
+                        labelValue={'Name on card'}
+                        name={'paycCardInfo'}
+                        labelClassName={'mb-[3px] font-bold'}
+                      />
+
+                      <div className='payCardNumbInfo'>
+                        <div className='flex items-center'>
+                          <Input
+                            inputType={'number'}
+                            wrapperClassName={'mb-4 flex flex-col'}
+                            inputClassName={
+                              'p-3 border-none outline-none bg-[#E2E8F0] rounded-[5px] w-full placeholder:float-right max-[450px]:placeholder:text-[10px]'
+                            }
+                            inputInnerWrapperClassName={'flex items-center'}
+                            placeholder={''}
+                            value={cardNumber}
+                            onChange={(value) => setCardNumber(value)}
+                            labelValue={'Card Number'}
+                            name={'cardNumbInfo'}
+                            labelClassName={'mb-[3px] font-bold'}
+                          >
+                            <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
+                            <Input
+                              inputType={'number'}
+                              wrapperClassName={'flex flex-col w-[30%]'}
+                              inputClassName={
+                                'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] max-[450px]:px-1 max-[450px]:placeholder:py-3'
+                              }
+                              placeholder={'MM/YY'}
+                              value={cardValidityPeriod}
+                              onChange={(value) => setCardValidityPeriod(value)}
+                              name={'validity_period'}
+                            />
+                            <span className='w-[3px] h-[10px] bg-[#D8D8D8] inline-block'></span>
+                            <Input
+                              inputType={'number'}
+                              wrapperClassName={'flex flex-col w-[25%]'}
+                              inputClassName={
+                                'p-3 border-none rounded-[5px] outline-none bg-[#E2E8F0] w-full placeholder:text-center placeholder:text-[#131515] max-[450px]:placeholder:text-[10px] appearance-none max-[450px]:px-1 max-[450px]:placeholder:py-3'
+                              }
+                              placeholder={'CVC'}
+                              value={cardCVC}
+                              onChange={(value) => setCardCVC(value)}
+                              name={'CVC'}
+                            />
+                          </Input>
+                        </div>
+                      </div>
+                    </div> */}
+              </div>
+              <div className='flex items-center justify-start mb-10 text-[20px] leading-[180%] max-[450px]:mb-[30px]'>
+                <Savecheckbox
+                  id={4}
+                  value={'save'}
+                  onGetValue={onChecked}
+                />
+                <p className='ml-3 max-[450px]:text-[16px] max-[450px]:leading-[25px]'>
+                  {pageData.saveCard}
+                </p>
+              </div>
+              <p className='text-[20px] leading-[180%] mb-8 max-[450px]:text-[14px] max-[450px]:leading-[21px] max-[450px]:mb-5'>
+                {pageData.review}
+              </p>
+              <div className='items-center max-[450px]:mb-5 hidden max-[450px]:flex'>
+                <PolicyCheckbox
+                  id={'termsPolicy'}
+                  onGetValue={onSave}
+                  value={'termsPolicy'}
+                />
+                <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
+                  {pageData.terms.mobileTerms.text}
+                </div>
+              </div>
+              <div className='items-center hidden max-[450px]:flex'>
+                <PolicyCheckbox
+                  id={'emailPolicy'}
+                  onGetValue={onSave}
+                  value={'emailPolicy'}
+                />
+                <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
+                  {pageData.terms.mobileEmailTerms.text}
+                </div>
+              </div>
+              <div className='flex items-center max-[450px]:mb-5 max-[450px]:hidden'>
+                <PolicyCheckbox
+                  id={'policyPublic'}
+                  onGetValue={onSave}
+                  value={'policyPublic'}
+                />
+                <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
+                  {pageData.terms.public.text} {" "}
+                  <span
+                    onClick={() => setVisible(!visible)}
+                    className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'
+                  >
+                    {pageData.terms.public.textModal}
+                  </span>
+                </div>
+              </div>
+              <div className='flex items-center max-[450px]:hidden'>
+                <PolicyCheckbox
+                  id={'paymentPolicy'}
+                  onGetValue={onSave}
+                  value={'paymentPolicy'}
+                />
+                <div className='ml-[33px] text-[20px] leading-[180%] max-[450px]:text-[14px]'>
+                  {
+                    router.locale === 'ru' ?
+                      <>
+                        <span className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'>
+                          {pageData.terms.policy.textModal}
+                        </span>
+                        {" "}{pageData.terms.policy.text}
+                      </>
+                      : <>
+                        {pageData.terms.policy.text} {" "}
+                        <span className='text-[20px] leading-[180%] text-[#FF588A] cursor-pointer max-[450px]:text-[14px]'>
+                          {pageData.terms.policy.textModal}
+                        </span>
+                      </>
+                  }
+                </div>
+              </div>
             </div>
             <div className='max-w-[580px] w-full'>
               <h3 className='text-[20px] font-[700] mb-[28px] max-[450px]:text-[16px] max-[450px]:mb-[14px]'>
-                Products:
+                {pageData.products.title}
               </h3>
 
               <hr className='bg-[#F9F9FB] w-full border border-solid mb-4' />
@@ -982,7 +982,6 @@ const Checkout = () => {
               {cart.cart.licenses?.length > 0 &&
                 cart.licenses.map(
                   (license) => (
-                    // console.log(license),
                     (
                       <>
                         <div key={license.id}>
@@ -994,19 +993,19 @@ const Checkout = () => {
                               x{license.qty}
                             </p>
                             <p className='text-[20px] leading-[140%] font-bold max-[450px]:text-[14px] max-[450px]:inline-block hidden'>
-                              ₸ {license.price}
+                              ₸ <PriceFormatNumber value={license.price} />
                             </p>
                           </div>
                           <div className='flex items-center justify-between mb-[10px]'>
-                            <p className='max-[450px]:text-[14px]'>Period:</p>
+                            <p className='max-[450px]:text-[14px] text-[20px]'>{pageData.products.licenses.period}</p>
                             <p className='text-[20px] leading-[140%] font-bold max-[450px]:text-[14px]'>
                               {router.locale === 'ru' ? license.periodru : license.period}
                             </p>
                           </div>
 
                           <div className='flex items-center justify-between w-full mb-[10px]'>
-                            <p className='max-[450px]:text-[14px]'>
-                              {t('common:users')}:
+                            <p className='max-[450px]:text-[14px] text-[20px]'>
+                              {pageData.products.licenses.users}
                             </p>
 
                             <div className='flex items-center justify-between w-full max-w-[140px]'>
@@ -1017,18 +1016,18 @@ const Checkout = () => {
                                   : license.cashier.qty}
                               </p>
                               <p className='text-[20px] leading-[140%] font-bold max-[450px]:text-[14px]'>
-                                ₸ {license.cashier.price}
+                                ₸ <PriceFormatNumber value={license.cashier.price} />
                               </p>
                             </div>
                           </div>
                           <div className='w-full mb-7'>
-                            <p className='mb-[10px] max-[450px]:text-[14px]'>
-                              {t('header:equipment')}:
+                            <p className='mb-[10px] max-[450px]:text-[14px] text-[20px]'>
+                              {pageData.products.licenses.equipment}
                             </p>
 
                             {license.products.map((product) => (
                               <div
-                                className='flex items-center justify-between mb-3'
+                                className='flex items-center justify-between mb-5'
                                 key={product.id}
                               >
                                 <div className='flex items-center'>
@@ -1048,7 +1047,7 @@ const Checkout = () => {
                                     x{product.qty}
                                   </p>
                                   <p className='text-[20px] leading-[180%] font-bold max-[450px]:text-[14px]'>
-                                    ₸ {product.price}
+                                    ₸ <PriceFormatNumber value={product.price} />
                                   </p>
                                 </div>
                               </div>
@@ -1066,7 +1065,7 @@ const Checkout = () => {
                   ? cart.products.map((product, i) => {
                     return (
                       <div
-                        className='flex items-center justify-between mb-3'
+                        className='flex pb-3 items-center justify-between mb-3 border-b-[2px] border-[#dbdddf]'
                         key={product.id}
                       >
                         <div className='flex items-center'>
@@ -1086,7 +1085,7 @@ const Checkout = () => {
                             x{product.qty}
                           </p>
                           <p className='text-[20px] leading-[180%] font-bold max-[450px]:text-[14px]'>
-                            ₸ {product.price}
+                            ₸ <PriceFormatNumber value={product.price} />
                           </p>
                         </div>
                       </div>
@@ -1096,8 +1095,8 @@ const Checkout = () => {
               </div>
               <hr className='border border-solid mb-4 max-[450px]:block hidden' />
               <div className='flex items-center text-[20px] leading-[140%] font-bold w-full justify-end max-[450px]:text-[16px] max-[450px]:justify-between'>
-                <p className='mr-4 max-[450px]:text-[16px]'>Total:</p>₸
-                {cart.totalPrice}
+                <p className='mr-4 max-[450px]:text-[16px]'>{pageData.products.total}</p>
+                ₸ <PriceFormatNumber value={cart.totalPrice} />
               </div>
             </div>
           </div>
@@ -1109,7 +1108,7 @@ const Checkout = () => {
                 } rounded-[10px] font-bold leading-[140%] text-xl`}
               onClick={() => checkedPolicy.paymentPolicy === true && checkedPolicy.policyPublic === true && setOpenModal(true)}
             >
-              Pay
+              {pageData.payButton}
             </button>
             <Link href={'/cart'} className='max-w-[500px] w-full'>
               <button
@@ -1117,7 +1116,7 @@ const Checkout = () => {
                   'py-[12px] ml-[56px] max-[450px]:ml-0 bg-[transparent] w-full rounded-[10px] font-bold leading-[140%] text-xl border-[2px] border-solid border-[#D1D5DB] text-[#FF588A]'
                 }
               >
-                Back to Cart
+                {pageData.backButton}
               </button>
             </Link>
           </div>
@@ -1138,15 +1137,17 @@ const Checkout = () => {
                 </button>
                 <div className='flex flex-col w-full h-[100%] py-[50px]  items-center px-[100px] '>
                   <Image
-                    src={confrimSuccessImg}
+                    src={pageData.modal.image}
                     alt='success-img'
+                    width={86}
+                    height={86}
                     className='w-[86px] h-[86px]'
                   />
                   <h3 className='my-[32px] text-[36px] font-medium text-center text-[#000]'>
-                    Thank you! Your data has been successfully sent.
+                    {pageData.modal.text}
                   </h3>
                   <p className='text-[30px] text-center text-[#9CA3AF]'>
-                    Expect feedback.
+                    {pageData.modal.subtext}
                   </p>
                 </div>
               </div>

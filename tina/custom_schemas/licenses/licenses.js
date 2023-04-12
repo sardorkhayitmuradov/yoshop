@@ -217,8 +217,8 @@ export const licenses = {
                     ]
                 },
                 {
-                    label: "Subtotal",
-                    name: 'subTotal',
+                    label: "Add to Cart Button",
+                    name: 'addCart',
                     component: 'text',
                     type: 'string'
                 },

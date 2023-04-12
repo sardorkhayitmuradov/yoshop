@@ -35,6 +35,6 @@
         "image": "/assets/images/desktop-computer.svg"
       }
     },
-    "subTotal": "Subtotal"
+    "addCart" : "Add to cart"
   }
 }

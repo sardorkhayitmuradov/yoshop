@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const ModalContext = createContext(null);
 
 export default function ModalProvider({ children }) {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   return (
     <ModalContext.Provider

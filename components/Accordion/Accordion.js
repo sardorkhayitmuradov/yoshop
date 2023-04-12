@@ -30,7 +30,8 @@ const AccordionWrapper = ({
   products,
   subTotal,
   foundLicense,
-  elId
+  elId,
+  addEquipment
 }) => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false);
@@ -112,7 +113,7 @@ const AccordionWrapper = ({
                   height={35}
 
                 />
-                {t("common:add_product")}
+                {addEquipment.addEquipment}
               </Button>
             )}
             <ul>
@@ -149,7 +150,7 @@ const AccordionWrapper = ({
                 : ""}
             </ul>
             <div className="max-w-[300px] w-full ml-auto text-right font-bold text-[24px] leading-[140%] max-[450px]:text-left max-[450px]:mx-0 max-[450px]:text-[16px]">
-              <p>{t("common:sub_total")}: ₸ <PriceFormatNumber value={subTotal} /></p>
+              <p>{addEquipment.subtotal} ₸ <PriceFormatNumber value={subTotal} /></p>
             </div>
           </div>}
       </div>

@@ -7,6 +7,7 @@ import { contact } from "./custom_schemas/contact/contact";
 import { company } from "./custom_schemas/company/company";
 import { equipment } from "./custom_schemas/equipment/equipment";
 import { cart } from "./custom_schemas/cart/cart";
+import { checkout } from "./custom_schemas/checkout/checkout";
 // import { ruhome } from "./custom_schemas/home/ru/ruhome";
 
 // Your hosting provider likely exposes this as an environment variable
@@ -42,7 +43,8 @@ export default defineConfig({
       community,
       company,
       contact,
-      cart
+      cart,
+      checkout
     ],
   },
 });

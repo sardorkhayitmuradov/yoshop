@@ -1,0 +1,97 @@
+{
+  "title": "Checkout",
+  "deliveryOptions": {
+    "title": "Delivery options",
+    "home": {
+      "tab": {
+        "title": "Home delivery",
+        "image": "/assets/images/check-circle1.png",
+        "text": "Takes 3-5 business days"
+      },
+      "text": "*Delivery is paid by a private person according to the tariff of the courier company.",
+      "name": {
+        "label": "Name*",
+        "placeholder": "First/Last Name"
+      },
+      "number": {
+        "label": "Mobile phone*",
+        "placeholder": "+7 700 000 00 00"
+      },
+      "email": {
+        "label": "E-mail*",
+        "placeholder": "Enter your e-mail"
+      },
+      "town": {
+        "label": "Town*",
+        "placeholder": "Enter your town"
+      },
+      "currentAddress": {
+        "label": "Actual address*",
+        "placeholder": "Enter your actual address"
+      }
+    },
+    "store": {
+      "tab": {
+        "title": "In-store pickup",
+        "image": "/assets/images/check-circle2.png",
+        "text": "Pick from store location"
+      },
+      "townOption": {
+        "title": "Choose your town",
+        "option": "Almaty town, Amangeldy 59a, 7 floor, 702"
+      }
+    }
+  },
+  "payment": {
+    "title" : "Choose payment Method",
+    "cash": {
+      "title": "Cash upon receipt",
+      "address": "Almaty town, Amangeldy 59a, 7 floor, 702"
+    },
+    "card": {
+      "title": "Card payment",
+      "name": {
+        "title": "Name on card"
+      },
+      "cardNumber": {
+        "title": "Card Number",
+        "expireData": "MM/YY",
+        "code": "CVC"
+      }
+    }
+  },
+  "saveCard": "Save my card for future purchase",
+  "review": "Please review the order details and payment details before proceeding to confirm your order",
+  "terms": {
+    "public": {
+      "text": "I accept the terms of the",
+      "textModal": "Public Offer*"
+    },
+    "policy": {
+      "text": "I have read the",
+      "textModal": "Payment and Return Policy*"
+    },
+    "mobileTerms": {
+      "text": "I agree to the Terms & conditions, Privacy policy & Return policy"
+    },
+    "mobileEmailTerms": {
+      "text": "Sign me up to the email list"
+    }
+  },
+  "products": {
+    "title": "Products:",
+    "licenses": {
+      "period": "Period:",
+      "users": "Users:",
+      "equipment": "Equipment:"
+    },
+    "total": "Total"
+  },
+  "payButton": "Pay",
+  "backButton": "Back to Cart",
+  "modal": {
+    "image": "/assets/images/modalSuccessInfo.png",
+    "text": "Thank you. Your data has been successfully sent.",
+    "subtext": "Expect feedback."
+  }
+}

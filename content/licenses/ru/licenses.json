@@ -14,14 +14,14 @@
       "cashZone": "Кассовая зона",
       "users": "Пользователи",
       "perAdditional": "за дополнение",
-      "licenceHardware": "*Вы можете использовать эту лицензию только на следующем оборудовании:",
-      "addEquipment": "Добавить оборудование",
+      "licenceHardware": "Вы можете использовать эту лицензию только на следующем оборудовании:",
+      "addEquipment": "оборудование",
       "subtotal": "Итого:"
     },
     "guide": "Руководство пользователя",
     "total": "ВСЕГО:",
     "licenseFeatures": {
-      "title": "The license price includes",
+      "title": "В стоимость лицензии входит",
       "warranty": {
         "title": "Гарантия на программное обеспечение",
         "image": "/assets/images/badge-check.svg"
@@ -35,6 +35,6 @@
         "image": "/assets/images/desktop-computer.svg"
       }
     },
-    "subTotal": "ВСЕГО:"
+    "addCart": "В корзину"
   }
 }
